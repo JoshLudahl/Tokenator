@@ -13,4 +13,4 @@ generate token and it'll generate a token and copy it to your clipboard. Simple.
 ![screenshot](https://github.com/JoshLudahl/Tokenator/blob/master/Screenshot_20201227_231834.png)
 
 
-![screenshot](https://github.com/JoshLudahl/Tokenator/blob/master/ic_tokenator.xml)
+![screenshot](https://github.com/JoshLudahl/Tokenator/blob/master/tokenator.png)
