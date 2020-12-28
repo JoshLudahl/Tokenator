@@ -6,7 +6,7 @@ Generate passwords up to 10000 characters long (if you need one longer, let's ta
 Generate passwords with uppercase and lowercase letters, numbers, or special characters, or all four,
 or any combination of the four. Simple to use. Simply set your password requirements, then click
 generate token and it'll generate a token and copy it to your clipboard. Simple.
-![screenshot](https://github.com/JoshLudahl/Tokenator/blob/master/tokenator.png)
+![tokenator logo](https://github.com/JoshLudahl/Tokenator/blob/master/tokenator.png)
 
 ![screenshot](https://github.com/JoshLudahl/Tokenator/blob/master/Screenshot_20201227_231804.png)
 
