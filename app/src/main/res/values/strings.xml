@@ -9,7 +9,7 @@
     <string name="password">Password:</string>
     <string name="click_generate_to_get_password">Click generate to get password</string>
     <string name="button">Copy</string>
-    <string name="toast_length_warning">Error: Length cannot be longer than 10000</string>
+    <string name="toast_length_warning">Error: Length must be between 1-10000</string>
     <string name="toast_copied_to_clipboard">Copied to clipboard</string>
     <string name="toast_generate_password_first_warning">Generate a password first.</string>
     <string name="secret_sauce">Secret Sauce</string>
