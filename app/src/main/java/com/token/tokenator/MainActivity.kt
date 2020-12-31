@@ -42,15 +42,15 @@ class MainActivity : AppCompatActivity() {
         val specialChar = binding.switchSpecialCharacters
         val lengthInt = length.text.toString().toIntOrNull() ?: 8
         var password = ""
-        var switches = listOf(lowerCase, upperCase, numeric, specialChar)
-        var checkedSwitches = mutableListOf<SwitchCompat>()
+        val switches = listOf(lowerCase, upperCase, numeric, specialChar)
+        val checkedSwitches = mutableListOf<SwitchCompat>()
 
         for (item in switches) {
             if (item.isChecked) {
                 checkedSwitches.add(item)
             }
         }
-        if (lengthInt < 1 || lengthInt < 10001) {
+        if (lengthInt in 2..10000) {
             for (int in 1..lengthInt) {
                 checkedSwitches.shuffle()
                 if (checkedSwitches.size != 0) {
