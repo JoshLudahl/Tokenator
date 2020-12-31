@@ -50,7 +50,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:track="@drawable/custom_switch_track" />
+                    app:track="@drawable/custom_switch_track"
+                    tools:ignore="DuplicateSpeakableTextCheck" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -236,22 +237,38 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
 
-                <Button
-                    android:id="@+id/button_generate_token"
-                    android:layout_width="match_parent"
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/save_button"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/icon_start_margin"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/save_button"
+                    style="@style/main_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.45"
+                    android:visibility="gone"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/view_saved_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@drawable/edit_text_backgroud"
+                    android:text="@string/view_saved_button"
+                    style="@style/main_button"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.45"
+                    android:visibility="gone"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_generate_token"
+                    style="@style/main_button"
                     android:text="@string/generate_token_button_text"
-                    android:textColor="@color/blackish"
-                    android:textSize="19sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/save_button"
                     app:strokeColor="@color/yellow" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -323,12 +340,12 @@
                     android:layout_marginBottom="8dp"
                     android:gravity="center"
                     android:text="@string/tokenator"
+                    android:textColor="@color/yellow"
                     android:textSize="@dimen/tokenator_title"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/appCompatImageView2"
                     app:layout_constraintStart_toStartOf="@+id/appCompatImageView2"
-                    app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2"
-                    android:textColor="@color/yellow"/>
+                    app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
