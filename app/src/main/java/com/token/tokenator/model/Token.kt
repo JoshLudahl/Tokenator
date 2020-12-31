@@ -2,11 +2,19 @@ package com.token.tokenator.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "token_table")
+@Entity(tableName = "token_table", indices = [Index(value = arrayOf("title"), unique = true)])
 data class Token(
-        @PrimaryKey val id: Int,
-        @ColumnInfo(name = "title") val title: String,
-        @ColumnInfo(name = "token") val token: String
+
+        @PrimaryKey(autoGenerate = true)
+        @ColumnInfo(name = "id")
+        val id: Int? = null,
+
+        @ColumnInfo(name = "title")
+        val title: String,
+
+        @ColumnInfo(name = "token")
+        val token: String
 )
