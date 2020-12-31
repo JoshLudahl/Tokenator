@@ -36,11 +36,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun viewSavedTokens() {
-        TODO("Not yet implemented")
+        // TODO: 12/30/20
     }
 
     private fun saveToken() {
-        TODO("Not yet implemented")
+        // TODO: 12/30/20  
     }
 
     private fun copyToClipBoard(password: TextView) {
@@ -51,6 +51,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun generatePassword() {
+        // TODO: 12/30/20 Implement string builder to build passwords
+
         val newPassword = binding.generatedField
         val length = binding.editTextLength
         val lowerCase = binding.switchLowerCase

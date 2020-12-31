@@ -12,4 +12,9 @@
     <string name="tokenator">Tokenator</string>
     <string name="save_button">Save</string>
     <string name="view_saved_button">view saved</string>
+
+    <!-- Save Dialog -->
+    <string name="save_dialog_title">Please enter a name &#8211;</string>
+    <string name="save_dialog_cancel">Cancel</string>
+    <string name="save_dialog_save">Save</string>
 </resources>
