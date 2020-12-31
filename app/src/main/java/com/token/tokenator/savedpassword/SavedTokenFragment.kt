@@ -6,27 +6,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.token.tokenator.R
+import com.token.tokenator.databinding.SavedTokenFragmentBinding
 
-class SavedTokenFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = SavedTokenFragment()
-    }
+class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
 
     private lateinit var viewModel: SavedTokenViewModel
+    private lateinit var binding: SavedTokenFragmentBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.saved_token_fragment, container, false)
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(SavedTokenViewModel::class.java)
-        // TODO: Use the ViewModel
+        binding = DataBindingUtil.bind(view)!!
+        binding.tokenViewModel = viewModel
     }
 
 }
