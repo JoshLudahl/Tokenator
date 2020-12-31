@@ -44,13 +44,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveToken() {
-        if (binding.tokenName.text.isNullOrEmpty()) {
-            Toast.makeText(this, R.string.error_enter_name_for_password, Toast.LENGTH_SHORT).show()
-        } else {
-            viewModel.insert(
-                passwordName = binding.tokenName.editableText.toString(),
-                token = binding.generatedField.text.toString()
-            )
+        when {
+            binding.tokenName.text.isNullOrEmpty() -> {
+                Toast.makeText(this, R.string.error_enter_name_for_password, Toast.LENGTH_SHORT).show()
+            }
+            binding.generatedField.text.isNullOrEmpty() -> {
+                Toast.makeText(this, R.string.error_generate_password_first, Toast.LENGTH_SHORT).show()
+            }
+            else -> {
+                viewModel.insert(
+                    passwordName = binding.tokenName.editableText.toString(),
+                    token = binding.generatedField.text.toString()
+                )
+                Toast.makeText(this, R.string.password_saved, Toast.LENGTH_SHORT).show()
+                binding.tokenName.text?.clear()
+            }
         }
     }
 

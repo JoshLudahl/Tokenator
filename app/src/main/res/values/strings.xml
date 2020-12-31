@@ -19,4 +19,6 @@
     <string name="save_dialog_save">Save</string>
     <string name="enter_name_for_password">Enter name for password</string>
     <string name="error_enter_name_for_password">Enter a name for the password</string>
+    <string name="error_generate_password_first">You must generate a password first</string>
+    <string name="password_saved">Password saved</string>
 </resources>
