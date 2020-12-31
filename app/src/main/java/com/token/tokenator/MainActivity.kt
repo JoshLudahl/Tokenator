@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.token.tokenator.databinding.ActivityMainBinding
 import kotlin.random.Random
 import kotlin.random.nextInt
@@ -22,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        binding.viewModel = viewModel
+
         binding.buttonGenerateToken.setOnClickListener {
             generatePassword()
         }
@@ -90,6 +94,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+            viewModel.tokenLength = binding.editTextLength.editableText
+            viewModel.token = password
             newPassword.text = password
             copyToClipBoard(newPassword)
         } else {

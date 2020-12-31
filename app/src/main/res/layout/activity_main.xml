@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.token.tokenator.MainActivityViewModel" />
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -214,6 +220,7 @@
                     android:background="@drawable/edit_text_backgroud"
                     android:hint="@string/length_hint"
                     android:inputType="number"
+                    android:text="@{viewModel.tokenLength}"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
                     android:textColor="@color/black"
@@ -296,6 +303,7 @@
                     android:layout_marginBottom="8dp"
                     android:gravity="center"
                     android:hint="@string/click_to_generate_password"
+                    android:text="@{viewModel.token}"
                     android:textColor="@color/yellow"
                     android:textColorHint="@color/light_blue"
                     android:textSize="18sp"
