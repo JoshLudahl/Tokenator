@@ -16,6 +16,7 @@ import kotlin.random.nextInt
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +25,22 @@ class MainActivity : AppCompatActivity() {
         binding.buttonGenerateToken.setOnClickListener {
             generatePassword()
         }
+
+        binding.saveButton.setOnClickListener {
+            saveToken()
+        }
+
+        binding.viewSavedButton.setOnClickListener {
+            viewSavedTokens()
+        }
+    }
+
+    private fun viewSavedTokens() {
+        TODO("Not yet implemented")
+    }
+
+    private fun saveToken() {
+        TODO("Not yet implemented")
     }
 
     private fun copyToClipBoard(password: TextView) {
