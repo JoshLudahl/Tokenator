@@ -8,10 +8,10 @@ or any combination of the four. Simple to use. Simply set your password requirem
 generate token and it'll generate a token and copy it to your clipboard. Simple.
 ![tokenator logo](https://github.com/JoshLudahl/Tokenator/blob/master/tokenator.png)
 
-![screenshot](https://github.com/JoshLudahl/Tokenator/blob/master/Screenshot_20201227_231804.png)
+![screenshot](https://github.com/JoshLudahl/Tokenator/blob/master/Screenshot_20201230_220927.png)
 
 
-![screenshot](https://github.com/JoshLudahl/Tokenator/blob/master/Screenshot_20201227_231834.png)
+![screenshot](https://github.com/JoshLudahl/Tokenator/blob/master/Screenshot_20201230_220939.png)
 
 
 
