@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 checkedSwitches.add(item)
             }
         }
-        if (lengthInt <1 || lengthInt < 10001) {
+        if (lengthInt < 1 || lengthInt < 10001) {
             for (int in 1..lengthInt) {
                 checkedSwitches.shuffle()
                 if (checkedSwitches.size != 0) {

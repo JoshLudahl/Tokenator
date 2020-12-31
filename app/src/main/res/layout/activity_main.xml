@@ -206,7 +206,7 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edit_text_length"
                     android:layout_width="100dp"
-                    android:layout_height="35dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="8dp"
@@ -217,6 +217,7 @@
                     android:paddingEnd="8dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/dark_gray"
+                    android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -240,9 +241,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/icon_start_margin"
-                    android:layout_marginTop="@dimen/icon_top_margin"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="@dimen/icon_bottom_margin"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/edit_text_backgroud"
                     android:text="@string/generate_token_button_text"
                     android:textColor="@color/blackish"
@@ -280,7 +281,7 @@
                     android:hint="@string/click_to_generate_password"
                     android:textColor="@color/yellow"
                     android:textColorHint="@color/light_blue"
-                    android:textSize="12sp"
+                    android:textSize="18sp"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -303,16 +304,31 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout7">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:id="@+id/appCompatImageView2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintStart_toStartOf="parent"
                     android:src="@drawable/ic_tokenator"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="@string/tokenator"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/appCompatImageView2"
+                    app:layout_constraintStart_toStartOf="@+id/appCompatImageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2"
+                    android:textColor="@color/yellow"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
