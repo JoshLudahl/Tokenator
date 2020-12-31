@@ -9,9 +9,18 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- custom theme -->
+    <color name="blackish">#222831</color>
+    <color name="yellow">#ffd369</color>
+    <color name="deep_blue">#34495E</color>
+    <color name="dark_gray">#393e46</color>
+    <color name="light_blue">#0195E6</color>
+
+
+    <!--
     <color name="blackish">#151515</color>
     <color name="yellow">#FF9f03</color>
     <color name="deep_blue">#34495E</color>
     <color name="dark_gray">#25262b</color>
-    <color name="light_blue">#0195E6</color>
+    <color name="light_blue">#0195E6</color> -->
+
 </resources>

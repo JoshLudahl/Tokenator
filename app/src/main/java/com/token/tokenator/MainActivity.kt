@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             }
             else -> {
                 viewModel.insert(
-                    passwordName = binding.tokenName.editableText.toString(),
+                    passwordName = binding.tokenName.editableText.toString().trim(),
                     token = binding.generatedField.text.toString()
                 )
                 Toast.makeText(this, R.string.password_saved, Toast.LENGTH_SHORT).show()
