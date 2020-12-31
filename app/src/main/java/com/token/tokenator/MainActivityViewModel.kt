@@ -5,6 +5,7 @@ import android.text.Editable
 import androidx.lifecycle.AndroidViewModel
 
 class MainActivityViewModel(application: Application): AndroidViewModel(application) {
+
     var token: String = ""
     var tokenLength: Editable? = null
 
