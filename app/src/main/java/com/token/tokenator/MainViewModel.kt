@@ -2,7 +2,6 @@ package com.token.tokenator
 
 import android.app.Application
 import android.text.Editable
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,9 +10,9 @@ import com.token.tokenator.database.TokenRepository
 import com.token.tokenator.model.Token
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.*
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
+
     private val repository: TokenRepository
 
     init {

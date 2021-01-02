@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import java.lang.reflect.Array.get
 import java.util.*
 
 @Entity(tableName = "token_table", indices = [Index(value = arrayOf("title"), unique = true)])
