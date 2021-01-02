@@ -36,7 +36,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 visibility = View.VISIBLE
                 requestFocus()
             }
-
         }
 
         binding.saveButton.setOnClickListener {
