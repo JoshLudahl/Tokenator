@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
-                android:text="@string/no_passwords_saved"
+                android:text="@string/no_saved_passwords"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/yellow"
