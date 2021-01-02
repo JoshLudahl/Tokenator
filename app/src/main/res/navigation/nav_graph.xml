@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.token.tokenator.MainActivity"
+        android:label="MainActivity" />
+    <fragment
+        android:id="@+id/savedTokenFragment"
+        android:name="com.token.tokenator.savedpassword.SavedTokenFragment"
+        android:label="SavedTokenFragment" >
+        <action
+            android:id="@+id/action_savedTokenFragment_pop"
+            app:popUpTo="@id/savedTokenFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_savedTokenFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.token.tokenator.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_savedTokenFragment"
+            app:destination="@id/savedTokenFragment" />
+    </fragment>
+</navigation>
