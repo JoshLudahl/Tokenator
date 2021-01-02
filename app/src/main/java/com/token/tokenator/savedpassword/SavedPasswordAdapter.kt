@@ -8,19 +8,22 @@ import com.token.tokenator.model.Token
 
 class SavedPasswordAdapter: RecyclerView.Adapter<SavedPasswordAdapter.ViewHolder>() {
 
-    private val savedTokenList = emptyList<Token>()
+    private var savedTokenList = emptyList<Token>()
 
-    class ViewHolder(private val item: LayoutSavedTokenListItemBinding): RecyclerView.ViewHolder(item.root) {
+    class ViewHolder(private val itemBinding: LayoutSavedTokenListItemBinding): RecyclerView.ViewHolder(itemBinding.root) {
 
         fun bind(token: Token) {
-            // TODO: 12/30/20 Bind the elements when the UI is complete
+            itemBinding.apply {
+                tokenTitle.text = token.title
+                tokenPlaceholder.text = token.token
+            }
         }
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): SavedPasswordAdapter.ViewHolder {
+    ): ViewHolder {
         val item = LayoutSavedTokenListItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -29,12 +32,17 @@ class SavedPasswordAdapter: RecyclerView.Adapter<SavedPasswordAdapter.ViewHolder
         return ViewHolder(item)
     }
 
-    override fun onBindViewHolder(holder: SavedPasswordAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentITem = savedTokenList[position]
         holder.bind(currentITem)
     }
 
     override fun getItemCount(): Int {
         return savedTokenList.size
+    }
+
+    fun setItems(tokenList: List<Token>) {
+        savedTokenList = tokenList
+        notifyDataSetChanged()
     }
 }
