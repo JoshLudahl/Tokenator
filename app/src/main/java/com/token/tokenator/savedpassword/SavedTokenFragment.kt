@@ -24,5 +24,7 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
         binding.buttonBack.setOnClickListener {
             Navigation.findNavController(requireActivity(), R.id.myNavHostFragment).navigateUp()
         }
+
+
     }
 }
