@@ -18,7 +18,7 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(SavedTokenViewModel::class.java)
-        binding = DataBindingUtil.bind(view)!!
+        binding = SavedTokenFragmentBinding.bind(view)
         binding.tokenViewModel = viewModel
 
         binding.buttonBack.setOnClickListener {
