@@ -11,14 +11,18 @@
     <fragment
         android:id="@+id/savedTokenFragment"
         android:name="com.token.tokenator.savedpassword.SavedTokenFragment"
-        android:label="SavedTokenFragment" >
+        android:label="SavedTokenFragment">
         <action
             android:id="@+id/action_savedTokenFragment_pop"
             app:popUpTo="@id/savedTokenFragment"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_savedTokenFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_open_enter"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
@@ -26,6 +30,10 @@
         android:label="MainFragment" >
         <action
             android:id="@+id/action_mainFragment_to_savedTokenFragment"
-            app:destination="@id/savedTokenFragment" />
+            app:destination="@id/savedTokenFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_close_exit"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 </navigation>

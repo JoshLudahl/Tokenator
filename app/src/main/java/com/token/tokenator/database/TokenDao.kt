@@ -19,6 +19,4 @@ interface TokenDao {
     @Query("SELECT * FROM token_table ORDER BY title")
     fun getAllTokensByName(): LiveData<List<Token>>
 
-    @Query("SELECT * FROM token_table ORDER BY date_saved")
-    fun getAllTokensByDate(): LiveData<List<Token>>
 }

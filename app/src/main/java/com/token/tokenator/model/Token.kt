@@ -17,8 +17,5 @@ data class Token(
         val title: String,
 
         @ColumnInfo(name = "token")
-        val token: String,
-
-        @ColumnInfo(name = "date_saved")
-        val date: Calendar = Calendar.getInstance()
+        val token: String
 )
