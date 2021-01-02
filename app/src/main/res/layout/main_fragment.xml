@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.token.tokenator.MainViewModel" />
@@ -13,9 +14,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
         android:background="@color/blackish"
-        android:fillViewport="true"
-        android:animateLayoutChanges="true">
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -233,11 +234,11 @@
                     android:layout_marginBottom="8dp"
                     android:background="@drawable/edit_text_backgroud"
                     android:hint="@string/length_hint"
-                    android:inputType="number"
                     android:imeActionLabel="Next"
-                    android:text="@{viewModel.tokenLength}"
+                    android:inputType="number"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
+                    android:text="@{viewModel.tokenLength}"
                     android:textColor="@color/black"
                     android:textColorHint="#9EABC1"
                     android:textSize="18sp"
@@ -278,13 +279,13 @@
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/edit_text_backgroud"
                     android:hint="@string/enter_name_for_password"
+                    android:imeActionLabel="Done"
+                    android:imeOptions="actionDone"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
+                    android:singleLine="true"
                     android:textColor="@color/black"
                     android:textColorHint="#9EABC1"
-                    android:imeOptions="actionDone"
-                    android:imeActionLabel="Done"
-                    android:singleLine="true"
                     android:textSize="18sp"
                     android:visibility="@{viewModel.tokenNameEditText}"
                     app:layout_constrainedWidth="true"
@@ -299,11 +300,11 @@
                     android:layout_height="40dp"
                     android:layout_marginEnd="8dp"
                     android:foregroundGravity="center"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/token_name"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/token_name"
-                    app:srcCompat="@drawable/ic_add"
-                    android:visibility="gone"/>
+                    app:srcCompat="@drawable/ic_add" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -8,8 +8,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/layout_background"
-        android:layout_margin="@dimen/row_margin">
+        android:layout_margin="@dimen/row_margin"
+        android:background="@drawable/layout_background">
 
         <TextView
             android:id="@+id/token_title"
@@ -46,11 +46,11 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:contentDescription="@string/no_saved_passwords"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_trash"
-            android:contentDescription="@string/no_saved_passwords" />
+            app:srcCompat="@drawable/ic_trash" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

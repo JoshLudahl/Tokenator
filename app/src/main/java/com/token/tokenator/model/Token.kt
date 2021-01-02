@@ -6,7 +6,10 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity(tableName = "token_table", indices = [Index(value = arrayOf("title"), unique = true)])
+@Entity(
+        tableName = "token_table",
+        indices = [Index(value = arrayOf("title"), unique = true)]
+)
 data class Token(
 
         @PrimaryKey(autoGenerate = true)
