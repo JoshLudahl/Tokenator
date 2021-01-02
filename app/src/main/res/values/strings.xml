@@ -7,7 +7,7 @@
     <string name="toast_generate_password_first_warning">Generate a password first.</string>
     <string name="secret_sauce">Secret Sauce</string>
     <string name="click_to_generate_password">Click generate token to generate a token</string>
-    <string name="length_hint">length</string>
+    <string name="length_hint">Length</string>
     <string name="generate_token_button_text">Generate Token</string>
     <string name="tokenator">Tokenator</string>
     <string name="save_button">Save</string>
