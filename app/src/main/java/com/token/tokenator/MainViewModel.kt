@@ -2,6 +2,7 @@ package com.token.tokenator
 
 import android.app.Application
 import android.text.Editable
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
