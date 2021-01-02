@@ -32,6 +32,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         binding.buttonGenerateToken.setOnClickListener {
             generatePassword()
+            binding.tokenName.apply {
+                visibility = View.VISIBLE
+                requestFocus()
+            }
+
         }
 
         binding.saveButton.setOnClickListener {
