@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.token.tokenator.model.Token
 
-@Database(entities = [Token::class], version = 3, exportSchema = false)
+@Database(entities = [Token::class], version = 4, exportSchema = false)
 abstract class TokenDatabase : RoomDatabase() {
 
     abstract fun tokenDao(): TokenDao

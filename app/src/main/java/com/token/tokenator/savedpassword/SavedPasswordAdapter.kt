@@ -1,16 +1,20 @@
 package com.token.tokenator.savedpassword
 
+import android.R.attr.data
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.token.tokenator.databinding.LayoutSavedTokenListItemBinding
 import com.token.tokenator.model.Token
 
+
 class SavedPasswordAdapter: RecyclerView.Adapter<SavedPasswordAdapter.ViewHolder>() {
 
     private var savedTokenList = emptyList<Token>()
 
-    class ViewHolder(private val itemBinding: LayoutSavedTokenListItemBinding): RecyclerView.ViewHolder(itemBinding.root) {
+    class ViewHolder(private val itemBinding: LayoutSavedTokenListItemBinding): RecyclerView.ViewHolder(
+        itemBinding.root
+    ) {
 
         fun bind(token: Token) {
             itemBinding.apply {
@@ -44,5 +48,9 @@ class SavedPasswordAdapter: RecyclerView.Adapter<SavedPasswordAdapter.ViewHolder
     fun setItems(tokenList: List<Token>) {
         savedTokenList = tokenList
         notifyDataSetChanged()
+    }
+
+    fun getId(position: Int): Int {
+        return savedTokenList[position].id
     }
 }

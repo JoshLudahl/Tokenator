@@ -11,7 +11,7 @@ data class Token(
 
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "id")
-        val id: Int? = null,
+        val id: Int = 0,
 
         @ColumnInfo(name = "title")
         val title: String,
