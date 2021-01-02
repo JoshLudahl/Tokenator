@@ -286,7 +286,7 @@
                     android:imeActionLabel="Done"
                     android:singleLine="true"
                     android:textSize="18sp"
-                    android:visibility="gone"
+                    android:visibility="@{viewModel.tokenNameEditText}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toStartOf="@+id/save_button"
                     app:layout_constraintHorizontal_weight="1"

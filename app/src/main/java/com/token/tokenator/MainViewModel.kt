@@ -2,6 +2,7 @@ package com.token.tokenator
 
 import android.app.Application
 import android.text.Editable
+import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.token.tokenator.database.TokenDatabase
@@ -20,10 +21,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     var token: String = ""
     var tokenLength: Editable? = null
-
-    fun updateTokenLength(tokenLength: Editable?) {
-        this.tokenLength = tokenLength
-    }
+    var tokenNameEditText = View.GONE
 
     fun insert(
         passwordName: String,

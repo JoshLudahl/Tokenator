@@ -2,6 +2,7 @@ package com.token.tokenator
 
 import android.content.ClipData
 import android.content.ClipboardManager
+import android.content.res.Configuration
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -36,6 +37,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 visibility = View.VISIBLE
                 requestFocus()
             }
+            viewModel.tokenNameEditText = View.VISIBLE
         }
 
         binding.saveButton.setOnClickListener {
@@ -61,6 +63,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 }
             }
         })
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        viewModel.tokenLength = binding.editTextLength.editableText
     }
 
     private fun saveToken() {
