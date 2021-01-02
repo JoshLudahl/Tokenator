@@ -10,10 +10,15 @@ import com.token.tokenator.model.Token
 @Dao
 interface TokenDao {
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(token: Token)
+
     @Query("SELECT * FROM token_table")
     fun getAllTokens(): LiveData<List<Token>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(token: Token)
+    @Query("SELECT * FROM token_table ORDER BY title")
+    fun getAllTokensByName(): LiveData<List<Token>>
 
+    @Query("SELECT * FROM token_table ORDER BY date_saved")
+    fun getAllTokensByDate(): LiveData<List<Token>>
 }
