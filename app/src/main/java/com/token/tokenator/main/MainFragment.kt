@@ -13,7 +13,6 @@ import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.token.tokenator.R
 import com.token.tokenator.databinding.MainFragmentBinding
@@ -45,16 +44,17 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
 
         binding.viewSavedButton.setOnClickListener {
-            Navigation.findNavController(requireActivity(),
+            Navigation.findNavController(
+                requireActivity(),
                 R.id.myNavHostFragment
             ).navigate(R.id.action_mainFragment_to_savedTokenFragment)
         }
 
-        binding.tokenName.addTextChangedListener(object: TextWatcher {
+        binding.tokenName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (count>0) {
+                if (count > 0) {
                     binding.saveButton.visibility = View.VISIBLE
                 }
             }
@@ -75,10 +75,18 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     private fun saveToken() {
         when {
             binding.tokenName.text.isNullOrEmpty() -> {
-                Toast.makeText(requireContext(), R.string.error_enter_name_for_password, Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    R.string.error_enter_name_for_password,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             binding.generatedField.text.isNullOrEmpty() -> {
-                Toast.makeText(requireContext(), R.string.error_generate_password_first, Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    R.string.error_generate_password_first,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
             else -> {
                 viewModel.insert(
@@ -92,10 +100,12 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     private fun copyToClipBoard(password: TextView) {
-        val clipboardManager = getSystemService(requireContext(), ClipboardManager::class.java) as ClipboardManager
+        val clipboardManager =
+            getSystemService(requireContext(), ClipboardManager::class.java) as ClipboardManager
         val clipData = ClipData.newPlainText(R.string.secret_sauce.toString(), password.text)
         clipboardManager.setPrimaryClip(clipData)
-        Toast.makeText(requireContext(), R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT)
+            .show()
     }
 
     private fun generatePassword() {
@@ -143,7 +153,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             newPassword.text = password
             copyToClipBoard(newPassword)
         } else {
-            Toast.makeText(requireContext(), R.string.toast_length_warning, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.toast_length_warning, Toast.LENGTH_SHORT)
+                .show()
         }
     }
 
