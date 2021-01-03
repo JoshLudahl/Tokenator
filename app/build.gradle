@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+
 }
 
 android {
@@ -62,6 +64,10 @@ dependencies {
 
     // Jetpack Compose Integration
     implementation "androidx.navigation:navigation-compose:1.0.0-alpha04"
+
+    //  DI
+    implementation "com.google.dagger:hilt-android:$dagger_hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$dagger_hilt"
 
 
     //  Styling
