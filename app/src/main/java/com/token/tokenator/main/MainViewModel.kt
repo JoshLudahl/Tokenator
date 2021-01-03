@@ -2,6 +2,7 @@ package com.token.tokenator.main
 
 import android.app.Application
 import android.text.Editable
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
@@ -30,6 +31,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.insert(Token(title = passwordName, token = token))
+            Log.i("DATABASE", "Saved to database")
         }
     }
 }
