@@ -1,6 +1,5 @@
 package com.token.tokenator.di
 
-
 import android.app.Application
 import com.token.tokenator.database.TokenDatabase
 import com.token.tokenator.database.TokenRepository
@@ -13,7 +12,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
-object DataStoreModule {
+object DataSourceModule {
 
     @Singleton
     @Provides
