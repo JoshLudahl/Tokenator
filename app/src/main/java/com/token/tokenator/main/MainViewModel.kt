@@ -1,4 +1,4 @@
-package com.token.tokenator
+package com.token.tokenator.main
 
 import android.app.Application
 import android.text.Editable

@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.token.tokenator.MainViewModel" />
+            type="com.token.tokenator.main.MainViewModel" />
     </data>
 
     <ScrollView

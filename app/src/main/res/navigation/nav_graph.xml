@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.token.tokenator.MainFragment"
+        android:name="com.token.tokenator.main.MainFragment"
         android:label="MainFragment" >
         <action
             android:id="@+id/action_mainFragment_to_savedTokenFragment"

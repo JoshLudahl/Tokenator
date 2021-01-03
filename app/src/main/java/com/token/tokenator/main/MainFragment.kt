@@ -1,4 +1,4 @@
-package com.token.tokenator
+package com.token.tokenator.main
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -11,10 +11,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat.getSystemService
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.token.tokenator.R
 import com.token.tokenator.databinding.MainFragmentBinding
 import kotlin.random.Random
 import kotlin.random.nextInt
@@ -22,13 +23,12 @@ import kotlin.random.nextInt
 class MainFragment : Fragment(R.layout.main_fragment) {
 
     private lateinit var binding: MainFragmentBinding
-    private lateinit var viewModel: MainViewModel
+    val viewModel: MainViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = MainFragmentBinding.bind(view)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding.viewModel = viewModel
 
         binding.buttonGenerateToken.setOnClickListener {
@@ -45,7 +45,9 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
 
         binding.viewSavedButton.setOnClickListener {
-            Navigation.findNavController(requireActivity(), R.id.myNavHostFragment).navigate(R.id.action_mainFragment_to_savedTokenFragment)
+            Navigation.findNavController(requireActivity(),
+                R.id.myNavHostFragment
+            ).navigate(R.id.action_mainFragment_to_savedTokenFragment)
         }
 
         binding.tokenName.addTextChangedListener(object: TextWatcher {
