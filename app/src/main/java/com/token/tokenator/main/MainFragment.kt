@@ -46,6 +46,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             viewModel.tokenNameEditText = View.VISIBLE
         }
 
+        binding
         binding.saveButton.setOnClickListener {
             saveToken()
         }

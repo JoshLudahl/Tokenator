@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.token.tokenator.BuildConfig
+
 import com.token.tokenator.database.TokenDatabase
 import com.token.tokenator.database.TokenRepository
 import com.token.tokenator.model.Token
@@ -15,11 +17,14 @@ import kotlinx.coroutines.launch
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: TokenRepository
+    var version: String
 
     init {
         val tokenDao = TokenDatabase.getDatabase(application).tokenDao()
         repository = TokenRepository(tokenDao)
         Log.i("MainViewModel", "Initialized")
+        version = "Version ${BuildConfig.VERSION_NAME}"
+        Log.i("VERSION", "$version")
     }
 
     var token: String = ""
