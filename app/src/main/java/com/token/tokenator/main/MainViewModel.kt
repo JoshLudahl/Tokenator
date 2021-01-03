@@ -19,6 +19,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     init {
         val tokenDao = TokenDatabase.getDatabase(application).tokenDao()
         repository = TokenRepository(tokenDao)
+        Log.i("MainViewModel", "Initialized")
     }
 
     var token: String = ""
