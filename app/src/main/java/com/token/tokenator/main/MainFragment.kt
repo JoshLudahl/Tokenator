@@ -16,9 +16,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.token.tokenator.R
 import com.token.tokenator.databinding.MainFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.random.Random
 import kotlin.random.nextInt
 
+@AndroidEntryPoint
 class MainFragment : Fragment(R.layout.main_fragment) {
 
     private lateinit var binding: MainFragmentBinding
