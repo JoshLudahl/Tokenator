@@ -19,7 +19,7 @@
         <action
             android:id="@+id/action_savedTokenFragment_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
+            app:enterAnim="@anim/fragment_close_enter"
             app:exitAnim="@anim/fragment_fade_exit"
             app:popEnterAnim="@anim/fragment_open_enter"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
