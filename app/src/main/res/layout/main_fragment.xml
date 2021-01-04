@@ -391,10 +391,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="@{viewModel.version}"
-                    android:textSize="12sp"
                     android:gravity="center"
+                    android:text="@{viewModel.version}"
                     android:textColor="@color/yellow"
+                    android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tokenator_name" />
