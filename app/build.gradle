@@ -17,6 +17,17 @@ android {
         versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        "room.schemaLocation":"$projectDir/schemas".toString(),
+                        "room.incremental":"true",
+                        "room.expandProjection":"true"]
+            }
+        }
+
+
     }
 
     buildTypes {
@@ -44,6 +55,7 @@ android {
         jvmTarget = '1.8'
     }
 
+
 }
 
 dependencies {
@@ -58,7 +70,7 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
 
 
-    // Kotlin
+    // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
@@ -75,6 +87,7 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$dagger_hilt"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02"
     kapt "com.google.dagger:hilt-android-compiler:$dagger_hilt"
+    kapt "androidx.hilt:hilt-compiler:$hilt_lifecycle_viewmodel"
 
 
     //  Styling

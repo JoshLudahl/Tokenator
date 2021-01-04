@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.token.tokenator.R
@@ -25,16 +26,12 @@ import kotlin.random.nextInt
 class MainFragment : Fragment(R.layout.main_fragment) {
 
     private lateinit var binding: MainFragmentBinding
-    private lateinit var viewModel: MainViewModel
-    private lateinit var viewModelFactory: MainViewModelFactory
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = MainFragmentBinding.bind(view)
-
-        viewModelFactory = MainViewModelFactory(requireActivity().application)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
         binding.viewModel = viewModel
 

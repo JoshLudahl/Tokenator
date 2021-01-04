@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -16,7 +17,6 @@ object DataSourceModule {
 
     @Singleton
     @Provides
-    @Named("repository")
     fun providesRepository(application: Application): TokenRepository {
         val tokenDao = TokenDatabase.getDatabase(application).tokenDao()
         return TokenRepository(tokenDao)

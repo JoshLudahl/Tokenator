@@ -1,6 +1,7 @@
 package com.token.tokenator.savedpassword
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.token.tokenator.R
 import com.token.tokenator.databinding.SavedTokenFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
@@ -37,7 +39,6 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
                 binding.noPasswords.visibility = View.VISIBLE
             }
         })
-
     }
 
     private fun setupRecyclerView() {
