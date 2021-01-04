@@ -1,4 +1,4 @@
-package com.token.tokenator
+package com.token.tokenator.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

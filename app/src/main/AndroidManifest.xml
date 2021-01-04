@@ -3,7 +3,7 @@
     package="com.token.tokenator">
 
     <application
-        android:name=".TokenatorApplication"
+        android:name=".di.TokenatorApplication"
         android:allowBackup="true"
         android:fullBackupOnly="true"
         android:icon="@mipmap/ic_launcher"
