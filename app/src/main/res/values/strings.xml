@@ -24,4 +24,5 @@
     <string name="token_title_placeholder">Token Title</string>
     <string name="token_placeholder_text">4dasdfsa8d@#@f</string>
     <string name="no_saved_passwords">No Saved Passwords</string>
+    <string name="copy">Copy</string>
 </resources>
