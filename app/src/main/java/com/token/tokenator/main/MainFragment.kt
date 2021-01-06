@@ -19,6 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlin.random.Random
 import kotlin.random.nextInt
 
+
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.main_fragment) {
 
@@ -30,6 +31,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         binding = MainFragmentBinding.bind(view)
         binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         binding.buttonGenerateToken.setOnClickListener {
             generatePassword()
@@ -40,7 +42,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             viewModel.tokenNameEditText = View.VISIBLE
         }
 
-        binding
+
         binding.saveButton.setOnClickListener {
             saveToken()
         }
@@ -145,7 +147,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 }
             }
 
-            viewModel.tokenLength = binding.editTextLength.editableText
+            viewModel.updateTokenLength(binding.editTextLength.editableText)
             viewModel.setToken(password)
             newPassword.text = password
             copyToClipBoard(newPassword)
