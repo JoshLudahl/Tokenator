@@ -25,4 +25,10 @@
     <string name="token_placeholder_text">4dasdfsa8d@#@f</string>
     <string name="no_saved_passwords">No Saved Passwords</string>
     <string name="copy">Copy</string>
+    <string name="settings">Settings</string>
+    <string name="generated_token">Generated token</string>
+    <string name="uppercase_letters">Uppercase letters</string>
+    <string name="lowercase_letters">Lowercase letters</string>
+    <string name="numeric">Numeric</string>
+    <string name="special_characters">Special Characters</string>
 </resources>
