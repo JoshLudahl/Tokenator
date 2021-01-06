@@ -2,7 +2,6 @@ package com.token.tokenator.main
 
 import android.content.ClipData
 import android.content.ClipboardManager
-import android.content.res.Configuration
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -70,11 +69,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         })
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        viewModel.tokenLength = binding.editTextLength.editableText
-    }
-
     private fun saveToken() {
         when {
             binding.tokenName.text.isNullOrEmpty() -> {
@@ -112,7 +106,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     private fun generatePassword() {
-        // TODO: 12/30/20 Implement string builder to build passwords
 
         val newPassword = binding.generatedField
         val length = binding.editTextLength
@@ -130,6 +123,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 checkedSwitches.add(item)
             }
         }
+
         if (lengthInt in 1..10000) {
             for (int in 1..lengthInt) {
                 checkedSwitches.shuffle()
@@ -152,7 +146,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             }
 
             viewModel.tokenLength = binding.editTextLength.editableText
-            viewModel.token = password
+            viewModel.setToken(password)
             newPassword.text = password
             copyToClipBoard(newPassword)
         } else {

@@ -4,9 +4,7 @@ import android.text.Editable
 import android.util.Log
 import android.view.View
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.token.tokenator.BuildConfig
 import com.token.tokenator.database.TokenRepository
 import com.token.tokenator.model.Token
@@ -17,6 +15,7 @@ class MainViewModel @ViewModelInject constructor(private var repository: TokenRe
 
 
     var version: String
+    private val _token = MutableLiveData<String>()
 
     init {
         Log.i("MainViewModel", "Initialized")
@@ -24,7 +23,13 @@ class MainViewModel @ViewModelInject constructor(private var repository: TokenRe
         Log.i("VERSION", version)
     }
 
-    var token: String = ""
+    val token: LiveData<String>
+        get() = _token
+
+    fun setToken(text: String) {
+        _token.value = text
+    }
+
     var tokenLength: Editable? = null
     var tokenNameEditText = View.GONE
 
