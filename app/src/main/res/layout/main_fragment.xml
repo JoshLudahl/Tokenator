@@ -91,11 +91,11 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textView2"
+                    style="@style/settings_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="@string/uppercase_letters"
-                    style="@style/settings_text"
                     app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView3"
                     app:layout_constraintStart_toEndOf="@+id/appCompatImageView3"
                     app:layout_constraintTop_toTopOf="@+id/appCompatImageView3" />
@@ -144,11 +144,11 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textView3"
+                    style="@style/settings_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="@string/lowercase_letters"
-                    style="@style/settings_text"
                     app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView4"
                     app:layout_constraintStart_toEndOf="@+id/appCompatImageView4"
                     app:layout_constraintTop_toTopOf="@+id/appCompatImageView4" />
@@ -196,11 +196,11 @@
 
                 <TextView
                     android:id="@+id/textView4"
+                    style="@style/settings_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="@string/numeric"
-                    style="@style/settings_text"
                     app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView5"
                     app:layout_constraintStart_toEndOf="@+id/appCompatImageView5"
                     app:layout_constraintTop_toTopOf="@+id/appCompatImageView5" />
@@ -248,11 +248,11 @@
 
                 <TextView
                     android:id="@+id/textView5"
+                    style="@style/settings_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="@string/special_characters"
-                    style="@style/settings_text"
                     app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView6"
                     app:layout_constraintStart_toEndOf="@+id/appCompatImageView6"
                     app:layout_constraintTop_toTopOf="@+id/appCompatImageView6" />
@@ -261,12 +261,12 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/appCompatTextView"
+                style="@style/section_labels"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/length"
-                style="@style/section_labels"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
 
@@ -383,12 +383,12 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/appCompatTextView2"
+                style="@style/section_labels"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/generated_token"
-                style="@style/section_labels"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout6" />
 
@@ -473,12 +473,12 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textView"
+                style="@style/section_labels"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/settings"
-                style="@style/section_labels"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
         </androidx.constraintlayout.widget.ConstraintLayout>

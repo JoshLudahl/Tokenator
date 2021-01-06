@@ -15,7 +15,7 @@
 
     <style name="settings_text">
         <item name="android:textAllCaps">true</item>
-        <item name="android:textSize"> 12sp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/grayish</item>
     </style>
 
