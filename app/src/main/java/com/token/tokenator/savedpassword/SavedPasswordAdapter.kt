@@ -5,8 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.token.tokenator.databinding.LayoutSavedTokenListItemBinding
 import com.token.tokenator.model.Token
+import javax.inject.Inject
 
-class SavedPasswordAdapter : RecyclerView.Adapter<SavedPasswordAdapter.ViewHolder>() {
+class SavedPasswordAdapter @Inject constructor(): RecyclerView.Adapter<SavedPasswordAdapter.ViewHolder>() {
 
     private var savedTokenList = emptyList<Token>()
 

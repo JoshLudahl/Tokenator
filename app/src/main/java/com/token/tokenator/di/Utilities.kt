@@ -14,7 +14,6 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 object Utilities {
 
-
     @Singleton
     @Provides
     fun providesClipboardManager(@ApplicationContext context: Context): ClipboardManager {
