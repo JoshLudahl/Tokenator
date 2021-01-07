@@ -3,8 +3,6 @@ package com.token.tokenator.main
 import android.text.Editable
 import android.util.Log
 import android.view.View
-import androidx.appcompat.widget.SwitchCompat
-import androidx.databinding.Bindable
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.token.tokenator.BuildConfig
@@ -12,7 +10,6 @@ import com.token.tokenator.database.TokenRepository
 import com.token.tokenator.model.Token
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class MainViewModel @ViewModelInject constructor(private var repository: TokenRepository) :
     ViewModel(), LifecycleObserver {
