@@ -14,7 +14,6 @@ class SavedPasswordAdapter : RecyclerView.Adapter<SavedPasswordAdapter.ViewHolde
         RecyclerView.ViewHolder(
             itemBinding.root
         ) {
-
         fun bind(token: Token) {
             itemBinding.apply {
                 tokenTitle.text = token.title

@@ -10,7 +10,6 @@ import com.token.tokenator.R
 import com.token.tokenator.databinding.SavedTokenFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
 
