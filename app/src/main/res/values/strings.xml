@@ -31,4 +31,5 @@
     <string name="lowercase_letters">Lowercase letters</string>
     <string name="numeric">Numeric</string>
     <string name="special_characters">Special Characters</string>
+    <string name="delete">Delete?</string>
 </resources>

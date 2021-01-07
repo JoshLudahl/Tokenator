@@ -22,7 +22,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constrainedWidth="true"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintEnd_toStartOf="@+id/copy_icon"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,32 +40,32 @@
             android:textSize="16sp"
             app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintEnd_toStartOf="@+id/copy_icon"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/token_title" />
 
         <ImageView
-            android:id="@+id/no_saved_passwords"
+            android:id="@+id/trash_icon"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            android:contentDescription="@string/no_saved_passwords"
+            android:contentDescription="@string/delete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_trash" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/copy_icon"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
             android:layout_marginEnd="8dp"
             android:contentDescription="@string/copy"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/no_saved_passwords"
+            app:layout_constraintEnd_toStartOf="@+id/trash_icon"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_copy" />
 

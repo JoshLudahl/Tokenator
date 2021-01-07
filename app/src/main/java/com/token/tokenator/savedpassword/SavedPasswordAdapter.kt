@@ -2,6 +2,7 @@ package com.token.tokenator.savedpassword
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.token.tokenator.databinding.LayoutSavedTokenListItemBinding
 import com.token.tokenator.model.Token
@@ -19,6 +20,9 @@ class SavedPasswordAdapter : RecyclerView.Adapter<SavedPasswordAdapter.ViewHolde
             itemBinding.apply {
                 tokenTitle.text = token.title
                 tokenPlaceholder.text = token.token
+            }
+            itemBinding.copyIcon.setOnClickListener {
+               // copy to clipboard
             }
         }
     }

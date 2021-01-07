@@ -17,13 +17,15 @@ import androidx.navigation.Navigation
 import com.token.tokenator.R
 import com.token.tokenator.databinding.MainFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import kotlin.random.Random
 import kotlin.random.nextInt
 
 
 @AndroidEntryPoint
-class MainFragment : Fragment(R.layout.main_fragment) {
+class MainFragment: Fragment(R.layout.main_fragment) {
 
+    @Inject lateinit var clipboardManager: ClipboardManager
     private lateinit var binding: MainFragmentBinding
     private val viewModel: MainViewModel by viewModels()
 
@@ -100,8 +102,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     private fun copyToClipBoard(password: TextView) {
-        val clipboardManager =
-            getSystemService(requireContext(), ClipboardManager::class.java) as ClipboardManager
         val clipData = ClipData.newPlainText(R.string.secret_sauce.toString(), password.text)
         clipboardManager.setPrimaryClip(clipData)
         Toast.makeText(requireContext(), R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT)
