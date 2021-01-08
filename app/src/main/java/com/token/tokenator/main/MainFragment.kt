@@ -149,8 +149,9 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     fun showFeature() {
-        hideKeyboard(requireActivity())
+
         binding.scrollView.fullScroll(ScrollView.FOCUS_UP)
+        hideKeyboard(requireActivity())
 
         TapTargetView.showFor(requireActivity(),  // `this` is an Activity
             TapTarget.forView(
