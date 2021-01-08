@@ -1,11 +1,12 @@
 package com.token.tokenator.main
 
+import android.app.Activity
 import android.graphics.Typeface
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.ScrollView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -148,6 +149,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     fun showFeature() {
+        hideKeyboard(requireActivity())
         binding.scrollView.fullScroll(ScrollView.FOCUS_UP)
 
         TapTargetView.showFor(requireActivity(),  // `this` is an Activity
@@ -175,7 +177,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 // The listener can listen for regular clicks, long clicks or cancels
                 override fun onTargetClick(view: TapTargetView) {
                     super.onTargetClick(view) // This call is optional
-                        navigateToSaved()
+                    navigateToSaved()
                 }
 
                 override fun onOuterCircleClick(view: TapTargetView?) {
@@ -185,4 +187,15 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
             })
     }
+}
+
+fun hideKeyboard(activity: Activity) {
+    val imm = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    //Find the currently focused view, so we can grab the correct window token from it.
+    var view = activity.currentFocus
+    //If no view currently has focus, create a new one, just so we can grab a window token from it
+    if (view == null) {
+        view = View(activity)
+    }
+    imm.hideSoftInputFromWindow(view.windowToken, 0)
 }
