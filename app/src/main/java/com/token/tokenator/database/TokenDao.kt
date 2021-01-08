@@ -8,7 +8,7 @@ import com.token.tokenator.model.Token
 interface TokenDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(token: Token)
+    suspend fun insert(token: Token)
 
     @Delete
     fun delete(token: Token)

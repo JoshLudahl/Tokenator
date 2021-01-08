@@ -1,31 +1,24 @@
 package com.token.tokenator.main
 
-import android.content.ClipData
 import android.content.ClipboardManager
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.SwitchCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.token.tokenator.R
+import com.token.tokenator.Utilities.Clipuous
 import com.token.tokenator.databinding.MainFragmentBinding
+import com.token.tokenator.model.Tokenator
+import com.token.tokenator.model.Type
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
-import kotlin.random.Random
-import kotlin.random.nextInt
-
 
 @AndroidEntryPoint
-class MainFragment: Fragment(R.layout.main_fragment) {
+class MainFragment : Fragment(R.layout.main_fragment) {
 
-    @Inject lateinit var clipboardManager: ClipboardManager
     private lateinit var binding: MainFragmentBinding
     private val viewModel: MainViewModel by viewModels()
 
@@ -38,13 +31,7 @@ class MainFragment: Fragment(R.layout.main_fragment) {
 
         binding.buttonGenerateToken.setOnClickListener {
             generatePassword()
-            binding.tokenName.apply {
-                visibility = View.VISIBLE
-                requestFocus()
-            }
-            viewModel.tokenNameEditText = View.VISIBLE
         }
-
 
         binding.saveButton.setOnClickListener {
             saveToken()
@@ -101,82 +88,44 @@ class MainFragment: Fragment(R.layout.main_fragment) {
         }
     }
 
-    private fun copyToClipBoard(password: TextView) {
-        val clipData = ClipData.newPlainText(R.string.secret_sauce.toString(), password.text)
-        clipboardManager.setPrimaryClip(clipData)
+    private fun copyToClipBoard(password: String) {
+        Clipuous.copyToClipboard(password, requireContext())
         Toast.makeText(requireContext(), R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT)
             .show()
     }
 
     private fun generatePassword() {
 
-        val newPassword = binding.generatedField
-        val length = binding.editTextLength
-        val lowerCase = binding.switchLowerCase
-        val upperCase = binding.switchUppercase
-        val numeric = binding.switchNumeric
-        val specialChar = binding.switchSpecialCharacters
-        val lengthInt = length.text.toString().toIntOrNull() ?: 8
-        var password = ""
-        val switches = listOf(lowerCase, upperCase, numeric, specialChar)
-        val checkedSwitches = mutableListOf<SwitchCompat>()
+        val chars = mutableListOf<Type>()
+        if (binding.switchLowerCase.isChecked) chars.add(Type.LOWERCASE)
+        if (binding.switchNumeric.isChecked) chars.add(Type.NUMERIC)
+        if (binding.switchSpecialCharacters.isChecked) chars.add(Type.SPECIAL)
+        if (binding.switchUppercase.isChecked) chars.add(Type.UPPERCASE)
 
-        for (item in switches) {
-            if (item.isChecked) {
-                checkedSwitches.add(item)
-            }
-        }
+        val password = Tokenator.generate(
+            binding.editTextLength.text.toString().toIntOrNull() ?: 8,
+            chars
+        )
 
-        if (lengthInt in 1..10000) {
-            for (int in 1..lengthInt) {
-                checkedSwitches.shuffle()
-                if (checkedSwitches.size != 0) {
-                    if (lowerCase == checkedSwitches[0]) {
-                        password += generateRandomLowercaseLetter()
-                    }
-                    if (upperCase == checkedSwitches[0]) {
-                        password += generateRandomUppercaseLetter()
-                    }
-                    if (numeric == checkedSwitches[0]) {
-                        password += generateRandomNumber()
-                    }
-                    if (specialChar == checkedSwitches[0]) {
-                        password += generateRandomSpecialCharacter()
-                    }
-                } else {
-                    password += generateRandomLowercaseLetter()
+        when {
+            password.isNotEmpty() -> {
+                viewModel.setToken(password)
+                binding.generatedField.text = password
+                viewModel.updateTokenLength(binding.editTextLength.editableText)
+
+                copyToClipBoard(password)
+
+                binding.tokenName.apply {
+                    visibility = View.VISIBLE
+                    requestFocus()
+                    viewModel.tokenNameEditText = View.VISIBLE
                 }
             }
-
-            viewModel.updateTokenLength(binding.editTextLength.editableText)
-            viewModel.setToken(password)
-            newPassword.text = password
-            copyToClipBoard(newPassword)
-        } else {
-            Toast.makeText(requireContext(), R.string.toast_length_warning, Toast.LENGTH_SHORT)
-                .show()
+            else -> Toast.makeText(
+                requireContext(),
+                R.string.toast_length_warning,
+                Toast.LENGTH_SHORT
+            ).show()
         }
-    }
-
-    private fun getRandomNumber(lowerBound: Int, upperBound: Int): Int {
-        return Random.nextInt(lowerBound..upperBound)
-    }
-
-    private fun generateRandomNumber(): Int {
-        return getRandomNumber(1, 9)
-    }
-
-    private fun generateRandomLowercaseLetter(): Char {
-        return getRandomNumber(97, 122).toChar()
-    }
-
-    private fun generateRandomUppercaseLetter(): Char {
-        return getRandomNumber(65, 90).toChar()
-    }
-
-    private fun generateRandomSpecialCharacter(): Char {
-        val arrayOfSpecialCharacters = arrayListOf(33, 35, 36, 37, 38, 42, 63)
-        val index = getRandomNumber(0, arrayOfSpecialCharacters.size - 1)
-        return arrayOfSpecialCharacters[index].toChar()
     }
 }

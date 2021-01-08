@@ -9,7 +9,7 @@ class TokenRepository(private val tokenDao: TokenDao) {
     val allTokensByName: LiveData<List<Token>> = tokenDao.getAllTokensByName()
     val allTokensByDate: LiveData<List<Token>> = tokenDao.getAllTokensByDate()
 
-    fun insert(token: Token) {
+    suspend fun insert(token: Token) {
         tokenDao.insert(token)
     }
 
