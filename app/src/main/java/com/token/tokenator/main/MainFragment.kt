@@ -184,7 +184,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                     super.onOuterCircleClick(view)
                     view?.dismiss(true)
                 }
-
             })
     }
 }
