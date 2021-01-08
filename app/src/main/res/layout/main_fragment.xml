@@ -283,20 +283,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/appCompatTextView">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/appCompatImageView"
-                    android:layout_width="@dimen/icon_size"
-                    android:layout_height="@dimen/icon_size"
-                    android:layout_marginStart="@dimen/icon_left_top_bottom_margin"
-                    android:layout_marginTop="@dimen/icon_left_top_bottom_margin"
-                    android:layout_marginBottom="@dimen/icon_left_top_bottom_margin"
-                    android:background="@drawable/ic_ruler"
+                <com.ramotion.fluidslider.FluidSlider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:bar_color="@color/blackish"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.5" />
+                    app:size="small"
+                    app:start_text="1"
+                    app:initial_position=".08"
+                    app:bar_text_color="@color/yellow"
+                    app:bubble_color="@color/yellow"/>
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edit_text_length"
@@ -315,6 +317,7 @@
                     android:textColor="@color/black"
                     android:textColorHint="#9EABC1"
                     android:textSize="18sp"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
