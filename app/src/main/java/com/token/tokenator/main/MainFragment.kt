@@ -169,7 +169,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 .textTypeface(Typeface.SANS_SERIF)
                 .dimColor(R.color.black)
                 .drawShadow(true)
-                .cancelable(false)
+                .cancelable(true)
                 .tintTarget(true)
                 .transparentTarget(true)
                 .targetRadius(60),
