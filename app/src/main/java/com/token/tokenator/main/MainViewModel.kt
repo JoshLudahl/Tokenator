@@ -1,6 +1,5 @@
 package com.token.tokenator.main
 
-import android.text.Editable
 import android.util.Log
 import android.view.View
 import androidx.hilt.lifecycle.ViewModelInject
@@ -16,26 +15,25 @@ class MainViewModel @ViewModelInject constructor(private var repository: TokenRe
 
     var version: String
     private val _token = MutableLiveData<String>()
-    private val _length = MutableLiveData<Editable?>()
+    private val _length = MutableLiveData<Float>()
 
     init {
         Log.i("MainViewModel", "Initialized")
         version = "Version ${BuildConfig.VERSION_NAME}"
         Log.i("VERSION", version)
-        _length.value = null
     }
 
     val token: LiveData<String>
         get() = _token
 
-    val length: LiveData<Editable?>
+    val length: LiveData<Float>
         get() = _length
 
     fun setToken(text: String) {
         _token.value = text
     }
 
-    fun updateTokenLength(value: Editable?) {
+    fun setLength(value: Float) {
         _length.value = value
     }
 
