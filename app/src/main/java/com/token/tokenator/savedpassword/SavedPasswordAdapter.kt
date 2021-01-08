@@ -2,12 +2,14 @@ package com.token.tokenator.savedpassword
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.token.tokenator.databinding.LayoutSavedTokenListItemBinding
 import com.token.tokenator.model.Token
-import javax.inject.Inject
 
-class SavedPasswordAdapter @Inject constructor(): RecyclerView.Adapter<SavedPasswordAdapter.ViewHolder>() {
+class SavedPasswordAdapter :
+    ListAdapter<Token, SavedPasswordAdapter.ViewHolder>(SavedPasswordDiffCallback()) {
 
     private var savedTokenList = emptyList<Token>()
 
@@ -51,5 +53,16 @@ class SavedPasswordAdapter @Inject constructor(): RecyclerView.Adapter<SavedPass
 
     fun getId(position: Int): Int {
         return savedTokenList[position].id
+    }
+}
+
+class SavedPasswordDiffCallback : DiffUtil.ItemCallback<Token>() {
+    override fun areItemsTheSame(oldItem: Token, newItem: Token): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: Token, newItem: Token): Boolean {
+        return oldItem.title == newItem.title
+                && oldItem.token == newItem.token
     }
 }
