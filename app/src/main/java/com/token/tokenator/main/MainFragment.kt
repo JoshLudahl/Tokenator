@@ -109,7 +109,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 binding.tokenName.text?.clear()
 
                 lifecycleScope.launch {
-                    val preferenceItem = readDataStore("feature_discovery") ?: ""
+                    val preferenceItem = readDataStore("feature_discovery")
                     if (preferenceItem == "null") {
                         Log.i("FEATURE?", "$preferenceItem: Showing feature because it has not been shown.")
                         showFeature()
@@ -183,14 +183,17 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     private fun showFeature() {
-        binding.scrollView.fullScroll(ScrollView.FOCUS_UP)
+        binding.scrollView.scrollTo(0,0)
         hideKeyboard(requireActivity())
-        FeatureDiscovery.showFeature(
-            requireActivity(),
-            binding.viewSavedButton,
-            getString(R.string.feature_view_saved_passwords_title),
-            getString(R.string.feature_view_saved_passwords_description)
-        )
+        lifecycleScope.launch {
+            FeatureDiscovery.showFeature(
+                requireActivity(),
+                binding.viewSavedButton,
+                getString(R.string.feature_view_saved_passwords_title),
+                getString(R.string.feature_view_saved_passwords_description)
+            )
+        }
+
     }
 }
 
