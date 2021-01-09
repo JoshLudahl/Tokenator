@@ -9,7 +9,7 @@ import com.token.tokenator.databinding.LayoutSavedTokenListItemBinding
 import com.token.tokenator.model.Token
 
 class SavedPasswordAdapter :
-    ListAdapter<Token, SavedPasswordAdapter.ViewHolder>(SavedPasswordDiffCallback()) {
+    ListAdapter<Token, SavedPasswordAdapter.ViewHolder>(SavedPasswordsDiffCallback) {
 
     private var savedTokenList = emptyList<Token>()
 
@@ -42,27 +42,18 @@ class SavedPasswordAdapter :
         holder.bind(currentITem)
     }
 
-    override fun getItemCount(): Int {
-        return savedTokenList.size
-    }
-
     fun setItems(tokenList: List<Token>) {
         savedTokenList = tokenList
-        notifyDataSetChanged()
-    }
-
-    fun getId(position: Int): Int {
-        return savedTokenList[position].id
+        submitList(tokenList)
     }
 }
 
-class SavedPasswordDiffCallback : DiffUtil.ItemCallback<Token>() {
+object SavedPasswordsDiffCallback : DiffUtil.ItemCallback<Token>() {
     override fun areItemsTheSame(oldItem: Token, newItem: Token): Boolean {
         return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(oldItem: Token, newItem: Token): Boolean {
-        return oldItem.title == newItem.title
-                && oldItem.token == newItem.token
+        return oldItem == newItem
     }
 }
