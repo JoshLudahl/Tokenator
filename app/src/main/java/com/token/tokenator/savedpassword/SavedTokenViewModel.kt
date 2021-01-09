@@ -9,13 +9,5 @@ import com.token.tokenator.model.Token
 
 class SavedTokenViewModel @ViewModelInject constructor(repository: TokenRepository) : ViewModel(), LifecycleObserver {
 
-     val tokens: LiveData<List<Token>>
-
-    init {
-        tokens = repository.allTokens
-
-    }
-
-
-
+     val tokens: LiveData<List<Token>> = repository.allTokens
 }

@@ -17,6 +17,7 @@ import com.getkeepsafe.taptargetview.TapTargetView
 import com.token.tokenator.R
 import com.token.tokenator.R.color.blackish
 import com.token.tokenator.Utilities.Clipuous
+import com.token.tokenator.Utilities.FeatureDiscovery
 import com.token.tokenator.databinding.MainFragmentBinding
 import com.token.tokenator.model.Tokenator
 import com.token.tokenator.model.Type
@@ -149,43 +150,16 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     fun showFeature() {
-
         binding.scrollView.fullScroll(ScrollView.FOCUS_UP)
+        Thread.sleep(1000)
         hideKeyboard(requireActivity())
 
-        TapTargetView.showFor(requireActivity(),  // `this` is an Activity
-            TapTarget.forView(
-                binding.viewSavedButton,
-                "Saved Passwords",
-                "Click here to view your saved passwords"
-            )
-                .outerCircleColor(R.color.yellow)
-                .outerCircleAlpha(0.96f)
-                .targetCircleColor(R.color.white)
-                .titleTextSize(20)
-                .titleTextColor(R.color.white)
-                .descriptionTextSize(14)
-                .descriptionTextColor(R.color.yellow)
-                .textColor(blackish)
-                .textTypeface(Typeface.SANS_SERIF)
-                .dimColor(R.color.black)
-                .drawShadow(true)
-                .cancelable(true)
-                .tintTarget(true)
-                .transparentTarget(true)
-                .targetRadius(60),
-            object : TapTargetView.Listener() {
-                // The listener can listen for regular clicks, long clicks or cancels
-                override fun onTargetClick(view: TapTargetView) {
-                    super.onTargetClick(view) // This call is optional
-                    navigateToSaved()
-                }
-
-                override fun onOuterCircleClick(view: TapTargetView?) {
-                    super.onOuterCircleClick(view)
-                    view?.dismiss(true)
-                }
-            })
+        FeatureDiscovery.showFeature(
+            requireActivity(),
+            binding.viewSavedButton,
+            "View Saved Passwords",
+            "Click here on the bookmark to see your saved passwords."
+        )
     }
 }
 
