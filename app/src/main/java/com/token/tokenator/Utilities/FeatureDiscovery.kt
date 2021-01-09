@@ -28,7 +28,7 @@ object FeatureDiscovery {
                 .titleTextColor(R.color.white)
                 .descriptionTextSize(14)
                 .descriptionTextColor(R.color.yellow)
-                .textColor(R.color.blackish)
+                .textColor(R.color.black)
                 .textTypeface(Typeface.SANS_SERIF)
                 .dimColor(R.color.black)
                 .drawShadow(true)
@@ -40,6 +40,7 @@ object FeatureDiscovery {
                 // The listener can listen for regular clicks, long clicks or cancels
                 override fun onTargetClick(view: TapTargetView) {
                     super.onTargetClick(view) // This call is optional
+                    /** no op for now */
                 }
 
                 override fun onOuterCircleClick(view: TapTargetView?) {

@@ -185,14 +185,14 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     private fun showFeature() {
         binding.scrollView.scrollTo(0,0)
         hideKeyboard(requireActivity())
-        lifecycleScope.launch {
+
             FeatureDiscovery.showFeature(
                 requireActivity(),
                 binding.viewSavedButton,
                 getString(R.string.feature_view_saved_passwords_title),
                 getString(R.string.feature_view_saved_passwords_description)
             )
-        }
+
 
     }
 }
