@@ -16,15 +16,6 @@ android {
         versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments += [
-                        "room.schemaLocation":"$projectDir/schemas".toString(),
-                        "room.incremental":"true",
-                        "room.expandProjection":"true"]
-            }
-        }
     }
 
     buildTypes {
@@ -65,7 +56,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     kapt "androidx.room:room-compiler:$room_version"
 
-
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
@@ -85,7 +75,6 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$dagger_hilt"
     kapt "androidx.hilt:hilt-compiler:$hilt_lifecycle_viewmodel"
 
-
     //  Styling
     implementation "com.google.android.material:material:$material_version"
 
@@ -98,6 +87,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    // Testing Custom Library
+    androidTestImplementation "com.github.JoshLudahl:ELK:0.59.01"
+
     // Fluid Slider
     implementation 'com.ramotion.fluidslider:fluid-slider:0.3.1'
 
@@ -106,6 +98,4 @@ dependencies {
 
     // DataStore
     implementation "androidx.datastore:datastore-preferences:1.0.0-alpha05"
-
-
 }
