@@ -2,6 +2,7 @@ package com.token.tokenator.main
 
 import android.util.Log
 import android.view.View
+import androidx.datastore.preferences.core.Preferences
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.token.tokenator.BuildConfig
@@ -14,6 +15,7 @@ class MainViewModel @ViewModelInject constructor(private var repository: TokenRe
     ViewModel(), LifecycleObserver {
 
     var version: String
+    private val _dataStore = MutableLiveData<Preferences>()
     private val _token = MutableLiveData<String>()
     private val _length = MutableLiveData<Float>()
 
@@ -21,6 +23,7 @@ class MainViewModel @ViewModelInject constructor(private var repository: TokenRe
         Log.i("MainViewModel", "Initialized")
         version = "Version ${BuildConfig.VERSION_NAME}"
         Log.i("VERSION", version)
+
     }
 
     val token: LiveData<String>

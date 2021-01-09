@@ -32,4 +32,8 @@
     <string name="numeric">Numeric</string>
     <string name="special_characters">Special Characters</string>
     <string name="delete">Delete?</string>
+
+    <!-- Feature Discovery -->
+    <string name="feature_view_saved_passwords_title">View Saved Passwords</string>
+    <string name="feature_view_saved_passwords_description">Click here on the bookmark to see your saved passwords.</string>
 </resources>
