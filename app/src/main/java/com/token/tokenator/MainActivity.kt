@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setTheme(R.style.Theme_Tokenator)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         navHostFragment = supportFragmentManager.findFragmentById(myNavHostFragment) as NavHostFragment
         navController = navHostFragment.navController
