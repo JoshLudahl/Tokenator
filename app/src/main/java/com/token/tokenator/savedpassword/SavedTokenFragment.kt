@@ -42,7 +42,9 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
         viewModel.tokens.observe(viewLifecycleOwner, {
             it?.let {
                 adapter.setItems(it)
-                if (it.isEmpty()) viewModel.setTokenListEmpty(true) else viewModel.setTokenListEmpty(false)
+                if (it.isEmpty()) viewModel.setTokenListEmpty(true) else viewModel.setTokenListEmpty(
+                    false
+                )
             }
         })
 
