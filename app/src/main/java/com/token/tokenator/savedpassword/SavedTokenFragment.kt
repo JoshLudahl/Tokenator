@@ -18,7 +18,6 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
     private val viewModel: SavedTokenViewModel by viewModels()
     private lateinit var binding: SavedTokenFragmentBinding
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -43,11 +42,12 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
         viewModel.tokens.observe(viewLifecycleOwner, {
             it?.let {
                 adapter.setItems(it)
-                if (adapter.itemCount == 0) {
-                    binding.passwordRecyclerView.visibility = View.GONE
-                    binding.noPasswordsText.visibility = View.VISIBLE
-                    binding.noPasswords.visibility = View.VISIBLE
-                }
+                if (adapter.itemCount ==0) viewModel.onNoTokens() else viewModel.onTokens()
+//                if (adapter.itemCount == 0) {
+//                    binding.passwordRecyclerView.visibility = View.GONE
+//                    binding.noPasswordsText.visibility = View.VISIBLE
+//                    binding.noPasswords.visibility = View.VISIBLE
+//                }
             }
         })
 
