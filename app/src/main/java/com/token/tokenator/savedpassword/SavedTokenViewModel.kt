@@ -1,18 +1,22 @@
 package com.token.tokenator.savedpassword
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.token.tokenator.database.TokenRepository
 import com.token.tokenator.model.Token
+import kotlinx.coroutines.launch
 
 class SavedTokenViewModel @ViewModelInject constructor(private val repository: TokenRepository) : ViewModel(), LifecycleObserver {
 
      val tokens: LiveData<List<Token>> = repository.allTokens
 
-     fun delete(token: Token) {
-          repository.delete(token)
+     suspend fun delete(id: Int) {
+         viewModelScope.launch {
+         val token = repository.getOneTokenById(id)
+         token?.let {
+             repository.delete(it)
+         }
+
+     }
      }
 }

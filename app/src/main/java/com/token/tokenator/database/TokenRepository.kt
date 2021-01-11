@@ -13,7 +13,11 @@ class TokenRepository(private val tokenDao: TokenDao) {
         tokenDao.insert(token)
     }
 
-    fun delete(token: Token) {
+    suspend fun delete(token: Token) {
         tokenDao.delete(token)
+    }
+
+    suspend fun getOneTokenById(id: Int): Token? {
+        return tokenDao.getTokenById(id)
     }
 }

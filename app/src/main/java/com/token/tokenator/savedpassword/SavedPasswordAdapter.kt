@@ -11,7 +11,7 @@ import com.token.tokenator.Utilities.Clipuous
 import com.token.tokenator.databinding.LayoutSavedTokenListItemBinding
 import com.token.tokenator.model.Token
 
-class SavedPasswordAdapter(val clickListener: TokenListener) :
+class SavedPasswordAdapter(private val clickListener: TokenListener) :
     ListAdapter<Token, SavedPasswordAdapter.ViewHolder>(SavedPasswordsDiffCallback) {
 
     private var savedTokenList = emptyList<Token>()
@@ -21,6 +21,7 @@ class SavedPasswordAdapter(val clickListener: TokenListener) :
             itemBinding.root
         ) {
         fun bind(token: Token, clickListener: TokenListener) {
+            itemBinding.token = token
             itemBinding.apply {
                 tokenTitle.text = token.title
                 tokenPlaceholder.text = token.token
@@ -39,11 +40,7 @@ class SavedPasswordAdapter(val clickListener: TokenListener) :
                     Snackbar.LENGTH_SHORT
                 ).show()
             }
-
-            itemBinding.trashIcon.setOnClickListener {
-                // Delete the item from the database and update the list.
-
-            }
+            itemBinding.executePendingBindings()
         }
     }
 
@@ -60,8 +57,8 @@ class SavedPasswordAdapter(val clickListener: TokenListener) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentITem = savedTokenList[position]
-        holder.bind(currentITem, clickListener)
+        val currentItem = savedTokenList[position]
+        holder.bind(currentItem, clickListener)
     }
 
     fun setItems(tokenList: List<Token>) {
@@ -80,6 +77,6 @@ object SavedPasswordsDiffCallback : DiffUtil.ItemCallback<Token>() {
     }
 }
 
-class TokenListener(val clickListener: (token: Token) -> Unit) {
-    fun onClick(token: Token) = clickListener(token)
+class TokenListener(val clickListener: (token: Int) -> Unit) {
+    fun onClick(token: Token) = clickListener(token.id)
 }

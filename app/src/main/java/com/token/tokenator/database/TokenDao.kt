@@ -11,7 +11,7 @@ interface TokenDao {
     suspend fun insert(token: Token)
 
     @Delete
-    fun delete(token: Token)
+    suspend fun delete(token: Token)
 
     @Query("SELECT * FROM token_table")
     fun getAllTokens(): LiveData<List<Token>>
@@ -21,4 +21,7 @@ interface TokenDao {
 
     @Query("SELECT * FROM token_table ORDER BY date_saved ASC")
     fun getAllTokensByDate(): LiveData<List<Token>>
+
+    @Query("SELECT * FROM token_table WHERE id = :id")
+    suspend fun getTokenById(id: Int): Token?
 }
