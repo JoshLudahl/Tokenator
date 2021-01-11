@@ -42,12 +42,7 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
         viewModel.tokens.observe(viewLifecycleOwner, {
             it?.let {
                 adapter.setItems(it)
-                if (adapter.itemCount ==0) viewModel.onNoTokens() else viewModel.onTokens()
-//                if (adapter.itemCount == 0) {
-//                    binding.passwordRecyclerView.visibility = View.GONE
-//                    binding.noPasswordsText.visibility = View.VISIBLE
-//                    binding.noPasswords.visibility = View.VISIBLE
-//                }
+                if (it.isEmpty()) viewModel.setTokenListEmpty(true) else viewModel.setTokenListEmpty(false)
             }
         })
 

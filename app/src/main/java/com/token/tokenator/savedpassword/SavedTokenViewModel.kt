@@ -19,12 +19,8 @@ class SavedTokenViewModel @ViewModelInject constructor(private val repository: T
         _noTokens.value = true
     }
 
-    fun onNoTokens() {
-        _noTokens.value = true
-    }
-
-    fun onTokens() {
-        _noTokens.value = false
+    fun setTokenListEmpty(boolean: Boolean) {
+        _noTokens.value = boolean
     }
 
     suspend fun delete(id: Int) {
