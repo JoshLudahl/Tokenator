@@ -1,17 +1,17 @@
 package com.token.tokenator.database
 
-import org.junit.After
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 
 class DatabaseTest {
 
-    @Before
+    @BeforeEach
     fun setup() {
 
     }
 
-    @After
+    @AfterEach
     fun tearDown() {
 
     }
