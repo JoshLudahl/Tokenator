@@ -15,7 +15,9 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
 
     private val viewModel: SavedTokenViewModel by viewModels()
     private lateinit var binding: SavedTokenFragmentBinding
-    private val adapter by lazy { SavedPasswordAdapter() }
+    private val adapter by lazy { SavedPasswordAdapter(TokenListener {
+        token -> viewModel.delete(token)
+    }) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

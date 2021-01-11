@@ -7,7 +7,6 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.ScrollView
 import android.widget.Toast
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -18,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
+import com.google.android.material.snackbar.Snackbar
 import com.token.tokenator.R
 import com.token.tokenator.Utilities.Clipuous
 import com.token.tokenator.Utilities.FeatureDiscovery
@@ -111,7 +111,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 lifecycleScope.launch {
                     val preferenceItem = readDataStore("feature_discovery")
                     if (preferenceItem == "null") {
-                        Log.i("FEATURE?", "$preferenceItem: Showing feature because it has not been shown.")
+                        Log.i(
+                            "FEATURE?",
+                            "$preferenceItem: Showing feature because it has not been shown."
+                        )
                         showFeature()
                         saveDataStore("feature_discovery", true)
                     } else {
@@ -138,8 +141,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private fun copyToClipBoard(password: String) {
         Clipuous.copyToClipboard(password, requireContext())
-        Toast.makeText(requireContext(), R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT)
-            .show()
+        Snackbar.make(
+            requireView(),
+            getText(R.string.toast_copied_to_clipboard),
+            Snackbar.LENGTH_SHORT
+        ).show()
     }
 
     private fun generatePassword() {
@@ -183,15 +189,15 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     private fun showFeature() {
-        binding.scrollView.scrollTo(0,0)
+        binding.scrollView.scrollTo(0, 0)
         hideKeyboard(requireActivity())
 
-            FeatureDiscovery.showFeature(
-                requireActivity(),
-                binding.viewSavedButton,
-                getString(R.string.feature_view_saved_passwords_title),
-                getString(R.string.feature_view_saved_passwords_description)
-            )
+        FeatureDiscovery.showFeature(
+            requireActivity(),
+            binding.viewSavedButton,
+            getString(R.string.feature_view_saved_passwords_title),
+            getString(R.string.feature_view_saved_passwords_description)
+        )
 
 
     }
