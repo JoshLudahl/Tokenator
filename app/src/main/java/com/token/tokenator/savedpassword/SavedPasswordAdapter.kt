@@ -77,6 +77,6 @@ object SavedPasswordsDiffCallback : DiffUtil.ItemCallback<Token>() {
     }
 }
 
-class TokenListener(val clickListener: (token: Int) -> Unit) {
-    fun onClick(token: Token) = clickListener(token.id)
+class TokenListener(val clickListener: (token: Token) -> Unit) {
+    fun onClick(token: Token) = clickListener(token)
 }
