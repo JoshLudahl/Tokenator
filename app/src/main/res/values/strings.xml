@@ -35,5 +35,5 @@
 
     <!-- Feature Discovery -->
     <string name="feature_view_saved_passwords_title">View Saved Passwords</string>
-    <string name="feature_view_saved_passwords_description">Click here on the bookmark to see your saved passwords.</string>
+    <string name="feature_view_saved_passwords_description">Click on the bookmark icon to see your saved passwords.</string>
 </resources>
