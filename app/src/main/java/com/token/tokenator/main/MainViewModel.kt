@@ -6,10 +6,12 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.token.tokenator.BuildConfig
+import com.token.tokenator.Utilities.Encryption
 import com.token.tokenator.database.TokenRepository
 import com.token.tokenator.model.Token
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.crypto.SecretKey
 
 class MainViewModel @ViewModelInject constructor(private var repository: TokenRepository) :
     ViewModel(), LifecycleObserver {
@@ -46,6 +48,12 @@ class MainViewModel @ViewModelInject constructor(private var repository: TokenRe
         passwordName: String,
         token: String
     ) {
+        try {
+            // encrypt
+            // save password as encrypted
+        } catch (e: Exception) {
+            // catch error and provide message to user
+        }
         viewModelScope.launch(Dispatchers.IO) {
             repository.insert(Token(title = passwordName, token = token))
             Log.i("DATABASE", "Saved to database")
