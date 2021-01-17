@@ -31,10 +31,12 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
             itemBinding.clickListener = clickListener
 
             itemBinding.copyIcon.setOnClickListener {
-                Clipuous.copyToClipboard(
-                    token.token,
-                    itemBinding.root.context
-                )
+                Encryption.decrypt(token.token)?.let { decryptedToken ->
+                    Clipuous.copyToClipboard(
+                        decryptedToken,
+                        itemBinding.root.context
+                    )
+                }
                 Snackbar.make(
                     itemBinding.root.rootView,
                     itemBinding.root.resources.getText(R.string.toast_copied_to_clipboard),
