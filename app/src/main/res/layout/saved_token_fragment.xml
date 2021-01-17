@@ -59,17 +59,17 @@
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_not_found_solid_iii"
                 android:visibility="@{tokenViewModel.noTokens ? View.VISIBLE : View.GONE}"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/no_passwords_text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
+                app:layout_constraintTop_toBottomOf="@+id/password_recycler_view"
                 app:layout_constraintVertical_bias="0.0" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/no_passwords_text"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:fontFamily="sans-serif"
                 android:gravity="center"
                 android:text="@string/no_saved_passwords"
@@ -80,9 +80,12 @@
                 android:textStyle="bold"
                 android:visibility="@{tokenViewModel.noTokens ? View.VISIBLE : View.GONE}"
                 app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toTopOf="@+id/password_recycler_view"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/no_passwords" />
+                app:layout_constraintTop_toBottomOf="@+id/no_passwords"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
