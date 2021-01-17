@@ -20,4 +20,6 @@
         </activity>
     </application>
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"
+        android:maxSdkVersion="29" />
 </manifest>
