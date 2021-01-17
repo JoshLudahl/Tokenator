@@ -12,7 +12,7 @@ android {
         applicationId "com.token.tokenator"
         minSdkVersion 22
         targetSdkVersion 30
-        versionCode 3
+        versionCode 4
         versionName "1.21"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
