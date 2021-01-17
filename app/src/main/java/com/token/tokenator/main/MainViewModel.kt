@@ -11,7 +11,6 @@ import com.token.tokenator.database.TokenRepository
 import com.token.tokenator.model.Token
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import javax.crypto.SecretKey
 
 class MainViewModel @ViewModelInject constructor(private var repository: TokenRepository) :
     ViewModel(), LifecycleObserver {
@@ -49,14 +48,17 @@ class MainViewModel @ViewModelInject constructor(private var repository: TokenRe
         token: String
     ) {
         try {
-            // encrypt
-            // save password as encrypted
+            val encryptedName = Encryption.encrypt(passwordName) ?: "No name"
+            val encryptedToken = Encryption.encrypt(token)
+
+            encryptedToken?.let {
+                viewModelScope.launch(Dispatchers.IO) {
+                    repository.insert(Token(title = encryptedName, token = it))
+                    Log.i("DATABASE", "Saved to database")
+                }
+            }
         } catch (e: Exception) {
             // catch error and provide message to user
-        }
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.insert(Token(title = passwordName, token = token))
-            Log.i("DATABASE", "Saved to database")
         }
     }
 }

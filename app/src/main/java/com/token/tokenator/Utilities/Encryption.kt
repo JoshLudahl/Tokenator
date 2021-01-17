@@ -1,35 +1,65 @@
 package com.token.tokenator.Utilities
 
+import android.util.Base64
+import com.token.tokenator.BuildConfig
 import javax.crypto.Cipher
-import javax.crypto.KeyGenerator
-import javax.crypto.SecretKey
+import javax.crypto.SecretKeyFactory
 import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.PBEKeySpec
 import javax.crypto.spec.SecretKeySpec
 
+private const val SECRET_KEY = BuildConfig.SECRET_KEY
+private const val SALT = BuildConfig.SALT
+private const val IV = BuildConfig.IV
 
 object Encryption {
 
-    // change to plaintext then pull bytearray out for simplicity
+    fun encrypt(strToEncrypt: String): String? {
+        try {
+            val ivParameterSpec = IvParameterSpec(Base64.decode(IV, Base64.DEFAULT))
 
-    @Throws(Exception::class)
-    fun encrypt(plaintext: ByteArray?, key: SecretKey, IV: ByteArray?): ByteArray? {
-        val cipher = Cipher.getInstance("AES")
-        val keySpec = SecretKeySpec(key.encoded, "AES")
-        val ivSpec = IvParameterSpec(IV)
-        cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec)
-        return cipher.doFinal(plaintext)
+            val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")
+            val spec = PBEKeySpec(
+                SECRET_KEY.toCharArray(),
+                Base64.decode(SALT, Base64.DEFAULT),
+                10000,
+                256
+            )
+            val tmp = factory.generateSecret(spec)
+            val secretKey = SecretKeySpec(tmp.encoded, "AES")
+
+            val cipher = Cipher.getInstance("AES/CBC/PKCS7Padding")
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivParameterSpec)
+            return Base64.encodeToString(
+                cipher.doFinal(strToEncrypt.toByteArray(Charsets.UTF_8)),
+                Base64.DEFAULT
+            )
+        } catch (e: Exception) {
+            println("Error while encrypting: $e")
+        }
+        return null
     }
 
-    fun decrypt(cipherText: ByteArray?, key: SecretKey, IV: ByteArray?): String? {
+    fun decrypt(strToDecrypt: String): String? {
         try {
-            val cipher = Cipher.getInstance("AES")
-            val keySpec = SecretKeySpec(key.encoded, "AES")
-            val ivSpec = IvParameterSpec(IV)
-            cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec)
-            val decryptedText = cipher.doFinal(cipherText)
-            return String(decryptedText)
+
+            val ivParameterSpec = IvParameterSpec(Base64.decode(IV, Base64.DEFAULT))
+
+            val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")
+            val spec = PBEKeySpec(
+                SECRET_KEY.toCharArray(),
+                Base64.decode(SALT, Base64.DEFAULT),
+                10000,
+                256
+            )
+            val tmp = factory.generateSecret(spec)
+            val secretKey = SecretKeySpec(tmp.encoded, "AES")
+
+            val cipher = Cipher.getInstance("AES/CBC/PKCS7Padding")
+            cipher.init(Cipher.DECRYPT_MODE, secretKey, ivParameterSpec)
+            return String(cipher.doFinal(Base64.decode(strToDecrypt, Base64.DEFAULT)))
         } catch (e: Exception) {
-            e.printStackTrace()
+            println("Error while decrypting: $e")
         }
         return null
     }

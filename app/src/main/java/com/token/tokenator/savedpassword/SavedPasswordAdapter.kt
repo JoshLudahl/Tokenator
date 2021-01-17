@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.token.tokenator.R
 import com.token.tokenator.Utilities.Clipuous
+import com.token.tokenator.Utilities.Encryption
 import com.token.tokenator.databinding.LayoutSavedTokenListItemBinding
 import com.token.tokenator.model.Token
 
@@ -23,8 +24,8 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
         fun bind(token: Token, clickListener: TokenListener) {
             itemBinding.token = token
             itemBinding.apply {
-                tokenTitle.text = token.title
-                tokenPlaceholder.text = token.token
+                tokenTitle.text = Encryption.decrypt(token.title)
+                tokenPlaceholder.text = Encryption.decrypt(token.token)
             }
 
             itemBinding.clickListener = clickListener
