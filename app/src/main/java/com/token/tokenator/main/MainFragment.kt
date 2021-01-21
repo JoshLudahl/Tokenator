@@ -141,10 +141,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private fun copyToClipBoard(password: String) {
         Clipuous.copyToClipboard(password, requireContext())
-        Snackbar.make(
-            requireView(),
+
+        Toast.makeText(
+            requireContext(),
             getText(R.string.toast_copied_to_clipboard),
-            Snackbar.LENGTH_SHORT
+            Toast.LENGTH_SHORT
         ).show()
     }
 
