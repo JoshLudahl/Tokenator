@@ -348,12 +348,25 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:strokeColor="@color/yellow" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/optional_title"
+                    style="@style/section_labels"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/optional"
+                    android:textAllCaps="true"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button_generate_token" />
+
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/token_name"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/edit_text_backgroud"
                     android:hint="@string/enter_name_for_password"
@@ -370,7 +383,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/save_button"
                     app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button_generate_token" />
+                    app:layout_constraintTop_toBottomOf="@+id/optional_title" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/save_button"

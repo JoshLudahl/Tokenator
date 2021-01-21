@@ -40,4 +40,5 @@
     <string name="alert_delete_message">Are you sure you want to delete the password?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="optional">Optional</string>
 </resources>

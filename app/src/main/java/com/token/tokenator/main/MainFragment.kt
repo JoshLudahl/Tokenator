@@ -177,6 +177,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 binding.tokenName.apply {
                     visibility = View.VISIBLE
                     requestFocus()
+                    binding.optionalTitle.visibility = View.VISIBLE
                     viewModel.tokenNameEditText = View.VISIBLE
                 }
             }
