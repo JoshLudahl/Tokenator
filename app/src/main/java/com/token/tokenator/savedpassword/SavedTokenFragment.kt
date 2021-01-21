@@ -7,8 +7,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.token.tokenator.R
 import com.token.tokenator.databinding.SavedTokenFragmentBinding
+import com.token.tokenator.model.Token
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -25,9 +27,7 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
         binding.tokenViewModel = viewModel
 
         val adapter = SavedPasswordAdapter(TokenListener {
-            lifecycleScope.launch {
-                viewModel.delete(it)
-            }
+           delete(it)
         })
 
         binding.passwordRecyclerView.apply {
@@ -49,5 +49,21 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
         })
 
         binding.lifecycleOwner = this
+    }
+
+    private fun delete(token: Token) {
+        val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme)
+            .setTitle(getText(R.string.alert_confirm_delete))
+            .setMessage(getText(R.string.alert_delete_message))
+            .setPositiveButton(getText(R.string.yes)) {_,_ ->
+                lifecycleScope.launch {
+                    viewModel.delete(token)
+                }
+            }
+            .setNegativeButton(getText(R.string.no)) {dialog, _ ->
+                dialog.cancel()
+            }
+            .create()
+            .show()
     }
 }

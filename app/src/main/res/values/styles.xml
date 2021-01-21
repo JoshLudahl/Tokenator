@@ -25,4 +25,30 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="alert_confirmation">
+        <item name="backgroundColor">@color/yellow</item>
+        <item name="background">@color/yellow</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="buttonBarPositiveButtonStyle">@style/Alert.Button.Positive</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Alert.Button.Negative</item>
+    </style>
+
+    <style name="Alert.Button.Positive" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/blackish</item>
+        <item name="rippleColor">@color/grayish</item>
+        <item name="android:spacing">@dimen/icon_bottom_margin</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="Alert.Button.Negative" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="rippleColor">@color/grayish</item>
+        <item name="android:textColor">@color/blackish</item>
+        <item name="android:spacing">@dimen/icon_bottom_margin</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
 </resources>

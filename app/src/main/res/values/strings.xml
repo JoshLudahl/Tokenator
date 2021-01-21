@@ -36,4 +36,8 @@
     <!-- Feature Discovery -->
     <string name="feature_view_saved_passwords_title">View Saved Passwords</string>
     <string name="feature_view_saved_passwords_description">Click on the bookmark icon to see your saved passwords.</string>
+    <string name="alert_confirm_delete">Delete the password?</string>
+    <string name="alert_delete_message">Are you sure you want to delete the password?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
