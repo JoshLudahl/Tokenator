@@ -120,7 +120,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                     } else {
                         Log.i("FEATURE", "Skipping feature because it has been shown.")
                     }
-
                 }
             }
         }
@@ -199,16 +198,12 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             getString(R.string.feature_view_saved_passwords_title),
             getString(R.string.feature_view_saved_passwords_description)
         )
-
-
     }
 }
 
 fun hideKeyboard(activity: Activity) {
     val imm = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-    //Find the currently focused view, so we can grab the correct window token from it.
     var view = activity.currentFocus
-    //If no view currently has focus, create a new one, just so we can grab a window token from it
     if (view == null) {
         view = View(activity)
     }
