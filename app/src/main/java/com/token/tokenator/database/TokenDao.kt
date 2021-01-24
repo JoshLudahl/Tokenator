@@ -24,4 +24,7 @@ interface TokenDao {
 
     @Query("SELECT * FROM token_table WHERE id = :id")
     suspend fun getTokenById(id: Int): Token?
+
+    @Query("SELECT * FROM token_table WHERE title = :title")
+    suspend fun getTokenByName(title: String): Token?
 }

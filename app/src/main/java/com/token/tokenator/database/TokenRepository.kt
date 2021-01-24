@@ -20,4 +20,6 @@ class TokenRepository(private val tokenDao: TokenDao) {
     suspend fun getOneTokenById(id: Int): Token? {
         return tokenDao.getTokenById(id)
     }
+
+    suspend fun getOneTokenByName(name: String): Token? = tokenDao.getTokenByName(name)
 }
