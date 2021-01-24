@@ -53,12 +53,12 @@ class MainViewModel @ViewModelInject constructor(private var repository: TokenRe
 
             encryptedToken?.let {
                 viewModelScope.launch(Dispatchers.IO) {
-                    repository.insert(Token(title = encryptedName, token = it))
+                    repository.insert(Token(title = passwordName, token = it))
                     Log.i("DATABASE", "Saved to database")
                 }
             }
         } catch (e: Exception) {
-            // catch error and provide message to user
+            Log.i("Error:", e.message.toString())
         }
     }
 }

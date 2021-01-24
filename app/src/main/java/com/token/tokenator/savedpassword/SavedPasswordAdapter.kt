@@ -24,7 +24,7 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
         fun bind(token: Token, clickListener: TokenListener) {
             itemBinding.token = token
             itemBinding.apply {
-                tokenTitle.text = Encryption.decrypt(token.title)
+                tokenTitle.text = token.title
                 tokenPlaceholder.text = "**********"
             }
 
