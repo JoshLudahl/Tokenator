@@ -51,4 +51,12 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textAllCaps">true</item>
     </style>
+
+    <style name="layout_background_section">
+        <item name="android:elevation">2dp</item>
+        <item name="android:background">@drawable/layout_background</item>
+        <item name="android:layout_marginStart">@dimen/row_margin</item>
+        <item name="android:layout_marginTop">@dimen/row_margin</item>
+        <item name="android:layout_marginEnd">@dimen/row_margin</item>
+    </style>
 </resources>
