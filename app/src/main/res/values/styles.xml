@@ -31,13 +31,19 @@
         <item name="background">@color/yellow</item>
     </style>
 
-    <style name="AlertDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+    <style name="AlertDialogTheme" parent="@style/ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <!-- Background Color-->
+        <item name="android:background">@color/blackish</item>
+        <!-- Text Color for title and message -->
+        <item name="colorOnSurface">@color/yellow</item>
+        <!-- Text Color for buttons -->
+        <item name="colorPrimary">@color/white</item>
         <item name="buttonBarPositiveButtonStyle">@style/Alert.Button.Positive</item>
         <item name="buttonBarNegativeButtonStyle">@style/Alert.Button.Negative</item>
     </style>
 
     <style name="Alert.Button.Positive" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:textColor">@color/blackish</item>
+        <item name="android:textColor">@color/yellow</item>
         <item name="rippleColor">@color/grayish</item>
         <item name="android:spacing">@dimen/icon_bottom_margin</item>
         <item name="android:textSize">14sp</item>
@@ -45,8 +51,8 @@
     </style>
 
     <style name="Alert.Button.Negative" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="rippleColor">@color/grayish</item>
-        <item name="android:textColor">@color/blackish</item>
+        <item name="rippleColor">@color/blackish</item>
+        <item name="android:textColor">@color/yellow</item>
         <item name="android:spacing">@dimen/icon_bottom_margin</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textAllCaps">true</item>
