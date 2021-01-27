@@ -4,10 +4,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/mainFragment">
 
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.token.tokenator.MainActivity"
-        android:label="MainActivity" />
     <fragment
         android:id="@+id/savedTokenFragment"
         android:name="com.token.tokenator.savedpassword.SavedTokenFragment"
@@ -19,7 +15,6 @@
         <action
             android:id="@+id/action_savedTokenFragment_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:enterAnim="@anim/fragment_close_enter"
             app:exitAnim="@anim/fragment_fade_exit"
             app:popEnterAnim="@anim/fragment_open_enter"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
@@ -31,7 +26,6 @@
         <action
             android:id="@+id/action_mainFragment_to_savedTokenFragment"
             app:destination="@id/savedTokenFragment"
-            app:enterAnim="@anim/fragment_open_enter"
             app:exitAnim="@anim/fragment_close_exit"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
