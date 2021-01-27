@@ -32,11 +32,11 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
                 when (itemBinding.tokenPlaceholder.text) {
                     "**********" -> {
                         itemBinding.tokenPlaceholder.text = Encryption.decrypt(token.token)
-                        itemBinding.tokenVisibilityIcon.setImageResource(R.drawable.ic_view_hidden)
+                        itemBinding.tokenVisibilityIcon.setImageResource(R.drawable.ic_view)
                     }
                     else -> {
                         itemBinding.tokenPlaceholder.text = "**********"
-                        itemBinding.tokenVisibilityIcon.setImageResource(R.drawable.ic_view)
+                        itemBinding.tokenVisibilityIcon.setImageResource(R.drawable.ic_view_hidden)
                     }
                 }
             }
