@@ -2,7 +2,6 @@ package com.token.tokenator.main
 
 import android.util.Log
 import android.view.View
-import androidx.datastore.preferences.core.Preferences
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.token.tokenator.BuildConfig
