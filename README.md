@@ -7,4 +7,4 @@ Generate passwords with uppercase and lowercase letters, numbers, or special cha
 or any combination of the four. Simple to use. Simply set your password requirements, then click
 generate token and it'll generate a token and copy it to your clipboard. Simple.
 
-[Play Store](https://play.google.com/store/apps/details?id=com.token.tokenator)
+[![Play Store](https://github.com/JoshLudahl/Tokenator/blob/master/google-play-badge.png)](https://play.google.com/store/apps/details?id=com.token.tokenator)
