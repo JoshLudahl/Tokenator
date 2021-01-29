@@ -16,15 +16,17 @@ class MainViewModel @ViewModelInject constructor(private var repository: TokenRe
     ViewModel(), LifecycleObserver {
 
     var version: String
-    private val _dataStore = MutableLiveData<Preferences>()
     private val _token = MutableLiveData<String>()
     private val _length = MutableLiveData<Float>()
+    private val _tokenNameEditTextLabelVisibility = MutableLiveData<Int>()
+    private val _tokenNameEditTextFieldVisibility = MutableLiveData<Int>()
 
     init {
         Log.i("MainViewModel", "Initialized")
         version = "Version ${BuildConfig.VERSION_NAME}"
         Log.i("VERSION", version)
-
+        _tokenNameEditTextLabelVisibility.value = View.GONE
+        _tokenNameEditTextFieldVisibility.value = View.GONE
     }
 
     val token: LiveData<String>
@@ -42,6 +44,18 @@ class MainViewModel @ViewModelInject constructor(private var repository: TokenRe
     }
 
     var tokenNameEditText = View.GONE
+
+    val tokenNameEditTextFieldVisibility : LiveData<Int>
+        get() = _tokenNameEditTextFieldVisibility
+
+    fun setTokenNameEditTextFieldVisibility() =
+        _tokenNameEditTextFieldVisibility.postValue(View.VISIBLE)
+
+    val tokenNameEditTextLabelVisibility : LiveData<Int>
+        get() = _tokenNameEditTextLabelVisibility
+
+    fun setTokenNameEditTextLabelVisible() =
+        _tokenNameEditTextLabelVisibility.postValue(View.VISIBLE)
 
     fun insert(
         passwordName: String,

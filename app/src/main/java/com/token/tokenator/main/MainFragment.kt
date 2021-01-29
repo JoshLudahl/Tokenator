@@ -35,13 +35,12 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     private lateinit var binding: MainFragmentBinding
     private val viewModel: MainViewModel by viewModels()
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = MainFragmentBinding.bind(view)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
+        binding.lifecycleOwner = this
 
         binding.buttonGenerateToken.setOnClickListener {
             generatePassword()
@@ -49,7 +48,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         binding.saveButton.setOnClickListener {
             saveToken()
-
         }
 
         binding.viewSavedButton.setOnClickListener {
@@ -87,25 +85,19 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     private fun saveToken() {
         when {
             binding.tokenName.text.isNullOrEmpty() -> {
-                Toast.makeText(
-                    requireContext(),
-                    R.string.error_enter_name_for_password,
-                    Toast.LENGTH_SHORT
-                ).show()
+                showToast(getString(R.string.error_enter_name_for_password))
             }
+
             binding.generatedField.text.isNullOrEmpty() -> {
-                Toast.makeText(
-                    requireContext(),
-                    R.string.error_generate_password_first,
-                    Toast.LENGTH_SHORT
-                ).show()
+                showToast(getString(R.string.error_generate_password_first))
             }
+
             else -> {
                 viewModel.insert(
                     passwordName = binding.tokenName.editableText.toString().trim(),
                     token = binding.generatedField.text.toString()
                 )
-                Toast.makeText(requireContext(), R.string.password_saved, Toast.LENGTH_SHORT).show()
+                showToast(getString(R.string.password_saved))
                 binding.tokenName.text?.clear()
 
                 lifecycleScope.launch {
@@ -117,6 +109,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                         )
                         showFeature()
                         saveDataStore("feature_discovery", true)
+
                     } else {
                         Log.i("FEATURE", "Skipping feature because it has been shown.")
                     }
@@ -140,12 +133,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private fun copyToClipBoard(password: String) {
         Clipuous.copyToClipboard(password, requireContext())
-
-        Toast.makeText(
-            requireContext(),
-            getText(R.string.toast_copied_to_clipboard),
-            Toast.LENGTH_SHORT
-        ).show()
+        showToast(getString(R.string.toast_copied_to_clipboard))
     }
 
     private fun generatePassword() {
@@ -168,24 +156,22 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         when {
             password.isNotEmpty() -> {
-                viewModel.setToken(password)
-                binding.generatedField.text = password
-                viewModel.setLength(binding.fluidSlider.position)
+
+                viewModel.apply {
+                    setToken(password)
+                    setLength(binding.fluidSlider.position)
+                    setTokenNameEditTextLabelVisible()
+                    setTokenNameEditTextFieldVisibility()
+                }
+
+                binding.apply {
+                    generatedField.text = password
+                    tokenName.requestFocus()
+                }
 
                 copyToClipBoard(password)
-
-                binding.tokenName.apply {
-                    visibility = View.VISIBLE
-                    requestFocus()
-                    binding.optionalTitle.visibility = View.VISIBLE
-                    viewModel.tokenNameEditText = View.VISIBLE
-                }
             }
-            else -> Toast.makeText(
-                requireContext(),
-                R.string.toast_length_warning,
-                Toast.LENGTH_SHORT
-            ).show()
+            else -> showToast(getString(R.string.toast_length_warning))
         }
     }
 
@@ -200,13 +186,21 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             getString(R.string.feature_view_saved_passwords_description)
         )
     }
-}
 
-fun hideKeyboard(activity: Activity) {
-    val imm = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-    var view = activity.currentFocus
-    if (view == null) {
-        view = View(activity)
+    private fun showToast(message: String) {
+        Toast.makeText(
+            requireContext(),
+            message,
+            Toast.LENGTH_SHORT
+        ).show()
     }
-    imm.hideSoftInputFromWindow(view.windowToken, 0)
+
+    private fun hideKeyboard(activity: Activity) {
+        val imm = activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        var view = activity.currentFocus
+        if (view == null) {
+            view = View(activity)
+        }
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
 }
