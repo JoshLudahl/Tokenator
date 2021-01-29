@@ -30,8 +30,11 @@ You couldn't ask for a better and easier way to generate and save passwords! Wel
 * Written in Kotlin
 * Jetpack Navigation
 * LiveData
+* ViewBinding
+* DataBinding 
 * Room Database
 * RecyclerView
+* Dependency Injection using Dagger Hilt  
 * MVVM
 * Kotlin Coroutines
 * Material Design 
