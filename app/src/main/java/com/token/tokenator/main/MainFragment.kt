@@ -17,7 +17,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
-import com.google.android.material.snackbar.Snackbar
 import com.token.tokenator.R
 import com.token.tokenator.Utilities.Clipuous
 import com.token.tokenator.Utilities.FeatureDiscovery
