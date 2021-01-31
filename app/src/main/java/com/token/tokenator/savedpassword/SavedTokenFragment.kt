@@ -64,6 +64,7 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
                 dialog.cancel()
             }
             .create()
-            .show()
+
+            dialog.show()
     }
 }
