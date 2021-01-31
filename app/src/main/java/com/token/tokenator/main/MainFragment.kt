@@ -1,7 +1,6 @@
 package com.token.tokenator.main
 
 import android.app.Activity
-import android.content.ClipboardManager
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -27,12 +26,9 @@ import com.token.tokenator.model.Type
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.main_fragment) {
-
-    @Inject lateinit var clipboardManager: ClipboardManager
 
     lateinit var dataStore: DataStore<Preferences>
     private lateinit var binding: MainFragmentBinding
