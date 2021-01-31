@@ -1,6 +1,7 @@
 package com.token.tokenator.main
 
 import android.app.Activity
+import android.content.ClipboardManager
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -16,7 +17,7 @@ import androidx.datastore.preferences.createDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.token.tokenator.R
 import com.token.tokenator.Utilities.Clipuous
 import com.token.tokenator.Utilities.FeatureDiscovery
@@ -26,9 +27,12 @@ import com.token.tokenator.model.Type
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.main_fragment) {
+
+    @Inject lateinit var clipboardManager: ClipboardManager
 
     lateinit var dataStore: DataStore<Preferences>
     private lateinit var binding: MainFragmentBinding
@@ -50,7 +54,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
 
         binding.viewSavedButton.setOnClickListener {
-            navigateToSaved()
+            findNavController().navigate(R.id.action_mainFragment_to_savedTokenFragment)
         }
 
         binding.fluidSlider
@@ -72,13 +76,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         })
 
         dataStore = view.context.createDataStore(name = "settings")
-    }
-
-    private fun navigateToSaved() {
-        Navigation.findNavController(
-            requireActivity(),
-            R.id.myNavHostFragment
-        ).navigate(R.id.action_mainFragment_to_savedTokenFragment)
     }
 
     private fun saveToken() {
