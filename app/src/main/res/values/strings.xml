@@ -41,4 +41,5 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="optional">Optional</string>
+    <string name="take_me_to_settings">Take me to settings</string>
 </resources>
