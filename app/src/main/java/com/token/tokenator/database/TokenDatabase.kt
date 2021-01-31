@@ -12,4 +12,5 @@ import com.token.tokenator.model.Token
 abstract class TokenDatabase : RoomDatabase() {
 
     abstract fun tokenDao(): TokenDao
+
 }
