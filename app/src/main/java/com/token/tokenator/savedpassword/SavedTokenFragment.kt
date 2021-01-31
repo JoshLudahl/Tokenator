@@ -5,7 +5,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -38,7 +37,6 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
 
         binding.buttonBack.setOnClickListener {
             findNavController().navigate(R.id.action_savedTokenFragment_to_mainFragment)
-            //Navigation.findNavController(requireActivity(), R.id.myNavHostFragment).navigateUp()
         }
 
         viewModel.tokens.observe(viewLifecycleOwner, {

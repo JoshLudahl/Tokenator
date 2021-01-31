@@ -45,6 +45,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             generatePassword()
         }
 
+        binding.settingsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_settingsFragment)
+        }
+
         binding.saveButton.setOnClickListener {
             saveToken()
         }

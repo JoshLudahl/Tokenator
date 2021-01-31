@@ -29,5 +29,20 @@
             app:destination="@id/savedTokenFragment"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.token.tokenator.settings.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out" />
     </fragment>
 </navigation>
