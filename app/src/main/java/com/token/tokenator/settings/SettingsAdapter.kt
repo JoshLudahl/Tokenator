@@ -6,19 +6,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.token.tokenator.databinding.LayoutSettingGridItemBinding
 import com.token.tokenator.model.SettingsItem
 
-class SettingsAdapter (
+class SettingsAdapter(
     private val list: List<SettingsItem>,
     private val clickListener: SettingsListener
-    ) : RecyclerView.Adapter<SettingsAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<SettingsAdapter.ViewHolder>() {
 
-        class ViewHolder(private val itemBinding: LayoutSettingGridItemBinding) :
-                RecyclerView.ViewHolder(
-                    itemBinding.root
-                ) {
-                    fun bind(item: SettingsItem, clickListener: SettingsListener) {
-                        itemBinding.infoText.text = item.item
-                    }
-                }
+    class ViewHolder(private val itemBinding: LayoutSettingGridItemBinding) :
+        RecyclerView.ViewHolder(
+            itemBinding.root
+        ) {
+        fun bind(item: SettingsItem, clickListener: SettingsListener) {
+            itemBinding.infoText.text = item.item
+        }
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
