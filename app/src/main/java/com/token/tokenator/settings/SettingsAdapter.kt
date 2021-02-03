@@ -3,7 +3,6 @@ package com.token.tokenator.settings
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.token.tokenator.R
 import com.token.tokenator.databinding.LayoutSettingGridItemBinding
 import com.token.tokenator.model.SettingsItem
 
@@ -18,8 +17,6 @@ class SettingsAdapter(
         ) {
         fun bind(item: SettingsItem, clickListener: SettingsListener) {
             itemBinding.item = item
-            itemBinding.infoText.text = item.item
-
             itemBinding.clickListener = clickListener
             itemBinding.executePendingBindings()
         }

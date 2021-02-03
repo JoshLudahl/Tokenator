@@ -31,7 +31,7 @@
             android:fontFamily="sans-serif-black"
             android:gravity="center"
             android:onClick="@{() -> clickListener.onClick(item)}"
-            android:text="@string/grid_item_placeholder_dollar_sign"
+            android:text="@{item.item}"
             itemText="@{item}"
             android:textAlignment="center"
             android:textColor="@color/blackish"
