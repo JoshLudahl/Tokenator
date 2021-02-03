@@ -42,4 +42,5 @@
     <string name="no">No</string>
     <string name="optional">Optional</string>
     <string name="take_me_to_settings">Take me to settings</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
 </resources>
