@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -13,26 +14,24 @@
             type="com.token.tokenator.settings.SettingsListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/info_text"
+            itemText="@{item}"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
             android:clickable="true"
             android:focusable="true"
             android:fontFamily="sans-serif-black"
             android:gravity="center"
             android:onClick="@{() -> clickListener.onClick(item)}"
             android:text="@{item.item}"
-            itemText="@{item}"
             android:textAlignment="center"
             android:textColor="@color/blackish"
             android:textSize="22sp"
