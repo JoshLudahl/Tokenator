@@ -36,7 +36,7 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
         }
 
         binding.buttonBack.setOnClickListener {
-            findNavController().navigate(R.id.action_savedTokenFragment_to_mainFragment)
+            findNavController().navigateUp()
         }
 
         viewModel.tokens.observe(viewLifecycleOwner, {

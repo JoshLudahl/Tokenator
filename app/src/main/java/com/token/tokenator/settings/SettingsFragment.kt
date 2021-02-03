@@ -26,7 +26,7 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
 
         val list: List<SettingsItem> = retrieveList()
         val adapter = SettingsAdapter(list, SettingsListener {
-            onItemClick()
+            onItemClick(it)
         })
 
         binding.specialCharactersRecyclerview.apply {
@@ -36,14 +36,14 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
 
     }
 
-    private fun onItemClick() {
-
+    private fun onItemClick(item: SettingsItem) {
+        // TODO: 2/2/21 Implement action next
     }
 
     private fun setUpListeners() {
 
         binding.buttonBack.setOnClickListener {
-            findNavController().navigate(R.id.action_settingsFragment_to_mainFragment)
+            findNavController().navigateUp()
         }
     }
 
