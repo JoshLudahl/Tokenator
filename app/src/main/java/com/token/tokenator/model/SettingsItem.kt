@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity (tableName = "character_table")
+@Entity(tableName = "character_table")
 data class SettingsItem(
 
     @ColumnInfo(name = "item")
