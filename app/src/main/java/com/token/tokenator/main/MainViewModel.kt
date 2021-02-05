@@ -6,7 +6,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.token.tokenator.BuildConfig
 import com.token.tokenator.Utilities.Encryption
-import com.token.tokenator.database.TokenRepository
+import com.token.tokenator.database.token.TokenRepository
 import com.token.tokenator.model.Token
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

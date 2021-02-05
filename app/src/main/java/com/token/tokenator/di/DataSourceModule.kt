@@ -1,12 +1,14 @@
 package com.token.tokenator.di
 
 
-import android.app.Application
 import android.content.Context
 import androidx.room.Room
-import com.token.tokenator.database.TokenDao
-import com.token.tokenator.database.TokenDatabase
-import com.token.tokenator.database.TokenRepository
+import com.token.tokenator.database.settingsitem.SettingsItemDao
+import com.token.tokenator.database.settingsitem.SettingsItemDatabase
+import com.token.tokenator.database.settingsitem.SettingsItemRepository
+import com.token.tokenator.database.token.TokenDao
+import com.token.tokenator.database.token.TokenDatabase
+import com.token.tokenator.database.token.TokenRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,9 +32,31 @@ object DataSourceModule {
 
     @Singleton
     @Provides
-    fun providesTokenDao(database: TokenDatabase) = database.tokenDao()
+    fun providesTokenDao(database: TokenDatabase) =
+        database.tokenDao()
 
     @Singleton
     @Provides
-    fun providesRepository(tokenDao: TokenDao) = TokenRepository(tokenDao)
+    fun providesTokenRepository(tokenDao: TokenDao) =
+        TokenRepository(tokenDao)
+
+    @Singleton
+    @Provides
+    fun providesSettingsItemDatabase(
+        @ApplicationContext context: Context
+    ) = Room.databaseBuilder(
+        context,
+        SettingsItemDatabase::class.java,
+        "settingsitem_database"
+    ).build()
+
+    @Singleton
+    @Provides
+    fun providesSettingsItemDao(database: SettingsItemDatabase) =
+        database.settingsItemDao()
+
+    @Singleton
+    @Provides
+    fun providesSettingsItemRepository(settingsItemDao: SettingsItemDao) =
+        SettingsItemRepository(settingsItemDao)
 }

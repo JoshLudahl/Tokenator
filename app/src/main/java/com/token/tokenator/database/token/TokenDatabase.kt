@@ -1,4 +1,4 @@
-package com.token.tokenator.database
+package com.token.tokenator.database.token
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

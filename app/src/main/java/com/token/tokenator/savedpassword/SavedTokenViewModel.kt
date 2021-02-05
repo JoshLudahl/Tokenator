@@ -5,7 +5,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.token.tokenator.database.TokenRepository
+import com.token.tokenator.database.token.TokenRepository
 import com.token.tokenator.model.Token
 
 class SavedTokenViewModel @ViewModelInject constructor(private val repository: TokenRepository) :

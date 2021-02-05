@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.token.tokenator.R
 import com.token.tokenator.databinding.SettingsFragmentBinding
 import com.token.tokenator.model.SettingsItem
+import com.token.tokenator.model.Type
 
 class SettingsFragment : Fragment(R.layout.settings_fragment) {
 
@@ -52,7 +53,10 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         val list: MutableList<SettingsItem> = mutableListOf()
 
         specialChars.forEach {
-            list.add(SettingsItem(it.toChar().toString(), true))
+            list.add(SettingsItem(
+                item = it.toChar().toString(),
+                included = true,
+                category = Type.SPECIAL))
         }
         return list
     }
