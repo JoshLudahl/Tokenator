@@ -10,7 +10,9 @@ import com.token.tokenator.R
 import com.token.tokenator.databinding.SettingsFragmentBinding
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Type
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SettingsFragment : Fragment(R.layout.settings_fragment) {
 
     private val viewModel: SettingsViewModel by viewModels()
