@@ -23,24 +23,35 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
 
         binding = SettingsFragmentBinding.bind(view)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
 
-        setUpListeners()
-
-        val list: List<SettingsItem> = retrieveList()
-        val adapter = SettingsAdapter(list, SettingsListener {
+        val adapter = SettingsAdapter(SettingsListener {
             onItemClick(it)
         })
 
+        setUpRecyclerView(adapter)
+        setUpListeners()
+        setupObservers(adapter)
+    }
+
+    private fun setUpRecyclerView(adapter: SettingsAdapter) {
         binding.specialCharactersRecyclerview.apply {
             this.adapter = adapter
             this.layoutManager = GridLayoutManager(requireContext(), 5)
         }
-
     }
 
     private fun onItemClick(item: SettingsItem) {
         // TODO: 2/2/21 Implement action next
+    }
+
+    private fun setupObservers(adapter: SettingsAdapter) {
+        viewModel.specialCharList.observe(viewLifecycleOwner, {
+            it?.let {
+                adapter.setItems(it)
+            }
+        })
+
+        binding.lifecycleOwner = this
     }
 
     private fun setUpListeners() {

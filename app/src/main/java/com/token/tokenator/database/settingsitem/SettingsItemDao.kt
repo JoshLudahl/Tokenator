@@ -18,8 +18,8 @@ interface SettingsItemDao {
     @Query("SELECT * FROM character_table")
     fun getAllCharacters(): LiveData<List<SettingsItem>>
 
-    @Query("SELECT * FROM character_table WHERE category = :category")
-    fun getAllByCategory(category: Type): LiveData<List<SettingsItem>>
+//    @Query("SELECT * FROM character_table WHERE category = :category")
+//    fun getAllByCategory(category: Type): LiveData<List<SettingsItem>>
 
     @Update
     suspend fun updateCharacter(settingsItem: SettingsItem)

@@ -6,12 +6,8 @@ import com.token.tokenator.model.Type
 class SettingsItemTypeConverters {
 
     @TypeConverter
-    fun stringToItemType(string: String): Type {
-        return enumValueOf(string)
-    }
+    fun toType(string: String) = enumValueOf<Type>(string)
 
     @TypeConverter
-    fun fromItemToString(type: Type): String {
-        return type.name
-    }
+    fun fromType(type: Type?) = type?.name
 }

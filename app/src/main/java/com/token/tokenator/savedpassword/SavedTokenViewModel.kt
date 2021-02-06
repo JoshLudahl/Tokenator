@@ -28,6 +28,6 @@ class SavedTokenViewModel @Inject constructor(private val repository: TokenRepos
     }
 
     suspend fun delete(token: Token) {
-            repository.delete(token)
+        repository.delete(token)
     }
 }

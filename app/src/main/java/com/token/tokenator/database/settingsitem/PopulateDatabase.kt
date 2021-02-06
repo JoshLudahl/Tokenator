@@ -1,5 +1,6 @@
 package com.token.tokenator.database.settingsitem
 
+import android.util.Log
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Type
 
