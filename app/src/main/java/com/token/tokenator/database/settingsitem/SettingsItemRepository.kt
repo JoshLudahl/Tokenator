@@ -13,4 +13,8 @@ class SettingsItemRepository(private val settingsItemDao: SettingsItemDao) {
     suspend fun insert(settingsItem: SettingsItem) {
         settingsItemDao.insert(settingsItem)
     }
+
+    suspend fun update(settingsItem: SettingsItem) {
+        settingsItemDao.updateCharacter(settingsItem)
+    }
 }

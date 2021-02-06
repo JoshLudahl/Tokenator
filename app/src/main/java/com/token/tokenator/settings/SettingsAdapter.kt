@@ -10,7 +10,7 @@ import com.token.tokenator.model.SettingsItem
 
 class SettingsAdapter(
     private val clickListener: SettingsListener
-) : ListAdapter<SettingsItem, SettingsAdapter.ViewHolder>(SettingsItemDiffCallback) {
+) : ListAdapter<SettingsItem, SettingsAdapter.ViewHolder>(SettingsItemDiffCallback()) {
 
     private var settingsItemList = emptyList<SettingsItem>()
 
@@ -48,12 +48,13 @@ class SettingsAdapter(
     fun setItems(setSettingsItemList: List<SettingsItem>) {
         settingsItemList = setSettingsItemList
         submitList(settingsItemList)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount() = settingsItemList.size
 }
 
-object SettingsItemDiffCallback : DiffUtil.ItemCallback<SettingsItem>() {
+class SettingsItemDiffCallback : DiffUtil.ItemCallback<SettingsItem>() {
     override fun areItemsTheSame(oldItem: SettingsItem, newItem: SettingsItem): Boolean {
         return oldItem.id == newItem.id
     }

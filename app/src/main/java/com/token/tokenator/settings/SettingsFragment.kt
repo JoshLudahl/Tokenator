@@ -1,6 +1,7 @@
 package com.token.tokenator.settings
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -41,7 +42,10 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
     }
 
     private fun onItemClick(item: SettingsItem) {
-        // TODO: 2/2/21 Implement action next
+        Log.i("ITEM", item.included.toString())
+
+        item.included = !item.included
+        viewModel.updateItems(item)
     }
 
     private fun setupObservers(adapter: SettingsAdapter) {
