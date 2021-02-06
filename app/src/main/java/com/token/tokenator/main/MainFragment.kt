@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.preferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.createDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -115,14 +115,14 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     private suspend fun saveDataStore(key: String, value: Boolean) {
-        val dataStoreKey = preferencesKey<String>(key)
+        val dataStoreKey = stringPreferencesKey(key)
         dataStore.edit { preferences ->
             preferences[dataStoreKey] = value.toString()
         }
     }
 
     private suspend fun readDataStore(key: String): String {
-        val dataStoreKey = preferencesKey<String>(key)
+        val dataStoreKey = stringPreferencesKey(key)
         val preferences = dataStore.data.first()
         return preferences[dataStoreKey].toString()
     }
