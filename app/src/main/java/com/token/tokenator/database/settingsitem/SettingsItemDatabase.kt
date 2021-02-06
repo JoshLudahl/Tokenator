@@ -10,7 +10,7 @@ import com.token.tokenator.model.SettingsItem
     version = 4,
     exportSchema = false
 )
-@TypeConverters(SettingsTypeConverters::class)
+@TypeConverters(SettingsItemTypeConverters::class)
 abstract class SettingsItemDatabase : RoomDatabase() {
 
     abstract fun settingsItemDao(): SettingsItemDao

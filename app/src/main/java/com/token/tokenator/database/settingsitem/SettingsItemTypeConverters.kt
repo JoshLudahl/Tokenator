@@ -3,11 +3,11 @@ package com.token.tokenator.database.settingsitem
 import androidx.room.TypeConverter
 import com.token.tokenator.model.Type
 
-class SettingsTypeConverters {
+class SettingsItemTypeConverters {
 
     @TypeConverter
     fun stringToItemType(string: String): Type {
-        return Type.valueOf(string)
+        return enumValueOf(string)
     }
 
     @TypeConverter

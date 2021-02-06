@@ -1,14 +1,16 @@
 package com.token.tokenator.savedpassword
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.token.tokenator.database.token.TokenRepository
 import com.token.tokenator.model.Token
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class SavedTokenViewModel @ViewModelInject constructor(private val repository: TokenRepository) :
+@HiltViewModel
+class SavedTokenViewModel @Inject constructor(private val repository: TokenRepository) :
     ViewModel(), LifecycleObserver {
 
     val tokens: LiveData<List<Token>> = repository.allTokens

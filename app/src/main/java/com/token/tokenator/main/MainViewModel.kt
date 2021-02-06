@@ -2,16 +2,22 @@ package com.token.tokenator.main
 
 import android.util.Log
 import android.view.View
-import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import com.token.tokenator.BuildConfig
 import com.token.tokenator.Utilities.Encryption
 import com.token.tokenator.database.token.TokenRepository
 import com.token.tokenator.model.Token
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel @ViewModelInject constructor(private var repository: TokenRepository) :
+@HiltViewModel
+class MainViewModel @Inject constructor(private var repository: TokenRepository) :
     ViewModel(), LifecycleObserver {
 
     var version: String

@@ -2,7 +2,7 @@
 buildscript {
 
     ext {
-        dagger_hilt = '2.28-alpha'
+        dagger_hilt = '2.31.2-alpha'
         hilt_lifecycle_viewmodel = '1.0.0-alpha01'
         junit5 = '5.7.0'
         kotlin_version = '1.4.21'
