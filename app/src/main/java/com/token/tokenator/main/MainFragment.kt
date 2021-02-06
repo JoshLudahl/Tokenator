@@ -12,7 +12,6 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.createDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -26,11 +25,12 @@ import com.token.tokenator.model.Type
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.main_fragment) {
 
-    lateinit var dataStore: DataStore<Preferences>
+    @Inject lateinit var dataStore: DataStore<Preferences>
     private lateinit var binding: MainFragmentBinding
     private val viewModel: MainViewModel by viewModels()
 
@@ -74,8 +74,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 }
             }
         })
-
-        dataStore = view.context.createDataStore(name = "settings")
     }
 
     private fun saveToken() {
