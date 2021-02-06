@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.util.Log.INFO
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -19,18 +20,23 @@ import androidx.navigation.fragment.findNavController
 import com.token.tokenator.R
 import com.token.tokenator.Utilities.Clipuous
 import com.token.tokenator.Utilities.FeatureDiscovery
+import com.token.tokenator.database.settingsitem.PopulateDatabase
+import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.databinding.MainFragmentBinding
 import com.token.tokenator.model.Tokenator
 import com.token.tokenator.model.Type
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import java.util.logging.Level.INFO
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.main_fragment) {
 
     @Inject lateinit var dataStore: DataStore<Preferences>
+    @Inject lateinit var settingsItemRepository: SettingsItemRepository
+
     private lateinit var binding: MainFragmentBinding
     private val viewModel: MainViewModel by viewModels()
 
@@ -74,6 +80,14 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 }
             }
         })
+
+        populateSettingsItem()
+    }
+
+     private fun populateSettingsItem() {
+         lifecycleScope.launch {
+             PopulateDatabase.populateDatabase(settingsItemRepository)
+         }
     }
 
     private fun saveToken() {

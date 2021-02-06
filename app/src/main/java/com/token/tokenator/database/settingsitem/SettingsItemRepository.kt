@@ -8,4 +8,7 @@ class SettingsItemRepository(private val settingsItemDao: SettingsItemDao) {
 
     val allSpecialChars: LiveData<List<SettingsItem>> = settingsItemDao.getAllByCategory(Type.SPECIAL)
 
+    suspend fun insert(settingsItem: SettingsItem) {
+        settingsItemDao.insert(settingsItem)
+    }
 }

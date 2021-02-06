@@ -7,7 +7,7 @@ import com.token.tokenator.model.SettingsItem
 
 @Database(
     entities = [SettingsItem::class],
-    version = 4,
+    version = 1,
     exportSchema = false
 )
 @TypeConverters(SettingsItemTypeConverters::class)
