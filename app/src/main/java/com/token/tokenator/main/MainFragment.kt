@@ -69,7 +69,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                if (s?.length == 0) {
+                if (s?.trim()?.length == 0) {
                     binding.saveButton.visibility = View.GONE
                 }
             }
