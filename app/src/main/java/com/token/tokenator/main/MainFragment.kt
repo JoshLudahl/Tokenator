@@ -86,7 +86,12 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
      private fun populateSettingsItem() {
          lifecycleScope.launch {
-             PopulateDatabase.populateDatabase(settingsItemRepository)
+             val preferenceItem = readDataStore("character_populated")
+             if(preferenceItem == "null") {
+                 Log.i("SP", "Populating Characters into the database")
+                 PopulateDatabase.populateDatabase(settingsItemRepository)
+                 saveDataStore("character_populated", true)
+             }
          }
     }
 
