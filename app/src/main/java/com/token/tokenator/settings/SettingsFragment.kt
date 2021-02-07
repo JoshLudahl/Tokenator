@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.token.tokenator.R
 import com.token.tokenator.databinding.SettingsFragmentBinding
 import com.token.tokenator.model.SettingsItem
-import com.token.tokenator.model.Type
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

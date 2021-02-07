@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.util.Log.INFO
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -28,14 +27,15 @@ import com.token.tokenator.model.Type
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import java.util.logging.Level.INFO
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.main_fragment) {
 
-    @Inject lateinit var dataStore: DataStore<Preferences>
-    @Inject lateinit var settingsItemRepository: SettingsItemRepository
+    @Inject
+    lateinit var dataStore: DataStore<Preferences>
+    @Inject
+    lateinit var settingsItemRepository: SettingsItemRepository
 
     private lateinit var binding: MainFragmentBinding
     private val viewModel: MainViewModel by viewModels()
@@ -84,15 +84,15 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         populateSettingsItem()
     }
 
-     private fun populateSettingsItem() {
-         lifecycleScope.launch {
-             val preferenceItem = readDataStore("character_populated")
-             if(preferenceItem == "null") {
-                 Log.i("SP", "Populating Characters into the database")
-                 PopulateDatabase.populateDatabase(settingsItemRepository)
-                 saveDataStore("character_populated", true)
-             }
-         }
+    private fun populateSettingsItem() {
+        lifecycleScope.launch {
+            val preferenceItem = readDataStore("character_populated")
+            if (preferenceItem == "null") {
+                Log.i("SP", "Populating Characters into the database")
+                PopulateDatabase.populateDatabase(settingsItemRepository)
+                saveDataStore("character_populated", true)
+            }
+        }
     }
 
     private fun saveToken() {
