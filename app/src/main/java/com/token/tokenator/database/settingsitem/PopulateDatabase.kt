@@ -66,19 +66,22 @@ object PopulateDatabase {
                 buildItem(it, Type.SPECIAL)
             )
         }
+
+        listOfNumeric.forEach {
+            database.insert(
+                buildItem(it, Type.NUMERIC)
+            )
+        }
+
         listOfLowerCaseLetters.forEach {
             database.insert(
                 buildItem(it, Type.LOWERCASE)
             )
         }
+
         listOfUpperCaseLetters.forEach {
             database.insert(
                 buildItem(it, Type.UPPERCASE)
-            )
-        }
-        listOfNumeric.forEach {
-            database.insert(
-                buildItem(it, Type.NUMERIC)
             )
         }
     }
