@@ -37,7 +37,7 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
     private fun setUpRecyclerView(adapter: SettingsAdapter) {
         binding.specialCharactersRecyclerview.apply {
             this.adapter = adapter
-            this.layoutManager = GridLayoutManager(requireContext(), 5)
+            this.layoutManager = GridLayoutManager(requireContext(), 6)
         }
     }
 
@@ -63,22 +63,5 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         binding.buttonBack.setOnClickListener {
             findNavController().navigateUp()
         }
-    }
-
-    private fun retrieveList(): List<SettingsItem> {
-        val specialChars =
-            listOf(33, 35, 36, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 60, 61, 62, 63, 64)
-        val list: MutableList<SettingsItem> = mutableListOf()
-
-        specialChars.forEach {
-            list.add(
-                SettingsItem(
-                    item = it.toChar().toString(),
-                    included = true,
-                    category = Type.SPECIAL
-                )
-            )
-        }
-        return list
     }
 }

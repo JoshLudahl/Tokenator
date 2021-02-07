@@ -13,6 +13,9 @@ class SettingsViewModel @Inject constructor(
 ) : ViewModel(), LifecycleObserver {
 
     val specialCharList: LiveData<List<SettingsItem>> = repository.allCharacters
+    val numericCharList: LiveData<List<SettingsItem>> = repository.allNumericChars
+    val lowerCaseCharList: LiveData<List<SettingsItem>> = repository.allLowerCaseChars
+    val upperCaseCharList: LiveData<List<SettingsItem>> = repository.allUpperCaseChars
 
     fun updateItems(settingsItem: SettingsItem) {
         viewModelScope.launch {

@@ -1,6 +1,5 @@
 package com.token.tokenator.database.settingsitem
 
-import android.util.Log
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Type
 
@@ -12,7 +11,7 @@ object PopulateDatabase {
     private val listOfSpecialCharacters = mutableListOf<Char>()
 
     private fun populateList(list: MutableList<Char>, lowerBound: Int, upperBound: Int) {
-        for (index in lowerBound until upperBound) {
+        for (index in lowerBound until upperBound.inc()) {
             list.add(index.toChar())
         }
     }
@@ -22,7 +21,7 @@ object PopulateDatabase {
             list = listOfLowerCaseLetters,
             lowerBound = 97,
             upperBound = 122
-            )
+        )
 
         populateList(
             list = listOfUpperCaseLetters,
@@ -59,15 +58,36 @@ object PopulateDatabase {
         )
     }
 
-     suspend fun populateDatabase(database: SettingsItemRepository) {
+    suspend fun populateDatabase(database: SettingsItemRepository) {
         populateLists()
 
         listOfSpecialCharacters.forEach {
-            database.insert(SettingsItem(
-                item = it.toString(),
-                included = true,
-                category = Type.SPECIAL
-            ))
+            database.insert(
+                buildItem(it, Type.SPECIAL)
+            )
         }
+        listOfLowerCaseLetters.forEach {
+            database.insert(
+                buildItem(it, Type.LOWERCASE)
+            )
+        }
+        listOfUpperCaseLetters.forEach {
+            database.insert(
+                buildItem(it, Type.UPPERCASE)
+            )
+        }
+        listOfNumeric.forEach {
+            database.insert(
+                buildItem(it, Type.NUMERIC)
+            )
+        }
+    }
+
+    private fun buildItem(number: Char, type: Type): SettingsItem {
+        return SettingsItem(
+            item = number.toString(),
+            included = true,
+            category = type
+        )
     }
 }
