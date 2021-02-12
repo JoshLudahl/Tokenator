@@ -19,5 +19,4 @@ interface SettingsItemDao {
 
     @Update
     suspend fun updateCharacter(settingsItem: SettingsItem)
-
 }

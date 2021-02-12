@@ -17,11 +17,13 @@ class SettingsItemRepository(private val settingsItemDao: SettingsItemDao) {
     val allUpperCaseChars: LiveData<List<SettingsItem>> =
         settingsItemDao.getAllByCategory(Type.UPPERCASE)
 
-    suspend fun insert(settingsItem: SettingsItem) {
+    suspend fun insert(settingsItem: SettingsItem) =
         settingsItemDao.insert(settingsItem)
-    }
 
-    suspend fun update(settingsItem: SettingsItem) {
+
+    suspend fun update(settingsItem: SettingsItem) =
         settingsItemDao.updateCharacter(settingsItem)
-    }
+
+    suspend fun getAllCharacters() =
+        settingsItemDao.getAllCharacters()
 }
