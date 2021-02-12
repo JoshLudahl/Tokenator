@@ -6,14 +6,21 @@ import com.token.tokenator.model.Type
 
 class SettingsItemRepository(private val settingsItemDao: SettingsItemDao) {
 
-    val allCharacters: LiveData<List<SettingsItem>> = settingsItemDao.getAllCharacters()
+    val allCharacters: LiveData<List<SettingsItem>> =
+        settingsItemDao.getAllCharacters()
+
+    val allExcludedCharacters: LiveData<List<SettingsItem>> =
+        settingsItemDao.getAllExcluded()
 
     val allSpecialChars: LiveData<List<SettingsItem>> =
         settingsItemDao.getAllByCategory(Type.SPECIAL)
+
     val allNumericChars: LiveData<List<SettingsItem>> =
         settingsItemDao.getAllByCategory(Type.NUMERIC)
+
     val allLowerCaseChars: LiveData<List<SettingsItem>> =
         settingsItemDao.getAllByCategory(Type.LOWERCASE)
+
     val allUpperCaseChars: LiveData<List<SettingsItem>> =
         settingsItemDao.getAllByCategory(Type.UPPERCASE)
 

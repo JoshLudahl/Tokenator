@@ -2,14 +2,12 @@ package com.token.tokenator.main
 
 import android.util.Log
 import android.view.View
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.token.tokenator.BuildConfig
 import com.token.tokenator.Utilities.Encryption
+import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.database.token.TokenRepository
+import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Token
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +15,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private var repository: TokenRepository) :
+class MainViewModel @Inject constructor(
+    private var repository: TokenRepository,
+    private val settingsItemRepository: SettingsItemRepository
+) :
     ViewModel(), LifecycleObserver {
 
     var version: String
@@ -25,6 +26,8 @@ class MainViewModel @Inject constructor(private var repository: TokenRepository)
     private val _length = MutableLiveData<Float>()
     private val _tokenNameEditTextLabelVisibility = MutableLiveData<Int>()
     private val _tokenNameEditTextFieldVisibility = MutableLiveData<Int>()
+    private val _allCharacters = settingsItemRepository.allCharacters
+
 
     init {
         Log.i("MainViewModel", "Initialized")
@@ -40,6 +43,9 @@ class MainViewModel @Inject constructor(private var repository: TokenRepository)
     val length: LiveData<Float>
         get() = _length
 
+    val allCharacters: LiveData<List<SettingsItem>>
+        get() = _allCharacters
+
     fun setToken(text: String) {
         _token.value = text
     }
@@ -50,17 +56,18 @@ class MainViewModel @Inject constructor(private var repository: TokenRepository)
 
     var tokenNameEditText = View.GONE
 
-    val tokenNameEditTextFieldVisibility : LiveData<Int>
+    val tokenNameEditTextFieldVisibility: LiveData<Int>
         get() = _tokenNameEditTextFieldVisibility
 
     fun setTokenNameEditTextFieldVisibility() =
         _tokenNameEditTextFieldVisibility.postValue(View.VISIBLE)
 
-    val tokenNameEditTextLabelVisibility : LiveData<Int>
+    val tokenNameEditTextLabelVisibility: LiveData<Int>
         get() = _tokenNameEditTextLabelVisibility
 
     fun setTokenNameEditTextLabelVisible() =
         _tokenNameEditTextLabelVisibility.postValue(View.VISIBLE)
+
 
     fun insert(
         passwordName: String,

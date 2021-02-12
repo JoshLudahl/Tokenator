@@ -34,6 +34,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     @Inject
     lateinit var dataStore: DataStore<Preferences>
+
     @Inject
     lateinit var settingsItemRepository: SettingsItemRepository
 
@@ -162,9 +163,15 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             binding.fluidSlider.position = 0.08f
             length = 8
         }
+
+        val stringList = mutableListOf<String>()
+        viewModel.allCharacters.value?.forEach {
+            if (it.included.not()) stringList.add(it.item)
+        }
         val password = Tokenator.generate(
             length,
-            chars
+            chars,
+            stringList
         )
 
         when {

@@ -12,21 +12,28 @@ object Tokenator {
      */
     fun generate(
         length: Int,
-        includes: MutableList<Type>
+        includes: MutableList<Type>,
+        excludedCharacters: List<String>
     ): String {
 
         val sb = StringBuilder()
 
-        if (length in 1..10000) {
-            for (int in 1..length) {
+        if (length in 1..1000) {
+            while (sb.length < length) {
                 includes.shuffle()
+
                 if (includes.size != 0) {
-                    when (includes[0]) {
-                        Type.LOWERCASE -> sb.append(generateRandomLowercaseLetter())
-                        Type.NUMERIC -> sb.append(generateRandomNumber())
-                        Type.UPPERCASE -> sb.append(generateRandomUppercaseLetter())
-                        Type.SPECIAL -> sb.append(generateRandomSpecialCharacter())
+                    val character = when (includes[0]) {
+                        Type.LOWERCASE -> generateRandomLowercaseLetter().toString()
+                        Type.NUMERIC -> generateRandomNumber().toString()
+                        Type.UPPERCASE -> generateRandomUppercaseLetter().toString()
+                        Type.SPECIAL -> generateRandomSpecialCharacter().toString()
                     }
+
+                    if (excludedCharacters.contains(character).not()) {
+                        sb.append(character)
+                    }
+
                 } else {
                     sb.append(generateRandomLowercaseLetter())
                 }
