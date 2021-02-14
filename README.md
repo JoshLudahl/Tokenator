@@ -5,7 +5,7 @@ Tokenator is an easy-to-use password generator & manager offering passwords gene
 
 Generating a password automatically copies the password to your clipboard. Tokenator is the easiest way to generate a secure password.
 
-Easily generate a password ranging from 1-100 characters.
+Easily generate a password ranging from 1-100 characters. Easy, so easy. 
 
 ## Important concerns:
 * No ads
