@@ -2,7 +2,6 @@ package com.token.tokenator.main
 
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.*
 import com.token.tokenator.BuildConfig
 import com.token.tokenator.Utilities.Encryption
