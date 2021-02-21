@@ -23,7 +23,7 @@ import com.token.tokenator.Utilities.FeatureDiscovery
 import com.token.tokenator.database.settingsitem.PopulateDatabase
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.databinding.MainFragmentBinding
-import com.token.tokenator.model.Tokenator
+import com.token.tokenator.Utilities.Tokenator
 import com.token.tokenator.model.Type
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first

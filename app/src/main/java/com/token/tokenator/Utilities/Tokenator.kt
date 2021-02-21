@@ -1,5 +1,6 @@
-package com.token.tokenator.model
+package com.token.tokenator.Utilities
 
+import com.token.tokenator.model.Type
 import kotlin.random.Random
 import kotlin.random.nextInt
 
