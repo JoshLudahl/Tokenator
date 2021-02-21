@@ -2,6 +2,7 @@ package com.token.tokenator.main
 
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.*
 import com.token.tokenator.BuildConfig
 import com.token.tokenator.Utilities.Encryption
@@ -27,7 +28,7 @@ class MainViewModel @Inject constructor(
     private val _tokenNameEditTextLabelVisibility = MutableLiveData<Int>()
     private val _tokenNameEditTextFieldVisibility = MutableLiveData<Int>()
     private val _allCharacters = settingsItemRepository.allCharacters
-
+    private val _shouldShowEasterEggToast = MutableLiveData<Boolean>(false)
 
     init {
         Log.i("MainViewModel", "Initialized")
@@ -45,6 +46,9 @@ class MainViewModel @Inject constructor(
 
     val allCharacters: LiveData<List<SettingsItem>>
         get() = _allCharacters
+
+    val shouldShowEasterEggToast: LiveData<Boolean>
+        get() = _shouldShowEasterEggToast
 
     fun setToken(text: String) {
         _token.value = text
@@ -68,6 +72,13 @@ class MainViewModel @Inject constructor(
     fun setTokenNameEditTextLabelVisible() =
         _tokenNameEditTextLabelVisibility.postValue(View.VISIBLE)
 
+    fun showEasterEggToast() {
+        _shouldShowEasterEggToast.postValue(true)
+    }
+
+    fun setShouldShowToastToFalse() {
+        _shouldShowEasterEggToast.value = false
+    }
 
     fun insert(
         passwordName: String,

@@ -26,12 +26,15 @@
             tools:context=".MainActivity">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/appCompatImageView2"
+                android:id="@+id/tokenator_logo"
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{() -> viewModel.showEasterEggToast()}"
                 android:src="@drawable/ic_tokenator"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -43,14 +46,14 @@
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
                 android:layout_marginEnd="16dp"
+                android:clickable="true"
+                android:contentDescription="@string/take_me_to_settings"
+                android:focusable="true"
                 app:layout_constraintBottom_toBottomOf="@+id/view_saved_button"
                 app:layout_constraintEnd_toStartOf="@+id/view_saved_button"
                 app:layout_constraintTop_toTopOf="@+id/view_saved_button"
                 app:srcCompat="@drawable/ic_baseline_settings_24"
-                app:tint="@color/yellow"
-                android:clickable="true"
-                android:focusable="true"
-                android:contentDescription="@string/take_me_to_settings"/>
+                app:tint="@color/yellow" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/view_saved_button"
@@ -59,11 +62,11 @@
                 android:layout_marginEnd="16dp"
                 android:src="@drawable/ic_bookmark"
                 android:tint="@color/yellow"
-                app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
+                app:layout_constraintBottom_toBottomOf="@+id/tokenator_logo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/appCompatImageView2" />
+                app:layout_constraintTop_toTopOf="@+id/tokenator_logo" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
@@ -498,7 +501,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/settings"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
+                app:layout_constraintTop_toBottomOf="@+id/tokenator_logo" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
