@@ -20,6 +20,7 @@ Easily generate a password ranging from 1-100 characters. Easy, so easy.
 * Generating a password automatically copies it to the clipboard
 * Hybrid dark/light theme utilizing softer, less dramatic colors
 * Generate passwords ranging 1-100 in length, 8 is set as the default
+* Customize which characters to use 
 * Save the generated password
 * The passwords are encrypted before saving to your device
 * Easy-to-use password generator manager for managing your saved passwords
