@@ -26,6 +26,8 @@ import com.token.tokenator.databinding.MainFragmentBinding
 import com.token.tokenator.Utilities.Tokenator
 import com.token.tokenator.model.Type
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -42,6 +44,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     private lateinit var binding: MainFragmentBinding
     private val viewModel: MainViewModel by viewModels()
 
+    @InternalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -49,12 +52,16 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        viewModel.shouldShowEasterEggToast.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                showToast("You make touch.")
-                viewModel.setShouldShowToastToFalse()
+        lifecycleScope.launchWhenStarted {
+            viewModel.shouldShowEasterEggToast.collect {
+                when (it) {
+                    true -> {
+                        viewModel.setShouldShowToastToFalse()
+                        showToast("You make touch")
+                    }
+                }
             }
-        })
+        }
 
         binding.buttonGenerateToken.setOnClickListener {
             generatePassword()

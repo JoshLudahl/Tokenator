@@ -31,6 +31,7 @@ You couldn't ask for a better and easier way to generate and save passwords! Wel
 * Written in Kotlin
 * Jetpack Navigation
 * LiveData
+* StateFlow 
 * ViewBinding
 * DataBinding 
 * Room Database

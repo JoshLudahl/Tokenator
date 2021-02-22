@@ -11,6 +11,8 @@ import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Token
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,12 +24,12 @@ class MainViewModel @Inject constructor(
     ViewModel(), LifecycleObserver {
 
     var version: String
-    private val _token = MutableLiveData<String>()
-    private val _length = MutableLiveData<Float>()
+    private val _token = MutableStateFlow<String>("")
+    private val _length = MutableStateFlow<Float>(0f)
     private val _tokenNameEditTextLabelVisibility = MutableLiveData<Int>()
     private val _tokenNameEditTextFieldVisibility = MutableLiveData<Int>()
     private val _allCharacters = settingsItemRepository.allCharacters
-    private val _shouldShowEasterEggToast = MutableLiveData<Boolean>(false)
+    private val _shouldShowEasterEggToast = MutableStateFlow<Boolean>(false)
 
     init {
         Log.i("MainViewModel", "Initialized")
@@ -37,16 +39,16 @@ class MainViewModel @Inject constructor(
         _tokenNameEditTextFieldVisibility.value = View.GONE
     }
 
-    val token: LiveData<String>
+    val token: StateFlow<String>
         get() = _token
 
-    val length: LiveData<Float>
+    val length: StateFlow<Float>
         get() = _length
 
     val allCharacters: LiveData<List<SettingsItem>>
         get() = _allCharacters
 
-    val shouldShowEasterEggToast: LiveData<Boolean>
+    val shouldShowEasterEggToast: StateFlow<Boolean>
         get() = _shouldShowEasterEggToast
 
     fun setToken(text: String) {
@@ -71,8 +73,8 @@ class MainViewModel @Inject constructor(
     fun setTokenNameEditTextLabelVisible() =
         _tokenNameEditTextLabelVisibility.postValue(View.VISIBLE)
 
-    fun showEasterEggToast() {
-        _shouldShowEasterEggToast.postValue(true)
+     fun showEasterEggToast() {
+        _shouldShowEasterEggToast.value = true
     }
 
     fun setShouldShowToastToFalse() {
