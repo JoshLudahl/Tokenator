@@ -34,6 +34,7 @@ You couldn't ask for a better and easier way to generate and save passwords! Wel
 * ViewBinding
 * DataBinding 
 * Room Database
+* DataStore 
 * RecyclerView
 * Dependency Injection using Dagger Hilt  
 * MVVM
