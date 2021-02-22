@@ -73,7 +73,7 @@ class MainViewModel @Inject constructor(
     fun setTokenNameEditTextLabelVisible() =
         _tokenNameEditTextLabelVisibility.postValue(View.VISIBLE)
 
-     fun showEasterEggToast() {
+    fun showEasterEggToast() {
         _shouldShowEasterEggToast.value = true
     }
 
