@@ -29,12 +29,13 @@ class SettingsAdapter(
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        val item = LayoutSettingGridItemBinding.inflate(
+        return LayoutSettingGridItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
-        )
-        return ViewHolder(item)
+        ).let {
+            ViewHolder(it)
+        }
     }
 
     override fun onBindViewHolder(

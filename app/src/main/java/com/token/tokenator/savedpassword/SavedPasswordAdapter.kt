@@ -64,12 +64,13 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        val item = LayoutSavedTokenListItemBinding.inflate(
+        return LayoutSavedTokenListItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
-        )
-        return ViewHolder(item)
+        ).let{
+            ViewHolder(it)
+        }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
