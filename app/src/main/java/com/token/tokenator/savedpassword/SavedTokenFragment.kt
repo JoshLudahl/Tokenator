@@ -18,12 +18,13 @@ import kotlinx.coroutines.launch
 class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
 
     private val viewModel: SavedTokenViewModel by viewModels()
-    private lateinit var binding: SavedTokenFragmentBinding
+    private var _binding: SavedTokenFragmentBinding? = null
+    private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = SavedTokenFragmentBinding.bind(view)
+        _binding = SavedTokenFragmentBinding.bind(view)
         binding.tokenViewModel = viewModel
 
          val adapter = SavedPasswordAdapter(TokenListener {
@@ -48,7 +49,7 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
             }
         })
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = this.viewLifecycleOwner
     }
 
     private fun delete(token: Token) {
@@ -66,5 +67,10 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
             .create()
 
         dialog.show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

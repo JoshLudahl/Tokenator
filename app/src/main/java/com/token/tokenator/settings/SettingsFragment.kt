@@ -15,13 +15,19 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SettingsFragment : Fragment(R.layout.settings_fragment) {
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private val viewModel: SettingsViewModel by viewModels()
-    private lateinit var binding: SettingsFragmentBinding
+    private var _binding: SettingsFragmentBinding? = null
+    private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = SettingsFragmentBinding.bind(view)
+        _binding = SettingsFragmentBinding.bind(view)
         binding.viewModel = viewModel
 
         val adapter = SettingsAdapter(SettingsListener {
@@ -54,7 +60,7 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
             }
         })
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = this.viewLifecycleOwner
     }
 
     private fun setUpListeners() {

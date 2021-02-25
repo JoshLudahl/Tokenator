@@ -41,16 +41,17 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     @Inject
     lateinit var settingsItemRepository: SettingsItemRepository
 
-    private lateinit var binding: MainFragmentBinding
+    private var _binding: MainFragmentBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: MainViewModel by viewModels()
 
     @InternalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = MainFragmentBinding.bind(view)
+        _binding = MainFragmentBinding.bind(view)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = this.viewLifecycleOwner
 
         lifecycleScope.launchWhenStarted {
             viewModel.shouldShowEasterEggToast.collect {
@@ -237,5 +238,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             view = View(activity)
         }
         imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
