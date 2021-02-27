@@ -25,9 +25,9 @@ object Tokenator {
         }
 
         if (length in 1..1000) {
-            while (sb.length < length) {
+            var looper = 0
+            while (sb.length < length && looper < 50000) {
                 includes.shuffle()
-
                 if (includes.size != 0) {
                     val character = when (includes[0]) {
                         Type.LOWERCASE -> generateRandomLowercaseLetter().toString()
@@ -43,6 +43,7 @@ object Tokenator {
                 } else {
                     sb.append(generateRandomLowercaseLetter())
                 }
+                looper++
             }
         }
         return sb.toString()
