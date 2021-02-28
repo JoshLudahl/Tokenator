@@ -2,24 +2,32 @@ package com.token.tokenator.main
 
 import android.util.Log
 import android.view.View
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.*
 import com.token.tokenator.BuildConfig
 import com.token.tokenator.Utilities.Encryption
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.database.token.TokenRepository
+import com.token.tokenator.di.DataStoreNoRepeat
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Token
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private var repository: TokenRepository,
-    private val settingsItemRepository: SettingsItemRepository
+    settingsItemRepository: SettingsItemRepository,
+    dataStore: DataStore<Preferences>,
+    @DataStoreNoRepeat private var noRepeat: String
 ) :
     ViewModel(), LifecycleObserver {
 
@@ -30,6 +38,12 @@ class MainViewModel @Inject constructor(
     private val _tokenNameEditTextFieldVisibility = MutableLiveData<Int>()
     private val _allCharacters = settingsItemRepository.allCharacters
     private val _shouldShowEasterEggToast = MutableStateFlow<Boolean>(false)
+
+    private val KEY = stringPreferencesKey(noRepeat)
+
+    val noRepeatFlow: Flow<Boolean> = dataStore.data.map {
+        preferences -> (preferences[KEY]).toBoolean()
+    }
 
     init {
         Log.i("MainViewModel", "Initialized")

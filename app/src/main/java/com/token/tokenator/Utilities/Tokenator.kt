@@ -15,6 +15,7 @@ object Tokenator {
         length: Int,
         includes: MutableList<Type>,
         excludedCharacters: List<String>,
+        doNotRepeat: Boolean,
         includePhrase: String? = null
     ): String {
 
@@ -37,9 +38,14 @@ object Tokenator {
                     }
 
                     if (excludedCharacters.contains(character).not()) {
-                        sb.append(character)
+                        if (doNotRepeat) {
+                            if (sb.contains(character).not()) {
+                                sb.append(character)
+                            }
+                        } else {
+                            sb.append(character)
+                        }
                     }
-
                 } else {
                     sb.append(generateRandomLowercaseLetter())
                 }

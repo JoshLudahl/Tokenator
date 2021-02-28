@@ -14,7 +14,6 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.token.tokenator.R
@@ -24,6 +23,7 @@ import com.token.tokenator.database.settingsitem.PopulateDatabase
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.databinding.MainFragmentBinding
 import com.token.tokenator.Utilities.Tokenator
+import com.token.tokenator.di.DataStoreNoRepeat
 import com.token.tokenator.model.Type
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -31,6 +31,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.main_fragment) {
@@ -38,12 +39,17 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     @Inject
     lateinit var dataStore: DataStore<Preferences>
 
+    @DataStoreNoRepeat
+    @Inject
+    lateinit var noRepeat: String
+
     @Inject
     lateinit var settingsItemRepository: SettingsItemRepository
 
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel: MainViewModel by viewModels()
+    private var doesNotRepeat by Delegates.notNull<Boolean>()
 
     @InternalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,7 +71,9 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
 
         binding.buttonGenerateToken.setOnClickListener {
-            generatePassword()
+            lifecycleScope.launch {
+                generatePassword()
+            }
         }
 
         binding.settingsButton.setOnClickListener {
@@ -78,6 +86,22 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         binding.viewSavedButton.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_savedTokenFragment)
+        }
+
+        binding.switchUppercase.setOnClickListener {
+
+        }
+
+        binding.switchLowerCase.setOnClickListener {
+
+        }
+
+        binding.switchNumeric.setOnClickListener {
+
+        }
+
+        binding.switchSpecialCharacters.setOnClickListener {
+
         }
 
         binding.fluidSlider
@@ -99,6 +123,12 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         })
 
         populateSettingsItem()
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.noRepeatFlow.collect { repeatable ->
+                doesNotRepeat = repeatable
+            }
+        }
     }
 
     private fun populateSettingsItem() {
@@ -166,7 +196,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         showToast(getString(R.string.toast_copied_to_clipboard))
     }
 
-    private fun generatePassword() {
+    private suspend fun generatePassword() {
 
         val chars = mutableListOf<Type>()
         if (binding.switchLowerCase.isChecked) chars.add(Type.LOWERCASE)
@@ -185,9 +215,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             if (it.included.not()) stringList.add(it.item)
         }
         val password = Tokenator.generate(
-            length,
-            chars,
-            stringList
+            length = length,
+            includes = chars,
+            excludedCharacters = stringList,
+            doNotRepeat = doesNotRepeat
         )
 
         when {

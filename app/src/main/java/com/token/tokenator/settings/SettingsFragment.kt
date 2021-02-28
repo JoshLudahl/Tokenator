@@ -53,6 +53,10 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         setUpRecyclerView(adapter)
         setUpListeners()
         setupObservers(adapter)
+
+        lifecycleScope.launchWhenStarted {
+            binding.noRepeatCharactersSwitch.isChecked = readDataStore(noRepeat).toBoolean()
+        }
     }
 
     private fun setUpRecyclerView(adapter: SettingsAdapter) {
@@ -96,5 +100,11 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         dataStore.edit { preferences ->
             preferences[dataStoreKey] = value.toString()
         }
+    }
+
+    private suspend fun readDataStore(key: String): String {
+        val dataStoreKey = stringPreferencesKey(key)
+        val preferences = dataStore.data.first()
+        return preferences[dataStoreKey].toString()
     }
 }
