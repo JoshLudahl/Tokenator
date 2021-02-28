@@ -25,3 +25,7 @@ annotation class DataStoreUppercase
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class DataStoreFeature
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class DataStoreCharacterPopulation

@@ -39,6 +39,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     @Inject
     lateinit var dataStore: DataStore<Preferences>
 
+    @DataStoreCharacterPopulation
+    @Inject
+    lateinit var characterPopulation: String
+
     @DataStoreFeature
     @Inject
     lateinit var feature: String
@@ -170,11 +174,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private fun populateSettingsItem() {
         lifecycleScope.launch {
-            val preferenceItem = readDataStore("character_populated")
+            val preferenceItem = readDataStore(characterPopulation)
             if (preferenceItem == "null") {
                 Log.i("SP", "Populating Characters into the database")
                 PopulateDatabase.populateDatabase(settingsItemRepository)
-                saveDataStore("character_populated", true)
+                saveDataStore(characterPopulation, true)
                 saveDataStore(lowercase, true)
                 saveDataStore(noRepeat, false)
                 saveDataStore(numeric, true)

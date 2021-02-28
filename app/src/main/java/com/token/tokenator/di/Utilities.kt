@@ -32,6 +32,11 @@ object Utilities {
         return context.createDataStore(name = "settings")
     }
 
+    @DataStoreCharacterPopulation
+    @Singleton
+    @Provides
+    fun providesDataStoreCharacterPopulation(): String = "character_populated"
+
     @DataStoreFeature
     @Singleton
     @Provides
