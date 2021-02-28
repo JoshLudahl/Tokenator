@@ -438,6 +438,7 @@
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
                     android:text="@{viewModel.token}"
+                    android:clickable="true"
                     android:textColor="@color/yellow"
                     android:textColorHint="@color/grayish"
                     android:textSize="18sp"
@@ -445,7 +446,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:focusable="true" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

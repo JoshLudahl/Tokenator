@@ -138,6 +138,14 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             }
         }
 
+        binding.generatedField.setOnLongClickListener { view ->
+            if (viewModel.token.value.isNotEmpty()) {
+                copyToClipBoard(viewModel.token.value)
+                showToast("Copied to clipboard")
+            }
+            true
+        }
+
         lifecycleScope.launchWhenStarted {
             binding.apply {
                 switchLowerCase.isChecked = readDataStore(lowercase).toBoolean()
