@@ -15,10 +15,7 @@ import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Token
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -39,10 +36,8 @@ class MainViewModel @Inject constructor(
     private val _allCharacters = settingsItemRepository.allCharacters
     private val _shouldShowEasterEggToast = MutableStateFlow<Boolean>(false)
 
-    private val KEY = stringPreferencesKey(noRepeat)
-
     val noRepeatFlow: Flow<Boolean> = dataStore.data.map {
-        preferences -> (preferences[KEY]).toBoolean()
+        preferences -> (preferences[stringPreferencesKey(noRepeat)]).toBoolean()
     }
 
     init {
