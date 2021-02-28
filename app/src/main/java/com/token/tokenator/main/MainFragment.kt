@@ -19,10 +19,10 @@ import androidx.navigation.fragment.findNavController
 import com.token.tokenator.R
 import com.token.tokenator.Utilities.Clipuous
 import com.token.tokenator.Utilities.FeatureDiscovery
+import com.token.tokenator.Utilities.Tokenator
 import com.token.tokenator.database.settingsitem.PopulateDatabase
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.databinding.MainFragmentBinding
-import com.token.tokenator.Utilities.Tokenator
 import com.token.tokenator.di.*
 import com.token.tokenator.model.Type
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,22 +36,28 @@ import kotlin.properties.Delegates
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.main_fragment) {
 
-    @Inject lateinit var dataStore: DataStore<Preferences>
+    @Inject
+    lateinit var dataStore: DataStore<Preferences>
 
     @DataStoreLowercase
-    @Inject lateinit var lowercase: String
+    @Inject
+    lateinit var lowercase: String
 
     @DataStoreNoRepeat
-    @Inject lateinit var noRepeat: String
+    @Inject
+    lateinit var noRepeat: String
 
     @DataStoreNumeric
-    @Inject lateinit var numeric: String
+    @Inject
+    lateinit var numeric: String
 
     @DataStoreSpecialCharacters
-    @Inject lateinit var specialCharacters: String
+    @Inject
+    lateinit var specialCharacters: String
 
     @DataStoreUppercase
-    @Inject lateinit var uppercase: String
+    @Inject
+    lateinit var uppercase: String
 
     @Inject
     lateinit var settingsItemRepository: SettingsItemRepository
@@ -79,6 +85,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 }
             }
         }
+
+        populateSettingsItem()
 
         binding.buttonGenerateToken.setOnClickListener {
             lifecycleScope.launch {
@@ -149,7 +157,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             }
         })
 
-        populateSettingsItem()
+
 
         lifecycleScope.launchWhenStarted {
             viewModel.noRepeatFlow.collect { repeatable ->
@@ -165,6 +173,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 Log.i("SP", "Populating Characters into the database")
                 PopulateDatabase.populateDatabase(settingsItemRepository)
                 saveDataStore("character_populated", true)
+                saveDataStore(lowercase, true)
+                saveDataStore(noRepeat, true)
+                saveDataStore(numeric, true)
+                saveDataStore(specialCharacters, true)
+                saveDataStore(uppercase, true)
             }
         }
     }

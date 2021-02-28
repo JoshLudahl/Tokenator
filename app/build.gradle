@@ -12,8 +12,8 @@ android {
         applicationId "com.token.tokenator"
         minSdkVersion 22
         targetSdkVersion 30
-        versionCode 5
-        versionName "1.23"
+        versionCode 6
+        versionName "1.25"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -106,7 +106,7 @@ dependencies {
     implementation "androidx.datastore:datastore-preferences:1.0.0-alpha06"
 
     // Required -- JUnit 4 framework
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.2'
 
     // Optional -- Robolectric environment
     testImplementation 'androidx.test:core:1.3.0'

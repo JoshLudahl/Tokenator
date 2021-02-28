@@ -17,7 +17,6 @@ import com.token.tokenator.databinding.SettingsFragmentBinding
 import com.token.tokenator.di.DataStoreNoRepeat
 import com.token.tokenator.model.SettingsItem
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
