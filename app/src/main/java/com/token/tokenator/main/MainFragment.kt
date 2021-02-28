@@ -23,7 +23,7 @@ import com.token.tokenator.database.settingsitem.PopulateDatabase
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.databinding.MainFragmentBinding
 import com.token.tokenator.Utilities.Tokenator
-import com.token.tokenator.di.DataStoreNoRepeat
+import com.token.tokenator.di.*
 import com.token.tokenator.model.Type
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -36,12 +36,22 @@ import kotlin.properties.Delegates
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.main_fragment) {
 
-    @Inject
-    lateinit var dataStore: DataStore<Preferences>
+    @Inject lateinit var dataStore: DataStore<Preferences>
+
+    @DataStoreLowercase
+    @Inject lateinit var lowercase: String
 
     @DataStoreNoRepeat
-    @Inject
-    lateinit var noRepeat: String
+    @Inject lateinit var noRepeat: String
+
+    @DataStoreNumeric
+    @Inject lateinit var numeric: String
+
+    @DataStoreSpecialCharacters
+    @Inject lateinit var specialCharacters: String
+
+    @DataStoreUppercase
+    @Inject lateinit var uppercase: String
 
     @Inject
     lateinit var settingsItemRepository: SettingsItemRepository
@@ -89,19 +99,36 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
 
         binding.switchUppercase.setOnClickListener {
-
+            lifecycleScope.launch {
+                saveDataStore(uppercase, binding.switchUppercase.isChecked)
+            }
         }
 
         binding.switchLowerCase.setOnClickListener {
-
+            lifecycleScope.launch {
+                saveDataStore(lowercase, binding.switchLowerCase.isChecked)
+            }
         }
 
         binding.switchNumeric.setOnClickListener {
-
+            lifecycleScope.launch {
+                saveDataStore(numeric, binding.switchNumeric.isChecked)
+            }
         }
 
         binding.switchSpecialCharacters.setOnClickListener {
+            lifecycleScope.launch {
+                saveDataStore(specialCharacters, binding.switchSpecialCharacters.isChecked)
+            }
+        }
 
+        lifecycleScope.launchWhenStarted {
+            binding.apply {
+                switchLowerCase.isChecked = readDataStore(lowercase).toBoolean()
+                switchNumeric.isChecked = readDataStore(numeric).toBoolean()
+                switchSpecialCharacters.isChecked = readDataStore(specialCharacters).toBoolean()
+                switchUppercase.isChecked = readDataStore(uppercase).toBoolean()
+            }
         }
 
         binding.fluidSlider
@@ -196,7 +223,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         showToast(getString(R.string.toast_copied_to_clipboard))
     }
 
-    private suspend fun generatePassword() {
+    private fun generatePassword() {
 
         val chars = mutableListOf<Type>()
         if (binding.switchLowerCase.isChecked) chars.add(Type.LOWERCASE)
