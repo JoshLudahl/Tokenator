@@ -10,15 +10,15 @@
             type="com.token.tokenator.settings.SettingsViewModel" />
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/toolbar_settings"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
             android:background="@color/blackish">
 
@@ -41,6 +41,58 @@
 
             </androidx.appcompat.widget.Toolbar>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/no_repeats_section"
+                style="@style/layout_background_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/my_toolbar">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/no_repeats_section_icon"
+                    android:layout_width="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size"
+                    android:layout_marginStart="@dimen/icon_left_top_bottom_margin"
+                    android:layout_marginTop="@dimen/icon_left_top_bottom_margin"
+                    android:layout_marginBottom="@dimen/icon_left_top_bottom_margin"
+                    android:background="@drawable/ic_special"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/no_repeat_characters_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:checked="true"
+                    android:thumb="@drawable/custom_switch_thumb"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:track="@drawable/custom_switch_track" />
+
+                <TextView
+                    android:id="@+id/no_repeat_text"
+                    style="@style/settings_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/no_repeat_characters"
+                    app:layout_constraintBottom_toBottomOf="@+id/no_repeats_section_icon"
+                    app:layout_constraintEnd_toStartOf="@+id/no_repeat_characters_switch"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/no_repeats_section_icon"
+                    app:layout_constraintTop_toTopOf="@+id/no_repeats_section_icon" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/appCompatTextView3"
                 style="@style/section_labels"
@@ -50,30 +102,33 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/characters"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/my_toolbar" />
+                app:layout_constraintTop_toBottomOf="@+id/no_repeats_section" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="?attr/actionBarSize"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/my_toolbar">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/special_characters_recyclerview"
-                    style="@style/layout_background_section"
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="48dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="?attr/actionBarSize"
-                    android:paddingBottom="16dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/special_characters_recyclerview"
+                        style="@style/layout_background_section"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="?attr/actionBarSize"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3" />
+                </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+    </ScrollView>
 </layout>

@@ -12,6 +12,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Qualifier
 
 import javax.inject.Singleton
 
@@ -33,4 +34,15 @@ object Utilities {
     fun providesDataStorePreferences(@ApplicationContext context: Context): DataStore<Preferences> {
         return context.createDataStore(name = "settings")
     }
+
+    @DataStoreNoRepeat
+    @Singleton
+    @Provides
+    fun dataStoreNoRepeatString(): String {
+        return "NO_REPEAT"
+    }
 }
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class DataStoreNoRepeat
