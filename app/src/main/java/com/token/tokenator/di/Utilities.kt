@@ -32,38 +32,33 @@ object Utilities {
         return context.createDataStore(name = "settings")
     }
 
+    @DataStoreFeature
+    @Singleton
+    @Provides
+    fun providesDataStoreFeatureString(): String = "feature_discovery"
+
     @DataStoreLowercase
     @Singleton
     @Provides
-    fun dataStoreLowercaseString(): String {
-        return "LOWERCASE"
-    }
+    fun dataStoreLowercaseString(): String = "LOWERCASE"
 
     @DataStoreNoRepeat
     @Singleton
     @Provides
-    fun dataStoreNoRepeatString(): String {
-        return "NO_REPEAT"
-    }
+    fun dataStoreNoRepeatString(): String = "NO_REPEAT"
 
     @DataStoreNumeric
     @Singleton
     @Provides
-    fun dataStoreNumericString(): String {
-        return "NUMERIC"
-    }
+    fun dataStoreNumericString(): String = "NUMERIC"
 
     @DataStoreSpecialCharacters
     @Singleton
     @Provides
-    fun dataStoreSpecialCharactersString(): String {
-        return "SPECIAL_CHARACTERS"
-    }
+    fun dataStoreSpecialCharactersString(): String = "SPECIAL_CHARACTERS"
 
     @DataStoreUppercase
     @Singleton
     @Provides
-    fun dataStoreUppercaseString(): String {
-        return "UPPERCASE"
-    }
+    fun dataStoreUppercaseString(): String = "UPPERCASE"
 }

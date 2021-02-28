@@ -39,6 +39,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     @Inject
     lateinit var dataStore: DataStore<Preferences>
 
+    @DataStoreFeature
+    @Inject
+    lateinit var feature: String
+
     @DataStoreLowercase
     @Inject
     lateinit var lowercase: String
@@ -157,8 +161,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             }
         })
 
-
-
         lifecycleScope.launchWhenStarted {
             viewModel.noRepeatFlow.collect { repeatable ->
                 doesNotRepeat = repeatable
@@ -174,7 +176,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 PopulateDatabase.populateDatabase(settingsItemRepository)
                 saveDataStore("character_populated", true)
                 saveDataStore(lowercase, true)
-                saveDataStore(noRepeat, true)
+                saveDataStore(noRepeat, false)
                 saveDataStore(numeric, true)
                 saveDataStore(specialCharacters, true)
                 saveDataStore(uppercase, true)
@@ -201,14 +203,14 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 binding.tokenName.text?.clear()
 
                 lifecycleScope.launch {
-                    val preferenceItem = readDataStore("feature_discovery")
+                    val preferenceItem = readDataStore(feature)
                     if (preferenceItem == "null") {
                         Log.i(
                             "FEATURE?",
                             "$preferenceItem: Showing feature because it has not been shown."
                         )
                         showFeature()
-                        saveDataStore("feature_discovery", true)
+                        saveDataStore(feature, true)
 
                     } else {
                         Log.i("FEATURE", "Skipping feature because it has been shown.")
@@ -254,6 +256,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         viewModel.allCharacters.value?.forEach {
             if (it.included.not()) stringList.add(it.item)
         }
+
         val password = Tokenator.generate(
             length = length,
             includes = chars,
