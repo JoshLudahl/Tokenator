@@ -35,14 +35,38 @@ object Utilities {
         return context.createDataStore(name = "settings")
     }
 
+    @DataStoreLowercase
+    @Singleton
+    @Provides
+    fun dataStoreLowercaseString(): String {
+        return "LOWERCASE"
+    }
+
     @DataStoreNoRepeat
     @Singleton
     @Provides
     fun dataStoreNoRepeatString(): String {
         return "NO_REPEAT"
     }
-}
 
-@Qualifier
-@Retention(AnnotationRetention.BINARY)
-annotation class DataStoreNoRepeat
+    @DataStoreNumeric
+    @Singleton
+    @Provides
+    fun dataStoreNumericString(): String {
+        return "NUMERIC"
+    }
+
+    @DataStoreSpecialCharacters
+    @Singleton
+    @Provides
+    fun dataStoreSpecialCharactersString(): String {
+        return "SPECIAL_CHARACTERS"
+    }
+
+    @DataStoreUppercase
+    @Singleton
+    @Provides
+    fun dataStoreUppercaseString(): String {
+        return "UPPERCASE"
+    }
+}
