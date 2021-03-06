@@ -91,6 +91,7 @@ class MainViewModel @Inject constructor(
         //set switches
         viewModelScope.launch {
             lowercaseFlow.collect { _switchLowerCase.value = it }
+            Log.i("S: Lower", _switchLowerCase.value.toString())
         }
 
         viewModelScope.launch {
