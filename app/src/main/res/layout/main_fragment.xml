@@ -9,9 +9,11 @@
         <variable
             name="type"
             type="com.token.tokenator.model.Type" />
+
         <variable
             name="view"
             type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.token.tokenator.main.MainViewModel" />
@@ -103,8 +105,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:checked="@{viewModel.switchUpperCase}"
-                    android:thumb="@drawable/custom_switch_thumb"
                     android:onCheckedChanged="@{(switch, checked) -> viewModel.saveSwitchState(type.UPPERCASE, checked)}"
+                    android:thumb="@drawable/custom_switch_thumb"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -443,12 +445,13 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:gravity="center"
                     android:hint="@string/click_to_generate_password"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
                     android:text="@{viewModel.token}"
-                    android:clickable="true"
                     android:textColor="@color/yellow"
                     android:textColorHint="@color/grayish"
                     android:textSize="18sp"
@@ -456,8 +459,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:focusable="true" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

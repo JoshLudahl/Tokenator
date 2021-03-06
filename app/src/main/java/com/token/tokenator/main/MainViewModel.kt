@@ -95,14 +95,17 @@ class MainViewModel @Inject constructor(
 
         viewModelScope.launch {
             numericFlow.collect { _switchNumeric.value = it }
+            Log.i("S: Lower", _switchNumeric.value.toString())
         }
 
         viewModelScope.launch {
             specialCharacterFlow.collect { _switchSpecialCharacter.value = it }
+            Log.i("S: Lower", _switchSpecialCharacter.value.toString())
         }
 
         viewModelScope.launch {
             uppercaseFlow.collect { _switchUpperCase.value = it }
+            Log.i("S: Lower", _switchUpperCase.value.toString())
         }
     }
 
