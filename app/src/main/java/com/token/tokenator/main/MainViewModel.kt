@@ -36,6 +36,22 @@ class MainViewModel @Inject constructor(
     private val _allCharacters = settingsItemRepository.allCharacters
     private val _shouldShowEasterEggToast = MutableStateFlow<Boolean>(false)
 
+    private val _switchLowerCase = MutableStateFlow(true)
+    val switchLowerCase: StateFlow<Boolean>
+        get() = _switchLowerCase
+
+    private val _switchNumeric = MutableStateFlow(true)
+    val switchNumeric: StateFlow<Boolean>
+        get() = _switchNumeric
+
+    private val _switchSpecialCharacter = MutableStateFlow(true)
+    val switchSpecialCharacter: StateFlow<Boolean>
+        get() = _switchSpecialCharacter
+
+    private val _switchUpperCase = MutableStateFlow(true)
+    val switchUpperCase: StateFlow<Boolean>
+        get() = _switchUpperCase
+
     val noRepeatFlow: Flow<Boolean> = dataStore.data.map {
         preferences -> (preferences[stringPreferencesKey(noRepeat)]).toBoolean()
     }

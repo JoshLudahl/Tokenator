@@ -81,7 +81,8 @@ dependencies {
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 
     // Jetpack Compose Integration
-    implementation "androidx.navigation:navigation-compose:1.0.0-alpha07"
+    //implementation "androidx.navigation:navigation-compose:1.0.0-alpha08"
+    //implementation "androidx.compose.runtime:runtime:1.0.0-beta01"
 
     // DI
     implementation "com.google.dagger:hilt-android:$dagger_hilt"
@@ -99,11 +100,12 @@ dependencies {
     // Fluid Slider
     implementation 'com.ramotion.fluidslider:fluid-slider:0.3.1'
 
-    // Feature discovery
-    implementation 'com.getkeepsafe.taptargetview:taptargetview:1.13.0'
+    // Feature discovery (JCenter dependency)
+    //implementation 'com.getkeepsafe.taptargetview:taptargetview:1.13.0'
+    implementation 'com.github.KeepSafe:TapTargetView:-SNAPSHOT'
 
     // DataStore
-    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha06"
+    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha07"
 
     // Required -- JUnit 4 framework
     testImplementation 'junit:junit:4.13.2'
