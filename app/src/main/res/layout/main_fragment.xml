@@ -7,6 +7,12 @@
     <data>
 
         <variable
+            name="type"
+            type="com.token.tokenator.model.Type" />
+        <variable
+            name="view"
+            type="android.view.View" />
+        <variable
             name="viewModel"
             type="com.token.tokenator.main.MainViewModel" />
     </data>
@@ -96,8 +102,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:checked="true"
+                    android:checked="@{viewModel.switchUpperCase}"
                     android:thumb="@drawable/custom_switch_thumb"
+                    android:onCheckedChanged="@{(switch, checked) -> viewModel.saveSwitchState(type.UPPERCASE, checked)}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -147,7 +154,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:checked="true"
+                    android:checked="@{viewModel.switchLowerCase}"
+                    android:onCheckedChanged="@{(switch, checked) -> viewModel.saveSwitchState(type.LOWERCASE, checked)}"
                     android:thumb="@drawable/custom_switch_thumb"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -196,7 +204,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:checked="true"
+                    android:checked="@{viewModel.switchNumeric}"
+                    android:onCheckedChanged="@{(switch, checked) -> viewModel.saveSwitchState(type.NUMERIC, checked)}"
                     android:thumb="@drawable/custom_switch_thumb"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -245,7 +254,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
-                    android:checked="true"
+                    android:checked="@{viewModel.switchSpecialCharacter}"
+                    android:onCheckedChanged="@{(switch, checked) -> viewModel.saveSwitchState(type.SPECIAL, checked)}"
                     android:thumb="@drawable/custom_switch_thumb"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

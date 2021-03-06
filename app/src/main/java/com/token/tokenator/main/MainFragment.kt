@@ -18,6 +18,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.token.tokenator.R
 import com.token.tokenator.Utilities.Clipuous
+import com.token.tokenator.Utilities.DataPref
 import com.token.tokenator.Utilities.FeatureDiscovery
 import com.token.tokenator.Utilities.Tokenator
 import com.token.tokenator.database.settingsitem.PopulateDatabase
@@ -114,45 +115,12 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             findNavController().navigate(R.id.action_mainFragment_to_savedTokenFragment)
         }
 
-        binding.switchUppercase.setOnClickListener {
-            lifecycleScope.launch {
-                saveDataStore(uppercase, binding.switchUppercase.isChecked)
-            }
-        }
-
-        binding.switchLowerCase.setOnClickListener {
-            lifecycleScope.launch {
-                saveDataStore(lowercase, binding.switchLowerCase.isChecked)
-            }
-        }
-
-        binding.switchNumeric.setOnClickListener {
-            lifecycleScope.launch {
-                saveDataStore(numeric, binding.switchNumeric.isChecked)
-            }
-        }
-
-        binding.switchSpecialCharacters.setOnClickListener {
-            lifecycleScope.launch {
-                saveDataStore(specialCharacters, binding.switchSpecialCharacters.isChecked)
-            }
-        }
-
         binding.generatedField.setOnLongClickListener { view ->
             if (viewModel.token.value.isNotEmpty()) {
                 copyToClipBoard(viewModel.token.value)
                 showToast("Copied to clipboard")
             }
             true
-        }
-
-        lifecycleScope.launchWhenStarted {
-            binding.apply {
-                switchLowerCase.isChecked = readDataStore(lowercase).toBoolean()
-                switchNumeric.isChecked = readDataStore(numeric).toBoolean()
-                switchSpecialCharacters.isChecked = readDataStore(specialCharacters).toBoolean()
-                switchUppercase.isChecked = readDataStore(uppercase).toBoolean()
-            }
         }
 
         binding.fluidSlider
@@ -186,12 +154,12 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             if (preferenceItem == "null") {
                 Log.i("SP", "Populating Characters into the database")
                 PopulateDatabase.populateDatabase(settingsItemRepository)
-                saveDataStore(characterPopulation, true)
-                saveDataStore(lowercase, true)
-                saveDataStore(noRepeat, false)
-                saveDataStore(numeric, true)
-                saveDataStore(specialCharacters, true)
-                saveDataStore(uppercase, true)
+                DataPref.saveDataStore(characterPopulation, true, dataStore)
+                DataPref.saveDataStore(lowercase, true, dataStore)
+                DataPref.saveDataStore(noRepeat, false, dataStore)
+                DataPref.saveDataStore(numeric, true, dataStore)
+                DataPref.saveDataStore(specialCharacters, true, dataStore)
+                DataPref.saveDataStore(uppercase, true, dataStore)
             }
         }
     }

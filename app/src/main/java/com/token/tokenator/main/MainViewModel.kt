@@ -2,19 +2,24 @@ package com.token.tokenator.main
 
 import android.util.Log
 import android.view.View
+import android.widget.Switch
+import androidx.appcompat.widget.SwitchCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.*
 import com.token.tokenator.BuildConfig
+import com.token.tokenator.Utilities.DataPref
 import com.token.tokenator.Utilities.Encryption
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.database.token.TokenRepository
-import com.token.tokenator.di.DataStoreNoRepeat
+import com.token.tokenator.di.*
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Token
+import com.token.tokenator.model.Type
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,8 +28,12 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private var repository: TokenRepository,
     settingsItemRepository: SettingsItemRepository,
-    dataStore: DataStore<Preferences>,
-    @DataStoreNoRepeat private var noRepeat: String
+    private var dataStore: DataStore<Preferences>,
+    @DataStoreNoRepeat private var noRepeat: String,
+    @DataStoreLowercase private var lowercase: String,
+    @DataStoreNumeric private var numeric: String,
+    @DataStoreSpecialCharacters var specialCharacters: String,
+    @DataStoreUppercase var uppercase: String
 ) :
     ViewModel(), LifecycleObserver {
 
@@ -49,11 +58,27 @@ class MainViewModel @Inject constructor(
         get() = _switchSpecialCharacter
 
     private val _switchUpperCase = MutableStateFlow(true)
-    val switchUpperCase: StateFlow<Boolean>
-        get() = _switchUpperCase
+    val switchUpperCase: LiveData<Boolean>
+        get() = _switchUpperCase.asLiveData()
 
-    val noRepeatFlow: Flow<Boolean> = dataStore.data.map {
-        preferences -> (preferences[stringPreferencesKey(noRepeat)]).toBoolean()
+    val noRepeatFlow: Flow<Boolean> = dataStore.data.map { preferences ->
+        (preferences[stringPreferencesKey(noRepeat)]).toBoolean()
+    }
+
+    private val lowercaseFlow: Flow<Boolean> = dataStore.data.map { preferences ->
+        (preferences[stringPreferencesKey(lowercase)]).toBoolean()
+    }
+
+    private val numericFlow: Flow<Boolean> = dataStore.data.map { preferences ->
+        (preferences[stringPreferencesKey(numeric)]).toBoolean()
+    }
+
+    private val specialCharacterFlow: Flow<Boolean> = dataStore.data.map { preferences ->
+        (preferences[stringPreferencesKey(specialCharacters)]).toBoolean()
+    }
+
+    private val uppercaseFlow: Flow<Boolean> = dataStore.data.map { preferences ->
+        (preferences[stringPreferencesKey(uppercase)]).toBoolean()
     }
 
     init {
@@ -62,6 +87,23 @@ class MainViewModel @Inject constructor(
         Log.i("VERSION", version)
         _tokenNameEditTextLabelVisibility.value = View.GONE
         _tokenNameEditTextFieldVisibility.value = View.GONE
+
+        //set switches
+        viewModelScope.launch {
+            lowercaseFlow.collect { _switchLowerCase.value = it }
+        }
+
+        viewModelScope.launch {
+            numericFlow.collect { _switchNumeric.value = it }
+        }
+
+        viewModelScope.launch {
+            specialCharacterFlow.collect { _switchSpecialCharacter.value = it }
+        }
+
+        viewModelScope.launch {
+            uppercaseFlow.collect { _switchUpperCase.value = it }
+        }
     }
 
     val token: StateFlow<String>
@@ -104,6 +146,20 @@ class MainViewModel @Inject constructor(
 
     fun setShouldShowToastToFalse() {
         _shouldShowEasterEggToast.value = false
+    }
+
+     fun saveSwitchState(type: Type, checked: Boolean) {
+         viewModelScope.launch {
+             when (type) {
+                 Type.LOWERCASE -> lowercase
+                 Type.NUMERIC -> numeric
+                 Type.UPPERCASE -> uppercase
+                 Type.SPECIAL -> specialCharacters
+             }.let {
+                 DataPref.saveDataStore(it, checked, dataStore)
+                 Log.i("Checked State", checked.toString())
+             }
+         }
     }
 
     fun insert(
