@@ -1,4 +1,4 @@
-package com.token.tokenator.Utilities
+package com.token.tokenator.utilities
 
 import com.token.tokenator.model.Type
 import kotlin.random.Random

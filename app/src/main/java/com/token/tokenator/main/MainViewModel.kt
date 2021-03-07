@@ -7,8 +7,8 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.*
 import com.token.tokenator.BuildConfig
-import com.token.tokenator.Utilities.DataPref
-import com.token.tokenator.Utilities.Encryption
+import com.token.tokenator.utilities.DataPref
+import com.token.tokenator.utilities.Encryption
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.database.token.TokenRepository
 import com.token.tokenator.di.*

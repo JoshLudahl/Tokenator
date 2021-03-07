@@ -17,10 +17,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.token.tokenator.R
-import com.token.tokenator.Utilities.Clipuous
-import com.token.tokenator.Utilities.DataPref
-import com.token.tokenator.Utilities.FeatureDiscovery
-import com.token.tokenator.Utilities.Tokenator
+import com.token.tokenator.utilities.Clipuous
+import com.token.tokenator.utilities.DataPref
+import com.token.tokenator.utilities.FeatureDiscovery
+import com.token.tokenator.utilities.Tokenator
 import com.token.tokenator.database.settingsitem.PopulateDatabase
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.databinding.MainFragmentBinding

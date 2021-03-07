@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.token.tokenator.R
-import com.token.tokenator.Utilities.DataPref
+import com.token.tokenator.utilities.DataPref
 import com.token.tokenator.databinding.SettingsFragmentBinding
 import com.token.tokenator.di.DataStoreNoRepeat
 import com.token.tokenator.model.SettingsItem

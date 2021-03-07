@@ -1,4 +1,4 @@
-package com.token.tokenator.Utilities
+package com.token.tokenator.utilities
 
 import android.util.Base64
 import com.token.tokenator.BuildConfig

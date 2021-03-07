@@ -1,4 +1,4 @@
-package com.token.tokenator.Utilities
+package com.token.tokenator.utilities
 
 import android.content.ClipData
 import android.content.ClipboardManager
