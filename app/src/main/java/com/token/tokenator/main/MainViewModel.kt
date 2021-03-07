@@ -62,7 +62,7 @@ class MainViewModel @Inject constructor(
         get() = _switchUpperCase.asLiveData()
 
     val noRepeatFlow: Flow<Boolean> = dataStore.data.map { preferences ->
-        (preferences[stringPreferencesKey(noRepeat)]).toBoolean()
+        (preferences[stringPreferencesKey(noRepeat)] ?: true).toString().toBoolean()
     }
 
     init {
@@ -74,11 +74,22 @@ class MainViewModel @Inject constructor(
 
         //set switches
         viewModelScope.launch {
-            _switchLowerCase.value = DataPref.readDataStore(lowercase, dataStore).toBoolean()
-            _switchNumeric.value = DataPref.readDataStore(numeric, dataStore).toBoolean()
-            _switchSpecialCharacter.value =
-                DataPref.readDataStore(specialCharacters, dataStore).toBoolean()
-            _switchUpperCase.value = DataPref.readDataStore(uppercase, dataStore).toBoolean()
+
+            _switchLowerCase.value = (DataPref.readDataStore(lowercase, dataStore) ?: true)
+                .toString()
+                .toBoolean()
+
+            _switchNumeric.value = (DataPref.readDataStore(numeric, dataStore) ?: true)
+                .toString()
+                .toBoolean()
+
+            _switchSpecialCharacter.value = (DataPref.readDataStore(specialCharacters, dataStore) ?: true)
+                .toString()
+                .toBoolean()
+
+            _switchUpperCase.value = (DataPref.readDataStore(uppercase, dataStore) ?: true)
+                .toString()
+                .toBoolean()
         }
     }
 

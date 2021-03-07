@@ -5,19 +5,17 @@ import android.util.Log
 import android.view.View
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.token.tokenator.R
+import com.token.tokenator.Utilities.DataPref
 import com.token.tokenator.databinding.SettingsFragmentBinding
 import com.token.tokenator.di.DataStoreNoRepeat
 import com.token.tokenator.model.SettingsItem
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,7 +26,8 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
     lateinit var dataStore: DataStore<Preferences>
 
     @DataStoreNoRepeat
-    @Inject lateinit var noRepeat: String
+    @Inject
+    lateinit var noRepeat: String
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -54,7 +53,11 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         setupObservers(adapter)
 
         lifecycleScope.launchWhenStarted {
-            binding.noRepeatCharactersSwitch.isChecked = readDataStore(noRepeat).toBoolean()
+            binding
+                .noRepeatCharactersSwitch
+                .isChecked = (DataPref.readDataStore(noRepeat, dataStore) ?: true)
+                .toString()
+                .toBoolean()
         }
     }
 
@@ -89,21 +92,12 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
 
         binding.noRepeatCharactersSwitch.setOnClickListener {
             lifecycleScope.launch {
-               saveDataStore(noRepeat, binding.noRepeatCharactersSwitch.isChecked)
-           }
+                DataPref.saveDataStore(
+                    noRepeat,
+                    binding.noRepeatCharactersSwitch.isChecked,
+                    dataStore
+                )
+            }
         }
-    }
-
-    private suspend fun saveDataStore(key: String, value: Boolean) {
-        val dataStoreKey = stringPreferencesKey(key)
-        dataStore.edit { preferences ->
-            preferences[dataStoreKey] = value.toString()
-        }
-    }
-
-    private suspend fun readDataStore(key: String): String {
-        val dataStoreKey = stringPreferencesKey(key)
-        val preferences = dataStore.data.first()
-        return preferences[dataStoreKey].toString()
     }
 }

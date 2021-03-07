@@ -115,7 +115,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             findNavController().navigate(R.id.action_mainFragment_to_savedTokenFragment)
         }
 
-        binding.generatedField.setOnLongClickListener { view ->
+        binding.generatedField.setOnLongClickListener {
             if (viewModel.token.value.isNotEmpty()) {
                 copyToClipBoard(viewModel.token.value)
                 showToast("Copied to clipboard")
@@ -155,11 +155,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 Log.i("SP", "Populating Characters into the database")
                 PopulateDatabase.populateDatabase(settingsItemRepository)
                 DataPref.saveDataStore(characterPopulation, true, dataStore)
-                DataPref.saveDataStore(lowercase, true, dataStore)
-                DataPref.saveDataStore(noRepeat, false, dataStore)
-                DataPref.saveDataStore(numeric, true, dataStore)
-                DataPref.saveDataStore(specialCharacters, true, dataStore)
-                DataPref.saveDataStore(uppercase, true, dataStore)
+
             }
         }
     }
