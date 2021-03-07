@@ -60,7 +60,7 @@ object Tokenator {
     }
 
     private fun generateRandomNumber(): Int {
-        return getRandomNumber(1, 9)
+        return getRandomNumber(0, 9)
     }
 
     private fun generateRandomLowercaseLetter(): Char {
