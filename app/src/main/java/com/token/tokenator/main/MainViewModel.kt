@@ -17,7 +17,10 @@ import com.token.tokenator.model.Token
 import com.token.tokenator.model.Type
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -73,7 +76,8 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             _switchLowerCase.value = DataPref.readDataStore(lowercase, dataStore).toBoolean()
             _switchNumeric.value = DataPref.readDataStore(numeric, dataStore).toBoolean()
-            _switchSpecialCharacter.value = DataPref.readDataStore(specialCharacters, dataStore).toBoolean()
+            _switchSpecialCharacter.value =
+                DataPref.readDataStore(specialCharacters, dataStore).toBoolean()
             _switchUpperCase.value = DataPref.readDataStore(uppercase, dataStore).toBoolean()
         }
     }
@@ -120,30 +124,29 @@ class MainViewModel @Inject constructor(
         _shouldShowEasterEggToast.value = false
     }
 
-     fun saveSwitchState(type: Type, checked: Boolean) {
-         viewModelScope.launch {
-             when (type) {
-                 Type.LOWERCASE -> {
-                     _switchLowerCase.value = checked
-                     lowercase
-                 }
-                 Type.NUMERIC -> {
+    fun saveSwitchState(type: Type, checked: Boolean) {
+        viewModelScope.launch {
+            when (type) {
+                Type.LOWERCASE -> {
+                    _switchLowerCase.value = checked
+                    lowercase
+                }
+                Type.NUMERIC -> {
                     _switchNumeric.value = checked
-                     numeric
-                 }
-                 Type.UPPERCASE -> {
-                     _switchUpperCase.value = checked
-                     uppercase
-                 }
-                 Type.SPECIAL -> {
-                     _switchSpecialCharacter.value = checked
-                     specialCharacters
-                 }
-             }.let {
-                 DataPref.saveDataStore(it, checked, dataStore)
-                 Log.i("Checked State", checked.toString())
-             }
-         }
+                    numeric
+                }
+                Type.UPPERCASE -> {
+                    _switchUpperCase.value = checked
+                    uppercase
+                }
+                Type.SPECIAL -> {
+                    _switchSpecialCharacter.value = checked
+                    specialCharacters
+                }
+            }.let {
+                DataPref.saveDataStore(it, checked, dataStore)
+            }
+        }
     }
 
     fun insert(
