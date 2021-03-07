@@ -2,8 +2,6 @@ package com.token.tokenator.main
 
 import android.util.Log
 import android.view.View
-import android.widget.Switch
-import androidx.appcompat.widget.SwitchCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.stringPreferencesKey
@@ -19,7 +17,6 @@ import com.token.tokenator.model.Token
 import com.token.tokenator.model.Type
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -65,22 +62,6 @@ class MainViewModel @Inject constructor(
         (preferences[stringPreferencesKey(noRepeat)]).toBoolean()
     }
 
-    private val lowercaseFlow: Flow<Boolean> = dataStore.data.map { preferences ->
-        (preferences[stringPreferencesKey(lowercase)]).toBoolean()
-    }
-
-    private val numericFlow: Flow<Boolean> = dataStore.data.map { preferences ->
-        (preferences[stringPreferencesKey(numeric)]).toBoolean()
-    }
-
-    private val specialCharacterFlow: Flow<Boolean> = dataStore.data.map { preferences ->
-        (preferences[stringPreferencesKey(specialCharacters)]).toBoolean()
-    }
-
-    private val uppercaseFlow: Flow<Boolean> = dataStore.data.map { preferences ->
-        (preferences[stringPreferencesKey(uppercase)]).toBoolean()
-    }
-
     init {
         Log.i("MainViewModel", "Initialized")
         version = "Version ${BuildConfig.VERSION_NAME}"
@@ -90,23 +71,10 @@ class MainViewModel @Inject constructor(
 
         //set switches
         viewModelScope.launch {
-            lowercaseFlow.collect { _switchLowerCase.value = it }
-            Log.i("S: Lower", _switchLowerCase.value.toString())
-        }
-
-        viewModelScope.launch {
-            numericFlow.collect { _switchNumeric.value = it }
-            Log.i("S: Lower", _switchNumeric.value.toString())
-        }
-
-        viewModelScope.launch {
-            specialCharacterFlow.collect { _switchSpecialCharacter.value = it }
-            Log.i("S: Lower", _switchSpecialCharacter.value.toString())
-        }
-
-        viewModelScope.launch {
-            uppercaseFlow.collect { _switchUpperCase.value = it }
-            Log.i("S: Lower", _switchUpperCase.value.toString())
+            _switchLowerCase.value = DataPref.readDataStore(lowercase, dataStore).toBoolean()
+            _switchNumeric.value = DataPref.readDataStore(numeric, dataStore).toBoolean()
+            _switchSpecialCharacter.value = DataPref.readDataStore(specialCharacters, dataStore).toBoolean()
+            _switchUpperCase.value = DataPref.readDataStore(uppercase, dataStore).toBoolean()
         }
     }
 
@@ -155,10 +123,22 @@ class MainViewModel @Inject constructor(
      fun saveSwitchState(type: Type, checked: Boolean) {
          viewModelScope.launch {
              when (type) {
-                 Type.LOWERCASE -> lowercase
-                 Type.NUMERIC -> numeric
-                 Type.UPPERCASE -> uppercase
-                 Type.SPECIAL -> specialCharacters
+                 Type.LOWERCASE -> {
+                     _switchLowerCase.value = checked
+                     lowercase
+                 }
+                 Type.NUMERIC -> {
+                    _switchNumeric.value = checked
+                     numeric
+                 }
+                 Type.UPPERCASE -> {
+                     _switchUpperCase.value = checked
+                     uppercase
+                 }
+                 Type.SPECIAL -> {
+                     _switchSpecialCharacter.value = checked
+                     specialCharacters
+                 }
              }.let {
                  DataPref.saveDataStore(it, checked, dataStore)
                  Log.i("Checked State", checked.toString())
