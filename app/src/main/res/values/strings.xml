@@ -43,6 +43,8 @@
     <string name="optional">Optional</string>
     <string name="take_me_to_settings">Take me to settings</string>
     <string name="grid_item_placeholder_dollar_sign">$</string>
-    <string name="characters">Characters</string>
+
+    <!-- Settings -->
+    <string name="characters">Characters to include</string>
     <string name="no_repeat_characters">No repeat characters</string>
 </resources>
