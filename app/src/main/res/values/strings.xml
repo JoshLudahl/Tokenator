@@ -47,6 +47,6 @@
     <!-- Settings -->
     <string name="characters">Characters to include</string>
     <string name="no_repeat_characters">No repeat characters</string>
-    <string name="passphrase">Passphrase</string>
+    <string name="passphrase">Include Passphrase</string>
     <string name="enter_a_passphrase">Enter a passphrase</string>
 </resources>
