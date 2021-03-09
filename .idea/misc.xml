@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.91875" />
         <entry key="app/src/main/res/drawable/ic_passphrase.xml" value="0.91875" />
         <entry key="app/src/main/res/drawable/ic_repeat.xml" value="0.91875" />
+        <entry key="app/src/main/res/drawable/ic_save.xml" value="0.91875" />
         <entry key="app/src/main/res/layout/layout_setting_grid_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.6" />
         <entry key="app/src/main/res/layout/saved_token_fragment.xml" value="0.2941473259334006" />
