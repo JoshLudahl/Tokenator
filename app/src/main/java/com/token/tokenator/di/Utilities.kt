@@ -68,4 +68,14 @@ object Utilities {
     @Singleton
     @Provides
     fun dataStoreUppercaseString(): String = "UPPERCASE"
+
+    @DataStorePassPhrase
+    @Singleton
+    @Provides
+    fun dataStorePassPhraseString(): String = "PASSPHRASE"
+
+    @DataStorePassPhraseIncluded
+    @Singleton
+    @Provides
+    fun dataStorePassPhraseIncludedString(): String = "PASSPHRASE_INCLUDED"
 }

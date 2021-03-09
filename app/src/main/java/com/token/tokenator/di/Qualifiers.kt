@@ -29,3 +29,11 @@ annotation class DataStoreFeature
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class DataStoreCharacterPopulation
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class DataStorePassPhrase
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class DataStorePassPhraseIncluded
