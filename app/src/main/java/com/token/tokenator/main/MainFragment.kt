@@ -17,15 +17,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.token.tokenator.R
-import com.token.tokenator.utilities.Clipuous
-import com.token.tokenator.utilities.DataPref
-import com.token.tokenator.utilities.FeatureDiscovery
-import com.token.tokenator.utilities.Tokenator
 import com.token.tokenator.database.settingsitem.PopulateDatabase
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.databinding.MainFragmentBinding
 import com.token.tokenator.di.*
 import com.token.tokenator.model.Type
+import com.token.tokenator.utilities.Clipuous
+import com.token.tokenator.utilities.DataPref
+import com.token.tokenator.utilities.FeatureDiscovery
+import com.token.tokenator.utilities.Tokenator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -67,6 +67,14 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     @DataStoreUppercase
     @Inject
     lateinit var uppercase: String
+
+    @DataStorePassPhrase
+    @Inject
+    lateinit var passPhrase: String
+
+    @DataStorePassPhraseIncluded
+    @Inject
+    lateinit var passPhraseIncluded: String
 
     @Inject
     lateinit var settingsItemRepository: SettingsItemRepository
@@ -214,7 +222,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         showToast(getString(R.string.toast_copied_to_clipboard))
     }
 
-    private fun generatePassword() {
+    private suspend fun generatePassword() {
 
         val chars = mutableListOf<Type>()
         if (binding.switchLowerCase.isChecked) chars.add(Type.LOWERCASE)
@@ -233,11 +241,21 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             if (it.included.not()) stringList.add(it.item)
         }
 
+        val passPhrase = when (
+            (DataPref.readDataStore(key = passPhraseIncluded, dataStore) ?: false)
+                .toString()
+                .toBoolean()
+        ) {
+            true -> DataPref.readDataStore(key = passPhrase, dataStore)
+            else -> null
+        }
+
         val password = Tokenator.generate(
             length = length,
             includes = chars,
             excludedCharacters = stringList,
-            doNotRepeat = doesNotRepeat
+            doNotRepeat = doesNotRepeat,
+            passPhrase
         )
 
         when {
