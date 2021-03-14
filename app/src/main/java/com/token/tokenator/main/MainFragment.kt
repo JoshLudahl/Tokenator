@@ -246,7 +246,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
 
         val passphrase = when (
-            (DataPref.readDataStore(key = passPhraseIncluded, dataStore) ?: false)
+            (DataPref.readDataStore(key = passPhraseIncluded, dataStore) ?: true)
                 .toString()
                 .toBoolean()
         ) {

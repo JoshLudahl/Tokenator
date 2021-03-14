@@ -10,7 +10,7 @@ import com.token.tokenator.model.Token
         Token::class,
         Passphrase::class
     ],
-    version = 4,
+    version = 5,
     exportSchema = false
 )
 abstract class TokenDatabase : RoomDatabase() {

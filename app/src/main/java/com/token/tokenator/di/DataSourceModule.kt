@@ -3,6 +3,8 @@ package com.token.tokenator.di
 
 import android.content.Context
 import androidx.room.Room
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.token.tokenator.database.settingsitem.SettingsItemDao
 import com.token.tokenator.database.settingsitem.SettingsItemDatabase
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
@@ -28,6 +30,15 @@ object DataSourceModule {
         context,
         TokenDatabase::class.java,
         "token_database"
+    ).addMigrations(
+        object : Migration(4, 5) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL(
+                    "CREATE TABLE `passphrase` (`id` INTEGER NOT NULL, `phrase` TEXT, " +
+                            "PRIMARY KEY(`id`))"
+                )
+            }
+        }
     ).build()
 
     @Singleton
