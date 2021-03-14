@@ -3,6 +3,7 @@ package com.token.tokenator.settings
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.fragment.app.Fragment
@@ -97,6 +98,7 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
             } else {
                 callInsertPassPhrase("")
             }
+            showToast(getString(R.string.passphrase_saved))
         }
 
         binding.noRepeatCharactersSwitch.setOnClickListener {
@@ -115,5 +117,13 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         viewModel.insertPassphrase(
             Passphrase(phrase = phrase)
         )
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(
+            requireContext(),
+            message,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
