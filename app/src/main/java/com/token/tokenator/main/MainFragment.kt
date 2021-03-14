@@ -19,6 +19,7 @@ import androidx.navigation.fragment.findNavController
 import com.token.tokenator.R
 import com.token.tokenator.database.settingsitem.PopulateDatabase
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
+import com.token.tokenator.database.token.TokenRepository
 import com.token.tokenator.databinding.MainFragmentBinding
 import com.token.tokenator.di.*
 import com.token.tokenator.model.Type
@@ -78,6 +79,9 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     @Inject
     lateinit var settingsItemRepository: SettingsItemRepository
+
+    @Inject
+    lateinit var tokenRepository: TokenRepository
 
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
@@ -241,7 +245,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             if (it.included.not()) stringList.add(it.item)
         }
 
-        val passPhrase = when (
+        val passPhrasea = when (
             (DataPref.readDataStore(key = passPhraseIncluded, dataStore) ?: false)
                 .toString()
                 .toBoolean()
@@ -250,12 +254,13 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             else -> null
         }
 
+        val passphrase = tokenRepository.passphrase?.value?.phrase
         val password = Tokenator.generate(
             length = length,
             includes = chars,
             excludedCharacters = stringList,
             doNotRepeat = doesNotRepeat,
-            passPhrase
+            passphrase
         )
 
         when {

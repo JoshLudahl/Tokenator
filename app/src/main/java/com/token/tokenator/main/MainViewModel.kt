@@ -58,8 +58,8 @@ class MainViewModel @Inject constructor(
         get() = _switchSpecialCharacter
 
     private val _switchUpperCase = MutableStateFlow(true)
-    val switchUpperCase: LiveData<Boolean>
-        get() = _switchUpperCase.asLiveData()
+    val switchUpperCase: StateFlow<Boolean>
+        get() = _switchUpperCase
 
     val noRepeatFlow: Flow<Boolean> = dataStore.data.map { preferences ->
         (preferences[stringPreferencesKey(noRepeat)] ?: true).toString().toBoolean()

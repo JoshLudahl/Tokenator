@@ -12,5 +12,5 @@ data class Passphrase(
     val id: Int = 0,
 
     @ColumnInfo(name = "phrase")
-    val phrase: String
+    var phrase: String
 )

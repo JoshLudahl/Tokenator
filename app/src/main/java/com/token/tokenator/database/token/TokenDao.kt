@@ -16,8 +16,8 @@ interface TokenDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPhrase(passphrase: Passphrase)
 
-    @Query("SELECT * FROM passphrase")
-    fun getPassphrase(): LiveData<Passphrase>
+    @Query("SELECT * FROM passphrase WHERE id = 0")
+    fun getPassphrase(): LiveData<Passphrase>?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(token: Token)

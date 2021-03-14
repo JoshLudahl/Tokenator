@@ -14,8 +14,10 @@ import com.token.tokenator.R
 import com.token.tokenator.utilities.DataPref
 import com.token.tokenator.databinding.SettingsFragmentBinding
 import com.token.tokenator.di.DataStoreNoRepeat
+import com.token.tokenator.model.Passphrase
 import com.token.tokenator.model.SettingsItem
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -90,6 +92,13 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
             findNavController().navigateUp()
         }
 
+        binding.savePassphrase.setOnClickListener {
+            if (binding.phraseEditText.text.toString().trim().isNotEmpty()) {
+                viewModel.insertPassphrase(
+                    Passphrase(phrase = binding.phraseEditText.text.toString())
+                )
+            }
+        }
         binding.noRepeatCharactersSwitch.setOnClickListener {
             lifecycleScope.launch {
                 DataPref.saveDataStore(
