@@ -105,7 +105,7 @@ dependencies {
     implementation 'com.github.KeepSafe:TapTargetView:-SNAPSHOT'
 
     // DataStore
-    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha07"
+    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha08"
 
     // Required -- JUnit 4 framework
     testImplementation 'junit:junit:4.13.2'
