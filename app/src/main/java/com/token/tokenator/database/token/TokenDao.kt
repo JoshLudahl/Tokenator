@@ -2,10 +2,18 @@ package com.token.tokenator.database.token
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.token.tokenator.model.Passphrase
 import com.token.tokenator.model.Token
+import kotlinx.coroutines.flow.StateFlow
 
 @Dao
 interface TokenDao {
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPhrase(passphrase: Passphrase)
+
+    @Query("SELECT * FROM passphrase")
+    fun getPassphrase(): LiveData<Passphrase>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(token: Token)
