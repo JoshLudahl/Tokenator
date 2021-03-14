@@ -11,13 +11,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.token.tokenator.R
-import com.token.tokenator.utilities.DataPref
 import com.token.tokenator.databinding.SettingsFragmentBinding
 import com.token.tokenator.di.DataStoreNoRepeat
 import com.token.tokenator.model.Passphrase
 import com.token.tokenator.model.SettingsItem
+import com.token.tokenator.utilities.DataPref
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -94,11 +93,12 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
 
         binding.savePassphrase.setOnClickListener {
             if (binding.phraseEditText.text.toString().trim().isNotEmpty()) {
-                viewModel.insertPassphrase(
-                    Passphrase(phrase = binding.phraseEditText.text.toString())
-                )
+                callInsertPassPhrase(binding.phraseEditText.text.toString())
+            } else {
+                callInsertPassPhrase("")
             }
         }
+
         binding.noRepeatCharactersSwitch.setOnClickListener {
             lifecycleScope.launch {
                 DataPref.saveDataStore(
@@ -108,5 +108,12 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
                 )
             }
         }
+    }
+
+    private fun callInsertPassPhrase(phrase: String) {
+
+        viewModel.insertPassphrase(
+            Passphrase(phrase = phrase)
+        )
     }
 }

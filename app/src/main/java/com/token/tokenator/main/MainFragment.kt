@@ -245,16 +245,15 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             if (it.included.not()) stringList.add(it.item)
         }
 
-        val passPhrasea = when (
+        val passphrase = when (
             (DataPref.readDataStore(key = passPhraseIncluded, dataStore) ?: false)
                 .toString()
                 .toBoolean()
         ) {
-            true -> DataPref.readDataStore(key = passPhrase, dataStore)
+            true -> tokenRepository.passphrase?.value?.phrase
             else -> null
         }
 
-        val passphrase = tokenRepository.passphrase?.value?.phrase
         val password = Tokenator.generate(
             length = length,
             includes = chars,
