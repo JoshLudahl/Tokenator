@@ -16,6 +16,12 @@ android {
         versionName "1.28"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArguments clearPackageData: 'true'
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
     }
 
     buildTypes {
@@ -55,6 +61,9 @@ android {
             buildConfigField("String", "SALT", "\"${getProperty("SALT")}\"")
             buildConfigField("String", "IV", "\"${getProperty("IV")}\"")
         }
+    }
+    android.packagingOptions {
+        exclude 'META-INF/*'
     }
 }
 
