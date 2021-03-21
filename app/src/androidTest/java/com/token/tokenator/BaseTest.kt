@@ -9,6 +9,6 @@ abstract class BaseTest {
     @get: Rule
     val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
-//    @get: Rule
-//    val espressoSetupRule = EspressoSetupRule(activityScenarioRule)
+    @get: Rule
+    val espressoSetupRule = EspressoSetupRule(activityScenarioRule)
 }
