@@ -185,7 +185,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             else -> {
                 viewModel.insert(
                     passwordName = binding.tokenName.editableText.toString().trim(),
-                    token = binding.generatedField.text.toString()
+                    token = binding.generatedField.text.toString(),
+                    login = binding.tokenLoginName.text?.toString()
                 )
                 showToast(getString(R.string.password_saved))
                 binding.tokenName.text?.clear()
