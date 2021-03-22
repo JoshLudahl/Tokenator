@@ -22,6 +22,7 @@ android {
 
     testOptions {
         execution 'ANDROIDX_TEST_ORCHESTRATOR'
+        animationsDisabled true
     }
 
     buildTypes {
@@ -152,5 +153,5 @@ dependencies {
     androidTestUtil 'androidx.test:orchestrator:1.3.0'
 
     // UI Testing Custom Library
-    androidTestImplementation "com.github.JoshLudahl:ELK:0.59.03"
+    androidTestImplementation "com.github.JoshLudahl:ELK:0.59.04"
 }
