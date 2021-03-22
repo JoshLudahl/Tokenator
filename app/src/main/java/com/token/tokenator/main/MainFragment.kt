@@ -189,6 +189,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 )
                 showToast(getString(R.string.password_saved))
                 binding.tokenName.text?.clear()
+                binding.tokenLoginName.text?.clear()
 
                 lifecycleScope.launch {
                     val preferenceItem = readDataStore(feature)

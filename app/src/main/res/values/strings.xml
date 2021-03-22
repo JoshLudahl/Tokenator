@@ -15,6 +15,7 @@
 
     <!-- Save Dialog -->
     <string name="save_dialog_title">Please enter a name &#8211;</string>
+    <string name="enter_name_for_login">Enter the login</string>
     <string name="save_dialog_cancel">Cancel</string>
     <string name="save_dialog_save">Save</string>
     <string name="enter_name_for_password">Enter name for password</string>
