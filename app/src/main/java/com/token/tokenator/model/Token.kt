@@ -22,6 +22,9 @@ data class Token(
     @ColumnInfo(name = "token")
     val token: String,
 
+    @ColumnInfo(name = "login")
+    val login: String? = null,
+
     @ColumnInfo(name = "date_saved")
     val date: String = Date().toString()
 )

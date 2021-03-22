@@ -1,5 +1,6 @@
 package com.token.tokenator.savedpassword
 
+import android.provider.Settings.Secure.getString
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -29,9 +30,15 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
             }
 
             itemBinding.tokenVisibilityIcon.setOnClickListener {
+                var login = token.login
+                login = when (login) {
+                    null -> "None"
+                    else -> token.login?.let { Encryption.decrypt(it) }
+                }
                 when (itemBinding.tokenPlaceholder.text) {
                     "**********" -> {
-                        itemBinding.tokenPlaceholder.text = Encryption.decrypt(token.token)
+                        itemBinding.tokenPlaceholder.text =
+                            "Login: $login\nPassword: ${Encryption.decrypt(token.token)}"
                         itemBinding.tokenVisibilityIcon.setImageResource(R.drawable.ic_view)
                     }
                     else -> {

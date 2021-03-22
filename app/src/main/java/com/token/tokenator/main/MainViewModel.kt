@@ -168,13 +168,17 @@ class MainViewModel @Inject constructor(
         try {
             val encryptedName = Encryption.encrypt(passwordName) ?: "No name"
             val encryptedToken = Encryption.encrypt(token)
-            val encryptedLogin = login?.let {
-                Encryption.encrypt(it)
+            val encryptedLogin = login?.trim()?.let {
+                if (it.isNotEmpty()) {
+                    Encryption.encrypt(it)
+                } else {
+                 null
+                }
             }
 
             encryptedToken?.let {
                 viewModelScope.launch(Dispatchers.IO) {
-                    repository.insert(Token(title = passwordName, token = it))
+                    repository.insert(Token(title = passwordName, token = it, login = encryptedLogin))
                     Log.i("DATABASE", "Saved to database")
                 }
             }

@@ -39,6 +39,14 @@ object DataSourceModule {
                 )
             }
         }
+    ).addMigrations(
+        object : Migration(5, 6) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL(
+                    "ALTER TABLE token_table ADD COLUMN login TEXT DEFAULT NULL"
+                )
+            }
+        }
     ).build()
 
     @Singleton
