@@ -77,7 +77,7 @@ dependencies {
     // Room Database
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     kapt "androidx.room:room-compiler:$room_version"
 
     // Navigation
@@ -105,7 +105,7 @@ dependencies {
 
     // DataBinding & other
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
 
     // Fluid Slider
     implementation 'com.ramotion.fluidslider:fluid-slider:0.3.1'
@@ -115,7 +115,7 @@ dependencies {
     implementation 'com.github.KeepSafe:TapTargetView:-SNAPSHOT'
 
     // DataStore
-    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha08"
+    implementation "androidx.datastore:datastore-preferences:1.0.0-beta01"
 
     // Required -- JUnit 4 framework
     testImplementation 'junit:junit:4.13.2'
