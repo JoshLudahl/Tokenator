@@ -277,8 +277,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                     generatedField.text = password
                     tokenName.requestFocus()
                 }
-
-                //copyToClipBoard(password)
             }
             else -> showToast(getString(R.string.toast_length_warning))
         }

@@ -7,14 +7,14 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.*
 import com.token.tokenator.BuildConfig
-import com.token.tokenator.utilities.DataPref
-import com.token.tokenator.utilities.Encryption
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.database.token.TokenRepository
 import com.token.tokenator.di.*
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Token
 import com.token.tokenator.model.Type
+import com.token.tokenator.utilities.DataPref
+import com.token.tokenator.utilities.Encryption
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -40,8 +40,8 @@ class MainViewModel @Inject constructor(
     private val _tokenNameEditTextLabelVisibility = MutableLiveData<Int>()
     private val _tokenNameEditTextFieldVisibility = MutableLiveData<Int>()
     private val _allCharacters = MutableStateFlow<List<SettingsItem>>(emptyList())
-        val allCharacters: StateFlow<List<SettingsItem>>
-            get() = _allCharacters
+    val allCharacters: StateFlow<List<SettingsItem>>
+        get() = _allCharacters
 
     private val _shouldShowEasterEggToast = MutableStateFlow<Boolean>(false)
 
@@ -87,9 +87,10 @@ class MainViewModel @Inject constructor(
                 .toString()
                 .toBoolean()
 
-            _switchSpecialCharacter.value = (DataPref.readDataStore(specialCharacters, dataStore) ?: true)
-                .toString()
-                .toBoolean()
+            _switchSpecialCharacter.value =
+                (DataPref.readDataStore(specialCharacters, dataStore) ?: true)
+                    .toString()
+                    .toBoolean()
 
             _switchUpperCase.value = (DataPref.readDataStore(uppercase, dataStore) ?: true)
                 .toString()
@@ -173,13 +174,19 @@ class MainViewModel @Inject constructor(
                 if (it.isNotEmpty()) {
                     Encryption.encrypt(it)
                 } else {
-                 null
+                    null
                 }
             }
 
             encryptedToken?.let {
                 viewModelScope.launch(Dispatchers.IO) {
-                    repository.insert(Token(title = passwordName, token = it, login = encryptedLogin))
+                    repository.insert(
+                        Token(
+                            title = passwordName,
+                            token = it,
+                            login = encryptedLogin
+                        )
+                    )
                     Log.i("DATABASE", "Saved to database")
                 }
             }
