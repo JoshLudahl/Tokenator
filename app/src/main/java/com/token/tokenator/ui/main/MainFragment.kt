@@ -127,12 +127,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             findNavController().navigate(R.id.action_mainFragment_to_savedTokenFragment)
         }
 
-        binding.generatedField.setOnLongClickListener {
+        binding.generatedField.setOnClickListener {
             if (viewModel.token.value.isNotEmpty()) {
                 copyToClipBoard(viewModel.token.value)
                 showToast("Copied to clipboard")
             }
-            true
         }
 
         binding.fluidSlider
@@ -279,7 +278,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                     tokenName.requestFocus()
                 }
 
-                copyToClipBoard(password)
+                //copyToClipBoard(password)
             }
             else -> showToast(getString(R.string.toast_length_warning))
         }
