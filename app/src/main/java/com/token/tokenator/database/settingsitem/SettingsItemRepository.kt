@@ -3,10 +3,12 @@ package com.token.tokenator.database.settingsitem
 import androidx.lifecycle.LiveData
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Type
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 
 class SettingsItemRepository(private val settingsItemDao: SettingsItemDao) {
 
-    val allCharacters: LiveData<List<SettingsItem>> =
+    val allCharacters: Flow<List<SettingsItem>> =
         settingsItemDao.getAllCharacters()
 
     val allExcludedCharacters: LiveData<List<SettingsItem>> =

@@ -2,10 +2,7 @@ package com.token.tokenator.ui.settings
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.database.token.TokenRepository
 import com.token.tokenator.di.DataStorePassPhraseIncluded
@@ -26,7 +23,7 @@ class SettingsViewModel @Inject constructor(
     @DataStorePassPhraseIncluded private val includePassPhrase: String
 ) : ViewModel(), LifecycleObserver {
 
-    val specialCharList: LiveData<List<SettingsItem>> = repository.allCharacters
+    val specialCharList: LiveData<List<SettingsItem>> = repository.allCharacters.asLiveData()
     val numericCharList: LiveData<List<SettingsItem>> = repository.allNumericChars
     val lowerCaseCharList: LiveData<List<SettingsItem>> = repository.allLowerCaseChars
     val upperCaseCharList: LiveData<List<SettingsItem>> = repository.allUpperCaseChars

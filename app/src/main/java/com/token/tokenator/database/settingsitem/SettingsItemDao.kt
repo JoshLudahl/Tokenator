@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Type
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 
 @Dao
 interface SettingsItemDao {
@@ -12,7 +14,7 @@ interface SettingsItemDao {
     suspend fun insert(settingsItem: SettingsItem)
 
     @Query("SELECT * FROM character_table")
-    fun getAllCharacters(): LiveData<List<SettingsItem>>
+    fun getAllCharacters(): Flow<List<SettingsItem>>
 
     @Query("SELECT * FROM character_table WHERE category = :category")
     fun getAllByCategory(category: Type): LiveData<List<SettingsItem>>

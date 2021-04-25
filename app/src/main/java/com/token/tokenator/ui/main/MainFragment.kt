@@ -243,7 +243,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
 
         val stringList = mutableListOf<String>()
-        viewModel.allCharacters.value?.forEach {
+        viewModel.allCharacters.value.forEach {
             if (it.included.not()) stringList.add(it.item)
         }
 

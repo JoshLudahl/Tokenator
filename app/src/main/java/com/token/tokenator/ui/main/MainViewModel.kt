@@ -17,10 +17,7 @@ import com.token.tokenator.model.Token
 import com.token.tokenator.model.Type
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -42,7 +39,10 @@ class MainViewModel @Inject constructor(
     private val _length = MutableStateFlow<Float>(0f)
     private val _tokenNameEditTextLabelVisibility = MutableLiveData<Int>()
     private val _tokenNameEditTextFieldVisibility = MutableLiveData<Int>()
-    private val _allCharacters = settingsItemRepository.allCharacters
+    private val _allCharacters = MutableStateFlow<List<SettingsItem>>(emptyList())
+        val allCharacters: StateFlow<List<SettingsItem>>
+            get() = _allCharacters
+
     private val _shouldShowEasterEggToast = MutableStateFlow<Boolean>(false)
 
     private val _switchLowerCase = MutableStateFlow(true)
@@ -75,6 +75,10 @@ class MainViewModel @Inject constructor(
         //set switches
         viewModelScope.launch {
 
+            settingsItemRepository.allCharacters.collect { characters ->
+                _allCharacters.value = characters
+            }
+
             _switchLowerCase.value = (DataPref.readDataStore(lowercase, dataStore) ?: true)
                 .toString()
                 .toBoolean()
@@ -98,9 +102,6 @@ class MainViewModel @Inject constructor(
 
     val length: StateFlow<Float>
         get() = _length
-
-    val allCharacters: LiveData<List<SettingsItem>>
-        get() = _allCharacters
 
     val shouldShowEasterEggToast: StateFlow<Boolean>
         get() = _shouldShowEasterEggToast
