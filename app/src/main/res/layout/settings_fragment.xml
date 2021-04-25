@@ -10,7 +10,7 @@
     type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.token.tokenator.settings.SettingsViewModel" />
+            type="com.token.tokenator.ui.settings.SettingsViewModel" />
     </data>
 
     <FrameLayout

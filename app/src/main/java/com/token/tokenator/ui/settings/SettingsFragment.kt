@@ -1,4 +1,4 @@
-package com.token.tokenator.settings
+package com.token.tokenator.ui.settings
 
 import android.os.Bundle
 import android.util.Log

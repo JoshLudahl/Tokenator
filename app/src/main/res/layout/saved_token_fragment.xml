@@ -9,13 +9,13 @@
 
         <variable
             name="tokenViewModel"
-            type="com.token.tokenator.savedpassword.SavedTokenViewModel" />
+            type="com.token.tokenator.ui.savedpassword.SavedTokenViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".savedpassword.SavedTokenFragment">
+        tools:context=".ui.savedpassword.SavedTokenFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

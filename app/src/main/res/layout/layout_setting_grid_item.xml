@@ -11,7 +11,7 @@
 
         <variable
             name="clickListener"
-            type="com.token.tokenator.settings.SettingsListener" />
+            type="com.token.tokenator.ui.settings.SettingsListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

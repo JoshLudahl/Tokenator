@@ -16,7 +16,7 @@
 
         <variable
             name="viewModel"
-            type="com.token.tokenator.main.MainViewModel" />
+            type="com.token.tokenator.ui.main.MainViewModel" />
     </data>
 
     <ScrollView

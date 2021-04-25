@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/savedTokenFragment"
-        android:name="com.token.tokenator.savedpassword.SavedTokenFragment"
+        android:name="com.token.tokenator.ui.savedpassword.SavedTokenFragment"
         android:label="SavedTokenFragment">
         <action
             android:id="@+id/action_savedTokenFragment_pop"
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.token.tokenator.main.MainFragment"
+        android:name="com.token.tokenator.ui.main.MainFragment"
         android:label="MainFragment" >
         <action
             android:id="@+id/action_mainFragment_to_savedTokenFragment"
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.token.tokenator.settings.SettingsFragment"
+        android:name="com.token.tokenator.ui.settings.SettingsFragment"
         android:label="SettingsFragment" >
         <action
             android:id="@+id/action_settingsFragment_to_mainFragment"

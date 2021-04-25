@@ -1,4 +1,4 @@
-package com.token.tokenator.settings
+package com.token.tokenator.ui.settings
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter

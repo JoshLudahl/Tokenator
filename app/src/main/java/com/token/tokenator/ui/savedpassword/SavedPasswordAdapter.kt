@@ -1,6 +1,5 @@
-package com.token.tokenator.savedpassword
+package com.token.tokenator.ui.savedpassword
 
-import android.provider.Settings.Secure.getString
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil

@@ -1,4 +1,4 @@
-package com.token.tokenator.savedpassword
+package com.token.tokenator.ui.savedpassword
 
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LiveData

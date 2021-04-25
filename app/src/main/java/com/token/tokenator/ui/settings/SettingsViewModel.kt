@@ -1,4 +1,4 @@
-package com.token.tokenator.settings
+package com.token.tokenator.ui.settings
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

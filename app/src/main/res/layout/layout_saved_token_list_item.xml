@@ -11,7 +11,7 @@
 
         <variable
             name="clickListener"
-            type="com.token.tokenator.savedpassword.TokenListener" />
+            type="com.token.tokenator.ui.savedpassword.TokenListener" />
     </data>
 
 

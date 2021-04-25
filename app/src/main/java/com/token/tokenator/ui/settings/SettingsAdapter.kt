@@ -1,4 +1,4 @@
-package com.token.tokenator.settings
+package com.token.tokenator.ui.settings
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
