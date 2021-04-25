@@ -17,7 +17,7 @@ Easily generate a password ranging from 1-100 characters. Easy, so easy.
 * Clean interface
 * Easy to use toggles for character inclusion
 * Easy to use slider for password length
-* Generating a password automatically copies it to the clipboard
+* Click to copy generated password to your clipboard
 * Hybrid dark/light theme utilizing softer, less dramatic colors
 * Generate passwords ranging 1-100 in length, 8 is set as the default
 * Customize which characters to use 
@@ -40,10 +40,13 @@ You couldn't ask for a better and easier way to generate and save passwords! Wel
 * Dependency Injection using Dagger Hilt  
 * MVVM
 * Kotlin Coroutines
-* Material Design 
+* Material Design Components
 * Feature Discovery using TapTarget
 * Custom slider using FluidSlider
 
 [![Play Store](https://github.com/JoshLudahl/Tokenator/blob/master/google-play-badge.png)](https://play.google.com/store/apps/details?id=com.token.tokenator)
 
 Google Play and the Google Play logo are trademarks of Google LLC.
+
+## License
+This app is not to be reproduced for any reason outside of individual personal use. It may not be published to any app store as a downloadable application without the permissions of the license granter.
