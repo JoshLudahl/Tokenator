@@ -75,10 +75,6 @@ class MainViewModel @Inject constructor(
         //set switches
         viewModelScope.launch {
 
-            settingsItemRepository.allCharacters.collect { characters ->
-                _allCharacters.value = characters
-            }
-
             _switchLowerCase.value = (DataPref.readDataStore(lowercase, dataStore) ?: true)
                 .toString()
                 .toBoolean()
@@ -95,6 +91,10 @@ class MainViewModel @Inject constructor(
             _switchUpperCase.value = (DataPref.readDataStore(uppercase, dataStore) ?: true)
                 .toString()
                 .toBoolean()
+
+            settingsItemRepository.allCharacters.collect { characters ->
+                _allCharacters.value = characters
+            }
         }
     }
 
