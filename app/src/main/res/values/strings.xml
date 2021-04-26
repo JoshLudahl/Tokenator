@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tokenator</string>
+    <string name="app_name" translatable="false">Tokenator</string>
     <string name="length">Length</string>
 
     <string name="toast_length_warning">Error: Length must be between 1&#8211;10000</string>
@@ -9,7 +9,7 @@
     <string name="click_to_generate_password">Click generate token to generate a token</string>
     <string name="length_hint">Length</string>
     <string name="generate_token_button_text">Generate Token</string>
-    <string name="tokenator">Tokenator</string>
+    <string name="tokenator" translatable="false">Tokenator</string>
     <string name="save_button">Save</string>
     <string name="view_saved_button">view saved</string>
 

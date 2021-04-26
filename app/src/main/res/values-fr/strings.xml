@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="length">Longueur</string>
+
+    <string name="toast_length_warning">Erreur: longueur doit être comprise entre 1&#8211;10000</string>
+    <string name="toast_copied_to_clipboard">Copié dans le presse-papier</string>
+    <string name="toast_generate_password_first_warning">Générer un mot de passe en premier.</string>
+    <string name="secret_sauce">Sauce secrète</string>
+    <string name="click_to_generate_password">Cliquez générer jeton pour générer un jeton</string>
+    <string name="length_hint">Longueur</string>
+    <string name="generate_token_button_text">générer jeton</string>
+
+    <string name="save_button">Sauvegarder</string>
+    <string name="view_saved_button">vue enregistrée</string>
+
+    <!-- Save Dialog -->
+    <string name="save_dialog_title">S\'il vous plaît entrer un nom &#8211;</string>
+    <string name="enter_name_for_login">Entrez le login</string>
+    <string name="save_dialog_cancel">Annuler</string>
+    <string name="save_dialog_save">Sauvegarder</string>
+    <string name="enter_name_for_password">Entrez le nom pour le mot de passe</string>
+    <string name="error_enter_name_for_password">Entrez un nom pour le mot de passe</string>
+    <string name="error_generate_password_first">Vous devez générer un mot de passe d\'abord</string>
+    <string name="password_saved">Mot de passe enregistré</string>
+    <string name="token_title_placeholder">Titre Token</string>
+    <string name="token_placeholder_text">4dasdfsa8d@#@f</string>
+    <string name="no_saved_passwords">Pas de mots de passe enregistrés</string>
+    <string name="copy">Copie</string>
+    <string name="settings">Paramètres</string>
+    <string name="generated_token">Jeton généré (cliquez pour copier)</string>
+    <string name="uppercase_letters">Majuscules</string>
+    <string name="lowercase_letters">Minuscules</string>
+    <string name="numeric">numérique</string>
+    <string name="special_characters">Caractères spéciaux</string>
+    <string name="delete">Effacer?</string>
+    <string name="login_information">Connexion: %1$s, Mot de passe %2sde$</string>
+
+    <!-- Feature Discovery -->
+    <string name="feature_view_saved_passwords_title">Voir les mots de passe enregistrés</string>
+    <string name="feature_view_saved_passwords_description">Cliquez sur l\'icône du signet pour voir vos mots de passe enregistrés.</string>
+    <string name="alert_confirm_delete">Supprimer le mot de passe?</string>
+    <string name="alert_delete_message">Etes-vous sûr de vouloir supprimer le mot de passe?</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="optional">Optionnel</string>
+    <string name="take_me_to_settings">Prenez-moi les paramètres</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+
+    <!-- Settings -->
+    <string name="characters">Caractères à inclure</string>
+    <string name="no_repeat_characters">Aucun caractère de répétition</string>
+    <string name="passphrase">inclure Passphrase</string>
+    <string name="enter_a_passphrase">Entrez un mot de passe</string>
+    <string name="passphrase_saved">sauvé passphrase!</string>
+</resources>

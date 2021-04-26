@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="length">Länge</string>
+    <string name="toast_length_warning">Fehler: Länge muss zwischen 1&#8211;10000</string>
+    <string name="toast_copied_to_clipboard">In die Zwischenablage kopiert</string>
+    <string name="toast_generate_password_first_warning">Erzeugen Sie zunächst ein Passwort.</string>
+    <string name="secret_sauce">Geheimnis Sauce</string>
+    <string name="click_to_generate_password">Klicken Sie erzeugen Token ein Token zu erzeugen</string>
+    <string name="length_hint">Länge</string>
+    <string name="generate_token_button_text">generieren Token</string>
+
+    <string name="save_button">speichern</string>
+    <string name="view_saved_button">Ansicht gespeichert</string>
+
+    <!-- Save Dialog -->
+    <string name="save_dialog_title">Bitte geben Sie einen Namen &#8211;</string>
+    <string name="enter_name_for_login">Geben Sie die Login</string>
+    <string name="save_dialog_cancel">Stornieren</string>
+    <string name="save_dialog_save">speichern</string>
+    <string name="enter_name_for_password">Geben Sie den Namen für Passwort</string>
+    <string name="error_enter_name_for_password">Geben Sie einen Namen für das Passwort</string>
+    <string name="error_generate_password_first">Sie müssen ein Passwort generieren zuerst</string>
+    <string name="password_saved">Kennwort gespeichert</string>
+    <string name="token_title_placeholder">Token Titel</string>
+    <string name="token_placeholder_text">4dasdfsa8d@#@f</string>
+    <string name="no_saved_passwords">Keine Gespeicherte Passwörter</string>
+    <string name="copy">Kopieren</string>
+    <string name="settings">die Einstellungen</string>
+    <string name="generated_token">Erzeugten Token (klicken zu kopieren)</string>
+    <string name="uppercase_letters">Großbuchstaben</string>
+    <string name="lowercase_letters">Kleinbuchstaben</string>
+    <string name="numeric">numerisch</string>
+    <string name="special_characters">Spezielle Charaktere</string>
+    <string name="delete">Löschen?</string>
+    <string name="login_information">Anmeldung: %1$s, Passwort %2$s</string>
+
+    <!-- Feature Discovery -->
+    <string name="feature_view_saved_passwords_title">Gespeicherte Passwörter</string>
+    <string name="feature_view_saved_passwords_description">Klicken Sie auf das Lesezeichen-Symbol Ihre gespeicherten Passwörter zu sehen.</string>
+    <string name="alert_confirm_delete">Löschen Sie das Passwort vergessen?</string>
+    <string name="alert_delete_message">Sind Sie sicher, dass Sie das Kennwort löschen?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="optional">Optional</string>
+    <string name="take_me_to_settings">Nehmen Sie mich auf Einstellungen</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+
+    <!-- Settings -->
+    <string name="characters">Zeichen umfassen</string>
+    <string name="no_repeat_characters">Keine Wiederholung Zeichen</string>
+    <string name="passphrase">Fügen Sie Kennsatz</string>
+    <string name="enter_a_passphrase">Geben Sie ein Passwort</string>
+    <string name="passphrase_saved">Kennsatz gespeichert!</string>
+</resources>
