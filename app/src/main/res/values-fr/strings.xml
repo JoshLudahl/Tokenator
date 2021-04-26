@@ -2,7 +2,6 @@
 <resources>
 
     <string name="length">Longueur</string>
-
     <string name="toast_length_warning">Erreur: longueur doit être comprise entre 1&#8211;10000</string>
     <string name="toast_copied_to_clipboard">Copié dans le presse-papier</string>
     <string name="toast_generate_password_first_warning">Générer un mot de passe en premier.</string>
