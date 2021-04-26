@@ -48,5 +48,9 @@ You couldn't ask for a better and easier way to generate and save passwords! Wel
 
 Google Play and the Google Play logo are trademarks of Google LLC.
 
+## Language support
+Currently supports the following languages:
+English, French, German, Korean and Spanish
+
 ## License
 All rights reserved. All years. This app is not to be reproduced for any reason outside of individual personal use. It may not be published to any app store as a downloadable application without the permissions of the license granter.
