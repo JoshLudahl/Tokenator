@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Tokenator</string>
     <string name="length">طول</string>
 
     <string name="toast_length_warning">يجب أن يكون طول الفترة بين 1 </string>
@@ -10,7 +9,6 @@
     <string name="click_to_generate_password">انقر على توليد رمز لإنشاء رمز مميز</string>
     <string name="length_hint">طول</string>
     <string name="generate_token_button_text">توليد رمز</string>
-    <string name="tokenator" translatable="false">Tokenator</string>
     <string name="save_button">يحفظ</string>
     <string name="view_saved_button">عرض محفوظة</string>
 

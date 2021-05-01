@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Tokenator</string>
+    <string name="length">Luzera</string>
+
+    <string name="toast_length_warning">Akatsa: Luzera izan behar 1 &#8211; 10000</string>
+    <string name="toast_copied_to_clipboard">arbelean kopiatzen</string>
+    <string name="toast_generate_password_first_warning">Sortu pasahitza lehen.</string>
+    <string name="secret_sauce">Secret Sauce</string>
+    <string name="click_to_generate_password">Klik sortzen token token bat sortzeko</string>
+    <string name="length_hint">Luzera</string>
+    <string name="generate_token_button_text">Sortu Token</string>
+    <string name="tokenator" translatable="false">Tokenator</string>
+    <string name="save_button">Save</string>
+    <string name="view_saved_button">ikuspegi gordetako</string>
+
+    <!-- Save Dialog -->
+    <string name="save_dialog_title">Sartu izena &#8211;</string>
+    <string name="enter_name_for_login">Idatzi saioa hasteko izena</string>
+    <string name="save_dialog_cancel">Utzi</string>
+    <string name="save_dialog_save">Save</string>
+    <string name="enter_name_for_password">Idatzi izen pasahitza</string>
+    <string name="error_enter_name_for_password">Sartu izena pasahitza</string>
+    <string name="error_generate_password_first">Lehenengo pasahitz bat sortu behar duzu</string>
+    <string name="password_saved">Pasahitza gordeko</string>
+    <string name="token_title_placeholder">token Izenburua</string>
+    <string name="token_placeholder_text">4dasdfsa8d @ # @ f</string>
+    <string name="no_saved_passwords">Ez dago gordetako pasahitzak</string>
+    <string name="copy">Copy</string>
+    <string name="settings">ezarpenak</string>
+    <string name="generated_token">token Sortutako (Ezkutatu kopiatu)</string>
+    <string name="uppercase_letters">maiuskulaz</string>
+    <string name="lowercase_letters">minuskulak</string>
+    <string name="numeric">Zenbaki</string>
+    <string name="special_characters">Pertsonaiak bereziak</string>
+    <string name="delete">Ezabatu?</string>
+    <string name="login_information">Sarrera: %1$s, Password %2$s</string>
+
+    <!-- Feature Discovery -->
+    <string name="feature_view_saved_passwords_title">Ikusi gordetako pasahitzak</string>
+    <string name="feature_view_saved_passwords_description">Klikatu bookmark ikonoa gordetako pasahitzak ikusteko.</string>
+    <string name="alert_confirm_delete">Ezabatu pasahitza?</string>
+    <string name="alert_delete_message">Ziur pasahitza ezabatu nahi duzula?</string>
+    <string name="yes">Bai</string>
+    <string name="no">Ez</string>
+    <string name="optional">Aukerako</string>
+    <string name="take_me_to_settings">Hartu me ezarpenetara</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+
+    <!-- Settings -->
+    <string name="characters">Pertsonaiak, besteak</string>
+    <string name="no_repeat_characters">Ez errepikatu pertsonaiak</string>
+    <string name="passphrase">Besteak beste Pasaesaldiak</string>
+    <string name="enter_a_passphrase">Idatzi pasaesaldi baten</string>
+    <string name="passphrase_saved">Pasaesaldiak gorde!</string>
+</resources>
