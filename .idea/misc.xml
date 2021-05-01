@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/ic_repeat.xml" value="0.91875" />
         <entry key="app/src/main/res/drawable/ic_save.xml" value="0.91875" />
         <entry key="app/src/main/res/drawable/settings_item_inactive_background.xml" value="0.2203125" />
+        <entry key="app/src/main/res/layout/layout_saved_token_list_item.xml" value="0.3065085771947528" />
         <entry key="app/src/main/res/layout/layout_setting_grid_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.5610932475884244" />
         <entry key="app/src/main/res/layout/saved_token_fragment.xml" value="0.2941473259334006" />
