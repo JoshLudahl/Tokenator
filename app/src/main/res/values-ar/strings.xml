@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Tokenator</string>
+    <string name="length">طول</string>
+
+    <string name="toast_length_warning">يجب أن يكون طول الفترة بين 1 </string>
+    <string name="toast_copied_to_clipboard">نسخ إلى الحافظة</string>
+    <string name="toast_generate_password_first_warning">إنشاء كلمة مرور لأول مرة.</string>
+    <string name="secret_sauce">صلصة سرية</string>
+    <string name="click_to_generate_password">انقر على توليد رمز لإنشاء رمز مميز</string>
+    <string name="length_hint">طول</string>
+    <string name="generate_token_button_text">توليد رمز</string>
+    <string name="tokenator" translatable="false">Tokenator</string>
+    <string name="save_button">يحفظ</string>
+    <string name="view_saved_button">عرض محفوظة</string>
+
+    <!-- Save Dialog -->
+    <string name="save_dialog_title">الرجاء إدخال اسم &#8211;</string>
+    <string name="enter_name_for_login">أدخل تسجيل الدخول</string>
+    <string name="save_dialog_cancel">يلغي</string>
+    <string name="save_dialog_save">يحفظ</string>
+    <string name="enter_name_for_password">أدخل اسم لكلمة المرور</string>
+    <string name="error_enter_name_for_password">أدخل اسما لكلمة المرور</string>
+    <string name="error_generate_password_first">يجب إنشاء كلمة مرور لأول مرة</string>
+    <string name="password_saved">كلمة المرور المحفوظة</string>
+    <string name="token_title_placeholder">رمز عنوان</string>
+    <string name="token_placeholder_text">4dasdfsa8d @ # @ و</string>
+    <string name="no_saved_passwords">لا كلمات المرور المحفوظة</string>
+    <string name="copy">ينسخ</string>
+    <string name="settings">إعدادات</string>
+    <string name="generated_token">ولدت رمز (انقر للنسخ)</string>
+    <string name="uppercase_letters">الأحرف الكبيرة</string>
+    <string name="lowercase_letters">أحرف صغيرة</string>
+    <string name="numeric">رقمية</string>
+    <string name="special_characters">أحرف خاصة</string>
+    <string name="delete">حذف؟</string>
+    <string name="login_information">تسجيل الدخول:٪1$s، و كلمة المرور٪2$ الصورة</string>
+
+    <!-- Feature Discovery -->
+    <string name="feature_view_saved_passwords_title">عرض كلمات المرور المحفوظة</string>
+    <string name="feature_view_saved_passwords_description">انقر على علامة رمز لمعرفة كلمات المرور المحفوظة.</string>
+    <string name="alert_confirm_delete">حذف كلمة المرور؟</string>
+    <string name="alert_delete_message">هل أنت متأكد أنك تريد حذف كلمة المرور؟</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="optional">اختياري</string>
+    <string name="take_me_to_settings">يأخذني إلى إعدادات</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+
+    <!-- Settings -->
+    <string name="characters">شخصيات لتشمل</string>
+    <string name="no_repeat_characters">عدم تكرار الأحرف</string>
+    <string name="passphrase">تشمل عبارة المرور</string>
+    <string name="enter_a_passphrase">إدخال عبارة المرور</string>
+    <string name="passphrase_saved">عبارة المرور المحفوظة!</string>
+</resources>
