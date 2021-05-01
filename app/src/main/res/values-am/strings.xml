@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Tokenator</string>
+    <string name="length">ርዝመት</string>
+
+    <string name="toast_length_warning">ስህተት: ርዝመት መሆን አለበት 1 መካከል &#8211;10000</string>
+    <string name="toast_copied_to_clipboard">ወደ ቅንጥብ ሰሌዳ ተገልብጧል</string>
+    <string name="toast_generate_password_first_warning">በመጀመሪያ የይለፍ ቃል አፍልቅ.</string>
+    <string name="secret_sauce">ምስጢር መረቅ</string>
+    <string name="click_to_generate_password">ክሊክ አንድ ማስመሰያ ማመንጨት ማስመሰያ ማመንጨት</string>
+    <string name="length_hint">ርዝመት</string>
+    <string name="generate_token_button_text">ማስመሰያ አመንጭ</string>
+    <string name="tokenator" translatable="false">Tokenator</string>
+    <string name="save_button">አስቀምጥ</string>
+    <string name="view_saved_button">እይታ ተቀምጧል</string>
+
+    <!-- Save Dialog -->
+    <string name="save_dialog_title">አንድ ስም &#8211;</string>
+    <string name="enter_name_for_login">የመግቢያ ያስገቡ</string>
+    <string name="save_dialog_cancel">ሰርዝ</string>
+    <string name="save_dialog_save">አስቀምጥ</string>
+    <string name="enter_name_for_password">የይለፍ ቃል ለ ስም ያስገቡ</string>
+    <string name="error_enter_name_for_password">የይለፍ ስም ያስገቡ</string>
+    <string name="error_generate_password_first">በመጀመሪያ የይለፍ ቃል መፍጠር ይኖርብናል</string>
+    <string name="password_saved">የይለፍ ቃል ተቀምጧል</string>
+    <string name="token_title_placeholder">ማስመሰያ ርዕስ</string>
+    <string name="token_placeholder_text">4dasdfsa8d@#@ረ</string>
+    <string name="no_saved_passwords">ምንም የተቀመጡ የይለፍ ቃላት</string>
+    <string name="copy">ግልባጭ</string>
+    <string name="settings">ቅንብሮች</string>
+    <string name="generated_token">ማስመሰያ (ለመቅዳት ጠቅ ያድርጉ)</string>
+    <string name="uppercase_letters">አብይ ፊደሎች</string>
+    <string name="lowercase_letters">ፊደሎች</string>
+    <string name="numeric">የቁጥር</string>
+    <string name="special_characters">ልዩ ቁምፊዎች</string>
+    <string name="delete">ይሰረዝ?</string>
+    <string name="login_information">መግቢያ: %1$s, የይለፍ %2$s</string>
+
+    <!-- Feature Discovery -->
+    <string name="feature_view_saved_passwords_title">አሳይ የተቀመጡ የይለፍ ቃላት</string>
+    <string name="feature_view_saved_passwords_description">የተቀመጡ የይለፍ ለማየት የዕልባት አዶ ላይ ጠቅ ያድርጉ.</string>
+    <string name="alert_confirm_delete">የይለፍ ይሰረዝ?</string>
+    <string name="alert_delete_message">እርስዎ የይለፍ ቃል መሰረዝ ይፈልጋሉ እርግጠኛ ነዎት?</string>
+    <string name="yes">አዎ</string>
+    <string name="no">አይ</string>
+    <string name="optional">ግዴታ ያልሆነ</string>
+    <string name="take_me_to_settings">ቅንብሮች ውሰደኝ</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+
+    <!-- Settings -->
+    <string name="characters">ቁምፊዎች ለማካተት</string>
+    <string name="no_repeat_characters">ምንም ተደጋጋሚ ቁምፊዎች</string>
+    <string name="passphrase">የይለፍ ሐረግ አካት</string>
+    <string name="enter_a_passphrase">የይለፍ ሐረግ ያስገቡ</string>
+    <string name="passphrase_saved">የይለፍ ሐረግ ተቀምጧል!</string>
+</resources>
