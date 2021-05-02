@@ -1,20 +1,19 @@
 <resources>
     <string name="app_name" translatable="false">Tokenator</string>
-    <string name="length">Length</string>
+    <string name="tokenator" translatable="false">Tokenator</string>
 
-    <string name="toast_length_warning">Error: Length must be between 1&#8211;10000</string>
+    <string name="length">Length</string>
+    <string name="toast_length_warning">Error generating password.</string>
     <string name="toast_copied_to_clipboard">Copied to clipboard</string>
     <string name="toast_generate_password_first_warning">Generate a password first.</string>
     <string name="secret_sauce">Secret Sauce</string>
     <string name="click_to_generate_password">Click generate token to generate a token</string>
     <string name="length_hint">Length</string>
     <string name="generate_token_button_text">Generate Token</string>
-    <string name="tokenator" translatable="false">Tokenator</string>
     <string name="save_button">Save</string>
     <string name="view_saved_button">view saved</string>
 
     <!-- Save Dialog -->
-    <string name="save_dialog_title">Please enter a name &#8211;</string>
     <string name="enter_name_for_login">Enter the login</string>
     <string name="save_dialog_cancel">Cancel</string>
     <string name="save_dialog_save">Save</string>
