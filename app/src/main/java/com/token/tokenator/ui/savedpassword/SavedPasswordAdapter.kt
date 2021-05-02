@@ -1,16 +1,17 @@
 package com.token.tokenator.ui.savedpassword
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.token.tokenator.R
-import com.token.tokenator.utilities.Clipuous
-import com.token.tokenator.utilities.Encryption
 import com.token.tokenator.databinding.LayoutSavedTokenListItemBinding
 import com.token.tokenator.model.Token
+import com.token.tokenator.utilities.Clipuous
+import com.token.tokenator.utilities.Encryption
 
 class SavedPasswordAdapter(private val clickListener: TokenListener) :
     ListAdapter<Token, SavedPasswordAdapter.ViewHolder>(SavedPasswordsDiffCallback) {
@@ -26,6 +27,9 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
             itemBinding.apply {
                 tokenTitle.text = token.title
                 tokenPlaceholder.text = "**********"
+                listOf(loginLabel, loginValue).forEach {
+                    it.visibility = View.GONE
+                }
             }
 
             itemBinding.tokenVisibilityIcon.setOnClickListener {
@@ -36,13 +40,24 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
                 }
                 when (itemBinding.tokenPlaceholder.text) {
                     "**********" -> {
-                        itemBinding.tokenPlaceholder.text =
-                            "Login: $login\nPassword: ${Encryption.decrypt(token.token)}"
+                        itemBinding.tokenPlaceholder.text = Encryption.decrypt(token.token)
                         itemBinding.tokenVisibilityIcon.setImageResource(R.drawable.ic_view)
+                        itemBinding.loginValue.apply {
+                            token.login?.let {
+                                listOf(this, itemBinding.loginLabel).forEach { view ->
+                                    view.visibility = View.VISIBLE
+                                }
+                                this.text = Encryption.decrypt(it)
+                            }
+
+                        }
                     }
                     else -> {
                         itemBinding.tokenPlaceholder.text = "**********"
                         itemBinding.tokenVisibilityIcon.setImageResource(R.drawable.ic_view_hidden)
+                        listOf(itemBinding.loginLabel, itemBinding.loginValue).forEach {
+                            it.visibility = View.GONE
+                        }
                     }
                 }
             }
@@ -74,7 +89,7 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
             LayoutInflater.from(parent.context),
             parent,
             false
-        ).let{
+        ).let {
             ViewHolder(it)
         }
     }

@@ -33,7 +33,7 @@
     <string name="numeric">Numeric</string>
     <string name="special_characters">Special Characters</string>
     <string name="delete">Delete?</string>
-    <string name="login_information">Login: %1$s, Password %2$s</string>
+    <string name="login_information">Login: %1$s, Password: %2$s</string>
 
     <!-- Feature Discovery -->
     <string name="feature_view_saved_passwords_title">View Saved Passwords</string>
@@ -52,4 +52,7 @@
     <string name="passphrase">Include Passphrase</string>
     <string name="enter_a_passphrase">Enter a passphrase</string>
     <string name="passphrase_saved">Passphrase saved!</string>
+    <string name="password">Password</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Login</string>
 </resources>
