@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">Tokenator</string>
     <string name="tokenator" translatable="false">Tokenator</string>
+    <string name="token_placeholder_text" translatable="false">4dasdfsa8</string>
 
     <string name="length">Length</string>
     <string name="toast_length_warning">Error generating password.</string>
@@ -22,7 +23,6 @@
     <string name="error_generate_password_first">You must generate a password first</string>
     <string name="password_saved">Password saved</string>
     <string name="token_title_placeholder">Token Title</string>
-    <string name="token_placeholder_text">4dasdfsa8d@#@f</string>
     <string name="no_saved_passwords">No Saved Passwords</string>
     <string name="copy">Copy</string>
     <string name="settings">Settings</string>
