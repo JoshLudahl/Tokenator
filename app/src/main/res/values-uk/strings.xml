@@ -9,8 +9,8 @@
     <string name="enter_name_for_login">Введіть логін</string>
     <string name="save_dialog_cancel">скасувати</string>
     <string name="save_dialog_save">зберегти</string>
-    <string name="enter_name_for_password">Введіть ім'я для пароля</string>
-    <string name="error_enter_name_for_password">Введіть ім'я для пароля</string>
+    <string name="enter_name_for_password">Введіть ім\'я для пароля</string>
+    <string name="error_enter_name_for_password">Введіть ім\'я для пароля</string>
     <string name="error_generate_password_first">Ви повинні згенерувати пароль першій</string>
     <string name="password_saved">пароль збережений</string>
     <string name="token_title_placeholder">токен Назва</string>
