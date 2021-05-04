@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">дужина</string>
+    <string name="toast_length_warning">Еррор генерисање лозинку.</string>
+    <string name="toast_copied_to_clipboard">Копиран у оставу</string>
+    <string name="toast_generate_password_first_warning">Генеришу лозинку први.</string>
+    <string name="secret_sauce">тајни сос</string>
+    <string name="click_to_generate_password">Кликните генеришу знак да генерише токен</string>
+    <string name="length_hint">дужина</string>
+    <string name="generate_token_button_text">генеришите токен</string>
+    <string name="save_button">сачувати</string>
+    <string name="view_saved_button">pogled сачуван</string>
+    <string name="enter_name_for_login">Унесите пријава</string>
+    <string name="save_dialog_cancel">Поништити, отказати</string>
+    <string name="save_dialog_save">сачувати</string>
+    <string name="enter_name_for_password">Унесите име за лозинке</string>
+    <string name="error_enter_name_for_password">Унесите име за лозинку</string>
+    <string name="error_generate_password_first">Морате направити шифру први</string>
+    <string name="password_saved">Лозинка је сачувана</string>
+    <string name="token_title_placeholder">токен Наслов</string>
+    <string name="no_saved_passwords">Но Сачуване лозинке</string>
+    <string name="copy">копија</string>
+    <string name="settings">Подешавања</string>
+    <string name="generated_token">Токен (кликни за копирање)</string>
+    <string name="uppercase_letters">Велика слова</string>
+    <string name="lowercase_letters">Мала слова</string>
+    <string name="numeric">нумерички</string>
+    <string name="special_characters">Специјалних знакова</string>
+    <string name="delete">Делете?</string>
+    <string name="feature_view_saved_passwords_title">Виев Савед Пассвордс</string>
+    <string name="feature_view_saved_passwords_description">Кликните на иконицу обележивача да бисте видели сачуване лозинке.</string>
+    <string name="alert_confirm_delete">Обриши лозинку?</string>
+    <string name="alert_delete_message">Да ли сте сигурни да желите да избришете лозинку?</string>
+    <string name="yes">да</string>
+    <string name="no">Не</string>
+    <string name="optional">Опционо</string>
+    <string name="take_me_to_settings">Води ме у подешавања</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Ликови укључити</string>
+    <string name="no_repeat_characters">Нема понављања знакова</string>
+    <string name="passphrase">укључују Пасспхрасе</string>
+    <string name="enter_a_passphrase">Унесите фразу</string>
+    <string name="passphrase_saved">Пасспхрасе сачуван!</string>
+    <string name="password">Лозинка</string>
+    <string name="loginvalue">логинВалуе</string>
+    <string name="login">Пријавите се</string>
+</resources>

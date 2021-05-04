@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Comprimento</string>
+    <string name="toast_length_warning">Erro ao gerar senha.</string>
+    <string name="toast_copied_to_clipboard">Copiado para a área de transferência</string>
+    <string name="toast_generate_password_first_warning">Gerar uma senha primeiro.</string>
+    <string name="secret_sauce">Molho secreto</string>
+    <string name="click_to_generate_password">Clique em Gerar token para gerar um token</string>
+    <string name="length_hint">Comprimento</string>
+    <string name="generate_token_button_text">gerar token</string>
+    <string name="save_button">Salve </string>
+    <string name="view_saved_button">exibição salva</string>
+    <string name="enter_name_for_login">Digite o login</string>
+    <string name="save_dialog_cancel">Cancelar</string>
+    <string name="save_dialog_save">Salve </string>
+    <string name="enter_name_for_password">Digite o nome para a senha</string>
+    <string name="error_enter_name_for_password">Digite um nome para a senha</string>
+    <string name="error_generate_password_first">Você deve gerar uma senha primeiro</string>
+    <string name="password_saved">senha salva</string>
+    <string name="token_title_placeholder">token Title</string>
+    <string name="no_saved_passwords">Não há senhas salvas</string>
+    <string name="copy">cópia de</string>
+    <string name="settings">Definições</string>
+    <string name="generated_token">Gerado ficha (clique para copiar)</string>
+    <string name="uppercase_letters">Letras maiúsculas</string>
+    <string name="lowercase_letters">Letras minúsculas</string>
+    <string name="numeric">Numérico</string>
+    <string name="special_characters">Caracteres especiais</string>
+    <string name="delete">Excluir?</string>
+    <string name="feature_view_saved_passwords_title">Veja senhas salvas</string>
+    <string name="feature_view_saved_passwords_description">Clique no ícone de marcador para ver suas senhas salvas.</string>
+    <string name="alert_confirm_delete">Excluir a senha?</string>
+    <string name="alert_delete_message">Tem certeza de que deseja excluir a senha?</string>
+    <string name="yes">sim</string>
+    <string name="no">Não</string>
+    <string name="optional">Opcional</string>
+    <string name="take_me_to_settings">Leve-me para configurações</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Caracteres para incluir</string>
+    <string name="no_repeat_characters">Sem caracteres repetidos</string>
+    <string name="passphrase">incluir Passphrase</string>
+    <string name="enter_a_passphrase">Digite uma senha</string>
+    <string name="passphrase_saved">Passphrase salvo!</string>
+    <string name="password">Senha</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Conecte-se</string>
+</resources>

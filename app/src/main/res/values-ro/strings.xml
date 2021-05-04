@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Lungime</string>
+    <string name="toast_length_warning">Eroare la generarea parolei.</string>
+    <string name="toast_copied_to_clipboard">Copiat în clipboard</string>
+    <string name="toast_generate_password_first_warning">Generați mai întâi o parolă.</string>
+    <string name="secret_sauce">sos Secret</string>
+    <string name="click_to_generate_password">Faceți clic pe genera jeton pentru a genera un simbol</string>
+    <string name="length_hint">Lungime</string>
+    <string name="generate_token_button_text">Generați jeton</string>
+    <string name="save_button">Salvați</string>
+    <string name="view_saved_button">vizualizare salvată</string>
+    <string name="enter_name_for_login">Introduceți datele de conectare</string>
+    <string name="save_dialog_cancel">Anulare</string>
+    <string name="save_dialog_save">Salvați</string>
+    <string name="enter_name_for_password">Introduceți nume pentru parola</string>
+    <string name="error_enter_name_for_password">Introduceți un nume pentru parola</string>
+    <string name="error_generate_password_first">Trebuie să generați o parolă mai întâi</string>
+    <string name="password_saved">Parola a fost salvată</string>
+    <string name="token_title_placeholder">Indicativ Titlu</string>
+    <string name="no_saved_passwords">Nu există parolele salvate</string>
+    <string name="copy">Copie</string>
+    <string name="settings">Setări</string>
+    <string name="generated_token">Generat jeton (click pentru a copia)</string>
+    <string name="uppercase_letters">Litere mari</string>
+    <string name="lowercase_letters">Litere mici</string>
+    <string name="numeric">Numeric</string>
+    <string name="special_characters">caractere speciale</string>
+    <string name="delete">Șterge?</string>
+    <string name="feature_view_saved_passwords_title">Vezi parolele salvate</string>
+    <string name="feature_view_saved_passwords_description">Dați clic pe pictograma de marcaj pentru a vedea parolele salvate.</string>
+    <string name="alert_confirm_delete">Ștergeți parola?</string>
+    <string name="alert_delete_message">Sunteți sigur că doriți să ștergeți parola?</string>
+    <string name="yes">da</string>
+    <string name="no">Nu</string>
+    <string name="optional">facultativ</string>
+    <string name="take_me_to_settings">Du-mă la setările</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Caractere pentru a include</string>
+    <string name="no_repeat_characters">Nu există caractere repetate</string>
+    <string name="passphrase">Include o expresie de acces</string>
+    <string name="enter_a_passphrase">Introduceți o expresie de acces</string>
+    <string name="passphrase_saved">O expresie de acces salvat!</string>
+    <string name="password">Parola</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Autentificare</string>
+</resources>

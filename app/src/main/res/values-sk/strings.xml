@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">dĺžka</string>
+    <string name="toast_length_warning">Chyba generovanie hesla.</string>
+    <string name="toast_copied_to_clipboard">Skopírovať do schránky</string>
+    <string name="toast_generate_password_first_warning">Generovať heslá ako prvý.</string>
+    <string name="secret_sauce">tajný recept</string>
+    <string name="click_to_generate_password">Click generovanie tokenu vygenerovať token</string>
+    <string name="length_hint">dĺžka</string>
+    <string name="generate_token_button_text">generovať token</string>
+    <string name="save_button">Uložiť</string>
+    <string name="view_saved_button">pohľad uložené</string>
+    <string name="enter_name_for_login">Zadajte prihlasovacie</string>
+    <string name="save_dialog_cancel">Zrušiť</string>
+    <string name="save_dialog_save">Uložiť</string>
+    <string name="enter_name_for_password">Zadajte názov pre zadanie hesla</string>
+    <string name="error_enter_name_for_password">Zadajte názov pre zadanie hesla</string>
+    <string name="error_generate_password_first">Musíte vygenerovať heslo najprv</string>
+    <string name="password_saved">heslo uložené</string>
+    <string name="token_title_placeholder">token Názov</string>
+    <string name="no_saved_passwords">Žiadne Uložené heslá</string>
+    <string name="copy">kópie</string>
+    <string name="settings">nastavenie</string>
+    <string name="generated_token">Generované tokenu (kliknite pre kopírovanie)</string>
+    <string name="uppercase_letters">Veľké písmená</string>
+    <string name="lowercase_letters">Malé písmená</string>
+    <string name="numeric">číselná</string>
+    <string name="special_characters">Špeciálne znaky</string>
+    <string name="delete">Zmazať?</string>
+    <string name="feature_view_saved_passwords_title">Zobrazenie uložených hesiel</string>
+    <string name="feature_view_saved_passwords_description">Kliknite na záložku, aby ste videli vaše uložené heslá.</string>
+    <string name="alert_confirm_delete">Odstrániť heslo?</string>
+    <string name="alert_delete_message">Ste si istí, že chcete zmazať heslo?</string>
+    <string name="yes">Áno</string>
+    <string name="no">žiadny</string>
+    <string name="optional">voliteľný</string>
+    <string name="take_me_to_settings">Vezmite ma do nastavenia</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">znaky zahrnúť</string>
+    <string name="no_repeat_characters">Žiadne opakované znaky</string>
+    <string name="passphrase">zahŕňajú prístupové heslo</string>
+    <string name="enter_a_passphrase">zadať heslo</string>
+    <string name="passphrase_saved">Prístupové heslo uložené!</string>
+    <string name="password">heslo</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Prihlásiť sa</string>
+</resources>

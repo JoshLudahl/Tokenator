@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Längd</string>
+    <string name="toast_length_warning">Fel generera lösenord.</string>
+    <string name="toast_copied_to_clipboard">Kopierat till urklipp</string>
+    <string name="toast_generate_password_first_warning">Generera ett lösenord först.</string>
+    <string name="secret_sauce">Secret Sauce</string>
+    <string name="click_to_generate_password">Klicka generera token att generera en token</string>
+    <string name="length_hint">Längd</string>
+    <string name="generate_token_button_text">generera token</string>
+    <string name="save_button">Spara</string>
+    <string name="view_saved_button">visa sparade</string>
+    <string name="enter_name_for_login">Ange inloggnings</string>
+    <string name="save_dialog_cancel">Avbryt</string>
+    <string name="save_dialog_save">Spara</string>
+    <string name="enter_name_for_password">Ange namn för lösenord</string>
+    <string name="error_enter_name_for_password">Ange ett namn som lösenord</string>
+    <string name="error_generate_password_first">Du måste skapa ett lösenord först</string>
+    <string name="password_saved">Lösenord sparas</string>
+    <string name="token_title_placeholder">token Titel</string>
+    <string name="no_saved_passwords">Inga sparade lösenord</string>
+    <string name="copy">Kopiera</string>
+    <string name="settings">inställningar</string>
+    <string name="generated_token">Genererade token (klicka för att kopiera)</string>
+    <string name="uppercase_letters">Versala bokstäver</string>
+    <string name="lowercase_letters">Gemener</string>
+    <string name="numeric">Numerisk</string>
+    <string name="special_characters">Speciella karaktärer</string>
+    <string name="delete">Radera?</string>
+    <string name="feature_view_saved_passwords_title">Se sparade lösenord</string>
+    <string name="feature_view_saved_passwords_description">Klicka på bokmärkesikonen för att se dina sparade lösenord.</string>
+    <string name="alert_confirm_delete">Ta bort lösenordet?</string>
+    <string name="alert_delete_message">Är du säker på att du vill ta bort lösenordet?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nej</string>
+    <string name="optional">Frivillig</string>
+    <string name="take_me_to_settings">Ta mig till inställningar</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Tecken att inkludera</string>
+    <string name="no_repeat_characters">Ingen upprepning tecken</string>
+    <string name="passphrase">inkludera lösenordsfras</string>
+    <string name="enter_a_passphrase">Ange ett lösenord</string>
+    <string name="passphrase_saved">Passphrase räddade!</string>
+    <string name="password">Lösenord</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Logga in</string>
+</resources>

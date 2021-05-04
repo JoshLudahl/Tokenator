@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Длина</string>
+    <string name="toast_length_warning">Ошибка генерации пароля.</string>
+    <string name="toast_copied_to_clipboard">Скопировано в буфер обмена</string>
+    <string name="toast_generate_password_first_warning">Генерировать пароль первым.</string>
+    <string name="secret_sauce">Секретный соус</string>
+    <string name="click_to_generate_password">Нажми генерировать маркер для генерирования маркеров</string>
+    <string name="length_hint">Длина</string>
+    <string name="generate_token_button_text">Создать токен</string>
+    <string name="save_button">Сохранить</string>
+    <string name="view_saved_button">просмотр сохраненных</string>
+    <string name="enter_name_for_login">Введите логин</string>
+    <string name="save_dialog_cancel">Отмена</string>
+    <string name="save_dialog_save">Сохранить</string>
+    <string name="enter_name_for_password">Введите имя для пароля</string>
+    <string name="error_enter_name_for_password">Введите имя для пароля</string>
+    <string name="error_generate_password_first">Вы должны сгенерировать пароль первой</string>
+    <string name="password_saved">Пароль сохранен</string>
+    <string name="token_title_placeholder">Токен Название</string>
+    <string name="no_saved_passwords">Нет сохраненные пароли</string>
+    <string name="copy">копия</string>
+    <string name="settings">Настройки</string>
+    <string name="generated_token">Сформирован маркера (нажмите, чтобы скопировать)</string>
+    <string name="uppercase_letters">Заглавные буквы</string>
+    <string name="lowercase_letters">Строчные буквы</string>
+    <string name="numeric">числовой</string>
+    <string name="special_characters">Специальные символы</string>
+    <string name="delete">Удалить?</string>
+    <string name="feature_view_saved_passwords_title">Просмотр сохраненных паролей</string>
+    <string name="feature_view_saved_passwords_description">Нажмите на значок закладки, чтобы увидеть сохраненные пароли.</string>
+    <string name="alert_confirm_delete">Удалить пароль?</string>
+    <string name="alert_delete_message">Вы уверены, что хотите удалить пароль?</string>
+    <string name="yes">да</string>
+    <string name="no">Нет</string>
+    <string name="optional">По желанию</string>
+    <string name="take_me_to_settings">Отвезите меня к настройкам</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Персонажи включить</string>
+    <string name="no_repeat_characters">Нет повторяющихся символов</string>
+    <string name="passphrase">Включите Passphrase</string>
+    <string name="enter_a_passphrase">Введите ключевую фразу</string>
+    <string name="passphrase_saved">Passphrase спасен!</string>
+    <string name="password">Пароль</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Авторизоваться</string>
+</resources>

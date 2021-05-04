@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">dolžina</string>
+    <string name="toast_length_warning">Napaka generiranje gesla.</string>
+    <string name="toast_copied_to_clipboard">Kopirana v odložišče</string>
+    <string name="toast_generate_password_first_warning">Ustvari geslo prvi.</string>
+    <string name="secret_sauce">skrivnost omako</string>
+    <string name="click_to_generate_password">Kliknite ustvarjajo žeton za ustvarjanje žeton</string>
+    <string name="length_hint">dolžina</string>
+    <string name="generate_token_button_text">Ustvari žeton</string>
+    <string name="save_button">Shrani</string>
+    <string name="view_saved_button">pogled shranjene</string>
+    <string name="enter_name_for_login">Vpišite uporabniško ime</string>
+    <string name="save_dialog_cancel">Preklic</string>
+    <string name="save_dialog_save">Shrani</string>
+    <string name="enter_name_for_password">Vnesite ime za geslo</string>
+    <string name="error_enter_name_for_password">Vnesite ime za geslo</string>
+    <string name="error_generate_password_first">Morate ustvariti geslo prvi</string>
+    <string name="password_saved">geslo shranjeno</string>
+    <string name="token_title_placeholder">žeton Naslov</string>
+    <string name="no_saved_passwords">Ni Shranjena gesla</string>
+    <string name="copy">Kopirati</string>
+    <string name="settings">Nastavitve</string>
+    <string name="generated_token">Izdelano žeton (klikni za kopiranje)</string>
+    <string name="uppercase_letters">Velike črke</string>
+    <string name="lowercase_letters">Male črke</string>
+    <string name="numeric">Številčna</string>
+    <string name="special_characters">Posebni znaki</string>
+    <string name="delete">Izbrisati?</string>
+    <string name="feature_view_saved_passwords_title">Poglej Shranjena gesla</string>
+    <string name="feature_view_saved_passwords_description">Kliknite na ikono, zaznamek za ogled shranjenih gesel.</string>
+    <string name="alert_confirm_delete">Izbrisati geslo?</string>
+    <string name="alert_delete_message">Ali ste prepričani, da želite izbrisati geslo?</string>
+    <string name="yes">Da</string>
+    <string name="no">Ne</string>
+    <string name="optional">Neobvezno</string>
+    <string name="take_me_to_settings">Vzemi me v nastavitvah</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Znaki, da vključuje</string>
+    <string name="no_repeat_characters">Ni ponavljajočih se znakov</string>
+    <string name="passphrase">Vključi gesla</string>
+    <string name="enter_a_passphrase">Vnesite geslo</string>
+    <string name="passphrase_saved">Geslo shranjeno!</string>
+    <string name="password">geslo</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Vpiši se</string>
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Długość</string>
+    <string name="toast_length_warning">Błąd generowania hasła.</string>
+    <string name="toast_copied_to_clipboard">Skopiowane do schowka</string>
+    <string name="toast_generate_password_first_warning">Generowanie pierwszy hasło.</string>
+    <string name="secret_sauce">tajny sos</string>
+    <string name="click_to_generate_password">Kliknij wygenerowania tokenu, aby wygenerować token</string>
+    <string name="length_hint">Długość</string>
+    <string name="generate_token_button_text">wygenerować token</string>
+    <string name="save_button">Zapisać</string>
+    <string name="view_saved_button">widok zapisany</string>
+    <string name="enter_name_for_login">Wprowadź login</string>
+    <string name="save_dialog_cancel">Anuluj</string>
+    <string name="save_dialog_save">Zapisać</string>
+    <string name="enter_name_for_password">Wpisz nazwę hasło</string>
+    <string name="error_enter_name_for_password">Wpisz nazwę hasło</string>
+    <string name="error_generate_password_first">Musisz najpierw wygenerować hasło</string>
+    <string name="password_saved">hasło zapisane</string>
+    <string name="token_title_placeholder">Reklamowe Tytuł</string>
+    <string name="no_saved_passwords">Brak Zapamiętane hasła</string>
+    <string name="copy">Kopiuj</string>
+    <string name="settings">Ustawienia</string>
+    <string name="generated_token">Wygenerowane żeton (kliknij aby skopiować)</string>
+    <string name="uppercase_letters">Wielkie litery</string>
+    <string name="lowercase_letters">Małe litery</string>
+    <string name="numeric">numeryczny</string>
+    <string name="special_characters">Znaki specjalne</string>
+    <string name="delete">Kasować?</string>
+    <string name="feature_view_saved_passwords_title">Zapamiętanych haseł</string>
+    <string name="feature_view_saved_passwords_description">Kliknij na ikonę, aby zobaczyć zakładek zapisanych haseł.</string>
+    <string name="alert_confirm_delete">Usuwanie hasła?</string>
+    <string name="alert_delete_message">Czy na pewno chcesz usunąć hasło?</string>
+    <string name="yes">tak</string>
+    <string name="no">Nie</string>
+    <string name="optional">Opcjonalny</string>
+    <string name="take_me_to_settings">Zabierz mnie do ustawień</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Postacie do włączenia</string>
+    <string name="no_repeat_characters">Bez powtarzania znaków</string>
+    <string name="passphrase">zawierać znaki ASCII</string>
+    <string name="enter_a_passphrase">Wprowadź hasło</string>
+    <string name="passphrase_saved">Hasło zapisane!</string>
+    <string name="password">Hasło</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Zaloguj sie</string>
+</resources>

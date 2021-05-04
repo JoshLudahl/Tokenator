@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Muda</string>
+    <string name="toast_length_warning">Hitilafu ya kuzalisha nywila.</string>
+    <string name="toast_copied_to_clipboard">Kunakiliwa na clipboard</string>
+    <string name="toast_generate_password_first_warning">Zalisha nenosiri kwanza.</string>
+    <string name="secret_sauce">Siri Mchuzi</string>
+    <string name="click_to_generate_password">Bofya kuzalisha ishara ya kuzalisha ishara</string>
+    <string name="length_hint">Muda</string>
+    <string name="generate_token_button_text">Kutoa Token</string>
+    <string name="save_button">Save</string>
+    <string name="view_saved_button">mtazamo kuokolewa</string>
+    <string name="enter_name_for_login">Weka login</string>
+    <string name="save_dialog_cancel">kufuta</string>
+    <string name="save_dialog_save">Save</string>
+    <string name="enter_name_for_password">Ingiza jina la password</string>
+    <string name="error_enter_name_for_password">Ingiza jina la password</string>
+    <string name="error_generate_password_first">Lazima kuzalisha password kwanza</string>
+    <string name="password_saved">nenosiri limehifadhiwa</string>
+    <string name="token_title_placeholder">Token Title</string>
+    <string name="no_saved_passwords">Hakuna Saved Nywila</string>
+    <string name="copy">Copy</string>
+    <string name="settings">mipangilio</string>
+    <string name="generated_token">Yanayotokana ishara (click na nakala)</string>
+    <string name="uppercase_letters">herufi kubwa</string>
+    <string name="lowercase_letters">Herufi ndogo</string>
+    <string name="numeric">nambari</string>
+    <string name="special_characters">Vibambo Maalum</string>
+    <string name="delete">Futa?</string>
+    <string name="feature_view_saved_passwords_title">View Saved Nywila</string>
+    <string name="feature_view_saved_passwords_description">Bonyeza alama icon kuona manenosiri yako yaliyohifadhiwa.</string>
+    <string name="alert_confirm_delete">Futa nenosiri?</string>
+    <string name="alert_delete_message">Una uhakika unataka kufuta nenosiri?</string>
+    <string name="yes">Ndiyo</string>
+    <string name="no">Hapana</string>
+    <string name="optional">Hiari</string>
+    <string name="take_me_to_settings">Kuchukua mimi mazingira</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Wahusika ni pamoja na</string>
+    <string name="no_repeat_characters">Hakuna herufi kurudia</string>
+    <string name="passphrase">Ni pamoja na Kaulisiri</string>
+    <string name="enter_a_passphrase">Ingiza kaulisiri</string>
+    <string name="passphrase_saved">Kauli siri yamehifadhiwa</string>
+    <string name="password">password</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Ingia</string>
+</resources>
