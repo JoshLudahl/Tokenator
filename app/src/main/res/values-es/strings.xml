@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="length">Largo</string>
-    <string name="toast_length_warning">Error: La longitud debe estar entre 1&#8211;10000</string>
+    <string name="toast_length_warning">Error al generar la contraseña.</string>
     <string name="toast_copied_to_clipboard">Copiado al portapapeles</string>
     <string name="toast_generate_password_first_warning">Generar una contraseña primero.</string>
     <string name="secret_sauce">Salsa secreta</string>
@@ -11,9 +10,6 @@
     <string name="generate_token_button_text">generar token</string>
     <string name="save_button">Ahorrar</string>
     <string name="view_saved_button">vista guardada</string>
-
-    <!-- Save Dialog -->
-    <string name="save_dialog_title">Por favor, introduzca un nombre de &#8211;</string>
     <string name="enter_name_for_login">Introduzca el nombre de usuario</string>
     <string name="save_dialog_cancel">Cancelar</string>
     <string name="save_dialog_save">Ahorrar</string>
@@ -22,7 +18,6 @@
     <string name="error_generate_password_first">Debe generar una contraseña primero</string>
     <string name="password_saved">contraseña guardada</string>
     <string name="token_title_placeholder">Título de emergencia</string>
-    <string name="token_placeholder_text">4dasdfsa8d@#@f</string>
     <string name="no_saved_passwords">No hay contraseñas guardadas</string>
     <string name="copy">Dupdo</string>
     <string name="settings">Ajustes</string>
@@ -32,9 +27,6 @@
     <string name="numeric">Numérico</string>
     <string name="special_characters">Caracteres especiales</string>
     <string name="delete">¿Borrar?</string>
-    <string name="login_information">Iniciar sesión: %1$s, contraseña %2$s</string>
-
-    <!-- Feature Discovery -->
     <string name="feature_view_saved_passwords_title">Ver contraseñas guardadas</string>
     <string name="feature_view_saved_passwords_description">Haga clic en el icono del marcador para ver las contraseñas guardadas.</string>
     <string name="alert_confirm_delete">Eliminar la contraseña?</string>
@@ -44,11 +36,12 @@
     <string name="optional">Opcional</string>
     <string name="take_me_to_settings">Llévame a los ajustes</string>
     <string name="grid_item_placeholder_dollar_sign">PS</string>
-
-    <!-- Settings -->
     <string name="characters">Personajes incluyen a</string>
     <string name="no_repeat_characters">No hay caracteres repetidos</string>
     <string name="passphrase">incluir la frase de contraseña</string>
     <string name="enter_a_passphrase">Ingrese una frase de contraseña</string>
     <string name="passphrase_saved">Frase de contraseña guardada!</string>
+    <string name="password">Contraseña</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Acceso</string>
 </resources>

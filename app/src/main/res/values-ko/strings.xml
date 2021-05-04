@@ -2,7 +2,7 @@
 <resources>
 
     <string name="length">길이</string>
-    <string name="toast_length_warning">오류 : 길이해야 1 ~ &#8211;10000</string>
+    <string name="toast_length_warning">비밀번호를 생성 오류가 발생했습니다.</string>
     <string name="toast_copied_to_clipboard">클립 보드에 복사</string>
     <string name="toast_generate_password_first_warning">먼저 암호를 생성합니다.</string>
     <string name="secret_sauce">비밀 소스</string>
@@ -11,9 +11,6 @@
     <string name="generate_token_button_text">토큰을 생성</string>
     <string name="save_button">저장</string>
     <string name="view_saved_button">보기 저장</string>
-
-    <!-- Save Dialog -->
-    <string name="save_dialog_title">이름 &#8211;를 입력하십시오;</string>
     <string name="enter_name_for_login">로그인을 입력</string>
     <string name="save_dialog_cancel">취소</string>
     <string name="save_dialog_save">저장</string>
@@ -22,7 +19,6 @@
     <string name="error_generate_password_first">먼저 암호를 생성해야합니다</string>
     <string name="password_saved">비밀번호 저장</string>
     <string name="token_title_placeholder">토큰 제목</string>
-    <string name="token_placeholder_text">4dasdfsa8d@#@F</string>
     <string name="no_saved_passwords">없음 저장된 비밀번호</string>
     <string name="copy">부</string>
     <string name="settings">설정</string>
@@ -32,9 +28,6 @@
     <string name="numeric">숫자</string>
     <string name="special_characters">특수 문자</string>
     <string name="delete">지우다?</string>
-    <string name="login_information">로그인 : %1$S, 암호 %2$s 의</string>
-
-    <!-- Feature Discovery -->
     <string name="feature_view_saved_passwords_title">보기 저장된 비밀번호</string>
     <string name="feature_view_saved_passwords_description">저장된 암호를 볼 수있는 북마크 아이콘을 클릭합니다.</string>
     <string name="alert_confirm_delete">암호를 삭제 하시겠습니까?</string>
@@ -44,11 +37,12 @@
     <string name="optional">선택 과목</string>
     <string name="take_me_to_settings">설정에 데려다 줘</string>
     <string name="grid_item_placeholder_dollar_sign">$</string>
-
-    <!-- Settings -->
     <string name="characters">문자는 포함 할</string>
     <string name="no_repeat_characters">없음 반복 문자 없다</string>
     <string name="passphrase">암호 구를 포함</string>
     <string name="enter_a_passphrase">암호를 입력</string>
     <string name="passphrase_saved">암호 저장!</string>
+    <string name="password">암호</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">로그인</string>
 </resources>

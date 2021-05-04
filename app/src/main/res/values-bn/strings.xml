@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="length">লম্বা</string>
-
-    <string name="toast_length_warning">ত্রুটি: দৈর্ঘ্য হতে হবে 1 &#8211; 10000</string>
+    <string name="toast_length_warning">পাসওয়ার্ড জেনারেট করার ত্রুটি হয়েছে।</string>
     <string name="toast_copied_to_clipboard">ক্লিপবোর্ডে অনুলিপি করা</string>
     <string name="toast_generate_password_first_warning">প্রথমে একটি পাসওয়ার্ড তৈরি করুন।</string>
     <string name="secret_sauce">সিক্রেট সস</string>
     <string name="click_to_generate_password">ক্লিক করুন একটি টোকেন জেনারেট করতে টোকেন জেনারেট</string>
     <string name="length_hint">লম্বা</string>
     <string name="generate_token_button_text">টোকেন জেনারেট করুন</string>
-
     <string name="save_button">সংরক্ষণ</string>
     <string name="view_saved_button">দৃশ্য সংরক্ষিত</string>
-
-    <!-- Save Dialog -->
-    <string name="save_dialog_title">একটি নাম &#8211; লিখুন দয়া করে</string>
     <string name="enter_name_for_login">লগইন লিখুন</string>
     <string name="save_dialog_cancel">বাতিল</string>
     <string name="save_dialog_save">সংরক্ষণ</string>
@@ -23,7 +18,6 @@
     <string name="error_generate_password_first">আপনাকে প্রথমে একটি পাসওয়ার্ড তৈরি করতে হবে</string>
     <string name="password_saved">পাসওয়ার্ড সংরক্ষিত</string>
     <string name="token_title_placeholder">টোকেন শিরোনাম</string>
-    <string name="token_placeholder_text">4dasdfsa8d @ # @ চ</string>
     <string name="no_saved_passwords">কোন সংরক্ষিত পাসওয়ার্ডগুলি</string>
     <string name="copy">কপি</string>
     <string name="settings">সেটিংস</string>
@@ -33,9 +27,6 @@
     <string name="numeric">সাংখ্যিক</string>
     <string name="special_characters">বিশেষ অক্ষর</string>
     <string name="delete">মুছে ফেলা?</string>
-    <string name="login_information">লগইন করুন: %1$2, পাসওয়ার্ড%2$s এর</string>
-
-    <!-- Feature Discovery -->
     <string name="feature_view_saved_passwords_title">সংরক্ষিত পাসওয়ার্ডগুলি দেখুন</string>
     <string name="feature_view_saved_passwords_description">আপনার সংরক্ষিত পাসওয়ার্ডগুলি দেখতে বুকমার্ক আইকনে ক্লিক করুন।</string>
     <string name="alert_confirm_delete">পাসওয়ার্ড মুছে ফেলতে চান?</string>
@@ -45,11 +36,12 @@
     <string name="optional">ঐচ্ছিক</string>
     <string name="take_me_to_settings">আমাকে সেটিংস নিয়ে যান</string>
     <string name="grid_item_placeholder_dollar_sign">$</string>
-
-    <!-- Settings -->
     <string name="characters">অক্ষর অন্তর্ভুক্ত করা</string>
     <string name="no_repeat_characters">কোন পুনরাবৃত্তি অক্ষর</string>
     <string name="passphrase">পাসফ্রেজ অন্তর্ভুক্ত করুন</string>
     <string name="enter_a_passphrase">একটি পাসফ্রেজ লিখুন</string>
     <string name="passphrase_saved">পাসফ্রেজ সংরক্ষিত!</string>
+    <string name="password">পাসওয়ার্ড</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">প্রবেশ করুন</string>
 </resources>
