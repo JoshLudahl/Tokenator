@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">ความยาว</string>
+    <string name="toast_length_warning">รหัสผ่านที่ก่อให้เกิดข้อผิดพลาด</string>
+    <string name="toast_copied_to_clipboard">คัดลอกไปที่คลิปบอร์ด</string>
+    <string name="toast_generate_password_first_warning">สร้างรหัสผ่านครั้งแรก</string>
+    <string name="secret_sauce">ซอสลับ</string>
+    <string name="click_to_generate_password">คลิกสร้างโทเค็เพื่อสร้างโทเค็น</string>
+    <string name="length_hint">ความยาว</string>
+    <string name="generate_token_button_text">สร้างโทเค็น</string>
+    <string name="save_button">บันทึก</string>
+    <string name="view_saved_button">มุมมองที่บันทึก</string>
+    <string name="enter_name_for_login">ป้อนเข้าสู่ระบบ</string>
+    <string name="save_dialog_cancel">ยกเลิก</string>
+    <string name="save_dialog_save">บันทึก</string>
+    <string name="enter_name_for_password">ป้อนชื่อสำหรับรหัสผ่าน</string>
+    <string name="error_enter_name_for_password">ป้อนชื่อสำหรับรหัสผ่าน</string>
+    <string name="error_generate_password_first">คุณต้องสร้างรหัสผ่านครั้งแรก</string>
+    <string name="password_saved">รหัสผ่านที่บันทึกไว้</string>
+    <string name="token_title_placeholder">Token ชื่อเรื่อง</string>
+    <string name="no_saved_passwords">ไม่มีรหัสผ่านที่บันทึก</string>
+    <string name="copy">สำเนา</string>
+    <string name="settings">การตั้งค่า</string>
+    <string name="generated_token">สร้างโทเค็น (คลิกเพื่อคัดลอก)</string>
+    <string name="uppercase_letters">ตัวพิมพ์ใหญ่</string>
+    <string name="lowercase_letters">ตัวอักษรตัวพิมพ์เล็ก</string>
+    <string name="numeric">เป็นตัวเลข</string>
+    <string name="special_characters">อักขระพิเศษ</string>
+    <string name="delete">ลบ?</string>
+    <string name="feature_view_saved_passwords_title">ดูรหัสผ่านที่บันทึกไว้</string>
+    <string name="feature_view_saved_passwords_description">คลิกที่ไอคอนบุ๊กเพื่อดูรหัสผ่านที่บันทึกไว้</string>
+    <string name="alert_confirm_delete">ลบรหัสผ่าน?</string>
+    <string name="alert_delete_message">คุณแน่ใจหรือไม่ว่าต้องการลบรหัสผ่าน?</string>
+    <string name="yes">ใช่</string>
+    <string name="no">ไม่</string>
+    <string name="optional">ไม่จำเป็น</string>
+    <string name="take_me_to_settings">พาฉันไปที่การตั้งค่า</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">ตัวละครที่จะรวม</string>
+    <string name="no_repeat_characters">ไม่มีตัวอักษรซ้ำ</string>
+    <string name="passphrase">รวมถึงรหัสผ่าน</string>
+    <string name="enter_a_passphrase">ใส่รหัสผ่าน</string>
+    <string name="passphrase_saved">ข้อความรหัสผ่านที่บันทึกไว้!</string>
+    <string name="password">รหัสผ่าน</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">เข้าสู่ระบบ</string>
+</resources>

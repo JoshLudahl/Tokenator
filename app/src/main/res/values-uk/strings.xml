@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="secret_sauce">секретний соус</string>
+    <string name="click_to_generate_password">Натисни генерувати маркер для генерування маркерів</string>
+    <string name="length_hint">довжина</string>
+    <string name="generate_token_button_text">створити токен</string>
+    <string name="save_button">зберегти</string>
+    <string name="view_saved_button">перегляд збережених</string>
+    <string name="enter_name_for_login">Введіть логін</string>
+    <string name="save_dialog_cancel">скасувати</string>
+    <string name="save_dialog_save">зберегти</string>
+    <string name="enter_name_for_password">Введіть ім'я для пароля</string>
+    <string name="error_enter_name_for_password">Введіть ім'я для пароля</string>
+    <string name="error_generate_password_first">Ви повинні згенерувати пароль першій</string>
+    <string name="password_saved">пароль збережений</string>
+    <string name="token_title_placeholder">токен Назва</string>
+    <string name="no_saved_passwords">Немає збережені паролі</string>
+    <string name="copy">копія</string>
+    <string name="settings">настройки</string>
+    <string name="generated_token">Сформовано маркера (натисніть, щоб скопіювати)</string>
+    <string name="uppercase_letters">Великі літери</string>
+    <string name="lowercase_letters">Букви нижнього регістру</string>
+    <string name="numeric">числовий</string>
+    <string name="special_characters">спеціальні символи</string>
+    <string name="delete">Видалити?</string>
+    <string name="feature_view_saved_passwords_title">Перегляд збережених паролів</string>
+    <string name="feature_view_saved_passwords_description">Натисніть на значок закладки, щоб побачити збережені паролі.</string>
+    <string name="alert_confirm_delete">Видалити пароль?</string>
+    <string name="alert_delete_message">Ви впевнені, що хочете видалити пароль?</string>
+    <string name="yes">Так</string>
+    <string name="no">Немає</string>
+    <string name="optional">опціональний</string>
+    <string name="take_me_to_settings">Відвезіть мене до налаштувань</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">персонажі включити</string>
+    <string name="no_repeat_characters">Ні повторюваних символів</string>
+    <string name="passphrase">Увімкніть Passphrase</string>
+    <string name="enter_a_passphrase">Введіть ключову фразу</string>
+    <string name="passphrase_saved">Passphrase врятований!</string>
+    <string name="password">пароль</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Ввійти</string>
+</resources>

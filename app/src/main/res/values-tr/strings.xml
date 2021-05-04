@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">uzunluk</string>
+    <string name="toast_length_warning">şifre üreten Hata.</string>
+    <string name="toast_copied_to_clipboard">Panoya kopyalandı</string>
+    <string name="toast_generate_password_first_warning">Önce bir şifre oluştur.</string>
+    <string name="secret_sauce">Gizli sos</string>
+    <string name="click_to_generate_password">Tıklayın bir simge oluşturmak için belirteç üretmek</string>
+    <string name="length_hint">uzunluk</string>
+    <string name="generate_token_button_text">Simge oluştur</string>
+    <string name="save_button">Kayıt etmek</string>
+    <string name="view_saved_button">görünümü kaydedilmez</string>
+    <string name="enter_name_for_login">girişini girin</string>
+    <string name="save_dialog_cancel">İptal etmek</string>
+    <string name="save_dialog_save">Kayıt etmek</string>
+    <string name="enter_name_for_password">şifre adı girin</string>
+    <string name="error_enter_name_for_password">şifre için bir isim girin</string>
+    <string name="error_generate_password_first">Önce bir parola oluşturmak gerekir</string>
+    <string name="password_saved">Şifre kaydedildi</string>
+    <string name="token_title_placeholder">Jeton Başlığı</string>
+    <string name="no_saved_passwords">Yok Kayıtlı Şifreleri</string>
+    <string name="copy">kopya</string>
+    <string name="settings">Ayarlar</string>
+    <string name="generated_token">jetonu oluşturulur (kopyalamak için tıklayın)</string>
+    <string name="uppercase_letters">Büyük harfler</string>
+    <string name="lowercase_letters">Küçük harfler</string>
+    <string name="numeric">Sayısal</string>
+    <string name="special_characters">Özel karakterler</string>
+    <string name="delete">Sil?</string>
+    <string name="feature_view_saved_passwords_title">Görünüm Kayıtlı Şifreleri</string>
+    <string name="feature_view_saved_passwords_description">Kayıtlı şifrelerinizi görmek için yer işareti simgesini tıklayın.</string>
+    <string name="alert_confirm_delete">parolayı silme?</string>
+    <string name="alert_delete_message">Şifreyi silmek istediğine emin misin?</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+    <string name="optional">İsteğe bağlı</string>
+    <string name="take_me_to_settings">ayarlarına götür</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Karakterler dahil etmek</string>
+    <string name="no_repeat_characters">Tekrarlama yok karakterler</string>
+    <string name="passphrase">Şifresini Dahil</string>
+    <string name="enter_a_passphrase">Bir parola girin</string>
+    <string name="passphrase_saved">Parola kaydedildi!</string>
+    <string name="password">Parola</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Oturum aç</string>
+</resources>

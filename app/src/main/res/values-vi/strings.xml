@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Chiều dài</string>
+    <string name="toast_length_warning">Lỗi tạo mật khẩu.</string>
+    <string name="toast_copied_to_clipboard">Sao chép vào clipboard</string>
+    <string name="toast_generate_password_first_warning">Tạo một mật khẩu đầu tiên.</string>
+    <string name="secret_sauce">Nước sốt bí mật</string>
+    <string name="click_to_generate_password">Bấm tạo ra dấu hiệu để tạo ra một mã thông báo</string>
+    <string name="length_hint">Chiều dài</string>
+    <string name="generate_token_button_text">tạo Mã</string>
+    <string name="save_button">Tiết kiệm</string>
+    <string name="view_saved_button">xem đã lưu</string>
+    <string name="enter_name_for_login">Nhập tên đăng nhập</string>
+    <string name="save_dialog_cancel">hủy bỏ</string>
+    <string name="save_dialog_save">Tiết kiệm</string>
+    <string name="enter_name_for_password">Nhập tên cho mật khẩu</string>
+    <string name="error_enter_name_for_password">Nhập tên cho mật khẩu</string>
+    <string name="error_generate_password_first">Bạn phải tạo một mật khẩu đầu tiên</string>
+    <string name="password_saved">mật khẩu đã lưu</string>
+    <string name="token_title_placeholder">Mã Tiêu đề</string>
+    <string name="no_saved_passwords">Không mật khẩu đã lưu</string>
+    <string name="copy">bản sao</string>
+    <string name="settings">Cài đặt</string>
+    <string name="generated_token">Tạo token (bấm vào để sao chép)</string>
+    <string name="uppercase_letters">Chữ in hoa</string>
+    <string name="lowercase_letters">Chữ viết thường</string>
+    <string name="numeric">số</string>
+    <string name="special_characters">Nhân vật đặc biệt</string>
+    <string name="delete">Xóa bỏ?</string>
+    <string name="feature_view_saved_passwords_title">Xem Saved Passwords</string>
+    <string name="feature_view_saved_passwords_description">Nhấp vào biểu tượng dấu để xem mật khẩu đã lưu của bạn.</string>
+    <string name="alert_confirm_delete">Xóa mật khẩu?</string>
+    <string name="alert_delete_message">Bạn có chắc chắn muốn xóa mật khẩu?</string>
+    <string name="yes">Đúng</string>
+    <string name="no">Không</string>
+    <string name="optional">Không bắt buộc</string>
+    <string name="take_me_to_settings">Đưa chúng tôi đến các thiết lập</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Ký tự bao gồm</string>
+    <string name="no_repeat_characters">Không ký tự lặp lại</string>
+    <string name="passphrase">Bao gồm Passphrase</string>
+    <string name="enter_a_passphrase">Nhập cụm từ mật khẩu</string>
+    <string name="passphrase_saved">Passphrase lưu!</string>
+    <string name="password">Mật khẩu</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Đăng nhập</string>
+</resources>

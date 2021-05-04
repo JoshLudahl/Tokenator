@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">நீளம்</string>
+    <string name="toast_length_warning">கடவுச்சொல்லை உருவாக்குவதில் பிழை.</string>
+    <string name="toast_copied_to_clipboard">கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது</string>
+    <string name="toast_generate_password_first_warning">முதல் ஒரு கடவுச்சொல்லை உருவாக்கு.</string>
+    <string name="secret_sauce">இரகசிய சாஸ்</string>
+    <string name="click_to_generate_password">சொடுக்கு ஒரு டோக்கன் உருவாக்க டோக்கனை உருவாக்கி</string>
+    <string name="length_hint">நீளம்</string>
+    <string name="generate_token_button_text">டோக்கனை உருவாக்கவும்</string>
+    <string name="save_button">சேமி</string>
+    <string name="view_saved_button">பார்வை சேமிக்கப்படும்</string>
+    <string name="enter_name_for_login">உள்நுழைவு உள்ளிடவும்</string>
+    <string name="save_dialog_cancel">ரத்து</string>
+    <string name="save_dialog_save">சேமி</string>
+    <string name="enter_name_for_password">கடவுச்சொல்லை பெயரை உள்ளிடவும்</string>
+    <string name="error_enter_name_for_password">கடவுச்சொல்லை ஒரு பெயரை உள்ளிடவும்</string>
+    <string name="error_generate_password_first">முதலில் நீங்கள் ஒரு கடவுச்சொல்லை உருவாக்க வேண்டும்</string>
+    <string name="password_saved">கடவுச்சொல் சேமிக்கப்பட்டது</string>
+    <string name="token_title_placeholder">டோக்கன் தலைப்பு</string>
+    <string name="no_saved_passwords">இல்லை சேமித்த கடவுச்சொற்களை</string>
+    <string name="copy">நகல்</string>
+    <string name="settings">அமைப்புகள்</string>
+    <string name="generated_token">டோக்கன் உருவாக்கிய (நகலெடுக்க கிளிக் செய்யவும்)</string>
+    <string name="uppercase_letters">பேரெழுத்துகள்</string>
+    <string name="lowercase_letters">சிறிய ஆங்கில எழுத்துக்கள்</string>
+    <string name="numeric">எண்</string>
+    <string name="special_characters">சிறப்பு எழுத்துக்கள்</string>
+    <string name="delete">அழி?</string>
+    <string name="feature_view_saved_passwords_title">காண்க சேமித்த கடவுச்சொற்களை</string>
+    <string name="feature_view_saved_passwords_description">உங்கள் சேமிக்கப்பட்ட கடவுச்சொற்களை பார்க்க புக்மார்க் ஐகானை கிளிக் செய்யவும்.</string>
+    <string name="alert_confirm_delete">கடவுச்சொல்லை நீக்கு?</string>
+    <string name="alert_delete_message">நீங்கள் கடவுச்சொல்லை நீக்க விரும்பும் உறுதியாக உள்ளீர்களா?</string>
+    <string name="yes">ஆம்</string>
+    <string name="no">இல்லை</string>
+    <string name="optional">விருப்ப</string>
+    <string name="take_me_to_settings">அமைப்புகளுக்கு என்னை அழைத்துச்</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">எழுத்துருக்கள் கொண்டதாக</string>
+    <string name="no_repeat_characters">மீண்டும் செய்ய வேண்டாம் எழுத்துக்கள்</string>
+    <string name="passphrase">கடவுச்சொற்றொடர் சேர்க்கவும்</string>
+    <string name="enter_a_passphrase">கடவுத்தொடரை உள்ளிட</string>
+    <string name="passphrase_saved">கடவுச்சொற்றொடர் சேமிக்கப்படும்!</string>
+    <string name="password">கடவுச்சொல்</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">உள்நுழைய</string>
+</resources>

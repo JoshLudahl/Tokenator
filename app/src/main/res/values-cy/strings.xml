@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">hyd</string>
+    <string name="toast_length_warning">Gwall cynhyrchu cyfrinair.</string>
+    <string name="toast_copied_to_clipboard">Gopïo i\'r clipfwrdd</string>
+    <string name="toast_generate_password_first_warning">Gynhyrchu cyfrinair gyntaf.</string>
+    <string name="secret_sauce">Saws Secret</string>
+    <string name="click_to_generate_password">Cliciwch creu tocyn i greu tocyn</string>
+    <string name="length_hint">hyd</string>
+    <string name="generate_token_button_text">creu Tocyn</string>
+    <string name="save_button">Cadw</string>
+    <string name="view_saved_button">golygfa arbed</string>
+    <string name="enter_name_for_login">Rhowch fewngofnod</string>
+    <string name="save_dialog_cancel">Diddymu</string>
+    <string name="save_dialog_save">Cadw</string>
+    <string name="enter_name_for_password">Rhowch enw ar gyfer gyfrinair</string>
+    <string name="error_enter_name_for_password">Rhowch enw ar gyfer y cyfrinair</string>
+    <string name="error_generate_password_first">Mae\'n rhaid i chi gynhyrchu cyfrinair gyntaf</string>
+    <string name="password_saved">cyfrinair arbed</string>
+    <string name="token_title_placeholder">tocyn Teitl</string>
+    <string name="no_saved_passwords">Dim Cyfrineiriau Saved</string>
+    <string name="copy">copi</string>
+    <string name="settings">gosodiadau</string>
+    <string name="generated_token">Gynhyrchir tocyn (cliciwch i gopïo)</string>
+    <string name="uppercase_letters">llythyrau priflythyren</string>
+    <string name="lowercase_letters">llythrennau bach</string>
+    <string name="numeric">rhifol</string>
+    <string name="special_characters">Cymeriadau Arbennig</string>
+    <string name="delete">Dileu?</string>
+    <string name="feature_view_saved_passwords_title">Gweld Cyfrineiriau Saved</string>
+    <string name="feature_view_saved_passwords_description">Cliciwch ar yr eicon i weld nod tudalen eich cyfrineiriau cadw.</string>
+    <string name="alert_confirm_delete">Dileu\'r cyfrinair?</string>
+    <string name="alert_delete_message">Ydych chi\'n siŵr eich bod am ddileu\'r cyfrinair?</string>
+    <string name="yes">Ydw</string>
+    <string name="no">Nac oes</string>
+    <string name="optional">dewisol</string>
+    <string name="take_me_to_settings">Ewch â fi i leoliadau</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Cymeriadau i gynnwys</string>
+    <string name="no_repeat_characters">Dim cymeriadau ailadrodd</string>
+    <string name="passphrase">cynnwys ymadrodd cyfrin</string>
+    <string name="enter_a_passphrase">Rhowch cyfrinair</string>
+    <string name="passphrase_saved">Ymadrodd cyfrin hachub!</string>
+    <string name="password">cyfrinair</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Mewngofnodi</string>
+</resources>

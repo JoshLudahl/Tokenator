@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">لمبائی</string>
+    <string name="toast_length_warning">پاس ورڈ کو پیدا کرنے میں خامی.</string>
+    <string name="toast_copied_to_clipboard">کلپ بورڈ پر کاپی</string>
+    <string name="toast_generate_password_first_warning">سب سے پہلے ایک پاس ورڈ بنائیں.</string>
+    <string name="secret_sauce">خفیہ چٹنی</string>
+    <string name="click_to_generate_password">کلک ایک ٹوکن پیدا کرنے کے لئے ٹوکن تخلیق</string>
+    <string name="length_hint">لمبائی</string>
+    <string name="generate_token_button_text">ٹوکن بنائیں</string>
+    <string name="save_button">محفوظ کریں</string>
+    <string name="view_saved_button">نقطہ نظر بچا لیا</string>
+    <string name="enter_name_for_login">لاگ ان درج کریں</string>
+    <string name="save_dialog_cancel">منسوخ کریں</string>
+    <string name="save_dialog_save">محفوظ کریں</string>
+    <string name="enter_name_for_password">پاس ورڈ کے لئے نام درج کریں</string>
+    <string name="error_enter_name_for_password">پاس ورڈ کے لئے ایک نام درج کریں</string>
+    <string name="error_generate_password_first">آپ سب سے پہلے ایک پاس ورڈ تشکیل دینا چاہیے</string>
+    <string name="password_saved">پاس ورڈ محفوظ کر لیا</string>
+    <string name="token_title_placeholder">ٹوکن سرخی</string>
+    <string name="no_saved_passwords">کوئی محفوظ کردہ پاس ورڈ</string>
+    <string name="copy">کاپی</string>
+    <string name="settings">ترتیبات</string>
+    <string name="generated_token">ٹوکن تخلیق کردہ (کاپی کرنے کے لئے کلک کریں)</string>
+    <string name="uppercase_letters">بڑے حروف</string>
+    <string name="lowercase_letters">چھوٹے حروف</string>
+    <string name="numeric">نمبری</string>
+    <string name="special_characters">خاص حروف</string>
+    <string name="delete">حذف کریں؟</string>
+    <string name="feature_view_saved_passwords_title">لنک محفوظ پاس ورڈ</string>
+    <string name="feature_view_saved_passwords_description">اپنی محفوظ پاس ورڈ کو دیکھنے کے لئے بک مارک آئکن پر کلک کریں.</string>
+    <string name="alert_confirm_delete">پاس ورڈ کو حذف کریں؟</string>
+    <string name="alert_delete_message">آپ کا پاس ورڈ حذف کرنا چاہتے ہیں؟</string>
+    <string name="yes">جی ہاں</string>
+    <string name="no">نہیں</string>
+    <string name="optional">اختیاری</string>
+    <string name="take_me_to_settings">ترتیبات پر لے جائیں</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">حروف شامل کرنے</string>
+    <string name="no_repeat_characters">کوئی دہرانے حروف</string>
+    <string name="passphrase">پاس فریز شامل کریں</string>
+    <string name="enter_a_passphrase">ایک پاس فریز درج</string>
+    <string name="passphrase_saved">پاس فریز کو بچایا!</string>
+    <string name="password">پاس ورڈ</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">لاگ ان کریں</string>
+</resources>

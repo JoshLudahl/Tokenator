@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">పొడవు</string>
+    <string name="toast_length_warning">పాస్వర్డ్ ఉత్పత్తి లోపం.</string>
+    <string name="toast_copied_to_clipboard">క్లిప్బోర్డ్కు కాపీ</string>
+    <string name="toast_generate_password_first_warning">మొదటి ఒక పాస్వర్డ్ను రూపొందించండి.</string>
+    <string name="secret_sauce">సీక్రెట్ సాస్</string>
+    <string name="click_to_generate_password">క్లిక్ టోకెన్ ఉత్పత్తి టోకెన్ ఉత్పత్తి</string>
+    <string name="length_hint">పొడవు</string>
+    <string name="generate_token_button_text">టోకెన్ రూపొందించండి</string>
+    <string name="save_button">సేవ్</string>
+    <string name="view_saved_button">వీక్షణ సేవ్</string>
+    <string name="enter_name_for_login">లాగిన్ నమోదు</string>
+    <string name="save_dialog_cancel">రద్దు చేయండి</string>
+    <string name="save_dialog_save">సేవ్</string>
+    <string name="enter_name_for_password">పాస్వర్డ్ కోసం పేరు నమోదు</string>
+    <string name="error_enter_name_for_password">పాస్వర్డ్ కోసం పేరుని నమోదు చేయండి</string>
+    <string name="error_generate_password_first">మీరు మొదటి ఒక పాస్వర్డ్ను ఉత్పత్తి చేయాలి</string>
+    <string name="password_saved">పాస్వర్డ్ సేవ్</string>
+    <string name="token_title_placeholder">టోకెన్ శీర్షిక</string>
+    <string name="no_saved_passwords">సేవ్ చేసిన పాస్వర్డ్లు</string>
+    <string name="copy">కాపీ</string>
+    <string name="settings">సెట్టింగులు</string>
+    <string name="generated_token">టోకెన్ ఉత్పత్తి (కాపీ చేయడానికి క్లిక్ చేయండి)</string>
+    <string name="uppercase_letters">పెద్ద అక్షరాలు</string>
+    <string name="lowercase_letters">చిన్న అక్షరాలను</string>
+    <string name="numeric">సంఖ్యా</string>
+    <string name="special_characters">ప్రత్యేక అక్షరాలను</string>
+    <string name="delete">తొలగించాలా?</string>
+    <string name="feature_view_saved_passwords_title">సేవ్ చెయ్యబడిన పాస్వర్డ్లు చూడండి</string>
+    <string name="feature_view_saved_passwords_description">మీ సేవ్ చెయ్యబడిన పాస్వర్డ్లను చూడడానికి బుక్ మార్క్ చిహ్నం క్లిక్ చేయండి.</string>
+    <string name="alert_confirm_delete">పాస్వర్డ్ తొలగించు?</string>
+    <string name="alert_delete_message">మీరు పాస్వర్డ్ తొలగించడానికి ఉండాలనుకుంటున్నారా?</string>
+    <string name="yes">అవును</string>
+    <string name="no">తోబుట్టువుల</string>
+    <string name="optional">ఐచ్ఛికము</string>
+    <string name="take_me_to_settings">సెట్టింగులను నాకు టేక్</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">అక్షరాలు ఉన్నాయి</string>
+    <string name="no_repeat_characters">రిపీట్ అక్షరాలు లేవు</string>
+    <string name="passphrase">పాస్ఫ్రేజ్ చేర్చండి</string>
+    <string name="enter_a_passphrase">ఒక పాస్ఫ్రేజ్ని ఎంటర్</string>
+    <string name="passphrase_saved">పాస్ఫ్రేజ్ సేవ్!</string>
+    <string name="password">పాస్వర్డ్</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">ప్రవేశించండి</string>
+</resources>
