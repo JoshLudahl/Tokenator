@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Μήκος</string>
+    <string name="toast_length_warning">Σφάλμα δημιουργίας κωδικού πρόσβασης.</string>
+    <string name="toast_copied_to_clipboard">Αντιγράφηκε στο πρόχειρο</string>
+    <string name="toast_generate_password_first_warning">Δημιουργήστε πρώτα έναν κωδικό πρόσβασης.</string>
+    <string name="secret_sauce">Secret Sauce</string>
+    <string name="click_to_generate_password">Κάντε κλικ παράγουν κουπόνι για να δημιουργήσει ένα δείγμα</string>
+    <string name="length_hint">Μήκος</string>
+    <string name="generate_token_button_text">Δημιουργία Token</string>
+    <string name="save_button">Σώσει</string>
+    <string name="view_saved_button">προβολή σωθεί</string>
+    <string name="enter_name_for_login">Εισάγετε τα στοιχεία σύνδεσης</string>
+    <string name="save_dialog_cancel">Ματαίωση</string>
+    <string name="save_dialog_save">Σώσει</string>
+    <string name="enter_name_for_password">Πληκτρολογήστε το όνομα για τον κωδικό πρόσβασης</string>
+    <string name="error_enter_name_for_password">Πληκτρολογήστε ένα όνομα για τον κωδικό πρόσβασης</string>
+    <string name="error_generate_password_first">Θα πρέπει να δημιουργήσετε έναν κωδικό πρόσβασης πρώτη</string>
+    <string name="password_saved">Κωδικός αποθηκεύονται</string>
+    <string name="token_title_placeholder">Διακριτικό τίτλο</string>
+    <string name="no_saved_passwords">Δεν αποθηκευμένων κωδικών πρόσβασης</string>
+    <string name="copy">αντίγραφο</string>
+    <string name="settings">Ρυθμίσεις</string>
+    <string name="generated_token">Διακριτικό που δημιουργείται (κάντε κλικ για να αντιγράψετε)</string>
+    <string name="uppercase_letters">κεφαλαία γράμματα</string>
+    <string name="lowercase_letters">Πεζά γράμματα</string>
+    <string name="numeric">Αριθμητικός</string>
+    <string name="special_characters">Ειδικοί χαρακτήρες</string>
+    <string name="delete">Διαγράφω?</string>
+    <string name="feature_view_saved_passwords_title">Εμφάνιση αποθηκευμένων κωδικών πρόσβασης</string>
+    <string name="feature_view_saved_passwords_description">Κάντε κλικ στο εικονίδιο σελιδοδείκτη για να δείτε τους αποθηκευμένους κωδικούς πρόσβασης σας.</string>
+    <string name="alert_confirm_delete">Διαγράψτε τον κωδικό πρόσβασης;</string>
+    <string name="alert_delete_message">Είστε σίγουροι ότι θέλετε να διαγράψετε τον κωδικό πρόσβασης;</string>
+    <string name="yes">Ναί</string>
+    <string name="no">Οχι</string>
+    <string name="optional">Προαιρετικός</string>
+    <string name="take_me_to_settings">Πήγαινέ με τις ρυθμίσεις</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Χαρακτήρες να περιλαμβάνουν</string>
+    <string name="no_repeat_characters">Δεν επανάληψη χαρακτήρες</string>
+    <string name="passphrase">Συμπεριλάβετε τη φράση πρόσβασης</string>
+    <string name="enter_a_passphrase">Πληκτρολογήστε μια φράση πρόσβασης</string>
+    <string name="passphrase_saved">Η φράση πρόσβασης αποθηκεύεται!</string>
+    <string name="password">Κωδικός πρόσβασης</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Σύνδεση</string>
+</resources>

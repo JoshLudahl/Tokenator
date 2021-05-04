@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Lengte</string>
+    <string name="toast_length_warning">Fout genereren wachtwoord.</string>
+    <string name="toast_copied_to_clipboard">Gekopieerd naar het klembord</string>
+    <string name="toast_generate_password_first_warning">Genereer eerst een wachtwoord.</string>
+    <string name="secret_sauce">Geheime saus</string>
+    <string name="click_to_generate_password">Klik genereren token om een ​​token te genereren</string>
+    <string name="length_hint">Lengte</string>
+    <string name="generate_token_button_text">Genereer Token</string>
+    <string name="save_button">Sparen</string>
+    <string name="view_saved_button">bekijk opgeslagen</string>
+    <string name="enter_name_for_login">Voer het login</string>
+    <string name="save_dialog_cancel">annuleren</string>
+    <string name="save_dialog_save">Sparen</string>
+    <string name="enter_name_for_password">Voer de naam voor het wachtwoord</string>
+    <string name="error_enter_name_for_password">Geef een naam voor het wachtwoord</string>
+    <string name="error_generate_password_first">U moet een wachtwoord te genereren eerste</string>
+    <string name="password_saved">Password gered</string>
+    <string name="token_title_placeholder">token Titel</string>
+    <string name="no_saved_passwords">Geen opgeslagen wachtwoorden</string>
+    <string name="copy">Kopiëren</string>
+    <string name="settings">instellingen</string>
+    <string name="generated_token">Gegenereerde token (klik om te kopiëren)</string>
+    <string name="uppercase_letters">Hoofdletters</string>
+    <string name="lowercase_letters">Kleine letters</string>
+    <string name="numeric">numerieke</string>
+    <string name="special_characters">speciale tekens</string>
+    <string name="delete">Verwijderen?</string>
+    <string name="feature_view_saved_passwords_title">Opgeslagen wachtwoorden bekijken</string>
+    <string name="feature_view_saved_passwords_description">Klik op het bladwijzerpictogram om uw opgeslagen wachtwoorden te zien.</string>
+    <string name="alert_confirm_delete">het wachtwoord te verwijderen?</string>
+    <string name="alert_delete_message">Bent u zeker dat u het wachtwoord te verwijderen?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nee</string>
+    <string name="optional">Optioneel</string>
+    <string name="take_me_to_settings">Breng me naar instellingen</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Tekens op te nemen</string>
+    <string name="no_repeat_characters">Geen herhaling tekens</string>
+    <string name="passphrase">Inclusief Wachtwoordzin</string>
+    <string name="enter_a_passphrase">Voer een wachtwoord</string>
+    <string name="passphrase_saved">Wachtwoordzin gered!</string>
+    <string name="password">Wachtwoord</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Log in</string>
+</resources>

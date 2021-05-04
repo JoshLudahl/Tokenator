@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Llargada</string>
+    <string name="toast_length_warning">Error a l\'generar la contrasenya.</string>
+    <string name="toast_copied_to_clipboard">Copiat a l\'portapapers</string>
+    <string name="toast_generate_password_first_warning">Generar una contrasenya primer.</string>
+    <string name="secret_sauce">salsa secreta</string>
+    <string name="click_to_generate_password">Feu clic a Generar comptadors a generar un símbol</string>
+    <string name="length_hint">Llargada</string>
+    <string name="generate_token_button_text">generar token</string>
+    <string name="save_button">Desar</string>
+    <string name="view_saved_button">vista guardada</string>
+    <string name="enter_name_for_login">Introduïu el nom d\'usuari</string>
+    <string name="save_dialog_cancel">Cancel · lar</string>
+    <string name="save_dialog_save">Desar</string>
+    <string name="enter_name_for_password">Introdueix el nom de la contrasenya</string>
+    <string name="error_enter_name_for_password">Introduïu un nom per a la contrasenya</string>
+    <string name="error_generate_password_first">Ha de generar una contrasenya primer</string>
+    <string name="password_saved">contrasenya guardada</string>
+    <string name="token_title_placeholder">Títol d\'emergència</string>
+    <string name="no_saved_passwords">No hi ha contrasenyes guardades</string>
+    <string name="copy">còpia</string>
+    <string name="settings">ajustos</string>
+    <string name="generated_token">Token generat (clic per copiar)</string>
+    <string name="uppercase_letters">Majúscules</string>
+    <string name="lowercase_letters">Lletres minúscules</string>
+    <string name="numeric">numèric</string>
+    <string name="special_characters">caràcters especials</string>
+    <string name="delete">Eliminar?</string>
+    <string name="feature_view_saved_passwords_title">Veure contrasenyes guardades</string>
+    <string name="feature_view_saved_passwords_description">Feu clic a la icona d\'el marcador per veure les contrasenyes guardades.</string>
+    <string name="alert_confirm_delete">Eliminar la contrasenya?</string>
+    <string name="alert_delete_message">Esteu segur que vol esborrar la contrasenya?</string>
+    <string name="yes">si</string>
+    <string name="no">No</string>
+    <string name="optional">opcional</string>
+    <string name="take_me_to_settings">Introdueix-me als ajustos</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Personatges inclouen a</string>
+    <string name="no_repeat_characters">No hi ha caràcters repetits</string>
+    <string name="passphrase">incloure la contrasenya</string>
+    <string name="enter_a_passphrase">Introduïu una contrasenya</string>
+    <string name="passphrase_saved">Contrasenya guardada!</string>
+    <string name="password">contrasenya</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">iniciar Sessió</string>
+</resources>

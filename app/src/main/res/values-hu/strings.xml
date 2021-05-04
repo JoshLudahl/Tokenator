@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Hossz</string>
+    <string name="toast_length_warning">Hiba történt a jelszót.</string>
+    <string name="toast_copied_to_clipboard">Vágólapra másolva</string>
+    <string name="toast_generate_password_first_warning">Generál egy jelszót az első.</string>
+    <string name="secret_sauce">Secret Sauce</string>
+    <string name="click_to_generate_password">Kattintson generál token, hogy létrehoz egy tokent</string>
+    <string name="length_hint">Hossz</string>
+    <string name="generate_token_button_text">Token létrehozása</string>
+    <string name="save_button">Mentés</string>
+    <string name="view_saved_button">megtekintsék</string>
+    <string name="enter_name_for_login">Adja meg a bejelentkezési</string>
+    <string name="save_dialog_cancel">Megszünteti</string>
+    <string name="save_dialog_save">Mentés</string>
+    <string name="enter_name_for_password">Írja be a nevet a jelszó</string>
+    <string name="error_enter_name_for_password">Adjon meg egy nevet a jelszót</string>
+    <string name="error_generate_password_first">Meg kell generál egy jelszót az első</string>
+    <string name="password_saved">jelszó mentése</string>
+    <string name="token_title_placeholder">token Cím</string>
+    <string name="no_saved_passwords">Nem Mentett jelszavak</string>
+    <string name="copy">Másolat</string>
+    <string name="settings">Beállítások</string>
+    <string name="generated_token">Generált token (kattintson a másolni)</string>
+    <string name="uppercase_letters">Nagybetűs</string>
+    <string name="lowercase_letters">Kisbetűk</string>
+    <string name="numeric">numerikus</string>
+    <string name="special_characters">Speciális karakterek</string>
+    <string name="delete">Töröl?</string>
+    <string name="feature_view_saved_passwords_title">Mentett jelszavak megtekintése</string>
+    <string name="feature_view_saved_passwords_description">Kattintson a könyvjelző ikont látni a mentett jelszavakat.</string>
+    <string name="alert_confirm_delete">Törölje a jelszavát?</string>
+    <string name="alert_delete_message">Biztos, hogy törölni kívánja a jelszót?</string>
+    <string name="yes">Igen</string>
+    <string name="no">Nem</string>
+    <string name="optional">Választható</string>
+    <string name="take_me_to_settings">Vigyél beállítások</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Karakterek közé</string>
+    <string name="no_repeat_characters">Nincs ismétlés karakterek</string>
+    <string name="passphrase">Tartalmazza Jelszó</string>
+    <string name="enter_a_passphrase">Adjon meg egy jelszót</string>
+    <string name="passphrase_saved">Összetett jelszó mentve!</string>
+    <string name="password">Jelszó</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Belépés</string>
+</resources>

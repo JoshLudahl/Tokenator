@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">pikkus</string>
+    <string name="toast_length_warning">Viga parooli.</string>
+    <string name="toast_copied_to_clipboard">Lõikelauale kopeeritud</string>
+    <string name="toast_generate_password_first_warning">Loo parool esimene.</string>
+    <string name="secret_sauce">Secret Sauce</string>
+    <string name="click_to_generate_password">Click luua sümboolne, et luua sümboolne</string>
+    <string name="length_hint">pikkus</string>
+    <string name="generate_token_button_text">Loo Token</string>
+    <string name="save_button">Salvesta</string>
+    <string name="view_saved_button">Kuva salvestatud</string>
+    <string name="enter_name_for_login">Sisestage sisselogimise</string>
+    <string name="save_dialog_cancel">tühistama</string>
+    <string name="save_dialog_save">Salvesta</string>
+    <string name="enter_name_for_password">Sisestage nimi parool</string>
+    <string name="error_enter_name_for_password">Sisestage nimi parool</string>
+    <string name="error_generate_password_first">Peate looma parooli esimese</string>
+    <string name="password_saved">Parool salvestatakse</string>
+    <string name="token_title_placeholder">Token Pealkiri</string>
+    <string name="no_saved_passwords">Nr Salvestatud paroolid</string>
+    <string name="copy">koopia</string>
+    <string name="settings">seaded</string>
+    <string name="generated_token">Loodud luba (klõpsake kopeerida)</string>
+    <string name="uppercase_letters">suurtähti</string>
+    <string name="lowercase_letters">väiketähti</string>
+    <string name="numeric">Numbriline</string>
+    <string name="special_characters">eritähtede</string>
+    <string name="delete">Kustuta?</string>
+    <string name="feature_view_saved_passwords_title">Vaata Salvestatud paroolid</string>
+    <string name="feature_view_saved_passwords_description">Kliki järjehoidjaikooni vaadata oma salvestatud paroolid.</string>
+    <string name="alert_confirm_delete">Kustuta parooli?</string>
+    <string name="alert_delete_message">Olete kindel, et soovite kustutada parooli?</string>
+    <string name="yes">jah</string>
+    <string name="no">ei</string>
+    <string name="optional">vabatahtlik</string>
+    <string name="take_me_to_settings">Vii mind seaded</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Tegelased lisada</string>
+    <string name="no_repeat_characters">Nr korrake tähemärki</string>
+    <string name="passphrase">Kaasa Passphrase</string>
+    <string name="enter_a_passphrase">Sisestage parool</string>
+    <string name="passphrase_saved">Passphrase salvestatud!</string>
+    <string name="password">parool</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Logi sisse</string>
+</resources>

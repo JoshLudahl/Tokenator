@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">haba</string>
+    <string name="toast_length_warning">Error sa pagbuo ng password.</string>
+    <string name="toast_copied_to_clipboard">Kinopya sa clipboard</string>
+    <string name="toast_generate_password_first_warning">Bumuo ng isang password muna.</string>
+    <string name="secret_sauce">Secret Sauce</string>
+    <string name="click_to_generate_password">I-click ang bumuo ng token upang bumuo ng isang token</string>
+    <string name="length_hint">haba</string>
+    <string name="generate_token_button_text">bumuo Token</string>
+    <string name="save_button">I-save ang</string>
+    <string name="view_saved_button">view ng nai-save</string>
+    <string name="enter_name_for_login">Ipasok ang pag-login</string>
+    <string name="save_dialog_cancel">kanselahin</string>
+    <string name="save_dialog_save">I-save ang</string>
+    <string name="enter_name_for_password">Ipasok ang pangalan ng password</string>
+    <string name="error_enter_name_for_password">Magpasok ng isang pangalan para sa password</string>
+    <string name="error_generate_password_first">Kailangan mong bumuo ng isang password unang</string>
+    <string name="password_saved">password nai-save</string>
+    <string name="token_title_placeholder">token Pamagat</string>
+    <string name="no_saved_passwords">Walang Nai-save na mga password</string>
+    <string name="copy">Kopya</string>
+    <string name="settings">Mga Setting</string>
+    <string name="generated_token">Binuo ng token (i-click upang kopyahin)</string>
+    <string name="uppercase_letters">uppercase na titik</string>
+    <string name="lowercase_letters">maliliit na titik</string>
+    <string name="numeric">Pang-numero</string>
+    <string name="special_characters">Espesyal na character</string>
+    <string name="delete">Burahin?</string>
+    <string name="feature_view_saved_passwords_title">Tingnan ang Nai-save na mga password</string>
+    <string name="feature_view_saved_passwords_description">Mag-click sa icon ng bookmark upang makita ang iyong nai-save na mga password.</string>
+    <string name="alert_confirm_delete">Tanggalin ang password?</string>
+    <string name="alert_delete_message">Sigurado ka bang gusto mong burahin ang password?</string>
+    <string name="yes">oo</string>
+    <string name="no">Hindi</string>
+    <string name="optional">Opsyonal</string>
+    <string name="take_me_to_settings">Dalhin ako sa setting</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Mga character na isama</string>
+    <string name="no_repeat_characters">Walang mga umuulit na mga character</string>
+    <string name="passphrase">Isama Passphrase</string>
+    <string name="enter_a_passphrase">Magpasok ng isang passphrase</string>
+    <string name="passphrase_saved">Passphrase nai-save!</string>
+    <string name="password">password</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Mag log in</string>
+</resources>

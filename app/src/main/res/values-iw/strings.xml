@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">אורך</string>
+    <string name="toast_length_warning">שגיאה ביצירת סיסמא.</string>
+    <string name="toast_copied_to_clipboard">הועתק ללוח</string>
+    <string name="toast_generate_password_first_warning">צור סיסמא ראשונה.</string>
+    <string name="secret_sauce">רוטב סודי</string>
+    <string name="click_to_generate_password">לחץ על צור אסימון כדי אסימו</string>
+    <string name="length_hint">אורך</string>
+    <string name="generate_token_button_text">צור אסימון</string>
+    <string name="save_button">להציל</string>
+    <string name="view_saved_button">תצוגה שמורה</string>
+    <string name="enter_name_for_login">הזן את פרטי ההתחברות</string>
+    <string name="save_dialog_cancel">לְבַטֵל</string>
+    <string name="save_dialog_save">להציל</string>
+    <string name="enter_name_for_password">הזן שם עבור הסיסמה</string>
+    <string name="error_enter_name_for_password">הזן שם עבור הסיסמה</string>
+    <string name="error_generate_password_first">עליך ליצור סיסמה ראשונה</string>
+    <string name="password_saved">הסיסמה נשמרה</string>
+    <string name="token_title_placeholder">כותרת האסימון</string>
+    <string name="no_saved_passwords">אין הסיסמאות השמורות</string>
+    <string name="copy">עותק</string>
+    <string name="settings">הגדרות</string>
+    <string name="generated_token">Generated האסימון (לחץ כדי להעתיק)</string>
+    <string name="uppercase_letters">אותיות רישיות</string>
+    <string name="lowercase_letters">אותיות קטנות</string>
+    <string name="numeric">מספרים</string>
+    <string name="special_characters">תווים מיוחדים</string>
+    <string name="delete">לִמְחוֹק?</string>
+    <string name="feature_view_saved_passwords_title">סיסמאות צפה שמורים</string>
+    <string name="feature_view_saved_passwords_description">לחץ על סמל הסימנייה כדי לראות את הסיסמאות השמורות.</string>
+    <string name="alert_confirm_delete">מחק את הסיסמה?</string>
+    <string name="alert_delete_message">האם אתה בטוח שאתה רוצה למחוק את הסיסמא?</string>
+    <string name="yes">כן</string>
+    <string name="no">לא</string>
+    <string name="optional">אופציונאלי</string>
+    <string name="take_me_to_settings">קח אותי ההגדרות</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">תווים לכלול</string>
+    <string name="no_repeat_characters">ללא תווים חוזרים</string>
+    <string name="passphrase">כלול Passphrase</string>
+    <string name="enter_a_passphrase">זן משפט סיסמא</string>
+    <string name="passphrase_saved">Passphrase נשמר!</string>
+    <string name="password">סיסמה</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">התחברות</string>
+</resources>

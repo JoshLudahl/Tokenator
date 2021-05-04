@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">dužina</string>
+    <string name="toast_length_warning">Pogreška generiranje lozinke.</string>
+    <string name="toast_copied_to_clipboard">Kopiran u međuspremnik</string>
+    <string name="toast_generate_password_first_warning">Generirajte lozinke na prvom mjestu.</string>
+    <string name="secret_sauce">tajnu umak</string>
+    <string name="click_to_generate_password">Kliknite generirati token generirati token</string>
+    <string name="length_hint">dužina</string>
+    <string name="generate_token_button_text">generirati token</string>
+    <string name="save_button">Uštedjeti</string>
+    <string name="view_saved_button">pogled spasio</string>
+    <string name="enter_name_for_login">Unesite prijava</string>
+    <string name="save_dialog_cancel">Otkazati</string>
+    <string name="save_dialog_save">Uštedjeti</string>
+    <string name="enter_name_for_password">Unesite ime za lozinku</string>
+    <string name="error_enter_name_for_password">Unesite ime za lozinku</string>
+    <string name="error_generate_password_first">Morate generirati zaporku prvi</string>
+    <string name="password_saved">Lozinka spasio</string>
+    <string name="token_title_placeholder">Oznaka Naziv</string>
+    <string name="no_saved_passwords">Nema Spremljene lozinke</string>
+    <string name="copy">Kopirati</string>
+    <string name="settings">postavke</string>
+    <string name="generated_token">Generira token (kliknite za kopiranje)</string>
+    <string name="uppercase_letters">Velika slova</string>
+    <string name="lowercase_letters">Mala slova</string>
+    <string name="numeric">numerički</string>
+    <string name="special_characters">Posebni znakovi</string>
+    <string name="delete">Izbrisati?</string>
+    <string name="feature_view_saved_passwords_title">Pogledaj Spremljene lozinke</string>
+    <string name="feature_view_saved_passwords_description">Kliknite na ikonu oznake da biste vidjeli svoje spremljene zaporke.</string>
+    <string name="alert_confirm_delete">Brisanje lozinke?</string>
+    <string name="alert_delete_message">Jeste li sigurni da želite izbrisati lozinku?</string>
+    <string name="yes">Da</string>
+    <string name="no">Ne</string>
+    <string name="optional">neobavezan</string>
+    <string name="take_me_to_settings">Uzmi me za postavke</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Likovi uključiti</string>
+    <string name="no_repeat_characters">Bez ponavljanja znakova</string>
+    <string name="passphrase">Uključi u lozinki</string>
+    <string name="enter_a_passphrase">Unesite šifru</string>
+    <string name="passphrase_saved">Zaporka spremljena!</string>
+    <string name="password">Zaporka</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Prijaviti se</string>
+</resources>

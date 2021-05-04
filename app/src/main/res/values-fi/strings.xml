@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Pituus</string>
+    <string name="toast_length_warning">Virhe luotaessa salasanaa.</string>
+    <string name="toast_copied_to_clipboard">Kopioitu leikepöydälle</string>
+    <string name="toast_generate_password_first_warning">Tuottaa salasana ensin.</string>
+    <string name="secret_sauce">salainen kastike</string>
+    <string name="click_to_generate_password">Valitse Luo token tuottaa symbolinen</string>
+    <string name="length_hint">Pituus</string>
+    <string name="generate_token_button_text">tuottaa Token</string>
+    <string name="save_button">Tallentaa</string>
+    <string name="view_saved_button">näkymä tallennettu</string>
+    <string name="enter_name_for_login">Anna kirjautumisen</string>
+    <string name="save_dialog_cancel">Peruuttaa</string>
+    <string name="save_dialog_save">Tallentaa</string>
+    <string name="enter_name_for_password">Anna nimi salasana</string>
+    <string name="error_enter_name_for_password">Anna nimi salasanaa</string>
+    <string name="error_generate_password_first">Sinun on luotava salasana ensimmäisen</string>
+    <string name="password_saved">salasana tallennetaan</string>
+    <string name="token_title_placeholder">Token Otsikko</string>
+    <string name="no_saved_passwords">Ei Tallennetut salasanat</string>
+    <string name="copy">Kopio</string>
+    <string name="settings">asetukset</string>
+    <string name="generated_token">Generated symbolinen (klikkaa kopioi)</string>
+    <string name="uppercase_letters">Isot kirjaimet</string>
+    <string name="lowercase_letters">Pienet kirjaimet</string>
+    <string name="numeric">numeerinen</string>
+    <string name="special_characters">Erikoismerkit</string>
+    <string name="delete">Poistaa?</string>
+    <string name="feature_view_saved_passwords_title">Näytä tallennetut salasanat</string>
+    <string name="feature_view_saved_passwords_description">Klikkaa kirjanmerkin kuvaketta näet tallennetut salasanat.</string>
+    <string name="alert_confirm_delete">Poista salasana?</string>
+    <string name="alert_delete_message">Oletko varma, että haluat poistaa salasana?</string>
+    <string name="yes">Joo</string>
+    <string name="no">Ei</string>
+    <string name="optional">Valinnainen</string>
+    <string name="take_me_to_settings">Ota minut asetuksia</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Hahmojen</string>
+    <string name="no_repeat_characters">Ei toistoa merkkiä</string>
+    <string name="passphrase">sisältävät Tunnuslause</string>
+    <string name="enter_a_passphrase">Anna tunnuslause</string>
+    <string name="passphrase_saved">Tunnuslausetta tallennettu!</string>
+    <string name="password">Salasana</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Kirjaudu sisään</string>
+</resources>

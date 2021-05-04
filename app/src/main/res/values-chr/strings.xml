@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Length</string>
+    <string name="toast_length_warning">Error generating password.</string>
+    <string name="toast_copied_to_clipboard">Copied to clipboard</string>
+    <string name="toast_generate_password_first_warning">Generate a password first.</string>
+    <string name="secret_sauce">Secret Sauce</string>
+    <string name="click_to_generate_password">Click generate token to generate a token</string>
+    <string name="length_hint">Length</string>
+    <string name="generate_token_button_text">Generate Token</string>
+    <string name="save_button">Save</string>
+    <string name="view_saved_button">view saved</string>
+    <string name="enter_name_for_login">Enter the login</string>
+    <string name="save_dialog_cancel">Cancel</string>
+    <string name="save_dialog_save">Save</string>
+    <string name="enter_name_for_password">Enter name for password</string>
+    <string name="error_enter_name_for_password">Enter a name for the password</string>
+    <string name="error_generate_password_first">You must generate a password first</string>
+    <string name="password_saved">Password saved</string>
+    <string name="token_title_placeholder">Token Title</string>
+    <string name="no_saved_passwords">No Saved Passwords</string>
+    <string name="copy">Copy</string>
+    <string name="settings">Settings</string>
+    <string name="generated_token">Generated token (click to copy)</string>
+    <string name="uppercase_letters">Uppercase letters</string>
+    <string name="lowercase_letters">Lowercase letters</string>
+    <string name="numeric">Numeric</string>
+    <string name="special_characters">Special Characters</string>
+    <string name="delete">Delete?</string>
+    <string name="feature_view_saved_passwords_title">View Saved Passwords</string>
+    <string name="feature_view_saved_passwords_description">Click on the bookmark icon to see your saved passwords.</string>
+    <string name="alert_confirm_delete">Delete the password?</string>
+    <string name="alert_delete_message">Are you sure you want to delete the password?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="optional">Optional</string>
+    <string name="take_me_to_settings">Take me to settings</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Characters to include</string>
+    <string name="no_repeat_characters">No repeat characters</string>
+    <string name="passphrase">Include Passphrase</string>
+    <string name="enter_a_passphrase">Enter a passphrase</string>
+    <string name="passphrase_saved">Passphrase saved!</string>
+    <string name="password">Password</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Login</string>
+</resources>

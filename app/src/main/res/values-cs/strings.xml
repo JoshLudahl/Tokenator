@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Délka</string>
+    <string name="toast_length_warning">Chyba generování hesla.</string>
+    <string name="toast_copied_to_clipboard">Zkopírovat do schránky</string>
+    <string name="toast_generate_password_first_warning">Generovat hesla jako první.</string>
+    <string name="secret_sauce">tajný recept</string>
+    <string name="click_to_generate_password">Click generování tokenu vygenerovat token</string>
+    <string name="length_hint">Délka</string>
+    <string name="generate_token_button_text">generovat token</string>
+    <string name="save_button">Uložit</string>
+    <string name="view_saved_button">pohled uloženo</string>
+    <string name="enter_name_for_login">Zadejte přihlašovací</string>
+    <string name="save_dialog_cancel">zrušení</string>
+    <string name="save_dialog_save">Uložit</string>
+    <string name="enter_name_for_password">Zadejte název pro zadání hesla</string>
+    <string name="error_enter_name_for_password">Zadejte název pro zadání hesla</string>
+    <string name="error_generate_password_first">Musíte vygenerovat heslo nejprve</string>
+    <string name="password_saved">heslo uloženo</string>
+    <string name="token_title_placeholder">Token Název</string>
+    <string name="no_saved_passwords">Žádné Uložená hesla</string>
+    <string name="copy">kopírovat</string>
+    <string name="settings">Nastavení</string>
+    <string name="generated_token">Generované tokenu (klikněte pro kopírování)</string>
+    <string name="uppercase_letters">Velká písmena</string>
+    <string name="lowercase_letters">Malá písmena</string>
+    <string name="numeric">číselná</string>
+    <string name="special_characters">Speciální znaky</string>
+    <string name="delete">Vymazat?</string>
+    <string name="feature_view_saved_passwords_title">Zobrazení uložených hesel</string>
+    <string name="feature_view_saved_passwords_description">Klepněte na záložku, abyste viděli vaše uložená hesla.</string>
+    <string name="alert_confirm_delete">Odstranit heslo?</string>
+    <string name="alert_delete_message">Jste si jisti, že chcete smazat heslo?</string>
+    <string name="yes">Ano</string>
+    <string name="no">Ne</string>
+    <string name="optional">Volitelný</string>
+    <string name="take_me_to_settings">Vezměte mě do nastavení</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Znaky zahrnout</string>
+    <string name="no_repeat_characters">Žádné opakované znaky</string>
+    <string name="passphrase">zahrnují přístupové heslo</string>
+    <string name="enter_a_passphrase">Zadat heslo</string>
+    <string name="passphrase_saved">Přístupové heslo uloženo!</string>
+    <string name="password">Heslo</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Přihlásit se</string>
+</resources>

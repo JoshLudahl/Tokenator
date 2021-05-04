@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">дължина</string>
+    <string name="toast_length_warning">Грешка генериране на парола.</string>
+    <string name="toast_copied_to_clipboard">В буферната памет</string>
+    <string name="toast_generate_password_first_warning">Генериране на парола на първо място.</string>
+    <string name="secret_sauce">Secret Sauce</string>
+    <string name="click_to_generate_password">Кликнете генерира знак за генериране на знак</string>
+    <string name="length_hint">дължина</string>
+    <string name="generate_token_button_text">Генериране на Token</string>
+    <string name="save_button">Запази</string>
+    <string name="view_saved_button">запазените си</string>
+    <string name="enter_name_for_login">Въведете потребителско име</string>
+    <string name="save_dialog_cancel">Отказ</string>
+    <string name="save_dialog_save">Запази</string>
+    <string name="enter_name_for_password">Въведете име за парола</string>
+    <string name="error_enter_name_for_password">Въведете име за паролата</string>
+    <string name="error_generate_password_first">Трябва да генерирате парола първи</string>
+    <string name="password_saved">парола спасени</string>
+    <string name="token_title_placeholder">Token Заглавие</string>
+    <string name="no_saved_passwords">Не Пароли</string>
+    <string name="copy">копие</string>
+    <string name="settings">Настройки</string>
+    <string name="generated_token">Генерирано означение (щракнете, за да копирате)</string>
+    <string name="uppercase_letters">Главни букви</string>
+    <string name="lowercase_letters">Малки букви</string>
+    <string name="numeric">Цифрова</string>
+    <string name="special_characters">Специални символи</string>
+    <string name="delete">Изтрий?</string>
+    <string name="feature_view_saved_passwords_title">Преглед на запазените пароли</string>
+    <string name="feature_view_saved_passwords_description">Кликнете върху иконата на отметката, за да видите запазените пароли.</string>
+    <string name="alert_confirm_delete">Изтриване на паролата?</string>
+    <string name="alert_delete_message">Сигурни ли сте, че искате да изтриете паролата?</string>
+    <string name="yes">да</string>
+    <string name="no">Не</string>
+    <string name="optional">по избор</string>
+    <string name="take_me_to_settings">Заведи ме в настройките</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Признаци, по които включват</string>
+    <string name="no_repeat_characters">Не са повтарящи се символи</string>
+    <string name="passphrase">Включи се пропуск</string>
+    <string name="enter_a_passphrase">Въведете парола</string>
+    <string name="passphrase_saved">Пропуск запазена!</string>
+    <string name="password">парола</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Влизам</string>
+</resources>
