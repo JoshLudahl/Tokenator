@@ -16,7 +16,7 @@
     <string name="save_dialog_save">Sauvegarder</string>
     <string name="enter_name_for_password">Entrez le nom pour le mot de passe</string>
     <string name="error_enter_name_for_password">Entrez un nom pour le mot de passe</string>
-    <string name="error_generate_password_first">Vous devez générer un mot de passe d'abord</string>
+    <string name="error_generate_password_first">Vous devez générer un mot de passe d\'abord</string>
     <string name="password_saved">Mot de passe enregistré</string>
     <string name="token_title_placeholder">Titre Token</string>
     <string name="no_saved_passwords">Pas de mots de passe enregistrés</string>
@@ -29,7 +29,7 @@
     <string name="special_characters">Caractères spéciaux</string>
     <string name="delete">Effacer?</string>
     <string name="feature_view_saved_passwords_title">Voir les mots de passe enregistrés</string>
-    <string name="feature_view_saved_passwords_description">Cliquez sur l'icône du signet pour voir vos mots de passe enregistrés.</string>
+    <string name="feature_view_saved_passwords_description">Cliquez sur l\'icône du signet pour voir vos mots de passe enregistrés.</string>
     <string name="alert_confirm_delete">Supprimer le mot de passe?</string>
     <string name="alert_delete_message">Etes-vous sûr de vouloir supprimer le mot de passe?</string>
     <string name="yes">Oui</string>
