@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Lengde</string>
+    <string name="toast_length_warning">Feil generere passord.</string>
+    <string name="toast_copied_to_clipboard">Kopiert til utklippstavlen</string>
+    <string name="toast_generate_password_first_warning">Generere et passord.</string>
+    <string name="secret_sauce">Secret Sauce</string>
+    <string name="click_to_generate_password">Klikk generere token til å generere en token</string>
+    <string name="length_hint">Lengde</string>
+    <string name="generate_token_button_text">generere Token</string>
+    <string name="save_button">Lagre</string>
+    <string name="view_saved_button">view lagret</string>
+    <string name="enter_name_for_login">Skriv inn brukernavn</string>
+    <string name="save_dialog_cancel">Avbryt</string>
+    <string name="save_dialog_save">Lagre</string>
+    <string name="enter_name_for_password">Skriv inn navn for passord</string>
+    <string name="error_enter_name_for_password">Skriv inn et navn for passord</string>
+    <string name="error_generate_password_first">Du må generere et passord</string>
+    <string name="password_saved">passord lagret</string>
+    <string name="token_title_placeholder">token tittel</string>
+    <string name="no_saved_passwords">Ingen lagrede passord</string>
+    <string name="copy">Kopiere</string>
+    <string name="settings">innstillinger</string>
+    <string name="generated_token">Generert token (klikk for å kopiere)</string>
+    <string name="uppercase_letters">Store bokstaver</string>
+    <string name="lowercase_letters">Små bokstaver</string>
+    <string name="numeric">numerisk</string>
+    <string name="special_characters">Spesielle karakterer</string>
+    <string name="delete">Slette?</string>
+    <string name="feature_view_saved_passwords_title">Vis lagrede passord</string>
+    <string name="feature_view_saved_passwords_description">Klikk på bokmerkeikonet for å se dine lagrede passord.</string>
+    <string name="alert_confirm_delete">Slette passord?</string>
+    <string name="alert_delete_message">Er du sikker på at du vil slette passordet?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nei</string>
+    <string name="optional">Valgfri</string>
+    <string name="take_me_to_settings">Ta meg til innstillinger</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Tegn å inkludere</string>
+    <string name="no_repeat_characters">Ingen gjentatte tegn</string>
+    <string name="passphrase">Inkluder Passphrase</string>
+    <string name="enter_a_passphrase">Skriv inn et passord</string>
+    <string name="passphrase_saved">Passphrase lagret!</string>
+    <string name="password">Passord</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Logg Inn</string>
+</resources>

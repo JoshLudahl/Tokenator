@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">garums</string>
+    <string name="toast_length_warning">Kļūda radot paroli.</string>
+    <string name="toast_copied_to_clipboard">Ir kopēts starpliktuvē</string>
+    <string name="toast_generate_password_first_warning">Ģenerēt paroli pirmās.</string>
+    <string name="secret_sauce">Secret mērce</string>
+    <string name="click_to_generate_password">Noklikšķiniet radīt pilnvara radīt simbolisku</string>
+    <string name="length_hint">garums</string>
+    <string name="generate_token_button_text">Izveidot marķieri</string>
+    <string name="save_button">Saglabāt</string>
+    <string name="view_saved_button">skats saglabāts</string>
+    <string name="enter_name_for_login">Ievadiet pieteikšanās</string>
+    <string name="save_dialog_cancel">atcelt</string>
+    <string name="save_dialog_save">Saglabāt</string>
+    <string name="enter_name_for_password">Ievadiet nosaukumu paroli</string>
+    <string name="error_enter_name_for_password">Ievadiet paroli</string>
+    <string name="error_generate_password_first">Jums ir ģenerēt paroli pirmais</string>
+    <string name="password_saved">Parole ir saglabāta</string>
+    <string name="token_title_placeholder">Token Nosaukums</string>
+    <string name="no_saved_passwords">Nav saglabātās paroles</string>
+    <string name="copy">kopija</string>
+    <string name="settings">Iestatījumi</string>
+    <string name="generated_token">Radītais marķieris (noklikšķiniet, lai kopētu)</string>
+    <string name="uppercase_letters">Lielie burti</string>
+    <string name="lowercase_letters">Mazie burti</string>
+    <string name="numeric">Ciparu</string>
+    <string name="special_characters">Speciālās rakstzīmes</string>
+    <string name="delete">Dzēst?</string>
+    <string name="feature_view_saved_passwords_title">Skatīt saglabātās paroles</string>
+    <string name="feature_view_saved_passwords_description">Uzklikšķiniet uz grāmatzīmju ikonas, lai redzētu jūsu saglabātās paroles.</string>
+    <string name="alert_confirm_delete">Dzēst paroli?</string>
+    <string name="alert_delete_message">Vai tiešām vēlaties dzēst paroli?</string>
+    <string name="yes">Jā</string>
+    <string name="no">Nē</string>
+    <string name="optional">Neobligāti</string>
+    <string name="take_me_to_settings">Aizvediet mani uz iestatījumiem</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Rakstzīmes, lai iekļautu</string>
+    <string name="no_repeat_characters">Nav atkārtotu rakstzīmes</string>
+    <string name="passphrase">Iekļaut ieejas frāzi</string>
+    <string name="enter_a_passphrase">Ievadiet paroli</string>
+    <string name="passphrase_saved">Ieejas frāze saglabāta!</string>
+    <string name="password">parole</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Pieslēgties</string>
+</resources>

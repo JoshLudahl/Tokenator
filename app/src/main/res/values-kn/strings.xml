@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">ಉದ್ದ</string>
+    <string name="toast_length_warning">ಪಾಸ್ವರ್ಡ್ ರಚಿಸುವಲ್ಲಿ ದೋಷ.</string>
+    <string name="toast_copied_to_clipboard">ಕ್ಲಿಪ್ಬೋರ್ಡ್ಗೆ ನಕಲು</string>
+    <string name="toast_generate_password_first_warning">ಮೊದಲು ಪಾಸ್ವರ್ಡ್ ರಚಿಸಿ.</string>
+    <string name="secret_sauce">ಸೀಕ್ರೆಟ್ ಸಾಸ್</string>
+    <string name="click_to_generate_password">ಕ್ಲಿಕ್ ಟೋಕನ್ನ್ನು ಸೃಷ್ಟಿಸಲು ಟೋಕನ್</string>
+    <string name="length_hint">ಉದ್ದ</string>
+    <string name="generate_token_button_text">ಟೋಕನ್ ರಚಿಸಿ</string>
+    <string name="save_button">ಉಳಿಸಿ</string>
+    <string name="view_saved_button">ವೀಕ್ಷಿಸಿ ಉಳಿಸಿದ</string>
+    <string name="enter_name_for_login">ಲಾಗಿನ್ ನಮೂದಿಸಿ</string>
+    <string name="save_dialog_cancel">ರದ್ದು</string>
+    <string name="save_dialog_save">ಉಳಿಸಿ</string>
+    <string name="enter_name_for_password">ಪಾಸ್ವರ್ಡ್ ಹೆಸರಿಸಿ</string>
+    <string name="error_enter_name_for_password">ಪಾಸ್ವರ್ಡ್ ಹೆಸರನ್ನು ನಮೂದಿಸಿ</string>
+    <string name="error_generate_password_first">ನೀವು ಮೊದಲು ಪಾಸ್ವರ್ಡ್ ಸೃಷ್ಟಿಸಲು ಮಾಡಬೇಕು</string>
+    <string name="password_saved">ಪಾಸ್ವರ್ಡ್ ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="token_title_placeholder">ಟೋಕನ್ ಶೀರ್ಷಿಕೆ</string>
+    <string name="no_saved_passwords">ಯಾವುದೇ ಉಳಿಸಿದ ಪಾಸ್ವರ್ಡ್ಗಳು</string>
+    <string name="copy">ನಕಲಿಸಿ</string>
+    <string name="settings">ಸಂಯೋಜನೆಗಳು</string>
+    <string name="generated_token">ಟೋಕನ್ ಟೀಕೆಗೊಳಗಾಯಿತು (ನಕಲಿಸಲು ಕ್ಲಿಕ್ ಮಾಡಿ)</string>
+    <string name="uppercase_letters">ದೊಡ್ಡ ಅಕ್ಷರಗಳು</string>
+    <string name="lowercase_letters">ಸಣ್ಣ ಅಕ್ಷರಗಳು</string>
+    <string name="numeric">ಸಂಖ್ಯಾ</string>
+    <string name="special_characters">ವಿಶೇಷ ಅಕ್ಷರಗಳು</string>
+    <string name="delete">ಅಳಿಸುವುದೇ?</string>
+    <string name="feature_view_saved_passwords_title">ಉಳಿಸಿದ ಪಾಸ್ವರ್ಡ್ಗಳು ವೀಕ್ಷಿಸಿ</string>
+    <string name="feature_view_saved_passwords_description">ನಿಮ್ಮ ಉಳಿಸಿದ ಪಾಸ್ವರ್ಡ್ಗಳನ್ನು ನೋಡಲು ಬುಕ್ಮಾರ್ಕ್ ಐಕಾನ್ ಕ್ಲಿಕ್ ಮಾಡಿ.</string>
+    <string name="alert_confirm_delete">ಪಾಸ್ವರ್ಡ್ ಅಳಿಸುವುದೇ?</string>
+    <string name="alert_delete_message">ನೀವು ಪಾಸ್ವರ್ಡ್ ಅಳಿಸಲು ನೀವು ಖಚಿತವಾಗಿರುವಿರಾ?</string>
+    <string name="yes">ಹೌದು</string>
+    <string name="no">ಯಾವುದೇ</string>
+    <string name="optional">ಐಚ್ಛಿಕ</string>
+    <string name="take_me_to_settings">ಸೆಟ್ಟಿಂಗ್ಗಳಿಗೆ ನನ್ನನ್ನು ಕರೆದುಕೊಂಡು</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">ಪಾತ್ರಗಳು ಸೇರಿವೆ</string>
+    <string name="no_repeat_characters">ಯಾವುದೇ ಪುನರಾವರ್ತಿತ ಪಾತ್ರಗಳು</string>
+    <string name="passphrase">ಪಾಸ್ಫ್ರೇಸ್ ಸೇರಿಸಿ</string>
+    <string name="enter_a_passphrase">ಪಾಸ್ಫ್ರೇಸ್ ನಮೂದಿಸಿ</string>
+    <string name="passphrase_saved">ಪಾಸ್ಫ್ರೇಸ್ ಉಳಿಸಲಾಗಿದೆ!</string>
+    <string name="password">ಗುಪ್ತಪದ</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">ಲಾಗಿನ್</string>
+</resources>

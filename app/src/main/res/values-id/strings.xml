@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Panjangnya</string>
+    <string name="toast_length_warning">Kesalahan menghasilkan password.</string>
+    <string name="toast_copied_to_clipboard">Disalin ke clipboard</string>
+    <string name="toast_generate_password_first_warning">Menghasilkan password pertama.</string>
+    <string name="secret_sauce">Saus rahasia</string>
+    <string name="click_to_generate_password">Klik membuat token untuk menghasilkan token</string>
+    <string name="length_hint">Panjangnya</string>
+    <string name="generate_token_button_text">menghasilkan Token</string>
+    <string name="save_button">Menyimpan</string>
+    <string name="view_saved_button">tampilan yang tersimpan</string>
+    <string name="enter_name_for_login">Masukkan login</string>
+    <string name="save_dialog_cancel">Membatalkan</string>
+    <string name="save_dialog_save">Menyimpan</string>
+    <string name="enter_name_for_password">Masukkan nama untuk sandi</string>
+    <string name="error_enter_name_for_password">Masukkan nama untuk password</string>
+    <string name="error_generate_password_first">Anda harus menghasilkan password pertama</string>
+    <string name="password_saved">sandi disimpan</string>
+    <string name="token_title_placeholder">Token Judul</string>
+    <string name="no_saved_passwords">Tidak ada Sandi Tersimpan</string>
+    <string name="copy">Salinan</string>
+    <string name="settings">pengaturan</string>
+    <string name="generated_token">Generated tanda (klik untuk menyalin)</string>
+    <string name="uppercase_letters">Huruf besar</string>
+    <string name="lowercase_letters">Huruf kecil</string>
+    <string name="numeric">numerik</string>
+    <string name="special_characters">Karakter spesial</string>
+    <string name="delete">Menghapus?</string>
+    <string name="feature_view_saved_passwords_title">Lihat Sandi Tersimpan</string>
+    <string name="feature_view_saved_passwords_description">Klik pada ikon bookmark untuk melihat password yang disimpan.</string>
+    <string name="alert_confirm_delete">Hapus password?</string>
+    <string name="alert_delete_message">Apakah Anda yakin ingin menghapus password?</string>
+    <string name="yes">Iya</string>
+    <string name="no">Tidak</string>
+    <string name="optional">Pilihan</string>
+    <string name="take_me_to_settings">Membawa saya ke pengaturan</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Karakter untuk memasukkan</string>
+    <string name="no_repeat_characters">Tidak ada karakter berulang</string>
+    <string name="passphrase">Sertakan Passphrase</string>
+    <string name="enter_a_passphrase">Masukkan passphrase</string>
+    <string name="passphrase_saved">Passphrase disimpan!</string>
+    <string name="password">Kata sandi</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Gabung</string>
+</resources>

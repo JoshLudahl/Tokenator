@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">ilgis</string>
+    <string name="toast_length_warning">Klaida generuojant slaptažodį.</string>
+    <string name="toast_copied_to_clipboard">Nukopijuoti į iškarpinę</string>
+    <string name="toast_generate_password_first_warning">Sukurti slaptažodį pirmas.</string>
+    <string name="secret_sauce">slaptą padažu</string>
+    <string name="click_to_generate_password">Spustelėkite generuoti raktas generuoti simbolinis</string>
+    <string name="length_hint">ilgis</string>
+    <string name="generate_token_button_text">Sukurti ženklą</string>
+    <string name="save_button">Sutaupyti</string>
+    <string name="view_saved_button">Peržiūrėti išsaugotas</string>
+    <string name="enter_name_for_login">Įveskite prisijungimo</string>
+    <string name="save_dialog_cancel">atšaukti</string>
+    <string name="save_dialog_save">Sutaupyti</string>
+    <string name="enter_name_for_password">Įveskite vardą slaptažodis</string>
+    <string name="error_enter_name_for_password">Įveskite vardą slaptažodis</string>
+    <string name="error_generate_password_first">Jūs turite sukurti savo slaptažodį pirmas</string>
+    <string name="password_saved">Slaptažodis išsaugomas</string>
+    <string name="token_title_placeholder">ženklas Pavadinimas</string>
+    <string name="no_saved_passwords">Nėra išsaugotų slaptažodžių</string>
+    <string name="copy">kopija</string>
+    <string name="settings">Nustatymai</string>
+    <string name="generated_token">Sugeneruoti raktas (paspauskite, norėdami nukopijuoti)</string>
+    <string name="uppercase_letters">Didžiosios raidės</string>
+    <string name="lowercase_letters">Mažosios raidės</string>
+    <string name="numeric">skaitinė</string>
+    <string name="special_characters">Specialūs simboliai</string>
+    <string name="delete">Ištrinti?</string>
+    <string name="feature_view_saved_passwords_title">Peržiūrėti išsaugotus slaptažodžius</string>
+    <string name="feature_view_saved_passwords_description">Spustelėkite žymės piktogramą žr išsaugotus slaptažodžius.</string>
+    <string name="alert_confirm_delete">Ištrinti slaptažodį?</string>
+    <string name="alert_delete_message">Ar tikrai norite ištrinti slaptažodį?</string>
+    <string name="yes">taip</string>
+    <string name="no">ne</string>
+    <string name="optional">neprivalomas</string>
+    <string name="take_me_to_settings">Paimkite mane į nustatymų</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Veikėjai įtraukti</string>
+    <string name="no_repeat_characters">Nėra pakartoti simbolių</string>
+    <string name="passphrase">įtraukti slaptafrazę</string>
+    <string name="enter_a_passphrase">Įveskite slaptą frazę</string>
+    <string name="passphrase_saved">Slaptažodis išsaugoti!</string>
+    <string name="password">Slaptažodis</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Prisijungti</string>
+</resources>

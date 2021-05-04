@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Lengd</string>
+    <string name="toast_length_warning">Villa við að útbúa aðgangsorð.</string>
+    <string name="toast_copied_to_clipboard">Afritað á klemmuspjald</string>
+    <string name="toast_generate_password_first_warning">Búa til lykilorð fyrst.</string>
+    <string name="secret_sauce">Secret Sauce</string>
+    <string name="click_to_generate_password">Smelltu mynda tákn til að búa til tákn</string>
+    <string name="length_hint">Lengd</string>
+    <string name="generate_token_button_text">mynda auðkennið</string>
+    <string name="save_button">Vista</string>
+    <string name="view_saved_button">útsýni vistuð</string>
+    <string name="enter_name_for_login">Sláðu inn notandanafn</string>
+    <string name="save_dialog_cancel">Hætta við</string>
+    <string name="save_dialog_save">Vista</string>
+    <string name="enter_name_for_password">Sláðu inn heiti lykilorð</string>
+    <string name="error_enter_name_for_password">Sláðu inn heiti fyrir lykilorðið</string>
+    <string name="error_generate_password_first">Þú verður að búa til lykilorð fyrst</string>
+    <string name="password_saved">Lykilorð vistuð</string>
+    <string name="token_title_placeholder">Token Title</string>
+    <string name="no_saved_passwords">Engin vistuð lykilorð</string>
+    <string name="copy">Afrita</string>
+    <string name="settings">Stillingar</string>
+    <string name="generated_token">Mynda tákn (smelltu til að afrita)</string>
+    <string name="uppercase_letters">Stórir stafir</string>
+    <string name="lowercase_letters">Lágstafir</string>
+    <string name="numeric">tölustafir</string>
+    <string name="special_characters">sérstafir</string>
+    <string name="delete">Eyða?</string>
+    <string name="feature_view_saved_passwords_title">Skoða vistaða lykilorð</string>
+    <string name="feature_view_saved_passwords_description">Smelltu á bókamerkjalistanum táknið til að sjá vistaða lykilorð.</string>
+    <string name="alert_confirm_delete">Eyða lykilorð?</string>
+    <string name="alert_delete_message">Ertu viss um að þú viljir eyða lykilorðið?</string>
+    <string name="yes">Já</string>
+    <string name="no">engin</string>
+    <string name="optional">valfrjálst</string>
+    <string name="take_me_to_settings">Taktu mig í stillingar</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Stafir til fela</string>
+    <string name="no_repeat_characters">Engar endurtaka stafi</string>
+    <string name="passphrase">ma til aðgangsorð</string>
+    <string name="enter_a_passphrase">Sláðu inn lykilorð</string>
+    <string name="passphrase_saved">Aðgangsorð vistuð!</string>
+    <string name="password">Lykilorð</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Skrá inn</string>
+</resources>

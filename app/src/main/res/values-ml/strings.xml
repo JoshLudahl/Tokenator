@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">നീളം</string>
+    <string name="toast_length_warning">ഉണ്ടാക്കുന്ന പാസ്വേഡ് പിശക്.</string>
+    <string name="toast_copied_to_clipboard">ക്ലിപ്ബോർഡിലേക്ക് പകർത്തി</string>
+    <string name="toast_generate_password_first_warning">ആദ്യം ഒരു പാസ്വേഡ് സൃഷ്ടിക്കുക.</string>
+    <string name="secret_sauce">രഹസ്യ സോസ്</string>
+    <string name="click_to_generate_password">ഏതെങ്കിലും ടോക്കൺ ജനറേറ്റ് ടോക്കൺ സൃഷ്ടിക്കുകയും</string>
+    <string name="length_hint">നീളം</string>
+    <string name="generate_token_button_text">ടോക്കൺ സൃഷ്ടിക്കുക</string>
+    <string name="save_button">രക്ഷിക്കും</string>
+    <string name="view_saved_button">കാഴ്ച സംരക്ഷിച്ചു</string>
+    <string name="enter_name_for_login">ലോഗിൻ നൽകുക</string>
+    <string name="save_dialog_cancel">റദ്ദാക്കുക</string>
+    <string name="save_dialog_save">രക്ഷിക്കും</string>
+    <string name="enter_name_for_password">പാസ്വേഡ് പേര് നൽകുക</string>
+    <string name="error_enter_name_for_password">പാസ്വേഡ് ഒരു പേര് നൽകുക</string>
+    <string name="error_generate_password_first">നിങ്ങൾ ആദ്യം ഒരു പാസ്വേഡ് സൃഷ്ടിക്കാൻ വേണം</string>
+    <string name="password_saved">പാസ്വേഡ് സംരക്ഷിച്ചു</string>
+    <string name="token_title_placeholder">ടോക്കൺ തലക്കെട്ട്</string>
+    <string name="no_saved_passwords">സംരക്ഷിച്ച പാസ്വേഡുകൾ</string>
+    <string name="copy">പകര്പ്പ്</string>
+    <string name="settings">ക്രമീകരണങ്ങൾ</string>
+    <string name="generated_token">Generated ടോക്കൺ (പകർത്തുന്നതിന് ക്ലിക്കുചെയ്യുക)</string>
+    <string name="uppercase_letters">വലിയ അക്ഷരങ്ങൾ</string>
+    <string name="lowercase_letters">ചെറിയ അക്ഷരങ്ങൾ</string>
+    <string name="numeric">സംഖ്യാ</string>
+    <string name="special_characters">പ്രത്യേക പ്രതീകങ്ങൾ</string>
+    <string name="delete">ഇല്ലാതാക്കുക?</string>
+    <string name="feature_view_saved_passwords_title">കാണുക സംരക്ഷിച്ച പാസ്വേഡുകൾ</string>
+    <string name="feature_view_saved_passwords_description">നിങ്ങളുടെ സംരക്ഷിച്ച പാസ്വേഡുകൾ കാണാൻ ബുക്ക്മാർക്ക് ഐക്കണിൽ ക്ലിക്ക്.</string>
+    <string name="alert_confirm_delete">പാസ്വേഡ് ഇല്ലാതാക്കുക?</string>
+    <string name="alert_delete_message">നിങ്ങൾക്ക് ഉറപ്പാണോ പാസ്വേഡ് ഇല്ലാതാക്കണമെന്ന് തീർച്ചയാണോ?</string>
+    <string name="yes">സമ്മതം</string>
+    <string name="no">ഇല്ല</string>
+    <string name="optional">ഓപ്ഷണൽ</string>
+    <string name="take_me_to_settings">ക്രമീകരണങ്ങളിലേക്ക് കൊണ്ടുപോകുക</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">ഉൾപ്പെടുത്താൻ അക്ഷരങ്ങൾ</string>
+    <string name="no_repeat_characters">ആവർത്തനം പ്രതീകങ്ങൾ</string>
+    <string name="passphrase">പാസ്ഫ്രെയ്സ് ഉൾപ്പെടുത്തുക</string>
+    <string name="enter_a_passphrase">ഒരു പാസ്ഫ്രെയ്സ് നൽകുക</string>
+    <string name="passphrase_saved">പാസ്ഫ്രെയ്സ് സംരക്ഷിച്ചു!</string>
+    <string name="password">Password</string>
+    <string name="loginvalue">ലൊഗിംവലുഎ</string>
+    <string name="login">ലോഗിൻ</string>
+</resources>

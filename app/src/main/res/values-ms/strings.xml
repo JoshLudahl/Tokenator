@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Negara</string>
+    <string name="toast_length_warning">Ralat menjana kata laluan.</string>
+    <string name="toast_copied_to_clipboard">Disalin ke clipboard</string>
+    <string name="toast_generate_password_first_warning">Menjana kata laluan yang pertama.</string>
+    <string name="secret_sauce">Sauce rahsia</string>
+    <string name="click_to_generate_password">Klik menjana token untuk menjana token</string>
+    <string name="length_hint">Negara</string>
+    <string name="generate_token_button_text">menjana Token</string>
+    <string name="save_button">jimat</string>
+    <string name="view_saved_button">pandangan disimpan</string>
+    <string name="enter_name_for_login">Masukkan log masuk</string>
+    <string name="save_dialog_cancel">Batal</string>
+    <string name="save_dialog_save">jimat</string>
+    <string name="enter_name_for_password">Masukkan nama untuk kata laluan</string>
+    <string name="error_enter_name_for_password">Masukkan nama bagi kata laluan yang</string>
+    <string name="error_generate_password_first">Anda mesti menjana kata laluan yang pertama</string>
+    <string name="password_saved">kata laluan yang disimpan</string>
+    <string name="token_title_placeholder">Token Title</string>
+    <string name="no_saved_passwords">No Disimpan Kata laluan</string>
+    <string name="copy">Salinan</string>
+    <string name="settings">tetapan</string>
+    <string name="generated_token">Dijana token (klik untuk salinan)</string>
+    <string name="uppercase_letters">Huruf besar</string>
+    <string name="lowercase_letters">Huruf kecil</string>
+    <string name="numeric">angka</string>
+    <string name="special_characters">Aksara khas</string>
+    <string name="delete">Memadamkan?</string>
+    <string name="feature_view_saved_passwords_title">Lihat Disimpan Kata laluan</string>
+    <string name="feature_view_saved_passwords_description">Klik pada ikon penanda buku untuk melihat kata laluan yang disimpan.</string>
+    <string name="alert_confirm_delete">Memadam kata laluan?</string>
+    <string name="alert_delete_message">Adakah anda pasti anda mahu memadam kata laluan?</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tiada</string>
+    <string name="optional">pilihan</string>
+    <string name="take_me_to_settings">Bawa saya ke tetapan</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">Aksara untuk memasukkan</string>
+    <string name="no_repeat_characters">Tiada aksara berulang</string>
+    <string name="passphrase">termasuk Frasa laluan</string>
+    <string name="enter_a_passphrase">Masukkan frasa laluan</string>
+    <string name="passphrase_saved">Frasa laluan disimpan!</string>
+    <string name="password">kata laluan</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Log masuk</string>
+</resources>

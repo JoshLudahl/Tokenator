@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">लांबी</string>
+    <string name="toast_length_warning">संकेतशब्द व्युत्पन्न करताना त्रुटी.</string>
+    <string name="toast_copied_to_clipboard">क्लिपबोर्ड कॉपी केली</string>
+    <string name="toast_generate_password_first_warning">प्रथम एक संकेतशब्द व्युत्पन्न.</string>
+    <string name="secret_sauce">गुप्त सॉस</string>
+    <string name="click_to_generate_password">क्लिक करा एक टोकन निर्माण करण्यासाठी टोकन व्युत्पन्न</string>
+    <string name="length_hint">लांबी</string>
+    <string name="generate_token_button_text">टोकन जनरेट</string>
+    <string name="save_button">जतन करा</string>
+    <string name="view_saved_button">दृश्य जतन</string>
+    <string name="enter_name_for_login">लॉगिन प्रविष्ट करा</string>
+    <string name="save_dialog_cancel">रद्द करा</string>
+    <string name="save_dialog_save">जतन करा</string>
+    <string name="enter_name_for_password">पासवर्ड नाव प्रविष्ट करा</string>
+    <string name="error_enter_name_for_password">पासवर्ड नाव प्रविष्ट करा</string>
+    <string name="error_generate_password_first">आपण प्रथम एक संकेतशब्द निर्माण करणे आवश्यक आहे</string>
+    <string name="password_saved">संकेतशब्द जतन केला</string>
+    <string name="token_title_placeholder">टोकन शीर्षक</string>
+    <string name="no_saved_passwords">कोणत्याही जतन केलेले संकेतशब्द</string>
+    <string name="copy">कॉपी</string>
+    <string name="settings">सेटिंग्ज</string>
+    <string name="generated_token">टोकन व्युत्पन्न (कॉपी करण्यासाठी क्लिक करा)</string>
+    <string name="uppercase_letters">लोअरकेस वर्ण</string>
+    <string name="lowercase_letters">लहान लिपीतील अक्षर</string>
+    <string name="numeric">संख्यात्मक</string>
+    <string name="special_characters">विशेष वर्ण</string>
+    <string name="delete">हटवा?</string>
+    <string name="feature_view_saved_passwords_title">जतन केलेले संकेतशब्द पहा</string>
+    <string name="feature_view_saved_passwords_description">आपले जतन केलेले संकेतशब्द पाहण्यासाठी बुकमार्क चिन्हावर क्लिक करा.</string>
+    <string name="alert_confirm_delete">पासवर्ड हटवा?</string>
+    <string name="alert_delete_message">आपण संकेतशब्द हटवू इच्छिता आपल्याला खात्री आहे?</string>
+    <string name="yes">होय</string>
+    <string name="no">नाही</string>
+    <string name="optional">पर्यायी</string>
+    <string name="take_me_to_settings">सेटिंग्ज मला घ्या</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">वर्ण समाविष्ट करण्यासाठी</string>
+    <string name="no_repeat_characters">पुनरावृत्ती नाही वर्ण</string>
+    <string name="passphrase">सांकेतिक वाक्यांश समाविष्ट करा</string>
+    <string name="enter_a_passphrase">एक सांकेतिक वाक्यांश प्रविष्ट करा</string>
+    <string name="passphrase_saved">सांकेतिक वाक्यांश जतन!</string>
+    <string name="password">पासवर्ड</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">लॉग-इन</string>
+</resources>

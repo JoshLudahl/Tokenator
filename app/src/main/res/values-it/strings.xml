@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="length">Lunghezza</string>
+    <string name="toast_length_warning">Errore durante la generazione della password.</string>
+    <string name="toast_copied_to_clipboard">Copiato negli appunti</string>
+    <string name="toast_generate_password_first_warning">Generare una password prima.</string>
+    <string name="secret_sauce">salsa segreta</string>
+    <string name="click_to_generate_password">Clicca generare token per generare un token</string>
+    <string name="length_hint">Lunghezza</string>
+    <string name="generate_token_button_text">genera token</string>
+    <string name="save_button">Salva</string>
+    <string name="view_saved_button">vista salvata</string>
+    <string name="enter_name_for_login">Inserire il login</string>
+    <string name="save_dialog_cancel">Annulla</string>
+    <string name="save_dialog_save">Salva</string>
+    <string name="enter_name_for_password">Inserire il nome per la password</string>
+    <string name="error_enter_name_for_password">Inserire un nome per la password</string>
+    <string name="error_generate_password_first">È necessario generare una password prima</string>
+    <string name="password_saved">password salvata</string>
+    <string name="token_title_placeholder">Token Titolo</string>
+    <string name="no_saved_passwords">No Password salvate</string>
+    <string name="copy">copia</string>
+    <string name="settings">impostazioni</string>
+    <string name="generated_token">Generated Token (clicca per copia)</string>
+    <string name="uppercase_letters">Lettere maiuscole</string>
+    <string name="lowercase_letters">Lettere minuscole</string>
+    <string name="numeric">Numerico</string>
+    <string name="special_characters">Personaggi speciali</string>
+    <string name="delete">Elimina?</string>
+    <string name="feature_view_saved_passwords_title">Visualizzare le password salvate</string>
+    <string name="feature_view_saved_passwords_description">Clicca sull\'icona del segnalibro per visualizzare le password salvate.</string>
+    <string name="alert_confirm_delete">Eliminare la password?</string>
+    <string name="alert_delete_message">Sei sicuro di voler cancellare la password?</string>
+    <string name="yes">sì</string>
+    <string name="no">No</string>
+    <string name="optional">Opzionale</string>
+    <string name="take_me_to_settings">Prelievo a impostazioni</string>
+    <string name="grid_item_placeholder_dollar_sign">$</string>
+    <string name="characters">I personaggi da includere</string>
+    <string name="no_repeat_characters">Nessun carattere di ripetizione</string>
+    <string name="passphrase">Includi passphrase</string>
+    <string name="enter_a_passphrase">Inserisci una passphrase</string>
+    <string name="passphrase_saved">Passphrase salvato!</string>
+    <string name="password">Parola d\'ordine</string>
+    <string name="loginvalue">loginValue</string>
+    <string name="login">Login</string>
+</resources>
