@@ -14,9 +14,5 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="splashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_screen</item>
-        <item name="android:statusBarColor">@color/yellow</item>
-        <item name="android:screenOrientation">portrait</item>
-    </style>
+
 </resources>
