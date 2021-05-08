@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-night/settings_item_inactive_background.xml" value="4.321428571428571" />
         <entry key="app/src/main/res/drawable/ic_123.xml" value="0.91875" />
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.91875" />
         <entry key="app/src/main/res/drawable/ic_passphrase.xml" value="0.91875" />
