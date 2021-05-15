@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import com.token.tokenator.R
 
 class PasswordDetailFragment : Fragment() {
@@ -26,7 +27,6 @@ class PasswordDetailFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(PasswordDetailViewModel::class.java)
-        // TODO: Use the ViewModel
+        // TODO
     }
-
 }
