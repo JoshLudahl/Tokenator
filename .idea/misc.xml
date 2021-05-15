@@ -16,6 +16,7 @@
         <entry key="app/src/main/res/layout/layout_saved_token_list_item.xml" value="0.9180327868852459" />
         <entry key="app/src/main/res/layout/layout_setting_grid_item.xml" value="0.1" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.5610932475884244" />
+        <entry key="app/src/main/res/layout/password_detail_fragment.xml" value="0.2884963768115942" />
         <entry key="app/src/main/res/layout/saved_token_fragment.xml" value="0.2941473259334006" />
         <entry key="app/src/main/res/layout/settings_fragment.xml" value="0.3291814946619217" />
       </map>
