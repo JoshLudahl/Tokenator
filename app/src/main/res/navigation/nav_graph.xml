@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/mainFragment">
 
@@ -21,6 +22,12 @@
             app:popExitAnim="@anim/fade_out"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_savedTokenFragment_to_passwordDetailFragment"
+            app:destination="@id/passwordDetailFragment" />
+        <argument
+            android:name="passwordId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
@@ -50,5 +57,14 @@
             app:popExitAnim="@anim/fade_out"
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordDetailFragment"
+        android:name="com.token.tokenator.ui.savedpassword.passworddetails.PasswordDetailFragment"
+        android:label="password_detail_fragment"
+        tools:layout="@layout/password_detail_fragment" >
+        <action
+            android:id="@+id/action_passwordDetailFragment_to_savedTokenFragment"
+            app:destination="@id/savedTokenFragment" />
     </fragment>
 </navigation>
