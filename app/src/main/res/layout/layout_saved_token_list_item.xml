@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -25,7 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/row_margin"
             android:background="@drawable/layout_background"
-            android:elevation="2dp">
+            android:elevation="2dp"
+            android:paddingBottom="8dp">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/token_title"
@@ -33,7 +35,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/token_title_placeholder"
                 android:textColor="@color/grayish"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -41,17 +42,17 @@
                 app:layout_constraintEnd_toStartOf="@+id/token_visibility_icon"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Login Title Name" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/login_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/savedIconSize"
+                android:layout_height="@dimen/savedIconSize"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/login"
-                android:textColor="@color/grayish"
-                app:layout_constrainedWidth="true"
+                android:src="@drawable/ic__login_24"
+                android:tint="@color/grayish"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/token_title" />
 
@@ -59,43 +60,40 @@
                 android:id="@+id/login_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/loginvalue"
                 android:textColor="@color/yellow"
+                android:textSize="11sp"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toBottomOf="@+id/login_label"
                 app:layout_constraintEnd_toStartOf="@+id/token_visibility_icon"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/token_placeholder"
                 app:layout_constraintTop_toTopOf="@+id/login_label"
-                app:layout_constraintVertical_bias="0.0" />
+                tools:text="UserName Or Password" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/appCompatTextView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/savedIconSize"
+                android:layout_height="@dimen/savedIconSize"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/password"
-                android:textColor="@color/grayish"
-                app:layout_constrainedWidth="true"
+                android:src="@drawable/ic_baseline_vpn_key_24"
+                android:tint="@color/grayish"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/login_label" />
+                app:layout_constraintTop_toBottomOf="@+id/login_value" />
 
             <TextView
                 android:id="@+id/token_placeholder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/token_placeholder_text"
                 android:textColor="@color/yellow"
-                android:textSize="16sp"
+                android:textSize="11sp"
                 app:layout_constrainedWidth="true"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/token_visibility_icon"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/appCompatTextView7"
-                app:layout_constraintTop_toTopOf="@+id/appCompatTextView7" />
+                app:layout_constraintTop_toTopOf="@+id/appCompatTextView7"
+                tools:text="asdfwelk93" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/token_visibility_icon"
