@@ -1,32 +1,34 @@
 package com.token.tokenator.ui.savedpassword.passworddetails
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.navigation.fragment.navArgs
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.token.tokenator.R
+import com.token.tokenator.databinding.PasswordDetailFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class PasswordDetailFragment : Fragment() {
+@AndroidEntryPoint
+class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
 
-    companion object {
-        fun newInstance() = PasswordDetailFragment()
+    private val viewModel: PasswordDetailViewModel by viewModels()
+    private var _binding: PasswordDetailFragmentBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
-    private lateinit var viewModel: PasswordDetailViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.password_detail_fragment, container, false)
-    }
+        _binding = PasswordDetailFragmentBinding.bind(view)
+        binding.viewModel = viewModel
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PasswordDetailViewModel::class.java)
-        // TODO
+        binding.buttonBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 }
