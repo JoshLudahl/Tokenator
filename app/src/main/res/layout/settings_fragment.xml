@@ -5,9 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<variable
-    name="view"
-    type="android.view.View" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.token.tokenator.ui.settings.SettingsViewModel" />
@@ -41,13 +43,14 @@
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
                     android:src="@drawable/ic_arrow_circle_left" />
+
                 <TextView
+                    style="@style/toolbar_titles"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/toolbar_titles"
-                    android:text="@string/settings"
                     android:layout_marginEnd="16dp"
-                    android:gravity="end"/>
+                    android:gravity="end"
+                    android:text="@string/settings" />
 
             </androidx.appcompat.widget.Toolbar>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -145,11 +148,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="@string/no_repeat_characters"
                     android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/no_repeat_characters"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/passphrase_section"
-                    android:focusable="true" />
+                    app:layout_constraintTop_toBottomOf="@+id/passphrase_section" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/no_repeats_section"
