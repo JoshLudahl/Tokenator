@@ -39,6 +39,13 @@
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
                     android:src="@drawable/ic_arrow_circle_left" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/toolbar_titles"
+                    android:text="Saved Passwords"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="end"/>
 
             </androidx.appcompat.widget.Toolbar>
 

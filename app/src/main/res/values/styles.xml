@@ -26,6 +26,13 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="toolbar_titles">
+        <item name="android:textColor">@color/lighter_gray</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="alert_confirmation">
         <item name="backgroundColor">@color/yellow</item>
         <item name="background">@color/yellow</item>
