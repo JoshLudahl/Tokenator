@@ -85,4 +85,10 @@
         <item name="android:textColorHint">#9EABC1</item>
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">#fff</item>
+        <item name="backgroundColor">@color/blackish</item>
+    </style>
+
 </resources>
