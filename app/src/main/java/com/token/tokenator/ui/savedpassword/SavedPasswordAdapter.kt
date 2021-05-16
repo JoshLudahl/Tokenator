@@ -3,6 +3,7 @@ package com.token.tokenator.ui.savedpassword
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -32,12 +33,11 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
                 }
             }
 
+            itemView.setOnClickListener {
+                findNavController(it).navigate(R.id.action_savedTokenFragment_to_passwordDetailFragment)
+            }
+
             itemBinding.tokenVisibilityIcon.setOnClickListener {
-                var login = token.login
-                login = when (login) {
-                    null -> "None"
-                    else -> token.login?.let { Encryption.decrypt(it) }
-                }
                 when (itemBinding.tokenPlaceholder.text) {
                     "**********" -> {
                         itemBinding.tokenPlaceholder.text = Encryption.decrypt(token.token)
@@ -76,6 +76,7 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
                     Snackbar.LENGTH_SHORT
                 ).show()
             }
+
             itemBinding.executePendingBindings()
         }
     }
@@ -84,6 +85,7 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
+
         return LayoutSavedTokenListItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
