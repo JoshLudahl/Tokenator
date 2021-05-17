@@ -3,6 +3,7 @@ package com.token.tokenator.ui.savedpassword
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -34,7 +35,8 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
             }
 
             itemView.setOnClickListener {
-                findNavController(it).navigate(R.id.action_savedTokenFragment_to_passwordDetailFragment)
+                val bundle = bundleOf("token" to token.id)
+                findNavController(it).navigate(R.id.action_savedTokenFragment_to_passwordDetailFragment, bundle)
             }
 
             itemBinding.tokenVisibilityIcon.setOnClickListener {

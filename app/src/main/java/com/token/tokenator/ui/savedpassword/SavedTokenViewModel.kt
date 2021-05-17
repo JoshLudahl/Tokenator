@@ -10,8 +10,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class SavedTokenViewModel @Inject constructor(private val repository: TokenRepository) :
-    ViewModel(), LifecycleObserver {
+class SavedTokenViewModel @Inject constructor(
+    private val repository: TokenRepository
+    ) : ViewModel(), LifecycleObserver {
 
     val tokens: LiveData<List<Token>> = repository.allTokens
     private val _noTokens = MutableLiveData<Boolean>()

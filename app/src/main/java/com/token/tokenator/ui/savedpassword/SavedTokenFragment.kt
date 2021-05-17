@@ -26,6 +26,7 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
 
         _binding = SavedTokenFragmentBinding.bind(view)
         binding.tokenViewModel = viewModel
+        binding.lifecycleOwner = this.viewLifecycleOwner
 
          val adapter = SavedPasswordAdapter(TokenListener {
            delete(it)
