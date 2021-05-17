@@ -1,11 +1,7 @@
 package com.token.tokenator.database.token
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 import com.token.tokenator.model.Passphrase
 import com.token.tokenator.model.Token
@@ -39,4 +35,7 @@ interface TokenDao {
 
     @Query("SELECT * FROM token_table WHERE title = :title")
     suspend fun getTokenByName(title: String): Token?
+
+    @Update
+    suspend fun updateToken(token: Token)
 }

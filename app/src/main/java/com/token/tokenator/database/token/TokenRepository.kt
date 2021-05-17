@@ -18,6 +18,8 @@ class TokenRepository(private val tokenDao: TokenDao) {
 
     suspend fun delete(token: Token) = tokenDao.delete(token)
 
+    suspend fun updateToken(token: Token) = tokenDao.updateToken(token)
+
     suspend fun getOneTokenById(id: Int): Token? = tokenDao.getTokenById(id)
 
     suspend fun getOneTokenByName(name: String): Token? = tokenDao.getTokenByName(name)
