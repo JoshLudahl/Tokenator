@@ -50,7 +50,7 @@ You couldn't ask for a better and easier way to generate and save passwords! Wel
 Google Play and the Google Play logo are trademarks of Google LLC.
 
 ## Language support
-Now translated in over 50 languages.
+Now translated in over 50 languages. If you notice a translation error, feel free to submit an issue or email with details.
 
 ## License
 All rights reserved. All years. This app is not to be reproduced for any reason outside of individual personal use. 
