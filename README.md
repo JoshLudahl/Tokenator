@@ -1,7 +1,8 @@
 # Tokenator for Android
 A password generator written in Kotlin. 
 
-Tokenator is an easy-to-use password generator & manager offering passwords generated to use uppercase, lowercase, numeric, and/or special character options. Simply toggle the option you want and select the generate button. Passwords default to 8 characters but can range from 1-100 in character length.
+Tokenator is an easy-to-use password generator & manager offering passwords generated to use uppercase, lowercase, numeric, and/or special character options. 
+Simply toggle the option you want and select the generate button. Passwords default to 8 characters but can range from 1-100 in character length.
 
 Generating a password automatically copies the password to your clipboard. Tokenator is the easiest way to generate a secure password.
 
@@ -52,4 +53,6 @@ Google Play and the Google Play logo are trademarks of Google LLC.
 Now translated in over 50 languages.
 
 ## License
-All rights reserved. All years. This app is not to be reproduced for any reason outside of individual personal use. It may not be published to any app store as a downloadable application without the permissions of the license granter.
+All rights reserved. All years. This app is not to be reproduced for any reason outside of individual personal use. 
+It may not be published to any app store as a downloadable application without the permissions of the license granter. 
+Any monetary gain outside of the original owner is strictly prohibited.
