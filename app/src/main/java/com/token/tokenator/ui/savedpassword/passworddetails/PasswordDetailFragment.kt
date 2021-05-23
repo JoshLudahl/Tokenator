@@ -2,6 +2,7 @@ package com.token.tokenator.ui.savedpassword.passworddetails
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -44,6 +45,7 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
                     token = binding.tokenPassword.text.toString(),
                     passwordName = binding.tokenName.text.toString()
                 )
+                Toast.makeText(requireContext(), R.string.passphrase_saved, Toast.LENGTH_SHORT).show()
             }
         }
     }
