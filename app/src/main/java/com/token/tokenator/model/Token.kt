@@ -17,14 +17,14 @@ data class Token(
     val id: Int = 0,
 
     @ColumnInfo(name = "title")
-    val title: String,
+    var title: String,
 
     @ColumnInfo(name = "token")
-    val token: String,
+    var token: String,
 
     @ColumnInfo(name = "login")
-    val login: String? = null,
+    var login: String? = null,
 
     @ColumnInfo(name = "date_saved")
-    val date: String = Date().toString()
+    var date: String = Date().toString()
 )

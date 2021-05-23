@@ -1,14 +1,12 @@
 package com.token.tokenator.ui.savedpassword.passworddetails
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.token.tokenator.R
 import com.token.tokenator.databinding.PasswordDetailFragmentBinding
-import com.token.tokenator.model.Token
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,7 +39,11 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
         }
         binding.buttonUpdatePassword.setOnClickListener {
             token?.let {
-                // Todo Process update
+                viewModel.insert(
+                    login = binding.tokenLoginName.text.toString(),
+                    token = binding.tokenPassword.text.toString(),
+                    passwordName = binding.tokenName.text.toString()
+                )
             }
         }
     }
