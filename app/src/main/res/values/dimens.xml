@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="icon_size">30dp</dimen>
+    <dimen name="icon_size_line_item">42dp</dimen>
     <dimen name="icon_start_margin">8dp</dimen>
     <dimen name="icon_top_margin">16dp</dimen>
     <dimen name="icon_bottom_margin">16dp</dimen>
