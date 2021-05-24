@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.token.tokenator.R
 import com.token.tokenator.databinding.PasswordDetailFragmentBinding
+import com.token.tokenator.utilities.Clipuous
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,6 +41,7 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
         token?.let {
             viewModel.getToken(it)
         }
+
         binding.buttonUpdatePassword.setOnClickListener {
             token?.let {
                 if (binding.buttonUpdatePassword.isEnabled) {
@@ -63,5 +65,25 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
             }
         })
 
+        binding.loginTextField.setEndIconOnClickListener {
+            copyToClipBoard(binding.tokenLoginName.text.toString())
+        }
+
+        binding.passwordTextField.setEndIconOnClickListener {
+            copyToClipBoard(binding.tokenPassword.text.toString())
+        }
+    }
+
+    private fun copyToClipBoard(text: String) {
+        Clipuous.copyToClipboard(text, requireContext())
+        showToast(getString(R.string.toast_copied_to_clipboard))
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(
+            requireContext(),
+            message,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
