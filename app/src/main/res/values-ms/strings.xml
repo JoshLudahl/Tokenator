@@ -44,4 +44,6 @@
     <string name="password">kata laluan</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Log masuk</string>
+    <string name="saved_passwords">Disimpan Kata laluan</string>
+    <string name="password_detail">Detail kata laluan</string>
 </resources>

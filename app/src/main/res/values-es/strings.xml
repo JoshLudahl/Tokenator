@@ -44,4 +44,6 @@
     <string name="password">Contraseña</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Acceso</string>
+    <string name="saved_passwords">Las contraseñas guardadas</string>
+    <string name="password_detail">Contraseña Detalle</string>
 </resources>

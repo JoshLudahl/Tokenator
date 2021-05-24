@@ -44,4 +44,6 @@
     <string name="password">contrasenya</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">iniciar Sessió</string>
+    <string name="saved_passwords">Les contrasenyes guardades</string>
+    <string name="password_detail">clau Detall</string>
 </resources>

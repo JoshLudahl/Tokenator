@@ -44,4 +44,6 @@
     <string name="password">پاس ورڈ</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">لاگ ان کریں</string>
+    <string name="saved_passwords">محفوظ پاس ورڈ</string>
+    <string name="password_detail">پاس ورڈ تفصیل</string>
 </resources>

@@ -44,4 +44,6 @@
     <string name="password">password</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Mag log in</string>
+    <string name="saved_passwords">Nai-save na mga password</string>
+    <string name="password_detail">Detalye ng password</string>
 </resources>

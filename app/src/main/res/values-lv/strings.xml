@@ -44,4 +44,6 @@
     <string name="password">parole</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Pieslēgties</string>
+    <string name="saved_passwords">Saglabātās paroles</string>
+    <string name="password_detail">paroles Detail</string>
 </resources>

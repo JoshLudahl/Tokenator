@@ -44,4 +44,6 @@
     <string name="password">heslo</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Prihlásiť sa</string>
+    <string name="saved_passwords">uložené heslá</string>
+    <string name="password_detail">heslo Detail</string>
 </resources>

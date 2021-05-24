@@ -44,4 +44,6 @@
     <string name="password">Wachtwoord</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Log in</string>
+    <string name="saved_passwords">Opgeslagen wachtwoorden</string>
+    <string name="password_detail">Password Detail</string>
 </resources>

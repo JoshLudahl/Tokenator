@@ -44,4 +44,6 @@
     <string name="password">cyfrinair</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Mewngofnodi</string>
+    <string name="saved_passwords">Cyfrineiriau Saved</string>
+    <string name="password_detail">Manylion cyfrinair</string>
 </resources>

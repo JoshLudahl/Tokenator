@@ -44,4 +44,6 @@
     <string name="password">कुंजिका</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">लॉग इन करें</string>
+    <string name="saved_passwords">सहेजे गए पासवर्ड</string>
+    <string name="password_detail">पासवर्ड विस्तार</string>
 </resources>

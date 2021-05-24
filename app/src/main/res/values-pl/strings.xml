@@ -44,4 +44,7 @@
     <string name="password">Hasło</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Zaloguj sie</string>
+    <string name="saved_passwords">Zapamiętane hasła</string>
+    <string name="password_detail">Hasło Szczegóły</string>
+
 </resources>

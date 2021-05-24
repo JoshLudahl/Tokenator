@@ -44,4 +44,6 @@
     <string name="password">கடவுச்சொல்</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">உள்நுழைய</string>
+    <string name="saved_passwords">சேமித்த கடவுச்சொற்களை</string>
+    <string name="password_detail">கடவுச்சொல் விபரம்</string>
 </resources>

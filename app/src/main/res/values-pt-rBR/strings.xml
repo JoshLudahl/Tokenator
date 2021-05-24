@@ -44,4 +44,6 @@
     <string name="password">Senha</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Conecte-se</string>
+    <string name="saved_passwords">senhas salvas</string>
+    <string name="password_detail">Detalhe senha</string>
 </resources>

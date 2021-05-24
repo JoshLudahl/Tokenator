@@ -44,4 +44,6 @@
     <string name="password">Лозинка</string>
     <string name="loginvalue">логинВалуе</string>
     <string name="login">Пријавите се</string>
+    <string name="saved_passwords">сачуване лозинке</string>
+    <string name="password_detail">пассворд Детаљ</string>
 </resources>

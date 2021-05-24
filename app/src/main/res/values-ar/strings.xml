@@ -44,4 +44,6 @@
     <string name="password">كلمه السر</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">تسجيل الدخول</string>
+    <string name="saved_passwords">كلمات المرور المحفوظة</string>
+    <string name="password_detail">كلمة المرور التفاصيل</string>
 </resources>

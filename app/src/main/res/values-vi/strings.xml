@@ -44,4 +44,6 @@
     <string name="password">Mật khẩu</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Đăng nhập</string>
+    <string name="saved_passwords">Saved Passwords</string>
+    <string name="password_detail">Mật khẩu Xem chi tiết</string>
 </resources>

@@ -44,4 +44,6 @@
     <string name="password">geslo</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Vpiši se</string>
+    <string name="saved_passwords">Shranjena gesla</string>
+    <string name="password_detail">geslo Podrobnosti</string>
 </resources>

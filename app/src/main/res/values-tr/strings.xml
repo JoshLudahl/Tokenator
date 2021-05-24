@@ -44,4 +44,6 @@
     <string name="password">Parola</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Oturum aç</string>
+    <string name="saved_passwords">Kayıtlı Şifreleri</string>
+    <string name="password_detail">Şifre Detay</string>
 </resources>

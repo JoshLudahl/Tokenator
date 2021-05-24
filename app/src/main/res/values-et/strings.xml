@@ -44,4 +44,6 @@
     <string name="password">parool</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Logi sisse</string>
+    <string name="saved_passwords">Salvestatud paroolid</string>
+    <string name="password_detail">Parool Detail</string>
 </resources>

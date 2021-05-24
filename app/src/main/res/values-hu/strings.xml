@@ -44,4 +44,6 @@
     <string name="password">Jelszó</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Belépés</string>
+    <string name="saved_passwords">Mentett jelszavak</string>
+    <string name="password_detail">Jelszó részlet</string>
 </resources>

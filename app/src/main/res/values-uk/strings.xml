@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="length">довжина</string>
+    <string name="toast_length_warning">Помилка генерації пароля.</string>
+    <string name="toast_copied_to_clipboard">Скопійовано в буфер обміну</string>
+    <string name="toast_generate_password_first_warning">Генерувати пароль першим.</string>
     <string name="secret_sauce">секретний соус</string>
     <string name="click_to_generate_password">Натисни генерувати маркер для генерування маркерів</string>
     <string name="length_hint">довжина</string>
@@ -40,4 +44,6 @@
     <string name="password">пароль</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Ввійти</string>
+    <string name="saved_passwords">Збережені паролі</string>
+    <string name="password_detail">Пароль: Подробности</string>
 </resources>

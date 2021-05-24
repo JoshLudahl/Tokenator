@@ -44,4 +44,6 @@
     <string name="password">รหัสผ่าน</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">เข้าสู่ระบบ</string>
+    <string name="saved_passwords">รหัสผ่านที่บันทึกไว้</string>
+    <string name="password_detail">รายละเอียดรหัสผ่าน</string>
 </resources>

@@ -45,4 +45,6 @@
     <string name="password">Mot de passe</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Connexion</string>
+    <string name="saved_passwords">Mots de passe enregistrés</string>
+    <string name="password_detail">Mot de passe Détail</string>
 </resources>

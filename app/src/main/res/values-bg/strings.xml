@@ -44,4 +44,6 @@
     <string name="password">парола</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Влизам</string>
+    <string name="saved_passwords">Пароли</string>
+    <string name="password_detail">парола Подробности</string>
 </resources>

@@ -44,4 +44,6 @@
     <string name="password">Salasana</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Kirjaudu sisään</string>
+    <string name="saved_passwords">tallennetut salasanat</string>
+    <string name="password_detail">salasana Yksityiskohta</string>
 </resources>

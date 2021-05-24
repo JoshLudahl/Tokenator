@@ -44,4 +44,6 @@
     <string name="password">パスワード</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">ログイン</string>
+    <string name="saved_passwords">保存されたパスワード</string>
+    <string name="password_detail">パスワードの詳細</string>
 </resources>

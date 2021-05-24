@@ -44,4 +44,6 @@
     <string name="password">የይለፍ ቃል</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">ግባ</string>
+    <string name="saved_passwords">የተቀመጡ የይለፍ ቃላት</string>
+    <string name="password_detail">የይለፍ ቃል ዝርዝር</string>
 </resources>

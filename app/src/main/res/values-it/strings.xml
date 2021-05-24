@@ -44,4 +44,6 @@
     <string name="password">Parola d\'ordine</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Login</string>
+    <string name="saved_passwords">Le password salvate</string>
+    <string name="password_detail">Particolare password</string>
 </resources>

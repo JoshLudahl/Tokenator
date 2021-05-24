@@ -44,4 +44,6 @@
     <string name="password">Κωδικός πρόσβασης</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Σύνδεση</string>
+    <string name="saved_passwords">αποθηκευμένων κωδικών πρόσβασης</string>
+    <string name="password_detail">Κωδικός Λεπτομέρειες</string>
 </resources>

@@ -44,4 +44,6 @@
     <string name="password">password</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Ingia</string>
+    <string name="saved_passwords">Saved Nywila</string>
+    <string name="password_detail">password Detail</string>
 </resources>

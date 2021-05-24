@@ -44,4 +44,6 @@
     <string name="password">పాస్వర్డ్</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">ప్రవేశించండి</string>
+    <string name="saved_passwords">సేవ్ చెయ్యబడిన పాస్వర్డ్లు</string>
+    <string name="password_detail">పాస్వర్డ్ వివరాలు</string>
 </resources>

@@ -44,4 +44,6 @@
     <string name="password">Pasahitza</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Saioa hasi</string>
+    <string name="saved_passwords">Gordetako pasahitzak</string>
+    <string name="password_detail">Pasahitza xehetasuna</string>
 </resources>

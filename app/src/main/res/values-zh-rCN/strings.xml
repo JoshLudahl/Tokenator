@@ -44,4 +44,6 @@
     <string name="password">密码</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">登录</string>
+    <string name="saved_passwords">保存的密码</string>
+    <string name="password_detail">密码详细</string>
 </resources>

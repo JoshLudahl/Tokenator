@@ -44,4 +44,6 @@
     <string name="password">Adgangskode</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Log på</string>
+    <string name="saved_passwords">Gemte adgangskoder</string>
+    <string name="password_detail">Password Detail</string>
 </resources>

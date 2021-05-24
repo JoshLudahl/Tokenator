@@ -44,4 +44,6 @@
     <string name="password">Kata sandi</string>
     <string name="loginvalue">loginValue</string>
     <string name="login">Gabung</string>
+    <string name="saved_passwords">Sandi Tersimpan</string>
+    <string name="password_detail">Sandi Detil</string>
 </resources>
