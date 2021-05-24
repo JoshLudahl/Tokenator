@@ -11,6 +11,7 @@ import com.token.tokenator.utilities.Encryption
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -31,13 +32,16 @@ class PasswordDetailViewModel @Inject constructor(
     fun getToken(id: Int) {
         viewModelScope.launch {
             val newToken = tokenRepository.getOneTokenById(id)
+
             val token = Token(
                 id = id,
                 title = newToken?.title ?: "",
                 login = newToken?.login?.let { Encryption.decrypt(it) } ?: "",
-                token = newToken?.token?.let { Encryption.decrypt(it) } ?: ""
+                token = newToken?.token?.let { Encryption.decrypt(it) } ?: "",
+                date = newToken?.date ?: Date().toString()
             )
             _token.value = token
+            Log.i("DATE", "Date: ${_token.value?.date.toString()}")
         }
     }
 
@@ -60,10 +64,13 @@ class PasswordDetailViewModel @Inject constructor(
             encryptedToken?.let {
                 viewModelScope.launch(Dispatchers.IO) {
                     _token.value?.title = passwordName
-                   encryptedLogin?.let {
-                       _token.value?.login = it
-                   }
-                    _token.value?.token = encryptedToken
+                    encryptedLogin?.let {
+                        _token.value?.login = it
+                    }
+                    _token.value?.apply {
+                        date = Date().toString()
+                        this.token = encryptedToken
+                    }
 
                     _token.value?.let {
                         tokenRepository.updateToken(

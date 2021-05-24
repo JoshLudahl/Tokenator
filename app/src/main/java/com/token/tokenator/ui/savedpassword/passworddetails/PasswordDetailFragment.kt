@@ -1,6 +1,8 @@
 package com.token.tokenator.ui.savedpassword.passworddetails
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -40,13 +42,26 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
         }
         binding.buttonUpdatePassword.setOnClickListener {
             token?.let {
-                viewModel.insert(
-                    login = binding.tokenLoginName.text.toString(),
-                    token = binding.tokenPassword.text.toString(),
-                    passwordName = binding.tokenName.text.toString()
-                )
-                Toast.makeText(requireContext(), R.string.passphrase_saved, Toast.LENGTH_SHORT).show()
+                if (binding.buttonUpdatePassword.isEnabled) {
+                    viewModel.insert(
+                        login = binding.tokenLoginName.text.toString().trim(),
+                        token = binding.tokenPassword.text.toString(),
+                        passwordName = binding.tokenName.text.toString().trim()
+                    )
+                    Toast.makeText(requireContext(), R.string.passphrase_saved, Toast.LENGTH_SHORT).show()
+                }
             }
         }
+
+        binding.tokenName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                binding.buttonUpdatePassword.isEnabled = s?.trim()?.length != 0
+            }
+        })
+
     }
 }

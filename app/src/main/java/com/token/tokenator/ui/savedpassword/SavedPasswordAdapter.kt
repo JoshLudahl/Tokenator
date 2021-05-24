@@ -36,7 +36,10 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
 
             itemView.setOnClickListener {
                 val bundle = bundleOf("token" to token.id)
-                findNavController(it).navigate(R.id.action_savedTokenFragment_to_passwordDetailFragment, bundle)
+                findNavController(it).navigate(
+                    R.id.action_savedTokenFragment_to_passwordDetailFragment,
+                    bundle
+                )
             }
 
             itemBinding.tokenVisibilityIcon.setOnClickListener {
@@ -46,10 +49,15 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
                         itemBinding.tokenVisibilityIcon.setImageResource(R.drawable.ic_view)
                         itemBinding.loginValue.apply {
                             token.login?.let {
-                                listOf(this, itemBinding.loginLabel).forEach { view ->
-                                    view.visibility = View.VISIBLE
+                                val login = Encryption.decrypt(it)
+                                if (login?.trim()?.isNotEmpty() == true) {
+                                    listOf(this, itemBinding.loginLabel).forEach { view ->
+                                        view.visibility = View.VISIBLE
+                                    }
+
+                                    this.text = Encryption.decrypt(it)
                                 }
-                                this.text = Encryption.decrypt(it)
+
                             }
                         }
                     }
