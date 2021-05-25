@@ -50,7 +50,7 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
                         token = binding.tokenPassword.text.toString(),
                         passwordName = binding.tokenName.text.toString().trim()
                     )
-                    Toast.makeText(requireContext(), R.string.passphrase_saved, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), R.string.password_saved, Toast.LENGTH_SHORT).show()
                 }
             }
         }
