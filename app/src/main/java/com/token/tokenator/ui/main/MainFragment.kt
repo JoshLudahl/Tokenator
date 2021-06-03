@@ -152,10 +152,45 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             }
         })
 
+        binding.uppercaseContainer.setOnClickListener {
+            toggleSwitch(Type.UPPERCASE)
+        }
+
+        binding.lowercaseContainer.setOnClickListener {
+            toggleSwitch(Type.LOWERCASE)
+        }
+
+        binding.numericContainer.setOnClickListener {
+            toggleSwitch(Type.NUMERIC)
+        }
+
+        binding.specialCharacterContainer.setOnClickListener {
+            toggleSwitch(Type.SPECIAL)
+        }
+
         lifecycleScope.launchWhenStarted {
             viewModel.noRepeatFlow.collect { repeatable ->
                 doesNotRepeat = repeatable
             }
+        }
+    }
+
+    private fun toggleSwitch(type: Type) {
+        when (type) {
+            Type.NUMERIC -> {
+                viewModel.switchNumeric.value
+            }
+            Type.LOWERCASE -> {
+                viewModel.switchLowerCase.value
+            }
+            Type.SPECIAL -> {
+                viewModel.switchSpecialCharacter.value
+            }
+            Type.UPPERCASE -> {
+                viewModel.switchUpperCase.value
+            }
+        }.let {
+            viewModel.saveSwitchState(type, !it)
         }
     }
 

@@ -101,14 +101,29 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
             showToast(getString(R.string.passphrase_saved))
         }
 
+        binding.passphraseSection.setOnClickListener {
+            viewModel.togglePassphraseSwitch()
+        }
+
         binding.noRepeatCharactersSwitch.setOnClickListener {
-            lifecycleScope.launch {
-                DataPref.saveDataStore(
-                    noRepeat,
-                    binding.noRepeatCharactersSwitch.isChecked,
-                    dataStore
-                )
+            triggerSwitchStateForRepeat()
+        }
+
+        binding.noRepeatsSection.setOnClickListener {
+            with(binding.noRepeatCharactersSwitch) {
+                this.isChecked = !isChecked
             }
+            triggerSwitchStateForRepeat()
+        }
+    }
+
+    private fun triggerSwitchStateForRepeat() {
+        lifecycleScope.launch {
+            DataPref.saveDataStore(
+                noRepeat,
+                binding.noRepeatCharactersSwitch.isChecked,
+                dataStore
+            )
         }
     }
 

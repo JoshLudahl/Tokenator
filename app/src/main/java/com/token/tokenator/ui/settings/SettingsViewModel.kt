@@ -58,4 +58,8 @@ class SettingsViewModel @Inject constructor(
             DataPref.saveDataStore(includePassPhrase, checked, dataStore)
         }
     }
+
+    fun togglePassphraseSwitch() {
+        _switchPassphrase.value = !switchPassphrase.value
+    }
 }
