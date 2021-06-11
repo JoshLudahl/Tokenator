@@ -39,8 +39,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     kapt {
@@ -48,7 +48,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
 
     buildTypes {
@@ -126,7 +126,7 @@ dependencies {
     testImplementation 'androidx.test:core:1.3.0'
 
     // Optional -- Mockito framework
-    testImplementation 'org.mockito:mockito-core:2.19.0'
+    testImplementation 'org.mockito:mockito-core:3.3.3'
 
     // Core library
     androidTestImplementation 'androidx.test:core:1.3.0'
