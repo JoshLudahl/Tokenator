@@ -49,8 +49,6 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
                 )
             }
         })
-
-        binding.lifecycleOwner = this.viewLifecycleOwner
     }
 
     private fun delete(token: Token) {
