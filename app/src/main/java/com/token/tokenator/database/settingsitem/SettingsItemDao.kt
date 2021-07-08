@@ -5,7 +5,6 @@ import androidx.room.*
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Type
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.StateFlow
 
 @Dao
 interface SettingsItemDao {

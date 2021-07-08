@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Type
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.StateFlow
 
 class SettingsItemRepository(private val settingsItemDao: SettingsItemDao) {
 
@@ -29,10 +28,6 @@ class SettingsItemRepository(private val settingsItemDao: SettingsItemDao) {
     suspend fun insert(settingsItem: SettingsItem) =
         settingsItemDao.insert(settingsItem)
 
-
     suspend fun update(settingsItem: SettingsItem) =
         settingsItemDao.updateCharacter(settingsItem)
-
-    suspend fun getAllCharacters() =
-        settingsItemDao.getAllCharacters()
 }

@@ -3,7 +3,6 @@ package com.token.tokenator.database.token
 import androidx.lifecycle.LiveData
 import com.token.tokenator.model.Passphrase
 import com.token.tokenator.model.Token
-import kotlinx.coroutines.flow.StateFlow
 
 class TokenRepository(private val tokenDao: TokenDao) {
 
