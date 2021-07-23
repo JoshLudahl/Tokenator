@@ -28,7 +28,6 @@ import com.token.tokenator.utilities.DataPref
 import com.token.tokenator.utilities.FeatureDiscovery
 import com.token.tokenator.utilities.Tokenator
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
