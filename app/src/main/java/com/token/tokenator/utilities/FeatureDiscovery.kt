@@ -1,52 +1,36 @@
 package com.token.tokenator.utilities
 
 import android.app.Activity
-import android.graphics.Typeface
+
+import android.graphics.Color
 import android.view.View
-import com.getkeepsafe.taptargetview.TapTarget
-import com.getkeepsafe.taptargetview.TapTargetView
 import com.token.tokenator.R
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 
 object FeatureDiscovery {
 
-    fun showFeature(
+    fun show(
         activity: Activity,
-        view: View,
+        description: String,
         title: String,
-        description: String
+        view: View
     ) {
-        TapTargetView.showFor(activity,  // `this` is an Activity
-            TapTarget.forView(
-                view,
-                title,
-                description
+        MaterialTapTargetPrompt.Builder(activity)
+            .setTarget(view)
+            .setBackgroundColour(
+                activity.resources.getColor(
+                    R.color.yellow,
+                    activity.theme
+                )
             )
-                .outerCircleColor(R.color.yellow)
-                .outerCircleAlpha(0.96f)
-                .targetCircleColor(R.color.white)
-                .titleTextSize(20)
-                .titleTextColor(R.color.white)
-                .descriptionTextSize(14)
-                .descriptionTextColor(R.color.yellow)
-                .textColor(R.color.black)
-                .textTypeface(Typeface.SANS_SERIF)
-                .dimColor(R.color.black)
-                .drawShadow(true)
-                .cancelable(true)
-                .tintTarget(true)
-                .transparentTarget(true)
-                .targetRadius(60),
-            object : TapTargetView.Listener() {
-                // The listener can listen for regular clicks, long clicks or cancels
-                override fun onTargetClick(view: TapTargetView) {
-                    super.onTargetClick(view) // This call is optional
-                    /** no op for now */
+            .setFocalColour(Color.BLACK)
+            .setPrimaryText(title)
+            .setSecondaryText(description)
+            .setPromptStateChangeListener { prompt, state ->
+                if (state == MaterialTapTargetPrompt.STATE_NON_FOCAL_PRESSED) {
+                    prompt.dismiss()
                 }
-
-                override fun onOuterCircleClick(view: TapTargetView?) {
-                    super.onOuterCircleClick(view)
-                    view?.dismiss(true)
-                }
-            })
+            }
+            .show()
     }
 }

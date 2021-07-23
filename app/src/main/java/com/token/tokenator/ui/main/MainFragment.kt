@@ -321,11 +321,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         binding.scrollView.scrollTo(0, 0)
         hideKeyboard(requireActivity())
 
-        FeatureDiscovery.showFeature(
-            requireActivity(),
-            binding.viewSavedButton,
-            getString(R.string.feature_view_saved_passwords_title),
-            getString(R.string.feature_view_saved_passwords_description)
+        FeatureDiscovery.show(
+            activity = requireActivity(),
+            view = binding.viewSavedButton,
+            title = getString(R.string.feature_view_saved_passwords_title),
+            description = getString(R.string.feature_view_saved_passwords_description)
         )
     }
 
