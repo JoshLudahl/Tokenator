@@ -174,22 +174,25 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     private fun toggleSwitch(type: Type) {
-        when (type) {
-            Type.NUMERIC -> {
-                viewModel.switchNumeric.value
+        with (viewModel) {
+            when (type) {
+                Type.NUMERIC -> {
+                    switchNumeric
+                }
+                Type.LOWERCASE -> {
+                    switchLowerCase
+                }
+                Type.SPECIAL -> {
+                    switchSpecialCharacter
+                }
+                Type.UPPERCASE -> {
+                    switchUpperCase
+                }
+            }.let {
+                saveSwitchState(type, !it.value)
             }
-            Type.LOWERCASE -> {
-                viewModel.switchLowerCase.value
-            }
-            Type.SPECIAL -> {
-                viewModel.switchSpecialCharacter.value
-            }
-            Type.UPPERCASE -> {
-                viewModel.switchUpperCase.value
-            }
-        }.let {
-            viewModel.saveSwitchState(type, !it)
         }
+
     }
 
     private fun populateSettingsItem() {
