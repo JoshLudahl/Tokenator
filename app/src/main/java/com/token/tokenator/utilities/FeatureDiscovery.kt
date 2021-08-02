@@ -1,7 +1,6 @@
 package com.token.tokenator.utilities
 
 import android.app.Activity
-
 import android.graphics.Color
 import android.view.View
 import com.token.tokenator.R
