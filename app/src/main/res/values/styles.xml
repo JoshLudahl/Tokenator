@@ -91,4 +91,9 @@
         <item name="backgroundColor">@color/blackish</item>
     </style>
 
+    <style name="TextYellowInfo" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
 </resources>

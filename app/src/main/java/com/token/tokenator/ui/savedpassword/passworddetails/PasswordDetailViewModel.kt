@@ -1,6 +1,7 @@
 package com.token.tokenator.ui.savedpassword.passworddetails
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,8 +12,11 @@ import com.token.tokenator.utilities.Encryption
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import kotlin.math.abs
 
 @HiltViewModel
 class PasswordDetailViewModel @Inject constructor(
@@ -22,6 +26,14 @@ class PasswordDetailViewModel @Inject constructor(
     private val _token = MutableLiveData<Token>()
     val token: LiveData<Token>
         get() = _token
+
+    private val _shouldShowWarning = MutableLiveData<Int>()
+    val shouldShowWarning: LiveData<Int>
+        get() = _shouldShowWarning
+
+    init {
+        _shouldShowWarning.value = View.GONE
+    }
 
     fun updateToken(token: Token) {
         viewModelScope.launch {
@@ -41,8 +53,19 @@ class PasswordDetailViewModel @Inject constructor(
                 date = newToken?.date ?: Date().toString()
             )
             _token.value = token
-            Log.i("DATE", "Date: ${_token.value?.date.toString()}")
+
+            _shouldShowWarning.value = if (isOldPassword(newToken?.date ?: Date().toString())) View.VISIBLE else View.GONE
+            Log.i("DATE", _token.value?.date.toString())
         }
+    }
+
+    private fun isOldPassword(date: String): Boolean {
+        val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH)
+        val firstDate: Date = sdf.parse(date) ?: Date()
+        val secondDate = Date()
+        val diffInMillies = abs(secondDate.time - firstDate.time)
+
+        return TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) > 90
     }
 
     fun insert(
