@@ -116,7 +116,7 @@ dependencies {
     implementation 'uk.co.samuelwall:material-tap-target-prompt:3.3.0'
 
     // DataStore
-    implementation "androidx.datastore:datastore-preferences:1.0.0-rc02"
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
 
     // Required -- JUnit 4 framework
     testImplementation 'junit:junit:4.13.2'
