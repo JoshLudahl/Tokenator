@@ -35,12 +35,6 @@ class PasswordDetailViewModel @Inject constructor(
         _shouldShowWarning.value = View.GONE
     }
 
-    fun updateToken(token: Token) {
-        viewModelScope.launch {
-            tokenRepository.updateToken(token)
-        }
-    }
-
     fun getToken(id: Int) {
         viewModelScope.launch {
             val newToken = tokenRepository.getOneTokenById(id)
@@ -54,7 +48,8 @@ class PasswordDetailViewModel @Inject constructor(
             )
             _token.value = token
 
-            _shouldShowWarning.value = if (isOldPassword(newToken?.date ?: Date().toString())) View.VISIBLE else View.GONE
+            _shouldShowWarning.value =
+                if (isOldPassword(newToken?.date ?: Date().toString())) View.VISIBLE else View.GONE
             Log.i("DATE", _token.value?.date.toString())
         }
     }
