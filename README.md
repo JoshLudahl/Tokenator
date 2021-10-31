@@ -1,3 +1,4 @@
+[![Android CI](https://github.com/JoshLudahl/Tokenator/actions/workflows/android.yml/badge.svg)](https://github.com/JoshLudahl/Tokenator/actions/workflows/android.yml)
 # Tokenator for Android
 A password generator written in Kotlin. 
 
