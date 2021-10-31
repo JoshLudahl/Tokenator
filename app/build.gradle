@@ -53,15 +53,15 @@ android {
 
     buildTypes {
         release {
-            buildConfigField("String", "SECRET_KEY", "\"${getProperty("SECRET_KEY") ?: System.getProperty('SECRET_KEY')} \"")
-            buildConfigField("String", "SALT", "\"${getProperty("SALT") ?: System.getProperty('SALT')}\"")
-            buildConfigField("String", "IV", "\"${getProperty("IV") ?: System.getProperty('IV')}\"")
+            buildConfigField("String", "SECRET_KEY", "\"${System.getProperty('SECRET_KEY') ?: getProperty("SECRET_KEY")} \"")
+            buildConfigField("String", "SALT", "\"${System.getProperty('SALT') ?: getProperty("SALT")}\"")
+            buildConfigField("String", "IV", "\"${System.getProperty('IV') ?: getProperty("IV")}\"")
         }
 
         debug {
-            buildConfigField("String", "SECRET_KEY", "\"${getProperty("SECRET_KEY") ?: System.getProperty('SECRET_KEY')} \"")
-            buildConfigField("String", "SALT", "\"${getProperty("SALT") ?: System.getProperty('SALT')}\"")
-            buildConfigField("String", "IV", "\"${getProperty("IV") ?: System.getProperty('IV')}\"")
+            buildConfigField("String", "SECRET_KEY", "\"${System.getProperty('SECRET_KEY') ?: getProperty("SECRET_KEY")} \"")
+            buildConfigField("String", "SALT", "\"${System.getProperty('SALT') ?: getProperty("SALT")}\"")
+            buildConfigField("String", "IV", "\"${System.getProperty('IV')  ?: getProperty("IV")}\"")
         }
     }
     android.packagingOptions {
