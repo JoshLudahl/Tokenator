@@ -53,9 +53,9 @@ android {
 
     buildTypes {
         release {
-            buildConfigField("String", "SECRET_KEY", "\"${getProperty("SECRET_KEY")}\"")
-            buildConfigField("String", "SALT", "\"${getProperty("SALT")}\"")
-            buildConfigField("String", "IV", "\"${getProperty("IV")}\"")
+            buildConfigField("String", "SECRET_KEY", "\"${getProperty("SECRET_KEY") ?: System.getProperty('SECRET_KEY')} \"")
+            buildConfigField("String", "SALT", "\"${getProperty("SALT") ?: System.getProperty('SALT')}\"")
+            buildConfigField("String", "IV", "\"${getProperty("IV") ?: System.getProperty('IV')}\"")
         }
 
         debug {
