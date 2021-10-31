@@ -13,8 +13,8 @@ android {
         applicationId "com.token.tokenator"
         minSdkVersion 23
         targetSdkVersion 31
-        versionCode 26
-        versionName "1.44"
+        versionCode 27
+        versionName "1.45"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
