@@ -168,7 +168,7 @@ class MainViewModel @Inject constructor(
         login: String? = null
     ) {
         try {
-            val encryptedName = Encryption.encrypt(passwordName) ?: "No name"
+            //val encryptedName = Encryption.encrypt(passwordName) ?: "No name"
             val encryptedToken = Encryption.encrypt(token)
             val encryptedLogin = login?.trim()?.let {
                 if (it.isNotEmpty()) {
