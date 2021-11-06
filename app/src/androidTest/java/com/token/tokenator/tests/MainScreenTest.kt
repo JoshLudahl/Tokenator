@@ -12,7 +12,7 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Test
 
 @HiltAndroidTest
-class MainScreenTest: BaseTest() {
+class MainScreenTest : BaseTest() {
 
     @Test
     fun clickingSettingsGoesToSettingsView() {
