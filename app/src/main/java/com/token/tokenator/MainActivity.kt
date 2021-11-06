@@ -23,9 +23,4 @@ class MainActivity : AppCompatActivity() {
         navHostFragment = supportFragmentManager.findFragmentById(myNavHostFragment) as NavHostFragment
         navController = navHostFragment.navController
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        //invalidate current session
-    }
 }

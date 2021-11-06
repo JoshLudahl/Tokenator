@@ -16,7 +16,11 @@ class MainScreenTest: BaseTest() {
 
     @Test
     fun clickingSettingsGoesToSettingsView() {
+        verify<MainScreen> {
+            settingsButtonIsDisplayed()
+        }
         screen<MainScreen> {
+            Thread.sleep(500) // Fails to recognize click due to pending bindings, just wait.
             selectSettingsButton()
         }
     }

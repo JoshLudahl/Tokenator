@@ -9,25 +9,19 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.HiltTestApplication
 import org.junit.Before
 import org.junit.Rule
-import org.junit.Test
+import org.junit.rules.RuleChain
 
 @HiltAndroidTest
-open class BaseTest {
+abstract class BaseTest {
 
-    @get:Rule(order = 0)
     val hiltAndroidRule = HiltAndroidRule(this)
-
-    @get:Rule(order = 1)
     val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
+    @get:Rule
+    val ruleChain = RuleChain.outerRule(hiltAndroidRule).around(activityScenarioRule)
+
     @Before
-    fun setup() = hiltAndroidRule.inject()
-
-    @Test
-    fun firstTest() {
-        // do nothing for now
-    }
-
+    fun init() = hiltAndroidRule.inject()
 }
 
 class Runner : AndroidJUnitRunner() {
