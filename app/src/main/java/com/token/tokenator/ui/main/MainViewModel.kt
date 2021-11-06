@@ -10,6 +10,7 @@ import com.token.tokenator.BuildConfig
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.database.token.TokenRepository
 import com.token.tokenator.di.*
+import com.token.tokenator.model.Passphrase
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Token
 import com.token.tokenator.model.Type
@@ -64,6 +65,8 @@ class MainViewModel @Inject constructor(
     val noRepeatFlow: Flow<Boolean> = dataStore.data.map { preferences ->
         (preferences[stringPreferencesKey(noRepeat)] ?: true).toString().toBoolean()
     }
+
+    val passphrase: LiveData<Passphrase>? = repository.passphrase
 
     init {
         Log.i("MainViewModel", "Initialized")

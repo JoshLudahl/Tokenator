@@ -78,11 +78,11 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
     }
 
     private fun setupObservers(adapter: SettingsAdapter) {
-        viewModel.specialCharList.observe(viewLifecycleOwner, {
+        viewModel.specialCharList.observe(viewLifecycleOwner) {
             it?.let {
                 adapter.setItems(it)
             }
-        })
+        }
 
         binding.lifecycleOwner = this.viewLifecycleOwner
     }

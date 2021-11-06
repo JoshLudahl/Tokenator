@@ -287,7 +287,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 .toString()
                 .toBoolean()
         ) {
-            true -> tokenRepository.passphrase?.value?.phrase
+            true -> binding.viewModel?.passphrase?.value?.phrase
             else -> null
         }
 
