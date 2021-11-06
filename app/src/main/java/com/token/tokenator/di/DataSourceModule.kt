@@ -1,6 +1,5 @@
 package com.token.tokenator.di
 
-
 import android.content.Context
 import androidx.room.Room
 import androidx.room.migration.Migration

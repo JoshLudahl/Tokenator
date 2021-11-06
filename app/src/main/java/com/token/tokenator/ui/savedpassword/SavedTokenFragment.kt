@@ -28,8 +28,8 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
         binding.tokenViewModel = viewModel
         binding.lifecycleOwner = this.viewLifecycleOwner
 
-         val adapter = SavedPasswordAdapter(TokenListener {
-           delete(it)
+        val adapter = SavedPasswordAdapter(TokenListener {
+            delete(it)
         })
 
         binding.passwordRecyclerView.apply {
@@ -55,12 +55,12 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
         val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme)
             .setTitle(getText(R.string.alert_confirm_delete))
             .setMessage(getText(R.string.alert_delete_message))
-            .setPositiveButton(getText(R.string.yes)) {_,_ ->
+            .setPositiveButton(getText(R.string.yes)) { _, _ ->
                 lifecycleScope.launch {
                     viewModel.delete(token)
                 }
             }
-            .setNegativeButton(getText(R.string.no)) {dialog, _ ->
+            .setNegativeButton(getText(R.string.no)) { dialog, _ ->
                 dialog.cancel()
             }
             .create()

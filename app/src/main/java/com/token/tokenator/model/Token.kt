@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import java.util.Date
+import java.util.*
 
 @Entity(
     tableName = "token_table",

@@ -73,7 +73,39 @@ object Tokenator {
 
     private fun generateRandomSpecialCharacter(): Char {
         val arrayOfSpecialCharacters =
-            arrayListOf(33,34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 58, 59, 60, 61, 62, 63, 64, 91, 92, 93, 94, 95, 96, 123, 124, 125, 126)
+            arrayListOf(
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                45,
+                46,
+                47,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                123,
+                124,
+                125,
+                126
+            )
         val index = getRandomNumber(0, arrayOfSpecialCharacters.size - 1)
         return arrayOfSpecialCharacters[index].toChar()
     }

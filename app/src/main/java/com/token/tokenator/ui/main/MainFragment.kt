@@ -174,7 +174,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     private fun toggleSwitch(type: Type) {
-        with (viewModel) {
+        with(viewModel) {
             when (type) {
                 Type.NUMERIC -> {
                     switchNumeric
