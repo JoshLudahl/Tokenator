@@ -66,7 +66,7 @@ class MainViewModel @Inject constructor(
         (preferences[stringPreferencesKey(noRepeat)] ?: true).toString().toBoolean()
     }
 
-    val passphrase: LiveData<Passphrase>? = repository.passphrase
+    val passphrase: LiveData<Passphrase>? get() = repository.passphrase
 
     init {
         Log.i("MainViewModel", "Initialized")

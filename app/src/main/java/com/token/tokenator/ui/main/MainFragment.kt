@@ -290,7 +290,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             true -> binding.viewModel?.passphrase?.value?.phrase
             else -> null
         }
-
+        Log.i("JOSH", "$")
         val password = Tokenator.generate(
             length = length,
             includes = chars,
@@ -298,6 +298,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             doNotRepeat = doesNotRepeat,
             passphrase
         )
+
 
         when {
             password.isNotEmpty() -> {
