@@ -55,6 +55,6 @@
     <string name="login">Login</string>
     <string name="saved_passwords">Saved Tokens</string>
     <string name="password_detail">Token Detail</string>
-    <string name="name">Name</string>
-    <string name="outdated_password_message">Consider updating your token.</string>
+    <string name="name" translatable="false">Name</string>
+    <string name="outdated_password_message" translatable="false">Consider updating your token.</string>
 </resources>
