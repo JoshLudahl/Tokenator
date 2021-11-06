@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.token.tokenator">
+
+
     <uses-permission android:name="android.permission.READ_PHONE_STATE"
         android:maxSdkVersion="29" />
     <application
@@ -9,15 +13,17 @@
         android:fullBackupOnly="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:exported="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        tools:node="merge"
         android:theme="@style/splashScreenTheme">
 
         <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action tools:node="merge" android:name="android.intent.action.MAIN" />
+                <category tools:node="merge" android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

@@ -16,7 +16,7 @@ android {
         versionCode 27
         versionName "1.45"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.token.tokenator.Runner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
         vectorDrawables.useSupportLibrary = true
     }
@@ -98,6 +98,13 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$google_dagger_hilt"
     kapt "androidx.hilt:hilt-compiler:$hilt_lifecycle_viewmodel"
 
+    // For instrumented tests.
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.38.1'
+    // ...with Kotlin.
+    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.39.1'
+    // ...with Java.
+    androidTestAnnotationProcessor 'com.google.dagger:hilt-android-compiler:2.39.1'
+
     // Styling
     implementation "com.google.android.material:material:$material_version"
 
@@ -118,17 +125,20 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
 
     // Optional -- Robolectric environment
-    testImplementation 'androidx.test:core:1.4.0'
+    //testImplementation 'androidx.test:core:1.4.0'
 
     // Optional -- Mockito framework
     testImplementation 'org.mockito:mockito-core:3.12.4'
 
-    // Core library
-    androidTestImplementation 'androidx.test:core:1.4.0'
+//    // Core library
+ androidTestImplementation 'androidx.test:core:1.4.0'
 
     // AndroidJUnitRunner and JUnit Rules
     androidTestImplementation 'androidx.test:runner:1.4.0'
     androidTestImplementation 'androidx.test:rules:1.4.0'
+
+    androidTestImplementation 'com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:3.1.2'
+
 
     // Assertions
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

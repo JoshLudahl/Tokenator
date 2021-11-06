@@ -1,14 +1,37 @@
 package com.token.tokenator
 
+import android.app.Application
+import android.content.Context
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.android.elk.rules.EspressoSetupRule
+import androidx.test.runner.AndroidJUnitRunner
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
+import dagger.hilt.android.testing.HiltTestApplication
+import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 
-abstract class BaseTest {
+@HiltAndroidTest
+open class BaseTest {
 
-    @get: Rule
+    @get:Rule(order = 0)
+    val hiltAndroidRule = HiltAndroidRule(this)
+
+    @get:Rule(order = 1)
     val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
-    @get: Rule
-    val espressoSetupRule = EspressoSetupRule(activityScenarioRule)
+    @Before
+    fun setup() = hiltAndroidRule.inject()
+
+    @Test
+    fun firstTest() {
+        // do nothing for now
+    }
+
+}
+
+class Runner : AndroidJUnitRunner() {
+    override fun newApplication(cl: ClassLoader?, name: String?, context: Context?): Application {
+        return super.newApplication(cl, HiltTestApplication::class.java.name, context)
+    }
 }

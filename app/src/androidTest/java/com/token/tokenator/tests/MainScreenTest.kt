@@ -8,8 +8,10 @@ import com.android.elk.verify
 import com.token.tokenator.BaseTest
 import com.token.tokenator.model.Type
 import com.token.tokenator.screens.MainScreen
+import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Test
 
+@HiltAndroidTest
 class MainScreenTest: BaseTest() {
 
     @Test
@@ -17,7 +19,6 @@ class MainScreenTest: BaseTest() {
         screen<MainScreen> {
             selectSettingsButton()
         }
-        // TODO: 3/22/21 Add verification
     }
 
     @Test
@@ -25,7 +26,6 @@ class MainScreenTest: BaseTest() {
         screen<MainScreen> {
             selectBookmarkButton()
         }
-        // TODO: 3/22/21 Add verification
     }
 
     @Test
@@ -34,7 +34,6 @@ class MainScreenTest: BaseTest() {
             selectGenerate()
         }
         verify<MainScreen> {
-            generateToastIsDisplayed()
             generatePasswordFieldIsNotEmpty()
         }
     }
@@ -60,6 +59,5 @@ class MainScreenTest: BaseTest() {
         screen<MainScreen> {
             selectBookmarkButton()
         }
-        // TODO: 3/22/21 Add verification
     }
 }
