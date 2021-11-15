@@ -3,8 +3,8 @@ package com.token.tokenator.tests
 import com.android.elk.common.Given
 import com.android.elk.common.Then
 import com.android.elk.common.When
-import com.android.elk.screen
-import com.android.elk.verify
+import com.softklass.elk.screen
+import com.softklass.elk.verify
 import com.token.tokenator.BaseTest
 import com.token.tokenator.model.Type
 import com.token.tokenator.screens.MainScreen
@@ -19,6 +19,7 @@ class MainScreenTest : BaseTest() {
         verify<MainScreen> {
             settingsButtonIsDisplayed()
         }
+
         screen<MainScreen> {
             Thread.sleep(500) // Fails to recognize click due to pending bindings, just wait.
             selectSettingsButton()
