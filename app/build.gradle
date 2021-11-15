@@ -142,28 +142,5 @@ dependencies {
 
     androidTestImplementation 'com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:3.1.2'
 
-
-    // Assertions
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.ext:truth:1.4.0'
-    androidTestImplementation 'com.google.truth:truth:1.1.3'
-
-    // Espresso dependencies
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
-    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
-    androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso_version"
-    androidTestImplementation "androidx.test.espresso:espresso-accessibility:$espresso_version"
-    androidTestImplementation "androidx.test.espresso:espresso-web:$espresso_version"
-    androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:$espresso_version"
-
-    androidTestImplementation "androidx.test.espresso:espresso-idling-resource:$espresso_version"
-    implementation "androidx.test.espresso:espresso-idling-resource:$espresso_version"
-
-    // Test Orchestrator
-    androidTestUtil 'androidx.test:orchestrator:1.4.0'
-
-    // UI Testing Custom Library
-    androidTestImplementation "com.github.JoshLudahl:ELK:0.59.29"
-
     androidTestImplementation 'com.github.JoshLudahl:espresso-library-kotlin:0.10.0'
 }

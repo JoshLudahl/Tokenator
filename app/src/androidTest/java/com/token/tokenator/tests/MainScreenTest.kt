@@ -1,8 +1,8 @@
 package com.token.tokenator.tests
 
-import com.android.elk.common.Given
-import com.android.elk.common.Then
-import com.android.elk.common.When
+import com.softklass.elk.common.Given
+import com.softklass.elk.common.Then
+import com.softklass.elk.common.When
 import com.softklass.elk.screen
 import com.softklass.elk.verify
 import com.token.tokenator.BaseTest
