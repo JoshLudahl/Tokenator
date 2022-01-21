@@ -46,4 +46,5 @@
     <string name="login">પ્રવેશ કરો</string>
     <string name="saved_passwords">સાચવેલા પાસવર્ડ્સ</string>
     <string name="password_detail">પાસવર્ડ વિગતવાર</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

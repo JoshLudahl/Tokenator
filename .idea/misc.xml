@@ -22,9 +22,10 @@
         <entry key="app/src/main/res/drawable/layout_background.xml" value="0.91875" />
         <entry key="app/src/main/res/drawable/settings_item_inactive_background.xml" value="0.2203125" />
         <entry key="app/src/main/res/drawable/splash_screen.xml" value="0.91875" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.4699074074074074" />
         <entry key="app/src/main/res/layout/layout_saved_token_list_item.xml" value="0.6" />
         <entry key="app/src/main/res/layout/layout_setting_grid_item.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/main_fragment.xml" value="0.3381294964028777" />
+        <entry key="app/src/main/res/layout/main_fragment.xml" value="0.536" />
         <entry key="app/src/main/res/layout/password_detail_fragment.xml" value="0.4" />
         <entry key="app/src/main/res/layout/saved_token_fragment.xml" value="0.3054994954591322" />
         <entry key="app/src/main/res/layout/security_fragment.xml" value="0.7600465928945835" />

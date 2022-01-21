@@ -46,4 +46,5 @@
     <string name="login">Autentificare</string>
     <string name="saved_passwords">Parolele salvate</string>
     <string name="password_detail">Parola Detalii</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

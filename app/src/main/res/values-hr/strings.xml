@@ -46,4 +46,5 @@
     <string name="login">Prijaviti se</string>
     <string name="saved_passwords">Spremljene lozinke</string>
     <string name="password_detail">Lozinka Detalj</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

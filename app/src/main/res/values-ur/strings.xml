@@ -46,4 +46,5 @@
     <string name="login">لاگ ان کریں</string>
     <string name="saved_passwords">محفوظ پاس ورڈ</string>
     <string name="password_detail">پاس ورڈ تفصیل</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

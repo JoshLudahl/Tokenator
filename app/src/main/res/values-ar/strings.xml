@@ -46,4 +46,5 @@
     <string name="login">تسجيل الدخول</string>
     <string name="saved_passwords">كلمات المرور المحفوظة</string>
     <string name="password_detail">كلمة المرور التفاصيل</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

@@ -47,4 +47,5 @@
     <string name="login">Anmeldung</string>
     <string name="saved_passwords">Gespeicherte Passwörter</string>
     <string name="password_detail">Kennwort Details</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

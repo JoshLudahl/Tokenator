@@ -46,4 +46,5 @@
     <string name="login">Ingia</string>
     <string name="saved_passwords">Saved Nywila</string>
     <string name="password_detail">password Detail</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

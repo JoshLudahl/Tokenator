@@ -46,4 +46,5 @@
     <string name="login">Login</string>
     <string name="saved_passwords">Le password salvate</string>
     <string name="password_detail">Particolare password</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

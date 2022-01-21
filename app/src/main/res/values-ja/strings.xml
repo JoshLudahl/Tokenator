@@ -46,4 +46,5 @@
     <string name="login">ログイン</string>
     <string name="saved_passwords">保存されたパスワード</string>
     <string name="password_detail">パスワードの詳細</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

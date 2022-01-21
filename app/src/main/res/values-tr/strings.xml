@@ -46,4 +46,5 @@
     <string name="login">Oturum aç</string>
     <string name="saved_passwords">Kayıtlı Şifreleri</string>
     <string name="password_detail">Şifre Detay</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

@@ -46,4 +46,5 @@
     <string name="login">Пријавите се</string>
     <string name="saved_passwords">сачуване лозинке</string>
     <string name="password_detail">пассворд Детаљ</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

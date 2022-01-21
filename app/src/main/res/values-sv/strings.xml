@@ -46,4 +46,5 @@
     <string name="login">Logga in</string>
     <string name="saved_passwords">Sparade lösenord</string>
     <string name="password_detail">Lösenord Detalj</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

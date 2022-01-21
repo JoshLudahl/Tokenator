@@ -46,4 +46,5 @@
     <string name="login">Skrá inn</string>
     <string name="saved_passwords">vistuð lykilorð</string>
     <string name="password_detail">Lykilorð Nánar</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

@@ -46,4 +46,5 @@
     <string name="login">लॉग-इन</string>
     <string name="saved_passwords">जतन केलेले संकेतशब्द</string>
     <string name="password_detail">पासवर्ड तपशील</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

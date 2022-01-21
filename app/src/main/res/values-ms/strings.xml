@@ -46,4 +46,5 @@
     <string name="login">Log masuk</string>
     <string name="saved_passwords">Disimpan Kata laluan</string>
     <string name="password_detail">Detail kata laluan</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

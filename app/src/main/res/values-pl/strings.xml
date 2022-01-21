@@ -46,5 +46,6 @@
     <string name="login">Zaloguj sie</string>
     <string name="saved_passwords">Zapamiętane hasła</string>
     <string name="password_detail">Hasło Szczegóły</string>
+    <string name="privacy_policy">Privacy Policy</string>
 
 </resources>

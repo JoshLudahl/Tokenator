@@ -46,4 +46,5 @@
     <string name="login">ಲಾಗಿನ್</string>
     <string name="saved_passwords">ಉಳಿಸಿದ ಪಾಸ್ವರ್ಡ್ಗಳು</string>
     <string name="password_detail">ಪಾಸ್ವರ್ಡ್ ವಿವರ</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

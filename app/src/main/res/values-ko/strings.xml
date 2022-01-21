@@ -47,4 +47,5 @@
     <string name="login">로그인</string>
     <string name="saved_passwords">저장된 비밀번호</string>
     <string name="password_detail">암호 세부 정보</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

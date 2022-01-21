@@ -46,4 +46,5 @@
     <string name="login">Kirjaudu sisään</string>
     <string name="saved_passwords">tallennetut salasanat</string>
     <string name="password_detail">salasana Yksityiskohta</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

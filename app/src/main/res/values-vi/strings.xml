@@ -46,4 +46,5 @@
     <string name="login">Đăng nhập</string>
     <string name="saved_passwords">Saved Passwords</string>
     <string name="password_detail">Mật khẩu Xem chi tiết</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>
