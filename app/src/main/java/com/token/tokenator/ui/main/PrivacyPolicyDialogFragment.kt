@@ -21,8 +21,6 @@ class PrivacyPolicyDialogFragment : DialogFragment() {
         return activity?.let {
             // Use the Builder class for convenient dialog construction
             val builder = AlertDialog.Builder(it)
-            val inflater = requireActivity().layoutInflater
-            //builder.setView(inflater.inflate(R.layout.privacy_policy_dialog_fragment, null))
             // Create the AlertDialog object and return it
 
             _binding = DataBindingUtil.inflate(
@@ -32,7 +30,6 @@ class PrivacyPolicyDialogFragment : DialogFragment() {
                 false
             )
             binding.viewModel = viewModel
-
             builder.setView(binding.root)
 
             lifecycleScope.launchWhenStarted {
@@ -44,6 +41,7 @@ class PrivacyPolicyDialogFragment : DialogFragment() {
                     }
                 }
             }
+
             builder.create()
 
         } ?: throw IllegalStateException("Activity cannot be null")
