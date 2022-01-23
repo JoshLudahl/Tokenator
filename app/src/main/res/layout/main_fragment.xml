@@ -535,21 +535,20 @@
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/privacy_policy_text"
                 style="@style/settings_text"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/dashed_background"
                 android:clickable="true"
+                android:focusable="true"
                 android:text="@string/privacy_policy"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/app_footer"
-                app:layout_constraintVertical_bias="0.0"
-                android:focusable="true" />
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
