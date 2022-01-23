@@ -132,6 +132,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             }
         }
 
+        binding.privacyPolicyText.setOnClickListener {
+            val showPolicy = PrivacyPolicyDialogFragment()
+            showPolicy.show(parentFragmentManager,"Privacy Policy")
+        }
+
         binding.fluidSlider
 
         binding.tokenName.addTextChangedListener(object : TextWatcher {

@@ -533,6 +533,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tokenator_logo" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/privacy_policy_text"
                 style="@style/settings_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -58,4 +58,8 @@
     <string name="name" translatable="false">Name</string>
     <string name="outdated_password_message" translatable="false">Consider updating your token.</string>
     <string name="privacy_policy">Privacy Policy</string>
+    <string name="okay">okay</string>
+    <string name="cancel">Cancel</string>
+    <string name="privacy_policy_message">Privacy Policy</string>
+    <string name="close">Close</string>
 </resources>

@@ -43,6 +43,9 @@
             app:destination="@id/settingsFragment"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_mainFragment_to_privacyPolicyDialogFragment"
+            app:destination="@id/privacyPolicyDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -66,5 +69,17 @@
         <action
             android:id="@+id/action_passwordDetailFragment_to_savedTokenFragment"
             app:destination="@id/savedTokenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/privacyPolicyDialogFragment"
+        android:name="com.token.tokenator.ui.main.PrivacyPolicyDialogFragment"
+        android:label="PrivacyPolicyDialogFragment" >
+        <action
+            android:id="@+id/action_privacyPolicyDialogFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_privacyPolicyDialogFragment_to_mainFragment2"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment" />
     </fragment>
 </navigation>
