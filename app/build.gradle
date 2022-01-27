@@ -68,6 +68,11 @@ android {
     android.packagingOptions {
         exclude 'META-INF/*'
     }
+
+
+    lintOptions {
+        disable "JvmStaticProvidesInObjectDetector", "FieldSiteTargetOnQualifierAnnotation", "ModuleCompanionObjects", "ModuleCompanionObjectsNotInModuleParent"
+    }
 }
 
 dependencies {
