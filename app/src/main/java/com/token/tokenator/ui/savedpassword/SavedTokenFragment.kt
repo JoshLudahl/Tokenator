@@ -41,14 +41,14 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
             findNavController().navigateUp()
         }
 
-        viewModel.tokens.observe(viewLifecycleOwner, {
+        viewModel.tokens.observe(viewLifecycleOwner) {
             it?.let {
                 adapter.setItems(it)
                 if (it.isEmpty()) viewModel.setTokenListEmpty(true) else viewModel.setTokenListEmpty(
                     false
                 )
             }
-        })
+        }
     }
 
     private fun delete(token: Token) {
