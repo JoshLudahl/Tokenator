@@ -24,7 +24,7 @@ class PrivacyPolicyDialogFragment : DialogFragment() {
             // Create the AlertDialog object and return it
 
             _binding = DataBindingUtil.inflate(
-                LayoutInflater.from(context),
+                 layoutInflater.cloneInContext(context),
                 R.layout.privacy_policy_dialog_fragment,
                 null,
                 false
@@ -38,6 +38,7 @@ class PrivacyPolicyDialogFragment : DialogFragment() {
                         true -> {
                             dialog?.cancel()
                         }
+                        else -> Unit
                     }
                 }
             }
