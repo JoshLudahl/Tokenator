@@ -101,6 +101,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                         viewModel.setShouldShowToastToFalse()
                         showToast("You make touch")
                     }
+                    else -> Unit
                 }
             }
         }
