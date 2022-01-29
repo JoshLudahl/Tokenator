@@ -174,7 +174,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             toggleSwitch(Type.SPECIAL)
         }
 
-
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.noRepeatFlow.collect { repeatable ->
