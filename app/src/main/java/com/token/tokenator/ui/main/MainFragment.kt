@@ -94,16 +94,17 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         _binding = MainFragmentBinding.bind(view)
         binding.viewModel = viewModel
-        //binding.lifecycleOwner = this.viewLifecycleOwner
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.shouldShowEasterEggToast.collect {
-                when (it) {
-                    true -> {
-                        viewModel.setShouldShowToastToFalse()
-                        showToast("You make touch")
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.shouldShowEasterEggToast.collect {
+                    when (it) {
+                        true -> {
+                            viewModel.setShouldShowToastToFalse()
+                            showToast("You make touch")
+                        }
+                        else -> Unit
                     }
-                    else -> Unit
                 }
             }
         }
@@ -182,7 +183,12 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 }
             }
         }
+
+
+
     }
+
+
 
     private fun toggleSwitch(type: Type) {
         with(viewModel) {
