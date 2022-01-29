@@ -5,7 +5,6 @@ import androidx.room.*
 import com.token.tokenator.model.Passphrase
 import com.token.tokenator.model.Token
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.StateFlow
 
 @Dao
 interface TokenDao {

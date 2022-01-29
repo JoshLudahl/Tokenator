@@ -185,9 +185,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
 
 
-
     }
-
 
 
     private fun toggleSwitch(type: Type) {
