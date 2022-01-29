@@ -14,7 +14,9 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.token.tokenator.R
 import com.token.tokenator.database.settingsitem.PopulateDatabase
@@ -92,7 +94,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         _binding = MainFragmentBinding.bind(view)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this.viewLifecycleOwner
+        //binding.lifecycleOwner = this.viewLifecycleOwner
 
         lifecycleScope.launchWhenStarted {
             viewModel.shouldShowEasterEggToast.collect {
@@ -172,9 +174,12 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             toggleSwitch(Type.SPECIAL)
         }
 
-        lifecycleScope.launchWhenStarted {
-            viewModel.noRepeatFlow.collect { repeatable ->
-                doesNotRepeat = repeatable
+
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.noRepeatFlow.collect { repeatable ->
+                    doesNotRepeat = repeatable
+                }
             }
         }
     }
@@ -203,12 +208,14 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private fun populateSettingsItem() {
         lifecycleScope.launch {
-            val preferenceItem = readDataStore(characterPopulation)
-            if (preferenceItem == "null") {
-                Log.i("SP", "Populating Characters into the database")
-                PopulateDatabase.populateDatabase(settingsItemRepository)
-                DataPref.saveDataStore(characterPopulation, true, dataStore)
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                val preferenceItem = readDataStore(characterPopulation)
+                if (preferenceItem == "null") {
+                    Log.i("SP", "Populating Characters into the database")
+                    PopulateDatabase.populateDatabase(settingsItemRepository)
+                    DataPref.saveDataStore(characterPopulation, true, dataStore)
 
+                }
             }
         }
     }
@@ -234,17 +241,19 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 binding.tokenLoginName.text?.clear()
 
                 lifecycleScope.launch {
-                    val preferenceItem = readDataStore(feature)
-                    if (preferenceItem == "null") {
-                        Log.i(
-                            "FEATURE?",
-                            "$preferenceItem: Showing feature because it has not been shown."
-                        )
-                        showFeature()
-                        saveDataStore(feature, true)
+                    viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                        val preferenceItem = readDataStore(feature)
+                        if (preferenceItem == "null") {
+                            Log.i(
+                                "FEATURE?",
+                                "$preferenceItem: Showing feature because it has not been shown."
+                            )
+                            showFeature()
+                            saveDataStore(feature, true)
 
-                    } else {
-                        Log.i("FEATURE", "Skipping feature because it has been shown.")
+                        } else {
+                            Log.i("FEATURE", "Skipping feature because it has been shown.")
+                        }
                     }
                 }
             }
