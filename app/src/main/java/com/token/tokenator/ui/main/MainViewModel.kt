@@ -66,7 +66,9 @@ class MainViewModel @Inject constructor(
         (preferences[stringPreferencesKey(noRepeat)] ?: true).toString().toBoolean()
     }
 
-    val passphrase: LiveData<Passphrase>? get() = repository.passphrase
+    private val _passphrase = MutableStateFlow<Passphrase?>(null)
+    val passphrase: StateFlow<Passphrase?>?
+        get() = _passphrase
 
     init {
         Log.i("MainViewModel", "Initialized")
@@ -77,6 +79,9 @@ class MainViewModel @Inject constructor(
 
         //set switches
         viewModelScope.launch {
+            repository.passphraseflow?.collectLatest {
+                _passphrase.value = it
+            }
 
             _switchLowerCase.value = (DataPref.readDataStore(lowercase, dataStore) ?: true)
                 .toString()
