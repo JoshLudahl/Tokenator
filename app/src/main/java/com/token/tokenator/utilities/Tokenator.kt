@@ -52,7 +52,7 @@ object Tokenator {
                 isValidated(
                     token = sb,
                     typeList = includesTypesList
-                ).not()
+                )
             } else {
                 true
             }
