@@ -8,37 +8,8 @@ object Tokenator {
 
     private val arrayOfSpecialCharacters =
         arrayListOf(
-            33,
-            34,
-            35,
-            36,
-            37,
-            38,
-            39,
-            40,
-            41,
-            42,
-            43,
-            45,
-            46,
-            47,
-            58,
-            59,
-            60,
-            61,
-            62,
-            63,
-            64,
-            91,
-            92,
-            93,
-            94,
-            95,
-            96,
-            123,
-            124,
-            125,
-            126
+            33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 58, 59, 60, 61, 62,
+            63, 64, 91, 92, 93, 94, 95, 96, 123, 124, 125, 126
         )
 
     private const val TOTAL_CHARACTERS = 92
@@ -74,13 +45,16 @@ object Tokenator {
             )
             sb.append(token)
 
-            if (includePhrase.length + length <= TOTAL_CHARACTERS - excludedCharacters.size) {
-                isValidated = isValidated(
+            isValidated = if (
+                includePhrase.length + length <= TOTAL_CHARACTERS - excludedCharacters.size
+                && includePhrase.length + includesTypesList.size >= length
+            ) {
+                isValidated(
                     token = sb,
                     typeList = includesTypesList
                 ).not()
             } else {
-                isValidated = true
+                true
             }
         }
         return sb.toString()
@@ -137,21 +111,20 @@ object Tokenator {
     private fun containsAllSpecialTypes(string: String, typelist: List<Type>): Boolean {
         typelist.forEach { type ->
             when (type) {
-                Type.LOWERCASE -> (97..122).toList()
-                Type.NUMERIC -> (0..9).toList()
-                Type.SPECIAL -> arrayOfSpecialCharacters
-                Type.UPPERCASE -> (65..90).toList()
-
-            }.let {
-                if (!stringContainsItem(string, it)) return false
+                Type.LOWERCASE -> (97..122).map { it.toChar().toString() }.toList()
+                Type.NUMERIC -> (0..9).map { it.toString() }.toList()
+                Type.SPECIAL -> arrayOfSpecialCharacters.map { it.toChar().toString() }
+                Type.UPPERCASE -> (65..90).map { it.toChar().toString() }.toList()
+            }.let { list ->
+                if (!stringContainsItem(string, list.map { it })) return false
             }
         }
         return true
     }
 
-    private fun stringContainsItem(string: String, charList: List<Int>): Boolean {
+    private fun stringContainsItem(string: String, charList: List<String>): Boolean {
         charList.forEach { numericValue ->
-            if (string.contains(numericValue.toChar())) return true
+            if (string.contains(numericValue)) return true
         }
         return false
     }
