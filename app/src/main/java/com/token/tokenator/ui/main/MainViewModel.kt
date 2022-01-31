@@ -38,8 +38,15 @@ class MainViewModel @Inject constructor(
     var version: String
     private val _token = MutableStateFlow<String>("")
     private val _length = MutableStateFlow<Float>(0f)
+
     private val _tokenNameEditTextLabelVisibility = MutableLiveData<Int>()
+    val tokenNameEditTextLabelVisibility: LiveData<Int>
+        get() = _tokenNameEditTextLabelVisibility
+
     private val _tokenNameEditTextFieldVisibility = MutableLiveData<Int>()
+    val tokenNameEditTextFieldVisibility: LiveData<Int>
+        get() = _tokenNameEditTextFieldVisibility
+
     private val _allCharacters = MutableStateFlow<List<SettingsItem>>(emptyList())
     val allCharacters: StateFlow<List<SettingsItem>>
         get() = _allCharacters
@@ -67,7 +74,7 @@ class MainViewModel @Inject constructor(
     }
 
     private val _passphrase = MutableStateFlow<Passphrase?>(null)
-    val passphrase: StateFlow<Passphrase?>?
+    val passphrase: StateFlow<Passphrase?>
         get() = _passphrase
 
     init {
@@ -125,14 +132,8 @@ class MainViewModel @Inject constructor(
 
     var tokenNameEditText = View.GONE
 
-    val tokenNameEditTextFieldVisibility: LiveData<Int>
-        get() = _tokenNameEditTextFieldVisibility
-
     fun setTokenNameEditTextFieldVisibility() =
         _tokenNameEditTextFieldVisibility.postValue(View.VISIBLE)
-
-    val tokenNameEditTextLabelVisibility: LiveData<Int>
-        get() = _tokenNameEditTextLabelVisibility
 
     fun setTokenNameEditTextLabelVisible() =
         _tokenNameEditTextLabelVisibility.postValue(View.VISIBLE)

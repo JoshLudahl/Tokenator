@@ -182,8 +182,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 }
             }
         }
-
-
     }
 
 
@@ -315,7 +313,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             doNotRepeat = doesNotRepeat,
             passphrase ?: ""
         )
-
 
         when {
             password.isNotEmpty() -> {
