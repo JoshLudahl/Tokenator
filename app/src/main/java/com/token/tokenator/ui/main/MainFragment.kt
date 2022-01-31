@@ -319,7 +319,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         when {
             password.isNotEmpty() -> {
-
                 viewModel.apply {
                     setToken(password)
                     setLength(binding.fluidSlider.position)
