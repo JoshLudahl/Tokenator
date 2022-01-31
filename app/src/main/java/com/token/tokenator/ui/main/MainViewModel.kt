@@ -130,13 +130,13 @@ class MainViewModel @Inject constructor(
         _length.value = value
     }
 
-    var tokenNameEditText = View.GONE
+    fun setTokenNameEditTextFieldVisibility() {
+        _tokenNameEditTextFieldVisibility.value = View.VISIBLE
+    }
 
-    fun setTokenNameEditTextFieldVisibility() =
-        _tokenNameEditTextFieldVisibility.postValue(View.VISIBLE)
-
-    fun setTokenNameEditTextLabelVisible() =
-        _tokenNameEditTextLabelVisibility.postValue(View.VISIBLE)
+    fun setTokenNameEditTextLabelVisible() {
+        _tokenNameEditTextLabelVisibility.value = View.VISIBLE
+    }
 
     fun showEasterEggToast() {
         _shouldShowEasterEggToast.value = true

@@ -95,6 +95,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         _binding = MainFragmentBinding.bind(view)
         binding.viewModel = viewModel
 
+        binding.lifecycleOwner = this.viewLifecycleOwner
+
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.shouldShowEasterEggToast.collect {
@@ -184,7 +186,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
     }
 
-
     private fun toggleSwitch(type: Type) {
         with(viewModel) {
             when (type) {
@@ -215,7 +216,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                     Log.i("SP", "Populating Characters into the database")
                     PopulateDatabase.populateDatabase(settingsItemRepository)
                     DataPref.saveDataStore(characterPopulation, true, dataStore)
-
                 }
             }
         }
