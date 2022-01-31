@@ -310,10 +310,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
         val password = Tokenator.generate(
             length = length,
-            includes = chars,
+            includesTypesList = chars,
             excludedCharacters = stringList,
             doNotRepeat = doesNotRepeat,
-            passphrase
+            passphrase ?: ""
         )
 
 

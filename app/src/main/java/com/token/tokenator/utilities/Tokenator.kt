@@ -5,54 +5,155 @@ import kotlin.random.Random
 import kotlin.random.nextInt
 
 object Tokenator {
+
+    private val arrayOfSpecialCharacters =
+        arrayListOf(
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            45,
+            46,
+            47,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            123,
+            124,
+            125,
+            126
+        )
+
+    private const val TOTAL_CHARACTERS = 92
+
     /**
      * Simple password generator.
      *
      * @param length takes the length the password should be
-     * @param includes takes a list of character types to include
+     * @param includesTypesList takes a list of character types to include
      */
     fun generate(
         length: Int,
-        includes: MutableList<Type>,
+        includesTypesList: MutableList<Type>,
         excludedCharacters: List<String>,
         doNotRepeat: Boolean,
-        includePhrase: String? = null
+        includePhrase: String = ""
     ): String {
 
         val sb = StringBuilder()
 
-        includePhrase?.let {
-            sb.append(it)
-        }
+        var isValidated = false
+        while (!isValidated) {
+            sb.clear()
+            sb.append(includePhrase)
 
-        if (length in 1..1000) {
-            var looper = 0
-            while (sb.length < length && looper < 50000) {
-                includes.shuffle()
-                if (includes.size != 0) {
-                    val character = when (includes[0]) {
-                        Type.LOWERCASE -> generateRandomLowercaseLetter().toString()
-                        Type.NUMERIC -> generateRandomNumber().toString()
-                        Type.UPPERCASE -> generateRandomUppercaseLetter().toString()
-                        Type.SPECIAL -> generateRandomSpecialCharacter().toString()
-                    }
 
-                    if (excludedCharacters.contains(character).not()) {
-                        if (doNotRepeat) {
-                            if (sb.contains(character).not()) {
-                                sb.append(character)
-                            }
-                        } else {
-                            sb.append(character)
-                        }
-                    }
-                } else {
-                    sb.append(generateRandomLowercaseLetter())
-                }
-                looper++
+            val token = generateTokenString(
+                excludedCharacters = excludedCharacters,
+                length = length - includePhrase.length,
+                passphrase = includePhrase,
+                shouldNotRepeat = doNotRepeat,
+                typesList = includesTypesList
+            )
+            sb.append(token)
+
+            if (includePhrase.length + length <= TOTAL_CHARACTERS - excludedCharacters.size) {
+                isValidated = isValidated(
+                    token = sb,
+                    typeList = includesTypesList
+                ).not()
+            } else {
+                isValidated = true
             }
         }
         return sb.toString()
+    }
+
+    private fun generateTokenString(
+        excludedCharacters: List<String>,
+        length: Int,
+        passphrase: String,
+        shouldNotRepeat: Boolean,
+        typesList: MutableList<Type>
+    ): String {
+        val token = StringBuilder()
+        var looper = 0
+
+        while (token.length < length && looper < 15000) {
+            if (typesList.isEmpty()) {
+                token.append(generateRandomLowercaseLetter())
+            } else {
+                val character = shuffleAndGetChar(typesList)
+                if (excludedCharacters.contains(character).not()) {
+                    if (shouldNotRepeat) {
+                        if (!token.contains(character) && !passphrase.contains(character)) {
+                            token.append(character)
+                        }
+                    } else {
+                        token.append(character)
+                    }
+                }
+            }
+            looper++
+        }
+        return token.toString()
+    }
+
+    private fun isValidated(
+        token: StringBuilder,
+        typeList: MutableList<Type>
+    ): Boolean {
+        if (containsAllSpecialTypes(string = token.toString(), typeList)) return true
+        return false
+    }
+
+    private fun shuffleAndGetChar(typeList: MutableList<Type>): String {
+        typeList.shuffle()
+        return when (typeList[0]) {
+            Type.LOWERCASE -> generateRandomLowercaseLetter()
+            Type.NUMERIC -> generateRandomNumber()
+            Type.UPPERCASE -> generateRandomUppercaseLetter()
+            Type.SPECIAL -> generateRandomSpecialCharacter()
+        }.toString()
+    }
+
+    private fun containsAllSpecialTypes(string: String, typelist: List<Type>): Boolean {
+        typelist.forEach { type ->
+            when (type) {
+                Type.LOWERCASE -> (97..122).toList()
+                Type.NUMERIC -> (0..9).toList()
+                Type.SPECIAL -> arrayOfSpecialCharacters
+                Type.UPPERCASE -> (65..90).toList()
+
+            }.let {
+                if (!stringContainsItem(string, it)) return false
+            }
+        }
+        return true
+    }
+
+    private fun stringContainsItem(string: String, charList: List<Int>): Boolean {
+        charList.forEach { numericValue ->
+            if (string.contains(numericValue.toChar())) return true
+        }
+        return false
     }
 
     private fun getRandomNumber(lowerBound: Int, upperBound: Int): Int {
@@ -72,40 +173,6 @@ object Tokenator {
     }
 
     private fun generateRandomSpecialCharacter(): Char {
-        val arrayOfSpecialCharacters =
-            arrayListOf(
-                33,
-                34,
-                35,
-                36,
-                37,
-                38,
-                39,
-                40,
-                41,
-                42,
-                43,
-                45,
-                46,
-                47,
-                58,
-                59,
-                60,
-                61,
-                62,
-                63,
-                64,
-                91,
-                92,
-                93,
-                94,
-                95,
-                96,
-                123,
-                124,
-                125,
-                126
-            )
         val index = getRandomNumber(0, arrayOfSpecialCharacters.size - 1)
         return arrayOfSpecialCharacters[index].toChar()
     }
