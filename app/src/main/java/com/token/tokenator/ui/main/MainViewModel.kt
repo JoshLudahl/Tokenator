@@ -107,6 +107,9 @@ class MainViewModel @Inject constructor(
                 .toString()
                 .toBoolean()
 
+        }
+
+        viewModelScope.launch {
             settingsItemRepository.allCharacters.collect { characters ->
                 _allCharacters.value = characters
             }
