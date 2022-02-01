@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/securityFragment">
 
     <fragment
         android:id="@+id/savedTokenFragment"
@@ -82,4 +82,8 @@
             app:destination="@id/mainFragment"
             app:popUpTo="@id/mainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/securityFragment"
+        android:name="com.token.tokenator.ui.security.SecurityFragment"
+        android:label="SecurityFragment" />
 </navigation>
