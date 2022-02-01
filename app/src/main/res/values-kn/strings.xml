@@ -47,4 +47,8 @@
     <string name="saved_passwords">ಉಳಿಸಿದ ಪಾಸ್ವರ್ಡ್ಗಳು</string>
     <string name="password_detail">ಪಾಸ್ವರ್ಡ್ ವಿವರ</string>
     <string name="privacy_policy">Privacy Policy</string>
+    <string name="touch">touch</string>
+    <string name="login_input_field">Login</string>
+    <string name="name_entry_field">Password Name</string>
+    <string name="token">Token</string>
 </resources>

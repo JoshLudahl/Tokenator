@@ -35,12 +35,13 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/tokenator_logo"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:clickable="true"
+                android:contentDescription="@string/touch"
                 android:focusable="true"
                 android:onClick="@{() -> viewModel.showEasterEggToast()}"
                 android:src="@drawable/ic_tokenator"
@@ -51,8 +52,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/settings_button"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginEnd="16dp"
                 android:clickable="true"
                 android:contentDescription="@string/take_me_to_settings"
@@ -65,8 +66,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/view_saved_button"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginEnd="16dp"
                 android:src="@drawable/ic_bookmark"
                 android:tint="@color/yellow"
@@ -183,11 +184,12 @@
                 style="@style/layout_background_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                android:clickable="true"
-                android:focusable="true"
                 app:layout_constraintTop_toBottomOf="@+id/lowercase_container">
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -288,6 +290,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/length"
+                android:textColor="#039BE5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/special_character_container" />
 
@@ -375,6 +378,7 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/optional"
                     android:textAllCaps="true"
+                    android:textColor="#039BE5"
                     android:visibility="@{viewModel.tokenNameEditTextLabelVisibility}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/button_generate_token" />
@@ -383,13 +387,14 @@
                     android:id="@+id/token_name"
                     style="@style/edit_text"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:hint="@string/enter_name_for_password"
                     android:imeActionLabel="Next"
                     android:imeOptions="actionNext"
+                    android:textColorHint="#1E88E5"
                     android:visibility="@{viewModel.tokenNameEditTextFieldVisibility}"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toStartOf="@+id/save_button"
@@ -413,11 +418,12 @@
                     android:id="@+id/token_login_name"
                     style="@style/edit_text"
                     android:layout_width="0dp"
-                    android:layout_height="40dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:hint="@string/enter_name_for_login"
+                    android:textColorHint="#1E88E5"
                     android:imeActionLabel="Done"
                     android:imeOptions="actionDone"
                     android:visibility="@{viewModel.tokenNameEditTextFieldVisibility}"
@@ -438,6 +444,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/generated_token"
+                android:textColor="#039BE5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/generate_token_layout" />
 
@@ -464,6 +471,7 @@
                     android:focusable="true"
                     android:gravity="center"
                     android:hint="@string/click_to_generate_password"
+                    android:minHeight="48dp"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
                     android:text="@{viewModel.token}"
@@ -529,6 +537,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/settings"
+                android:textColor="#039BE5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tokenator_logo" />
 

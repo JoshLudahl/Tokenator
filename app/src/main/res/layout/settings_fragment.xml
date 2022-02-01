@@ -73,6 +73,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/passphrase"
+                    android:textColor="#039BE5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -103,7 +104,7 @@
                         android:id="@+id/phrase_edit_text"
                         style="@style/edit_text"
                         android:layout_width="200dp"
-                        android:layout_height="40dp"
+                        android:layout_height="48dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
@@ -148,9 +149,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:clickable="false"
                     android:text="@string/no_repeat_characters"
+                    android:textColor="#039BE5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/passphrase_section" />
 
@@ -212,6 +213,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/characters"
+                    android:textColor="#039BE5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/no_repeats_section" />
 

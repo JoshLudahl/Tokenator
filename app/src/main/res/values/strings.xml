@@ -66,4 +66,8 @@
     <string name="privacy_policy_children_body_text" translatable="false">Tokenator is not intended for children under 13 years of age. We advise children under the age of 13 to not use this application.</string>
     <string name="data" translatable="false">Data</string>
     <string name="privacy_policy_data_message" translatable="false">We do not collect any data. The only data involved in this app is what you choose to save in terms of passwords. The passwords do not save to any other database other than the local device database. The passwords are encrypted before saving to the database and requires the application to unlock the encrypted passwords. No data of any kind is collected or shared.</string>
+    <string name="touch">touch</string>
+    <string name="login_input_field">Login</string>
+    <string name="name_entry_field">Password Name</string>
+    <string name="token">Token</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.token.tokenator.utilities
 
+import android.util.Log
 import com.token.tokenator.model.Type
 import kotlin.random.Random
 import kotlin.random.nextInt
@@ -32,10 +33,13 @@ object Tokenator {
 
         var isValidated = false
         while (!isValidated) {
+            Log.d("Token:", "Clearing current token")
             sb.clear()
+
+            Log.d("Token:", "Adding phrase")
             sb.append(includePhrase)
-
-
+            if (includePhrase.length >= length) return includePhrase
+            Log.d("Token:", "Generating new token.")
             val token = generateTokenString(
                 excludedCharacters = excludedCharacters,
                 length = length - includePhrase.length,
@@ -45,6 +49,7 @@ object Tokenator {
             )
             sb.append(token)
 
+            Log.d("Token:", "Validating new token")
             isValidated = if (
                 includePhrase.length + length <= TOTAL_CHARACTERS - excludedCharacters.size
                 && includePhrase.length + includesTypesList.size >= length
@@ -85,6 +90,7 @@ object Tokenator {
                     }
                 }
             }
+            Log.i("Token: ", "$token")
             looper++
         }
         return token.toString()

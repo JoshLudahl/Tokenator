@@ -100,8 +100,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/token_visibility_icon"
-                android:layout_width="@dimen/icon_size_line_item"
-                android:layout_height="@dimen/icon_size_line_item"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/copy_icon"
@@ -110,8 +110,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/trash_icon"
-                android:layout_width="@dimen/icon_size_line_item"
-                android:layout_height="@dimen/icon_size_line_item"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 android:clickable="true"
@@ -124,8 +124,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/copy_icon"
-                android:layout_width="@dimen/icon_size_line_item"
-                android:layout_height="@dimen/icon_size_line_item"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 android:clickable="true"

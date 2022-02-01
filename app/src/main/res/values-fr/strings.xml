@@ -48,4 +48,8 @@
     <string name="saved_passwords">Mots de passe enregistrés</string>
     <string name="password_detail">Mot de passe Détail</string>
     <string name="privacy_policy">Privacy Policy</string>
+    <string name="touch">touch</string>
+    <string name="login_input_field">Login</string>
+    <string name="name_entry_field">Password Name</string>
+    <string name="token">Token</string>
 </resources>

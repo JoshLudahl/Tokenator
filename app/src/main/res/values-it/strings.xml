@@ -47,4 +47,8 @@
     <string name="saved_passwords">Le password salvate</string>
     <string name="password_detail">Particolare password</string>
     <string name="privacy_policy">Privacy Policy</string>
+    <string name="touch">touch</string>
+    <string name="login_input_field">Login</string>
+    <string name="name_entry_field">Password Name</string>
+    <string name="token">Token</string>
 </resources>
