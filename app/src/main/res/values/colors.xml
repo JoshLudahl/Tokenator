@@ -13,6 +13,7 @@
     <color name="deep_blue">#34495E</color>
     <color name="dark_gray">#393e46</color>
     <color name="light_blue">#0195E6</color>
+    <color name="contrasted_blue_label">#039BE5</color>
     <color name="contrasted_blue">#1E88E5</color>
     <color name="light_gray">#eeeeee</color>
     <color name="grayish">#9EABC1</color>

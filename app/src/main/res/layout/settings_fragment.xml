@@ -109,6 +109,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         android:hint="@string/enter_a_passphrase"
+                        android:textColorHint="#1E88E5"
                         android:imeOptions="actionDone"
                         android:maxLength="15"
                         android:text="@{viewModel.passphrase.phrase}"
