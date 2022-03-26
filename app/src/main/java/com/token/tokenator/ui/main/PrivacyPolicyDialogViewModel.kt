@@ -14,7 +14,8 @@ class PrivacyPolicyDialogViewModel : ViewModel(), LifecycleObserver {
         get() = _shouldDismiss
 
     private val _titleText = R.string.privacy_policy
-    val titleText get() = _titleText
+    val titleText
+        get() = _titleText
 
     fun dismissDialog() {
         _shouldDismiss.value = true

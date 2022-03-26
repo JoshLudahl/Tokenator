@@ -2,7 +2,6 @@ package com.token.tokenator.ui.main
 
 import android.app.Dialog
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
@@ -18,9 +17,9 @@ class PrivacyPolicyDialogFragment : DialogFragment() {
     private val viewModel: PrivacyPolicyDialogViewModel by viewModels()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return activity?.let {
+        return activity?.let {fragmentActivity ->
             // Use the Builder class for convenient dialog construction
-            val builder = AlertDialog.Builder(it)
+            val builder = AlertDialog.Builder(fragmentActivity)
             // Create the AlertDialog object and return it
 
             _binding = DataBindingUtil.inflate(
@@ -33,8 +32,8 @@ class PrivacyPolicyDialogFragment : DialogFragment() {
             builder.setView(binding.root)
 
             lifecycleScope.launchWhenStarted {
-                viewModel.shouldDismiss.collect {
-                    when (it) {
+                viewModel.shouldDismiss.collect { shouldCancel ->
+                    when (shouldCancel) {
                         true -> {
                             dialog?.cancel()
                         }
@@ -42,11 +41,8 @@ class PrivacyPolicyDialogFragment : DialogFragment() {
                     }
                 }
             }
-
             builder.create()
 
         } ?: throw IllegalStateException("Activity cannot be null")
     }
-
-
 }
