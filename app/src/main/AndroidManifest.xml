@@ -5,7 +5,7 @@
     package="com.token.tokenator">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE"
-        android:maxSdkVersion="29" />
+        android:maxSdkVersion="32" />
     <application
         android:name=".di.TokenatorApplication"
         android:allowBackup="true"
