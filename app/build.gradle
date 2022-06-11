@@ -102,16 +102,15 @@ dependencies {
 
     // DI
     implementation "com.google.dagger:hilt-android:$google_dagger_hilt"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
     kapt "com.google.dagger:hilt-android-compiler:$google_dagger_hilt"
     kapt "androidx.hilt:hilt-compiler:$hilt_lifecycle_viewmodel"
 
     // For instrumented tests.
-    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.40.5'
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.42'
     // ...with Kotlin.
-    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.40.5'
+    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.42'
     // ...with Java.
-    androidTestAnnotationProcessor 'com.google.dagger:hilt-android-compiler:2.40.5'
+    androidTestAnnotationProcessor 'com.google.dagger:hilt-android-compiler:2.42'
 
     // Styling
     implementation "com.google.android.material:material:$material_version"
@@ -136,7 +135,7 @@ dependencies {
     //testImplementation 'androidx.test:core:1.4.0'
 
     // Optional -- Mockito framework
-    testImplementation 'org.mockito:mockito-core:4.2.0'
+    testImplementation 'org.mockito:mockito-core:4.6.1'
 
 //    // Core library
  androidTestImplementation 'androidx.test:core:1.4.0'
