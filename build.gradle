@@ -7,7 +7,7 @@ buildscript {
         hilt = '1.0.0'
         hilt_lifecycle_viewmodel = '1.0.0'
         junit5 = '5.7.0'
-        kotlin_version = '1.6.10'
+        kotlin_version = '1.7.1'
         lifecycleVersion = '2.4.1'
         material_version = '1.6.1'
         nav_version = '2.4.2'
@@ -21,7 +21,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.2.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.0"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$google_dagger_hilt"
         def nav_version = '2.4.1'
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
