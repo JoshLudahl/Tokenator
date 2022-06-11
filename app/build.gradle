@@ -7,13 +7,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 32
-    buildToolsVersion = "32.1.0-rc1"
+    compileSdkVersion 33
+    buildToolsVersion = "33.0"
 
     defaultConfig {
         applicationId "com.token.tokenator"
         minSdkVersion 23
-        targetSdkVersion 32
+        targetSdkVersion 33
         versionCode 31
         versionName "1.49"
 
