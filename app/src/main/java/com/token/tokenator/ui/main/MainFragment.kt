@@ -282,10 +282,16 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     private suspend fun generatePassword() {
 
         val chars = mutableListOf<Type>()
-        if (binding.switchLowerCase.isChecked) chars.add(Type.LOWERCASE)
-        if (binding.switchNumeric.isChecked) chars.add(Type.NUMERIC)
-        if (binding.switchSpecialCharacters.isChecked) chars.add(Type.SPECIAL)
-        if (binding.switchUppercase.isChecked) chars.add(Type.UPPERCASE)
+        val mapOfTypes = mapOf(
+            binding.switchLowerCase to Type.LOWERCASE,
+            binding.switchNumeric to Type.NUMERIC,
+            binding.switchSpecialCharacters to Type.SPECIAL,
+            binding.switchUppercase to Type.UPPERCASE
+        )
+
+        mapOfTypes.forEach { item ->
+            if (item.key.isChecked) chars.add(item.value)
+        }
 
         var length: Int = (binding.fluidSlider.position * 100).toInt()
         if (length < 8) {
