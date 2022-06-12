@@ -288,7 +288,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         if (binding.switchUppercase.isChecked) chars.add(Type.UPPERCASE)
 
         var length: Int = (binding.fluidSlider.position * 100).toInt()
-        if (length == 0) {
+        if (length < 8) {
             binding.fluidSlider.position = 0.08f
             length = 8
         }
