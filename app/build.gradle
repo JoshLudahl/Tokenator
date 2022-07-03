@@ -15,8 +15,8 @@ android {
         applicationId "com.token.tokenator"
         minSdkVersion 23
         targetSdkVersion target
-        versionCode 32
-        versionName "1.50"
+        versionCode 35
+        versionName "1.51"
 
         testInstrumentationRunner "com.token.tokenator.HiltAndroidJUnitRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
@@ -118,7 +118,7 @@ dependencies {
 
     // DataBinding & other
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0'
 
     // Fluid Slider
     implementation 'com.ramotion.fluidslider:fluid-slider:0.3.1'
@@ -145,7 +145,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.4.0'
     androidTestImplementation 'androidx.test:rules:1.4.0'
 
-    androidTestImplementation 'com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:3.1.2'
+    androidTestImplementation 'com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:4.0.0'
 
     androidTestImplementation 'com.github.JoshLudahl:espresso-library-kotlin:0.10.0'
 }

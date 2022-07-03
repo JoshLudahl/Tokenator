@@ -8,9 +8,9 @@ buildscript {
         hilt_lifecycle_viewmodel = '1.0.0'
         junit5 = '5.7.0'
         kotlin_version = '1.7.1'
-        lifecycleVersion = '2.4.1'
+        lifecycleVersion = '2.5.0'
         material_version = '1.6.1'
-        nav_version = '2.4.2'
+        nav_version = '2.5.0'
         room_version = '2.4.2'
     }
 
