@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -105,6 +106,18 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$google_dagger_hilt"
     kapt "com.google.dagger:hilt-android-compiler:$google_dagger_hilt"
     kapt "androidx.hilt:hilt-compiler:$hilt_lifecycle_viewmodel"
+
+    // Firebase
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:30.4.1')
+
+    // Add the dependency for the Realtime Database library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-database-ktx'
+
+    // Add the dependency for the Firebase SDK for Google Analytics
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
 
     // For instrumented tests.
     androidTestImplementation 'com.google.dagger:hilt-android-testing:2.42'
