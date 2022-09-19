@@ -11,6 +11,7 @@ android {
     def target = 33
     compileSdkVersion target
     buildToolsVersion = "33.0"
+    namespace 'com.token.tokenator'
 
     defaultConfig {
         applicationId "com.token.tokenator"
@@ -56,7 +57,6 @@ android {
     lint {
         disable 'JvmStaticProvidesInObjectDetector', 'FieldSiteTargetOnQualifierAnnotation', 'ModuleCompanionObjects', 'ModuleCompanionObjectsNotInModuleParent'
     }
-    namespace 'com.token.tokenator'
 
     buildTypes {
         release {
@@ -71,11 +71,10 @@ android {
             buildConfigField("String", "IV", "\"${System.getenv('IV')  ?: getProperty("IV")}\"")
         }
     }
+
     android.packagingOptions {
         exclude 'META-INF/*'
     }
-
-
 }
 
 dependencies {
