@@ -36,7 +36,7 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
             findNavController().navigateUp()
         }
 
-        val token = arguments?.get("token").toString().toIntOrNull()
+        val token = arguments?.getString("token").toString().toIntOrNull()
 
         token?.let {
             viewModel.getToken(it)
