@@ -42,6 +42,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                 app:layout_constraintEnd_toStartOf="@+id/token_visibility_icon"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
