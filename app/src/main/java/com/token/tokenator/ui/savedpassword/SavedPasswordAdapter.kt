@@ -35,7 +35,7 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
             }
 
             itemView.setOnClickListener {
-                val bundle = bundleOf("token" to token.id)
+                val bundle = bundleOf("token" to token.id.toString())
                 findNavController(it).navigate(
                     R.id.action_savedTokenFragment_to_passwordDetailFragment,
                     bundle
