@@ -36,7 +36,7 @@
                 android:id="@+id/token_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
                 android:textColor="@color/grayish"
                 android:textSize="18sp"
@@ -44,7 +44,7 @@
                 app:layout_constrainedWidth="true"
                 app:layout_constraintEnd_toStartOf="@+id/token_visibility_icon"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Login Title Name" />
 
@@ -134,6 +134,17 @@
                 app:layout_constraintEnd_toStartOf="@+id/trash_icon"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_copy" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="@dimen/savedIconSize"
+                android:layout_height="@dimen/savedIconSize"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/pencil_circle"
+                android:contentDescription="@string/edit_saved_token" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
