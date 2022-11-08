@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "980738157209",
+    "project_id": "tokenator-12c3d",
+    "storage_bucket": "tokenator-12c3d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980738157209:android:f35e4a740dd0fd6a3f2608",
+        "android_client_info": {
+          "package_name": "com.token.tokenator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "980738157209-v36p7n11ragpd73280b92pmbji0b05ss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCRl4eRNoOkDvqjPggn_4ly6jx-4uuR0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "980738157209-v36p7n11ragpd73280b92pmbji0b05ss.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
