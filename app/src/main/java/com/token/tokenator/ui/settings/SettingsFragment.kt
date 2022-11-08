@@ -18,8 +18,8 @@ import com.token.tokenator.model.Passphrase
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.utilities.DataPref
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SettingsFragment : Fragment(R.layout.settings_fragment) {
@@ -46,9 +46,11 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         _binding = SettingsFragmentBinding.bind(view)
         binding.viewModel = viewModel
 
-        val adapter = SettingsAdapter(SettingsListener {
-            onItemClick(it)
-        })
+        val adapter = SettingsAdapter(
+            SettingsListener {
+                onItemClick(it)
+            }
+        )
 
         setUpRecyclerView(adapter)
         setUpListeners()

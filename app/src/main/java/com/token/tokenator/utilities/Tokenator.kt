@@ -52,20 +52,18 @@ object Tokenator {
             Log.d("Token:", "Checking if need to validate new token")
 
             val phraseLengthAndLength = includePhrase.length + length
-            Log.d("Token: phrase and length", "${phraseLengthAndLength}")
-
+            Log.d("Token: phrase and length", "$phraseLengthAndLength")
 
             val totalMinusExcludedSize = TOTAL_CHARACTERS - excludedCharacters.size
             Log.d("Token: totesMinus", "$totalMinusExcludedSize")
-
 
             val phraseLengthAndTypeListSize = includePhrase.length + includesTypesList.size
             Log.d("Token: ippitl", "$phraseLengthAndTypeListSize")
 
             isValidated = if (
-                phraseLengthAndLength <= totalMinusExcludedSize
-                && phraseLengthAndTypeListSize > length
-                && includePhrase.length + 1 != length
+                phraseLengthAndLength <= totalMinusExcludedSize &&
+                phraseLengthAndTypeListSize > length &&
+                includePhrase.length + 1 != length
             ) {
                 Log.d("Token: validating", token)
                 isValidated(

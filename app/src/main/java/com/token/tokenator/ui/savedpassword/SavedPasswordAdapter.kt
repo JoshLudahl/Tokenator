@@ -57,7 +57,6 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
 
                                     this.text = Encryption.decrypt(it)
                                 }
-
                             }
                         }
                     }

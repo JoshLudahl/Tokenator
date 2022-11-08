@@ -10,13 +10,14 @@ import com.token.tokenator.database.token.TokenRepository
 import com.token.tokenator.model.Token
 import com.token.tokenator.utilities.Encryption
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import kotlin.math.abs
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class PasswordDetailViewModel @Inject constructor(
@@ -69,7 +70,7 @@ class PasswordDetailViewModel @Inject constructor(
         login: String? = null
     ) {
         try {
-            //val encryptedName = Encryption.encrypt(passwordName) ?: "No name"
+            // val encryptedName = Encryption.encrypt(passwordName) ?: "No name"
             val encryptedToken = Encryption.encrypt(token)
             val encryptedLogin = login?.trim()?.let {
                 if (it.isNotEmpty()) {

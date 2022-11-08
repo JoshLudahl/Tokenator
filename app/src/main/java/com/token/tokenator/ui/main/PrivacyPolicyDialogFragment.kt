@@ -17,13 +17,13 @@ class PrivacyPolicyDialogFragment : DialogFragment() {
     private val viewModel: PrivacyPolicyDialogViewModel by viewModels()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return activity?.let {fragmentActivity ->
+        return activity?.let { fragmentActivity ->
             // Use the Builder class for convenient dialog construction
             val builder = AlertDialog.Builder(fragmentActivity)
             // Create the AlertDialog object and return it
 
             _binding = DataBindingUtil.inflate(
-                 layoutInflater.cloneInContext(context),
+                layoutInflater.cloneInContext(context),
                 R.layout.privacy_policy_dialog_fragment,
                 null,
                 false
@@ -42,7 +42,6 @@ class PrivacyPolicyDialogFragment : DialogFragment() {
                 }
             }
             builder.create()
-
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 }

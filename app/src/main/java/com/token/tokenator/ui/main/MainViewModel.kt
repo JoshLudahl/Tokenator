@@ -5,11 +5,19 @@ import android.view.View
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.lifecycle.*
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.token.tokenator.BuildConfig
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.database.token.TokenRepository
-import com.token.tokenator.di.*
+import com.token.tokenator.di.DataStoreLowercase
+import com.token.tokenator.di.DataStoreNoRepeat
+import com.token.tokenator.di.DataStoreNumeric
+import com.token.tokenator.di.DataStoreSpecialCharacters
+import com.token.tokenator.di.DataStoreUppercase
 import com.token.tokenator.model.Passphrase
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Token
@@ -17,10 +25,14 @@ import com.token.tokenator.model.Type
 import com.token.tokenator.utilities.DataPref
 import com.token.tokenator.utilities.Encryption
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -84,7 +96,7 @@ class MainViewModel @Inject constructor(
         _tokenNameEditTextLabelVisibility.value = View.GONE
         _tokenNameEditTextFieldVisibility.value = View.GONE
 
-        //set switches
+        // set switches
         viewModelScope.launch {
             repository.passphraseflow?.collectLatest {
                 _passphrase.value = it
@@ -106,7 +118,6 @@ class MainViewModel @Inject constructor(
             _switchUpperCase.value = (DataPref.readDataStore(uppercase, dataStore) ?: true)
                 .toString()
                 .toBoolean()
-
         }
 
         viewModelScope.launch {
@@ -180,7 +191,7 @@ class MainViewModel @Inject constructor(
         login: String? = null
     ) {
         try {
-            //val encryptedName = Encryption.encrypt(passwordName) ?: "No name"
+            // val encryptedName = Encryption.encrypt(passwordName) ?: "No name"
             val encryptedToken = Encryption.encrypt(token)
             val encryptedLogin = login?.trim()?.let {
                 if (it.isNotEmpty()) {

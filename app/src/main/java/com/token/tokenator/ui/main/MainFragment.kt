@@ -23,18 +23,25 @@ import com.token.tokenator.database.settingsitem.PopulateDatabase
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.database.token.TokenRepository
 import com.token.tokenator.databinding.MainFragmentBinding
-import com.token.tokenator.di.*
+import com.token.tokenator.di.DataStoreCharacterPopulation
+import com.token.tokenator.di.DataStoreFeature
+import com.token.tokenator.di.DataStoreLowercase
+import com.token.tokenator.di.DataStoreNoRepeat
+import com.token.tokenator.di.DataStoreNumeric
+import com.token.tokenator.di.DataStorePassPhrase
+import com.token.tokenator.di.DataStorePassPhraseIncluded
+import com.token.tokenator.di.DataStoreSpecialCharacters
+import com.token.tokenator.di.DataStoreUppercase
 import com.token.tokenator.model.Type
 import com.token.tokenator.utilities.Clipuous
 import com.token.tokenator.utilities.DataPref
 import com.token.tokenator.utilities.FeatureDiscovery
 import com.token.tokenator.utilities.Tokenator
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.properties.Delegates
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.main_fragment) {
@@ -205,7 +212,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 saveSwitchState(type, !it.value)
             }
         }
-
     }
 
     private fun populateSettingsItem() {
@@ -251,7 +257,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                             )
                             showFeature()
                             saveDataStore(feature, true)
-
                         } else {
                             Log.i("FEATURE", "Skipping feature because it has been shown.")
                         }

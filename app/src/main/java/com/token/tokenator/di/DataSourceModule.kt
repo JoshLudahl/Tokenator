@@ -34,7 +34,7 @@ object DataSourceModule {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.execSQL(
                     "CREATE TABLE `passphrase` (`id` INTEGER NOT NULL, `phrase` TEXT, " +
-                            "PRIMARY KEY(`id`))"
+                        "PRIMARY KEY(`id`))"
                 )
             }
         }
