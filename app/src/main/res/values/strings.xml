@@ -72,5 +72,5 @@
     <string name="token">Token</string>
     <string name="logo">logo</string>
     <string name="enter">Enter</string>
-    <string name="edit_saved_token">Edit saved token</string>
+    <string name="edit_saved_token" translatable="false">Edit saved token</string>
 </resources>
