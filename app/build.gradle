@@ -6,6 +6,7 @@ plugins {
     id 'androidx.navigation.safeargs'
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
+    id 'com.google.firebase.firebase-perf'
 }
 
 android {
@@ -126,6 +127,8 @@ dependencies {
     // Add the dependency for the Firebase SDK for Google Analytics
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
+    // Add Performance lib
+    implementation 'com.google.firebase:firebase-perf-ktx'
 
     // For instrumented tests.
     androidTestImplementation 'com.google.dagger:hilt-android-testing:2.42'
