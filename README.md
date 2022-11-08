@@ -7,7 +7,7 @@ Simply toggle the option you want and select the generate button. Passwords defa
 
 Generating a password automatically copies the password to your clipboard. Tokenator is the easiest way to generate a secure password.
 
-Easily generate a password ranging from 1-100 characters. Easy, so easy. 
+Easily generate a password ranging from 8-100 characters. Easy, so easy. 
 
 ## Important concerns:
 * No ads
@@ -21,7 +21,7 @@ Easily generate a password ranging from 1-100 characters. Easy, so easy.
 * Easy to use slider for password length
 * Click to copy generated password to your clipboard
 * Hybrid dark/light theme utilizing softer, less dramatic colors
-* Generate passwords ranging 1-100 in length, 8 is set as the default
+* Generate passwords ranging 8-100 in length, 8 is set as the default
 * Customize which characters to use 
 * Save the generated password
 * The passwords are encrypted before saving to your device
