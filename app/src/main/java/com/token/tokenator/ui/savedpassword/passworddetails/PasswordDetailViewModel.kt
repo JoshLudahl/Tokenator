@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.token.tokenator.database.token.TokenRepository
 import com.token.tokenator.model.Token
 import com.token.tokenator.utilities.Encryption
+import com.token.tokenator.utilities.tokenatorTag
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -51,7 +52,7 @@ class PasswordDetailViewModel @Inject constructor(
 
             _shouldShowWarning.value =
                 if (isOldPassword(newToken?.date ?: Date().toString())) View.VISIBLE else View.GONE
-            Log.i("DATE", _token.value?.date.toString())
+            Log.i(tokenatorTag, "DATE: ${_token.value?.date}")
         }
     }
 
