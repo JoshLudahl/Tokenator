@@ -6,11 +6,9 @@ class TokenatorTest {
 
     @Test
     fun `has no repeats`() {
-
     }
 
     @Test
     fun `has no duplicates`() {
-
     }
 }

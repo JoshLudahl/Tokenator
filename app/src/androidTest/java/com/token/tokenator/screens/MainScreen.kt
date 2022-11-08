@@ -1,7 +1,15 @@
 package com.token.tokenator.screens
 
 import androidx.test.espresso.action.ViewActions.typeText
-import com.softklass.elk.espresso.*
+import com.softklass.elk.espresso.click
+import com.softklass.elk.espresso.confirm
+import com.softklass.elk.espresso.into
+import com.softklass.elk.espresso.isDisplayed
+import com.softklass.elk.espresso.not
+import com.softklass.elk.espresso.on
+import com.softklass.elk.espresso.scrollTo
+import com.softklass.elk.espresso.toastMatcher
+import com.softklass.elk.espresso.view
 import com.token.tokenator.R
 import com.token.tokenator.model.Type
 
@@ -9,7 +17,6 @@ class MainScreen {
 
     fun selectSettingsButton() {
         click on view(R.id.settings_button)
-
     }
 
     fun selectBookmarkButton() {

@@ -14,5 +14,4 @@ import com.token.tokenator.model.SettingsItem
 abstract class SettingsItemDatabase : RoomDatabase() {
 
     abstract fun settingsItemDao(): SettingsItemDao
-
 }
