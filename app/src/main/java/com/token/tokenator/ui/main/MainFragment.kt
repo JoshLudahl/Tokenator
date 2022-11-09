@@ -37,6 +37,7 @@ import com.token.tokenator.utilities.Clipuous
 import com.token.tokenator.utilities.DataPref
 import com.token.tokenator.utilities.FeatureDiscovery
 import com.token.tokenator.utilities.Tokenator
+import com.token.tokenator.utilities.alert.GenericAlert
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlin.properties.Delegates
@@ -146,7 +147,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
 
         binding.privacyPolicyText.setOnClickListener {
-            val showPolicy = PrivacyPolicyDialogFragment()
+            val showPolicy = GenericAlert()
             showPolicy.show(parentFragmentManager, "Privacy Policy")
         }
 
