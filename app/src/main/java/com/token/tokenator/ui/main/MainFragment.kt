@@ -147,8 +147,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
 
         binding.privacyPolicyText.setOnClickListener {
-            val showPolicy = GenericAlert()
-            showPolicy.show(parentFragmentManager, "Privacy Policy")
+            GenericAlert(R.string.privacy_policy)
+                .show(parentFragmentManager, "Privacy Policy")
         }
 
         binding.fluidSlider

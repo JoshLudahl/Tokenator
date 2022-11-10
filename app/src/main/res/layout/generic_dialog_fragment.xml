@@ -48,7 +48,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:text="@{viewModel.titleText}"
                     android:textAlignment="center"
                     android:textSize="30sp"
                     android:textColor="@color/blackish"

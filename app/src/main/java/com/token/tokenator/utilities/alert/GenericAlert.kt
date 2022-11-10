@@ -2,6 +2,7 @@ package com.token.tokenator.utilities.alert
 
 import android.app.Dialog
 import android.os.Bundle
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
@@ -10,7 +11,9 @@ import androidx.lifecycle.lifecycleScope
 import com.token.tokenator.R
 import com.token.tokenator.databinding.GenericDialogFragmentBinding
 
-class GenericAlert : DialogFragment() {
+class GenericAlert(
+    @StringRes val title: Int
+) : DialogFragment() {
     private var _binding: GenericDialogFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel: GenericAlertViewModel by viewModels()
@@ -28,6 +31,9 @@ class GenericAlert : DialogFragment() {
                 false
             )
             binding.viewModel = viewModel
+
+            binding.privacyPolicyTextHeader.text = getText(title)
+
             builder.setView(binding.root)
 
             lifecycleScope.launchWhenStarted {
