@@ -172,11 +172,11 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:4.6.1'
 
     // Core library
-    androidTestImplementation 'androidx.test:core:1.4.0'
+    androidTestImplementation 'androidx.test:core:1.5.0'
 
     // AndroidJUnitRunner and JUnit Rules
-    androidTestImplementation 'androidx.test:runner:1.4.0'
-    androidTestImplementation 'androidx.test:rules:1.4.0'
+    androidTestImplementation 'androidx.test:runner:1.5.1'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
     androidTestImplementation 'com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:4.0.0'
     androidTestImplementation 'com.github.JoshLudahl:espresso-library-kotlin:0.10.0'
 }
