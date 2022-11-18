@@ -32,7 +32,7 @@ jobs:
     runs-on: macOS-latest
     strategy:
       matrix:
-        api-level: [31]
+        api-level: [29]
         target: [default]
     steps:
       - name: Checkout Code
@@ -51,7 +51,7 @@ jobs:
           api-level: ${{ matrix.api-level }}
           target: ${{ matrix.target }}
           arch: x86
-          profile: Pixel 4a
+          profile: Nexus 6
           script: ./gradlew connectedCheck --stacktrace
 
       - name: Upload Reports
