@@ -52,11 +52,11 @@ jobs:
           target: ${{ matrix.target }}
           arch: x86_64
           profile: Pixel 5
-          script: ./gradlew connectedCheck --stacktrace
-          env:
-            SECRET_KEY: ${{ secrets.SECRET_KEY }}
-            IV: ${{ secrets.IV }}
-            SALT: ${{ secrets.SALT }}
+        script: ./gradlew connectedCheck --stacktrace
+        env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          IV: ${{ secrets.IV }}
+          SALT: ${{ secrets.SALT }}
 
       - name: Upload Reports
         uses: actions/upload-artifact@v2
