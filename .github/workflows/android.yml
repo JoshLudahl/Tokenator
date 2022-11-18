@@ -32,7 +32,7 @@ jobs:
     runs-on: macOS-latest
     strategy:
       matrix:
-        android: [ 32, 31 ]
+        android: [ 31 ]
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -48,5 +48,5 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.android }}
-          target: google_apis
+          default: google_apis
           script: ./gradlew connectedCheck
