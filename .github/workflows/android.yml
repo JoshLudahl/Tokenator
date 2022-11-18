@@ -49,4 +49,8 @@ jobs:
         with:
           api-level: ${{ matrix.android }}
           default: google_apis
+          arch: x86
           script: ./gradlew connectedCheck
+          emulator-options: >-
+            -camera-back none -camera-front none -gpu swiftshader_indirect
+            -memory 3000 -no-audio -no-boot-anim -no-snapshot -no-window
