@@ -32,9 +32,10 @@ jobs:
     runs-on: macOS-latest
     strategy:
       matrix:
-        android: [ 31 ]
+        api-level: [ 31 ]
+        target: default
     steps:
-      - name: checkout
+      - name: Checkout Code
         uses: actions/checkout@v2
 
       - name: set up JDK 11
@@ -44,13 +45,18 @@ jobs:
           distribution: 'adopt'
           cache: gradle
 
-      - name: run tests
+      - name: Run Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: ${{ matrix.android }}
-          default: google_apis
+          api-level: ${{ matrix.api-level }}
+          target: ${{ martix.target }}
           arch: x86
-          script: ./gradlew connectedCheck
-          emulator-options: >-
-            -camera-back none -camera-front none -gpu swiftshader_indirect
-            -memory 3000 -no-audio -no-boot-anim -no-snapshot -no-window
+          profile: Pixel 4a
+          script: ./gradlew connectedCheck --stacktrace
+
+      - name: Upload Reports
+          uses: actions/upload-artifact@v2
+          with:
+            name: Test-Reports
+            path: app/build/reports
+          if: always()
