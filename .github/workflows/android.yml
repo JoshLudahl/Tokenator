@@ -49,7 +49,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
-          target: ${{ martix.target }}
+          target: ${{ matrix.target }}
           arch: x86
           profile: Pixel 4a
           script: ./gradlew connectedCheck --stacktrace
