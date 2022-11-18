@@ -73,4 +73,5 @@
     <string name="logo">logo</string>
     <string name="enter">Enter</string>
     <string name="edit_saved_token" translatable="false">Edit saved token</string>
+    <string name="string_value_placeholder">placeholder</string>
 </resources>

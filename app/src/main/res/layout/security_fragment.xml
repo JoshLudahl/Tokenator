@@ -8,18 +8,18 @@
             type="com.token.tokenator.ui.security.SecurityViewModel" />
     </data>
 
-    <FrameLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.security.SecurityFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/yellow">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayout"
+                android:id="@+id/text_input_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -37,19 +37,20 @@
                     android:layout_marginStart="64dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginEnd="64dp"
+                    android:hint="@string/string_value_placeholder"
                     android:imeOptions="actionDone"
                     android:inputType="numberPassword"
                     android:maxLength="4"
                     android:textAlignment="center"
-                    android:textSize="64sp"
                     android:textColor="@color/yellow"
+                    android:textSize="64sp"
                     app:layout_constrainedWidth="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.button.MaterialButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/materialButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,9 +62,9 @@
                 android:background="@color/blackish"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout" />
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:minHeight="68dp"
@@ -76,5 +77,5 @@
                 app:srcCompat="@drawable/ic_tokenator"
                 android:contentDescription="@string/logo" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </FrameLayout>
+    </ScrollView>
 </layout>
