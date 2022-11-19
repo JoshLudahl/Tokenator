@@ -51,8 +51,8 @@ jobs:
           api-level: ${{ matrix.api-level }}
           target: ${{ matrix.target }}
           arch: x86_64
-
-          script: ./gradlew connectedCheck --stacktrace
+          profile: Pixel 4a
+          script: ./gradlew connectedAndroidTest --stacktrace
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
           IV: ${{ secrets.IV }}
