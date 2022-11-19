@@ -43,11 +43,17 @@ class MainScreen {
     }
 
     fun generatePasswordFieldIsNotEmpty() {
-        view(R.id.generated_field) confirm view("").not()
+        with(view(R.id.generated_field)) {
+            scrollTo()
+            this confirm view("").not()
+        }
     }
 
     fun enterTextIntoPasswordNameField(text: String) {
-        typeText(text) into view(R.id.token_name)
+        with(view(R.id.token_name)) {
+            scrollTo()
+            typeText(text) into this
+        }
     }
 
     fun selectSavedPasswordField() {
