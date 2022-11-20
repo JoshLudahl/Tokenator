@@ -151,8 +151,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 .show(parentFragmentManager, "Privacy Policy")
         }
 
-        binding.fluidSlider
-
         binding.tokenName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
