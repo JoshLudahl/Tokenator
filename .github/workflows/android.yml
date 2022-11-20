@@ -32,7 +32,7 @@ jobs:
     runs-on: macOS-latest
     strategy:
       matrix:
-        api-level: [32, 31]
+        api-level: [31]
         target: [default]
     steps:
       - name: Checkout Code
