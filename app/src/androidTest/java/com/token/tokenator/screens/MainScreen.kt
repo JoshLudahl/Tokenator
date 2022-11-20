@@ -83,6 +83,7 @@ class MainScreen {
 
     fun generatedFieldDoeNotContainType(type: Type) {
         targetContext.stringValue(getSwitchTypeRes(type))
+        // TODO updated to check for exclusion
     }
 
     private fun getSwitchTypeRes(type: Type): Int {
