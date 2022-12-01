@@ -7,16 +7,8 @@ buildscript {
         hilt_lifecycle_viewmodel = '1.0.0'
         junit5 = '5.7.0'
         kotlin_version = '1.7.1'
-        lifecycleVersion = '2.5.1'
         material_version = '1.7.0'
         nav_version = '2.5.3'
-        room_version = '2.4.3'
-    }
-
-    repositories {
-        google()
-        mavenCentral()
-        maven { url 'https://jitpack.io' }
     }
 
     dependencies {
@@ -33,14 +25,6 @@ buildscript {
 
 plugins {
     id "org.jlleitschuh.gradle.ktlint" version "11.0.0"
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven { url 'https://jitpack.io' }
-    }
 }
 
 task clean(type: Delete) {
