@@ -8,7 +8,9 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.token.tokenator.R
@@ -56,12 +58,14 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         setUpListeners()
         setupObservers(adapter)
 
-        lifecycleScope.launchWhenStarted {
-            binding
-                .noRepeatCharactersSwitch
-                .isChecked = (DataPref.readDataStore(noRepeat, dataStore) ?: true)
-                .toString()
-                .toBoolean()
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                binding
+                    .noRepeatCharactersSwitch
+                    .isChecked = (DataPref.readDataStore(noRepeat, dataStore) ?: true)
+                    .toString()
+                    .toBoolean()
+            }
         }
     }
 
