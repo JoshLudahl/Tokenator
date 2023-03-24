@@ -1,7 +1,6 @@
 package com.token.tokenator.screens
 
 import androidx.annotation.IdRes
-import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.action.ViewActions.typeText
 import com.softklass.elk.common.stringValue
 import com.softklass.elk.common.targetContext
