@@ -6,10 +6,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.token.tokenator.R
 import com.token.tokenator.databinding.PrivacyPolicyDialogFragmentBinding
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class PrivacyPolicyDialogFragment : DialogFragment() {
     private var _binding: PrivacyPolicyDialogFragmentBinding? = null
@@ -31,13 +34,15 @@ class PrivacyPolicyDialogFragment : DialogFragment() {
             binding.viewModel = viewModel
             builder.setView(binding.root)
 
-            lifecycleScope.launchWhenStarted {
-                viewModel.shouldDismiss.collect { shouldCancel ->
-                    when (shouldCancel) {
-                        true -> {
-                            dialog?.cancel()
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                    viewModel.shouldDismiss.collect { shouldCancel ->
+                        when (shouldCancel) {
+                            true -> {
+                                dialog?.cancel()
+                            }
+                            else -> Unit
                         }
-                        else -> Unit
                     }
                 }
             }

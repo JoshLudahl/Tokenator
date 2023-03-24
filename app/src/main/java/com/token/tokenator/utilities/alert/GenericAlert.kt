@@ -7,9 +7,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.token.tokenator.R
 import com.token.tokenator.databinding.GenericDialogFragmentBinding
+import kotlinx.coroutines.launch
 
 class GenericAlert(
     @StringRes val title: Int
@@ -36,13 +39,15 @@ class GenericAlert(
 
             builder.setView(binding.root)
 
-            lifecycleScope.launchWhenStarted {
-                viewModel.shouldDismiss.collect { shouldCancel ->
-                    when (shouldCancel) {
-                        true -> {
-                            dialog?.cancel()
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.shouldDismiss.collect { shouldCancel ->
+                        when (shouldCancel) {
+                            true -> {
+                                dialog?.cancel()
+                            }
+                            else -> Unit
                         }
-                        else -> Unit
                     }
                 }
             }
