@@ -1,6 +1,6 @@
 [![Android CI](https://github.com/JoshLudahl/Tokenator/actions/workflows/android.yml/badge.svg)](https://github.com/JoshLudahl/Tokenator/actions/workflows/android.yml)
 # Tokenator for Android
-A password generator written in Kotlin. 
+A password generator written in Kotlin. Themed after the Spotted Towhee bird.
 
 Tokenator is an easy-to-use password generator & manager offering passwords generated to use uppercase, lowercase, numeric, and/or special character options. 
 Simply toggle the option you want and select the generate button. Passwords default to 8 characters but can range from 8-100 in character length.
