@@ -2,7 +2,7 @@
 buildscript {
     ext {
         espresso_version = '3.4.0'
-        google_dagger_hilt = '2.45'
+        google_dagger_hilt = '2.46'
         hilt = '1.0.0'
         hilt_lifecycle_viewmodel = '1.0.0'
         junit5 = '5.7.0'
