@@ -59,7 +59,7 @@ jobs:
           SALT: ${{ secrets.SALT }}
 
       - name: Upload Reports
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Test-Reports
           path: app/build/reports
