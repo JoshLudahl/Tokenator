@@ -1,0 +1,77 @@
+[versions]
+accessibilityTestFramework = "4.1.1"
+appcompat = "1.6.1"
+constraintlayout = "2.1.4"
+core = "1.5.0"
+coreKtx = "1.13.1"
+datastorePreferences = "1.1.1"
+espressoLibraryKotlin = "2023.9.01"
+firebaseBom = "33.0.0"
+fluidSlider = "0.3.1"
+googleServices = "4.4.1"
+gradle = "8.4.0"
+hiltAndroid = "2.51.1"
+hiltAndroidGradlePlugin = "2.51.1"
+hiltAndroidTesting = "2.51.1"
+hiltCompiler = "1.2.0"
+junit = "4.13.2"
+kotlinGradlePlugin = "1.9.24"
+legacySupportV4 = "1.0.0"
+lifecycleExtensions = "2.2.0"
+lifecycleLivedataKtx = "2.8.0"
+material = "1.12.0"
+materialTapTargetPrompt = "3.3.2"
+mockitoCore = "5.4.0"
+navigationFragmentKtx = "2.7.7"
+orchestrator = "1.4.2"
+perfPlugin = "1.4.2"
+roomRuntime = "2.6.1"
+runner = "1.5.2"
+
+[libraries]
+accessibility-test-framework = { module = "com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework", version.ref = "accessibilityTestFramework" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+androidx-core = { module = "androidx.test:core", version.ref = "core" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
+androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltCompiler" }
+androidx-legacy-support-v4 = { module = "androidx.legacy:legacy-support-v4", version.ref = "legacySupportV4" }
+androidx-lifecycle-extensions = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "lifecycleExtensions" }
+androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleLivedataKtx" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleLivedataKtx" }
+androidx-navigation-dynamic-features-fragment = { module = "androidx.navigation:navigation-dynamic-features-fragment", version.ref = "navigationFragmentKtx" }
+androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationFragmentKtx" }
+androidx-navigation-testing = { module = "androidx.navigation:navigation-testing", version.ref = "navigationFragmentKtx" }
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationFragmentKtx" }
+androidx-orchestrator = { module = "androidx.test:orchestrator", version.ref = "orchestrator" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomRuntime" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomRuntime" }
+androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "roomRuntime" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "roomRuntime" }
+androidx-rules = { module = "androidx.test:rules", version.ref = "core" }
+androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
+espresso-library-kotlin = { module = "com.github.JoshLudahl:espresso-library-kotlin", version.ref = "espressoLibraryKotlin" }
+firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-crashlytics-ktx = { module = "com.google.firebase:firebase-crashlytics-ktx" }
+firebase-database-ktx = { module = "com.google.firebase:firebase-database-ktx" }
+firebase-perf-ktx = { module = "com.google.firebase:firebase-perf-ktx" }
+fluid-slider = { module = "com.ramotion.fluidslider:fluid-slider", version.ref = "fluidSlider" }
+google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroid" }
+hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hiltAndroidGradlePlugin" }
+hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hiltAndroidTesting" }
+junit = { module = "junit:junit", version.ref = "junit" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+material-tap-target-prompt = { module = "uk.co.samuelwall:material-tap-target-prompt", version.ref = "materialTapTargetPrompt" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
+perf-plugin = { module = "com.google.firebase:perf-plugin", version.ref = "perfPlugin" }
+
+[plugins]
