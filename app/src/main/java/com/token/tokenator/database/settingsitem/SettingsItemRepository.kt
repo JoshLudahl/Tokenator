@@ -26,5 +26,5 @@ class SettingsItemRepository(private val settingsItemDao: SettingsItemDao) {
 
     suspend fun insert(settingsItem: SettingsItem) = settingsItemDao.insert(settingsItem)
 
-    fun update(settingsItem: SettingsItem) = settingsItemDao.updateCharacter(settingsItem)
+    suspend fun update(settingsItem: SettingsItem) = settingsItemDao.updateCharacter(settingsItem)
 }
