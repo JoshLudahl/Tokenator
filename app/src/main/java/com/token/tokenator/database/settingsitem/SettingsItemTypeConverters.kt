@@ -4,7 +4,6 @@ import androidx.room.TypeConverter
 import com.token.tokenator.model.Type
 
 class SettingsItemTypeConverters {
-
     @TypeConverter
     fun toType(string: String) = enumValueOf<Type>(string)
 

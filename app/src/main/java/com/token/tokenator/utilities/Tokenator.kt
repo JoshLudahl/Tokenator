@@ -6,11 +6,10 @@ import kotlin.random.Random
 import kotlin.random.nextInt
 
 object Tokenator {
-
     private val arrayOfSpecialCharacters =
         arrayListOf(
             33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 58, 59, 60, 61, 62,
-            63, 64, 91, 92, 93, 94, 95, 96, 123, 124, 125, 126
+            63, 64, 91, 92, 93, 94, 95, 96, 123, 124, 125, 126,
         )
 
     private const val TOTAL_CHARACTERS = 92
@@ -26,9 +25,8 @@ object Tokenator {
         includesTypesList: MutableList<Type>,
         excludedCharacters: List<String>,
         doNotRepeat: Boolean,
-        includePhrase: String = ""
+        includePhrase: String = "",
     ): String {
-
         val sb = StringBuilder()
 
         var isValidated = false
@@ -40,13 +38,14 @@ object Tokenator {
             sb.append(includePhrase)
             if (includePhrase.length >= length) return includePhrase
             Log.d("Token:", "Generating new token.")
-            val token = generateTokenString(
-                excludedCharacters = excludedCharacters,
-                length = length - includePhrase.length,
-                passphrase = includePhrase,
-                shouldNotRepeat = doNotRepeat,
-                typesList = includesTypesList
-            )
+            val token =
+                generateTokenString(
+                    excludedCharacters = excludedCharacters,
+                    length = length - includePhrase.length,
+                    passphrase = includePhrase,
+                    shouldNotRepeat = doNotRepeat,
+                    typesList = includesTypesList,
+                )
             sb.append(token)
 
             Log.d("Token:", "Checking if need to validate new token")
@@ -60,19 +59,20 @@ object Tokenator {
             val phraseLengthAndTypeListSize = includePhrase.length + includesTypesList.size
             Log.d("Token: ippitl", "$phraseLengthAndTypeListSize")
 
-            isValidated = if (
-                phraseLengthAndLength <= totalMinusExcludedSize &&
-                phraseLengthAndTypeListSize > length &&
-                includePhrase.length + 1 != length
-            ) {
-                Log.d("Token: validating", token)
-                isValidated(
-                    token = sb,
-                    typeList = includesTypesList
-                )
-            } else {
-                true
-            }
+            isValidated =
+                if (
+                    phraseLengthAndLength <= totalMinusExcludedSize &&
+                    phraseLengthAndTypeListSize > length &&
+                    includePhrase.length + 1 != length
+                ) {
+                    Log.d("Token: validating", token)
+                    isValidated(
+                        token = sb,
+                        typeList = includesTypesList,
+                    )
+                } else {
+                    true
+                }
         }
         return sb.toString()
     }
@@ -82,7 +82,7 @@ object Tokenator {
         length: Int,
         passphrase: String,
         shouldNotRepeat: Boolean,
-        typesList: MutableList<Type>
+        typesList: MutableList<Type>,
     ): String {
         val token = StringBuilder()
         var looper = 0
@@ -110,7 +110,7 @@ object Tokenator {
 
     private fun isValidated(
         token: StringBuilder,
-        typeList: MutableList<Type>
+        typeList: MutableList<Type>,
     ): Boolean {
         if (containsAllSpecialTypes(string = token.toString(), typeList)) return true
         return false
@@ -126,7 +126,10 @@ object Tokenator {
         }.toString()
     }
 
-    private fun containsAllSpecialTypes(string: String, typelist: List<Type>): Boolean {
+    private fun containsAllSpecialTypes(
+        string: String,
+        typelist: List<Type>,
+    ): Boolean {
         typelist.forEach { type ->
             when (type) {
                 Type.LOWERCASE -> (97..122).map { it.toChar().toString() }.toList()
@@ -140,14 +143,20 @@ object Tokenator {
         return true
     }
 
-    private fun stringContainsItem(string: String, charList: List<String>): Boolean {
+    private fun stringContainsItem(
+        string: String,
+        charList: List<String>,
+    ): Boolean {
         charList.forEach { numericValue ->
             if (string.contains(numericValue)) return true
         }
         return false
     }
 
-    private fun getRandomNumber(lowerBound: Int, upperBound: Int): Int {
+    private fun getRandomNumber(
+        lowerBound: Int,
+        upperBound: Int,
+    ): Int {
         return Random.nextInt(lowerBound..upperBound)
     }
 

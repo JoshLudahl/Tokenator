@@ -20,61 +20,56 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DataSourceModule {
-
     @Singleton
     @Provides
     fun providesTokenDatabase(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ) = Room.databaseBuilder(
         context,
         TokenDatabase::class.java,
-        "token_database"
+        "token_database",
     ).addMigrations(
         object : Migration(4, 5) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.execSQL(
                     "CREATE TABLE `passphrase` (`id` INTEGER NOT NULL, `phrase` TEXT, " +
-                        "PRIMARY KEY(`id`))"
+                        "PRIMARY KEY(`id`))",
                 )
             }
-        }
+        },
     ).addMigrations(
         object : Migration(5, 6) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.execSQL(
-                    "ALTER TABLE token_table ADD COLUMN login TEXT DEFAULT NULL"
+                    "ALTER TABLE token_table ADD COLUMN login TEXT DEFAULT NULL",
                 )
             }
-        }
+        },
     ).build()
 
     @Singleton
     @Provides
-    fun providesTokenDao(database: TokenDatabase) =
-        database.tokenDao()
+    fun providesTokenDao(database: TokenDatabase) = database.tokenDao()
 
     @Singleton
     @Provides
-    fun providesTokenRepository(tokenDao: TokenDao) =
-        TokenRepository(tokenDao)
+    fun providesTokenRepository(tokenDao: TokenDao) = TokenRepository(tokenDao)
 
     @Singleton
     @Provides
     fun providesSettingsItemDatabase(
-        @ApplicationContext context: Context
+        @ApplicationContext context: Context,
     ) = Room.databaseBuilder(
         context,
         SettingsItemDatabase::class.java,
-        "settingsitem_database"
+        "settingsitem_database",
     ).build()
 
     @Singleton
     @Provides
-    fun providesSettingsItemDao(database: SettingsItemDatabase) =
-        database.settingsItemDao()
+    fun providesSettingsItemDao(database: SettingsItemDatabase) = database.settingsItemDao()
 
     @Singleton
     @Provides
-    fun providesSettingsItemRepository(settingsItemDao: SettingsItemDao) =
-        SettingsItemRepository(settingsItemDao)
+    fun providesSettingsItemRepository(settingsItemDao: SettingsItemDao) = SettingsItemRepository(settingsItemDao)
 }

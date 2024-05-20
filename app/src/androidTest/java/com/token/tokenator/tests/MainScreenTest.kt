@@ -17,7 +17,6 @@ import org.junit.Test
 
 @HiltAndroidTest
 class MainScreenTest : BaseTest() {
-
     @Before
     fun before() {
         @Given("I am on the main screen")

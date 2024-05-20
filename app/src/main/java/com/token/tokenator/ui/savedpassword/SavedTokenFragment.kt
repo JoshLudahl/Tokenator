@@ -16,23 +16,26 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
-
     private val viewModel: SavedTokenViewModel by viewModels()
     private var _binding: SavedTokenFragmentBinding? = null
     private val binding get() = _binding!!
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = SavedTokenFragmentBinding.bind(view)
         binding.tokenViewModel = viewModel
         binding.lifecycleOwner = this.viewLifecycleOwner
 
-        val adapter = SavedPasswordAdapter(
-            TokenListener {
-                delete(it)
-            }
-        )
+        val adapter =
+            SavedPasswordAdapter(
+                TokenListener {
+                    delete(it)
+                },
+            )
 
         binding.passwordRecyclerView.apply {
             this.adapter = adapter
@@ -46,25 +49,29 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
         viewModel.tokens.observe(viewLifecycleOwner) {
             it?.let {
                 adapter.setItems(it)
-                if (it.isEmpty()) viewModel.setTokenListEmpty(true)
-                else viewModel.setTokenListEmpty(false)
+                if (it.isEmpty()) {
+                    viewModel.setTokenListEmpty(true)
+                } else {
+                    viewModel.setTokenListEmpty(false)
+                }
             }
         }
     }
 
     private fun delete(token: Token) {
-        val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme)
-            .setTitle(getText(R.string.alert_confirm_delete))
-            .setMessage(getText(R.string.alert_delete_message))
-            .setPositiveButton(getText(R.string.yes)) { _, _ ->
-                lifecycleScope.launch {
-                    viewModel.delete(token)
+        val dialog =
+            MaterialAlertDialogBuilder(requireContext(), R.style.AlertDialogTheme)
+                .setTitle(getText(R.string.alert_confirm_delete))
+                .setMessage(getText(R.string.alert_delete_message))
+                .setPositiveButton(getText(R.string.yes)) { _, _ ->
+                    lifecycleScope.launch {
+                        viewModel.delete(token)
+                    }
                 }
-            }
-            .setNegativeButton(getText(R.string.no)) { dialog, _ ->
-                dialog.cancel()
-            }
-            .create()
+                .setNegativeButton(getText(R.string.no)) { dialog, _ ->
+                    dialog.cancel()
+                }
+                .create()
 
         dialog.show()
     }

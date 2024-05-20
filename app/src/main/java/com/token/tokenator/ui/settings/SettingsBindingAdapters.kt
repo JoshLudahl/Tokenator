@@ -7,7 +7,6 @@ import com.token.tokenator.model.SettingsItem
 
 @BindingAdapter("itemText")
 fun TextView.setBackgroundColor(item: SettingsItem) {
-
     when (item.included) {
         true -> {
             setBackgroundResource(R.drawable.settings_item_active_background)

@@ -18,7 +18,7 @@ import com.token.tokenator.model.Type
 
 class MainScreen {
     enum class MainScreenElement(
-        @IdRes val id: Int
+        @IdRes val id: Int,
     ) {
         BOOKMARK_BUTTON(R.id.view_saved_button),
         GENERATED_FIELD(R.id.generated_field),

@@ -7,20 +7,19 @@ import com.token.tokenator.R
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 
 object FeatureDiscovery {
-
     fun show(
         activity: Activity,
         description: String,
         title: String,
-        view: View
+        view: View,
     ) {
         MaterialTapTargetPrompt.Builder(activity)
             .setTarget(view)
             .setBackgroundColour(
                 activity.resources.getColor(
                     R.color.yellow,
-                    activity.theme
-                )
+                    activity.theme,
+                ),
             )
             .setFocalColour(Color.BLACK)
             .setPrimaryText(title)

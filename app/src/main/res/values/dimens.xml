@@ -9,4 +9,5 @@
     <dimen name="row_margin">8dp</dimen>
     <dimen name="icon_left_top_bottom_margin">8dp</dimen>
     <dimen name="savedIconSize">20dp</dimen>
+    <dimen name="corner_radius">20dp</dimen>
 </resources>

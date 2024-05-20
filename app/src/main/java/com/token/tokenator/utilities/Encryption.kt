@@ -13,18 +13,18 @@ private const val SALT = BuildConfig.SALT
 private const val IV = BuildConfig.IV
 
 object Encryption {
-
     fun encrypt(strToEncrypt: String): String? {
         try {
             val ivParameterSpec = IvParameterSpec(Base64.decode(IV, Base64.DEFAULT))
 
             val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")
-            val spec = PBEKeySpec(
-                SECRET_KEY.toCharArray(),
-                Base64.decode(SALT, Base64.DEFAULT),
-                10000,
-                256
-            )
+            val spec =
+                PBEKeySpec(
+                    SECRET_KEY.toCharArray(),
+                    Base64.decode(SALT, Base64.DEFAULT),
+                    10000,
+                    256,
+                )
             val tmp = factory.generateSecret(spec)
             val secretKey = SecretKeySpec(tmp.encoded, "AES")
 
@@ -32,7 +32,7 @@ object Encryption {
             cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivParameterSpec)
             return Base64.encodeToString(
                 cipher.doFinal(strToEncrypt.toByteArray(Charsets.UTF_8)),
-                Base64.DEFAULT
+                Base64.DEFAULT,
             )
         } catch (e: Exception) {
             println("Error while encrypting: $e")
@@ -42,16 +42,16 @@ object Encryption {
 
     fun decrypt(strToDecrypt: String): String? {
         try {
-
             val ivParameterSpec = IvParameterSpec(Base64.decode(IV, Base64.DEFAULT))
 
             val factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")
-            val spec = PBEKeySpec(
-                SECRET_KEY.toCharArray(),
-                Base64.decode(SALT, Base64.DEFAULT),
-                10000,
-                256
-            )
+            val spec =
+                PBEKeySpec(
+                    SECRET_KEY.toCharArray(),
+                    Base64.decode(SALT, Base64.DEFAULT),
+                    10000,
+                    256,
+                )
             val tmp = factory.generateSecret(spec)
             val secretKey = SecretKeySpec(tmp.encoded, "AES")
 

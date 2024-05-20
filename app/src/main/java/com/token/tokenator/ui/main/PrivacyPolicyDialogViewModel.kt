@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 class PrivacyPolicyDialogViewModel : ViewModel(), LifecycleObserver {
-
     private val _shouldDismiss = MutableStateFlow(false)
 
     val shouldDismiss: StateFlow<Boolean>

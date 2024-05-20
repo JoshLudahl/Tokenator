@@ -15,7 +15,7 @@ import com.token.tokenator.databinding.GenericDialogFragmentBinding
 import kotlinx.coroutines.launch
 
 class GenericAlert(
-    @StringRes val title: Int
+    @StringRes val title: Int,
 ) : DialogFragment() {
     private var _binding: GenericDialogFragmentBinding? = null
     private val binding get() = _binding!!
@@ -27,12 +27,13 @@ class GenericAlert(
             val builder = AlertDialog.Builder(fragmentActivity)
             // Create the AlertDialog object and return it
 
-            _binding = DataBindingUtil.inflate(
-                layoutInflater.cloneInContext(context),
-                R.layout.generic_dialog_fragment,
-                null,
-                false
-            )
+            _binding =
+                DataBindingUtil.inflate(
+                    layoutInflater.cloneInContext(context),
+                    R.layout.generic_dialog_fragment,
+                    null,
+                    false,
+                )
             binding.viewModel = viewModel
 
             binding.privacyPolicyTextHeader.text = getText(title)

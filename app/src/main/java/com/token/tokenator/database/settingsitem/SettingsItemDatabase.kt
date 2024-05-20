@@ -8,10 +8,9 @@ import com.token.tokenator.model.SettingsItem
 @Database(
     entities = [SettingsItem::class],
     version = 1,
-    exportSchema = false
+    exportSchema = false,
 )
 @TypeConverters(SettingsItemTypeConverters::class)
 abstract class SettingsItemDatabase : RoomDatabase() {
-
     abstract fun settingsItemDao(): SettingsItemDao
 }

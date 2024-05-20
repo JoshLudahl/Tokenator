@@ -8,12 +8,11 @@ import com.token.tokenator.model.Token
 @Database(
     entities = [
         Token::class,
-        Passphrase::class
+        Passphrase::class,
     ],
     version = 6,
-    exportSchema = false
+    exportSchema = false,
 )
 abstract class TokenDatabase : RoomDatabase() {
-
     abstract fun tokenDao(): TokenDao
 }

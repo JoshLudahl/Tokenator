@@ -9,16 +9,18 @@ import com.token.tokenator.databinding.LayoutSettingGridItemBinding
 import com.token.tokenator.model.SettingsItem
 
 class SettingsAdapter(
-    private val clickListener: SettingsListener
+    private val clickListener: SettingsListener,
 ) : ListAdapter<SettingsItem, SettingsAdapter.ViewHolder>(SettingsItemDiffCallback()) {
-
     private var settingsItemList = emptyList<SettingsItem>()
 
     class ViewHolder(private val itemBinding: LayoutSettingGridItemBinding) :
         RecyclerView.ViewHolder(
-            itemBinding.root
+            itemBinding.root,
         ) {
-        fun bind(item: SettingsItem, clickListener: SettingsListener) {
+        fun bind(
+            item: SettingsItem,
+            clickListener: SettingsListener,
+        ) {
             itemBinding.item = item
             itemBinding.clickListener = clickListener
             itemBinding.executePendingBindings()
@@ -27,12 +29,12 @@ class SettingsAdapter(
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): ViewHolder {
         return LayoutSettingGridItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
-            false
+            false,
         ).let {
             ViewHolder(it)
         }
@@ -40,7 +42,7 @@ class SettingsAdapter(
 
     override fun onBindViewHolder(
         holder: ViewHolder,
-        position: Int
+        position: Int,
     ) {
         val currentItem = settingsItemList[position]
         holder.bind(currentItem, clickListener)
@@ -56,11 +58,17 @@ class SettingsAdapter(
 }
 
 class SettingsItemDiffCallback : DiffUtil.ItemCallback<SettingsItem>() {
-    override fun areItemsTheSame(oldItem: SettingsItem, newItem: SettingsItem): Boolean {
+    override fun areItemsTheSame(
+        oldItem: SettingsItem,
+        newItem: SettingsItem,
+    ): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: SettingsItem, newItem: SettingsItem): Boolean {
+    override fun areContentsTheSame(
+        oldItem: SettingsItem,
+        newItem: SettingsItem,
+    ): Boolean {
         return oldItem == newItem
     }
 }

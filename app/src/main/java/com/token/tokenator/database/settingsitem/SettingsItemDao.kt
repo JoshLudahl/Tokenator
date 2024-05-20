@@ -12,9 +12,8 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface SettingsItemDao {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(settingsItem: SettingsItem)
+    fun insert(settingsItem: SettingsItem)
 
     @Query("SELECT * FROM character_table")
     fun getAllCharacters(): Flow<List<SettingsItem>>
@@ -26,5 +25,5 @@ interface SettingsItemDao {
     fun getAllExcluded(): LiveData<List<SettingsItem>>
 
     @Update
-    suspend fun updateCharacter(settingsItem: SettingsItem)
+    fun updateCharacter(settingsItem: SettingsItem)
 }

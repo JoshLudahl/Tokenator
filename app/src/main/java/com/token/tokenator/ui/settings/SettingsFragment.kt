@@ -20,12 +20,11 @@ import com.token.tokenator.model.Passphrase
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.utilities.DataPref
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class SettingsFragment : Fragment(R.layout.settings_fragment) {
-
     @Inject
     lateinit var dataStore: DataStore<Preferences>
 
@@ -42,17 +41,21 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
     private var _binding: SettingsFragmentBinding? = null
     private val binding get() = _binding!!
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = SettingsFragmentBinding.bind(view)
         binding.viewModel = viewModel
 
-        val adapter = SettingsAdapter(
-            SettingsListener {
-                onItemClick(it)
-            }
-        )
+        val adapter =
+            SettingsAdapter(
+                SettingsListener {
+                    onItemClick(it)
+                },
+            )
 
         setUpRecyclerView(adapter)
         setUpListeners()
@@ -62,9 +65,10 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 binding
                     .noRepeatCharactersSwitch
-                    .isChecked = (DataPref.readDataStore(noRepeat, dataStore) ?: true)
-                    .toString()
-                    .toBoolean()
+                    .isChecked =
+                    (DataPref.readDataStore(noRepeat, dataStore) ?: true)
+                        .toString()
+                        .toBoolean()
             }
         }
     }
@@ -128,15 +132,14 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
             DataPref.saveDataStore(
                 noRepeat,
                 binding.noRepeatCharactersSwitch.isChecked,
-                dataStore
+                dataStore,
             )
         }
     }
 
     private fun callInsertPassPhrase(phrase: String) {
-
         viewModel.insertPassphrase(
-            Passphrase(phrase = phrase)
+            Passphrase(phrase = phrase),
         )
     }
 
@@ -144,7 +147,7 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         Toast.makeText(
             requireContext(),
             message,
-            Toast.LENGTH_SHORT
+            Toast.LENGTH_SHORT,
         ).show()
     }
 }

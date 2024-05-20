@@ -6,7 +6,6 @@ import com.token.tokenator.model.Type
 import kotlinx.coroutines.flow.Flow
 
 class SettingsItemRepository(private val settingsItemDao: SettingsItemDao) {
-
     val allCharacters: Flow<List<SettingsItem>> =
         settingsItemDao.getAllCharacters()
 
@@ -25,9 +24,7 @@ class SettingsItemRepository(private val settingsItemDao: SettingsItemDao) {
     val allUpperCaseChars: LiveData<List<SettingsItem>> =
         settingsItemDao.getAllByCategory(Type.UPPERCASE)
 
-    suspend fun insert(settingsItem: SettingsItem) =
-        settingsItemDao.insert(settingsItem)
+    suspend fun insert(settingsItem: SettingsItem) = settingsItemDao.insert(settingsItem)
 
-    suspend fun update(settingsItem: SettingsItem) =
-        settingsItemDao.updateCharacter(settingsItem)
+    fun update(settingsItem: SettingsItem) = settingsItemDao.updateCharacter(settingsItem)
 }

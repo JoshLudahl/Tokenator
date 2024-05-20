@@ -13,7 +13,6 @@ import org.junit.rules.RuleChain
 
 @HiltAndroidTest
 abstract class BaseTest {
-
     val hiltAndroidRule = HiltAndroidRule(this)
     val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
@@ -25,7 +24,11 @@ abstract class BaseTest {
 }
 
 class HiltAndroidJUnitRunner : AndroidJUnitRunner() {
-    override fun newApplication(cl: ClassLoader?, name: String?, context: Context?): Application {
+    override fun newApplication(
+        cl: ClassLoader?,
+        name: String?,
+        context: Context?,
+    ): Application {
         return super.newApplication(cl, HiltTestApplication::class.java.name, context)
     }
 }

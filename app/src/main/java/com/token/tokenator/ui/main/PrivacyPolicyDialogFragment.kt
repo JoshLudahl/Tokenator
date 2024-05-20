@@ -25,12 +25,13 @@ class PrivacyPolicyDialogFragment : DialogFragment() {
             val builder = AlertDialog.Builder(fragmentActivity)
             // Create the AlertDialog object and return it
 
-            _binding = DataBindingUtil.inflate(
-                layoutInflater.cloneInContext(context),
-                R.layout.privacy_policy_dialog_fragment,
-                null,
-                false
-            )
+            _binding =
+                DataBindingUtil.inflate(
+                    layoutInflater.cloneInContext(context),
+                    R.layout.privacy_policy_dialog_fragment,
+                    null,
+                    false,
+                )
             binding.viewModel = viewModel
             builder.setView(binding.root)
 

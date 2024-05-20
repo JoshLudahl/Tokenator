@@ -8,12 +8,14 @@ import com.token.tokenator.R
 import com.token.tokenator.databinding.SecurityFragmentBinding
 
 class SecurityFragment : Fragment(R.layout.security_fragment) {
-
     private val viewModel: SecurityViewModel by viewModels()
     private var _binding: SecurityFragmentBinding? = null
     private val binding get() = _binding!!
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = SecurityFragmentBinding.bind(view)

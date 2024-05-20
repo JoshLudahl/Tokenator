@@ -4,5 +4,5 @@ enum class Type {
     LOWERCASE,
     NUMERIC,
     SPECIAL,
-    UPPERCASE
+    UPPERCASE,
 }

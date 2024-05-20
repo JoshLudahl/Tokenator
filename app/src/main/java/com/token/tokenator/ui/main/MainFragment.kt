@@ -39,14 +39,13 @@ import com.token.tokenator.utilities.FeatureDiscovery
 import com.token.tokenator.utilities.Tokenator
 import com.token.tokenator.utilities.alert.GenericAlert
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
-import kotlin.properties.Delegates
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import javax.inject.Inject
+import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.main_fragment) {
-
     @Inject
     lateinit var dataStore: DataStore<Preferences>
 
@@ -97,7 +96,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     private val viewModel: MainViewModel by viewModels()
     private var doesNotRepeat by Delegates.notNull<Boolean>()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = MainFragmentBinding.bind(view)
@@ -119,7 +121,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             }
         }
 
-        populateSettingsItem()
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                populateSettingsItem()
+            }
+        }
 
         binding.buttonGenerateToken.setOnClickListener {
             lifecycleScope.launch {
@@ -151,21 +157,33 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 .show(parentFragmentManager, "Privacy Policy")
         }
 
-        binding.tokenName.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        binding.tokenName.addTextChangedListener(
+            object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int,
+                ) {}
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (count > 0) {
-                    binding.saveButton.visibility = View.VISIBLE
+                override fun onTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    before: Int,
+                    count: Int,
+                ) {
+                    if (count > 0) {
+                        binding.saveButton.visibility = View.VISIBLE
+                    }
                 }
-            }
 
-            override fun afterTextChanged(s: Editable?) {
-                if (s?.trim()?.length == 0) {
-                    binding.saveButton.visibility = View.GONE
+                override fun afterTextChanged(s: Editable?) {
+                    if (s?.trim()?.length == 0) {
+                        binding.saveButton.visibility = View.GONE
+                    }
                 }
-            }
-        })
+            },
+        )
 
         binding.uppercaseContainer.setOnClickListener {
             toggleSwitch(Type.UPPERCASE)
@@ -240,7 +258,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 viewModel.insert(
                     passwordName = binding.tokenName.editableText.toString().trim(),
                     token = binding.generatedField.text.toString(),
-                    login = binding.tokenLoginName.text?.toString()
+                    login = binding.tokenLoginName.text?.toString(),
                 )
                 showToast(getString(R.string.password_saved))
                 binding.tokenName.text?.clear()
@@ -252,7 +270,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                         if (preferenceItem == "null") {
                             Log.i(
                                 "FEATURE?",
-                                "$preferenceItem: Showing feature because it has not been shown."
+                                "$preferenceItem: Showing feature because it has not been shown.",
                             )
                             showFeature()
                             saveDataStore(feature, true)
@@ -265,7 +283,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
     }
 
-    private suspend fun saveDataStore(key: String, value: Boolean) {
+    private suspend fun saveDataStore(
+        key: String,
+        value: Boolean,
+    ) {
         val dataStoreKey = stringPreferencesKey(key)
         dataStore.edit { preferences ->
             preferences[dataStoreKey] = value.toString()
@@ -284,14 +305,14 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     private suspend fun generatePassword() {
-
         val chars = mutableListOf<Type>()
-        val mapOfTypes = mapOf(
-            binding.switchLowerCase to Type.LOWERCASE,
-            binding.switchNumeric to Type.NUMERIC,
-            binding.switchSpecialCharacters to Type.SPECIAL,
-            binding.switchUppercase to Type.UPPERCASE
-        )
+        val mapOfTypes =
+            mapOf(
+                binding.switchLowerCase to Type.LOWERCASE,
+                binding.switchNumeric to Type.NUMERIC,
+                binding.switchSpecialCharacters to Type.SPECIAL,
+                binding.switchUppercase to Type.UPPERCASE,
+            )
 
         mapOfTypes.forEach { item ->
             if (item.key.isChecked) chars.add(item.value)
@@ -308,21 +329,23 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             if (it.included.not()) stringList.add(it.item)
         }
 
-        val passphrase = when (
-            (DataPref.readDataStore(key = passPhraseIncluded, dataStore) ?: true)
-                .toString()
-                .toBoolean()
-        ) {
-            true -> binding.viewModel?.passphrase?.value?.phrase
-            else -> null
-        }
-        val password = Tokenator.generate(
-            length = length,
-            includesTypesList = chars,
-            excludedCharacters = stringList,
-            doNotRepeat = doesNotRepeat,
-            passphrase ?: ""
-        )
+        val passphrase =
+            when (
+                (DataPref.readDataStore(key = passPhraseIncluded, dataStore) ?: true)
+                    .toString()
+                    .toBoolean()
+            ) {
+                true -> binding.viewModel?.passphrase?.value?.phrase
+                else -> null
+            }
+        val password =
+            Tokenator.generate(
+                length = length,
+                includesTypesList = chars,
+                excludedCharacters = stringList,
+                doNotRepeat = doesNotRepeat,
+                passphrase ?: "",
+            )
 
         when {
             password.isNotEmpty() -> {
@@ -350,7 +373,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             activity = requireActivity(),
             view = binding.viewSavedButton,
             title = getString(R.string.feature_view_saved_passwords_title),
-            description = getString(R.string.feature_view_saved_passwords_description)
+            description = getString(R.string.feature_view_saved_passwords_description),
         )
     }
 
@@ -358,7 +381,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         Toast.makeText(
             requireContext(),
             message,
-            Toast.LENGTH_SHORT
+            Toast.LENGTH_SHORT,
         ).show()
     }
 

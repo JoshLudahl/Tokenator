@@ -18,19 +18,22 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "se
 @Module
 @InstallIn(SingletonComponent::class)
 object Utilities {
-
     @Singleton
     @Provides
-    fun providesClipboardManager(@ApplicationContext context: Context): ClipboardManager {
+    fun providesClipboardManager(
+        @ApplicationContext context: Context,
+    ): ClipboardManager {
         return ContextCompat.getSystemService(
             context,
-            ClipboardManager::class.java
+            ClipboardManager::class.java,
         ) as ClipboardManager
     }
 
     @Singleton
     @Provides
-    fun providesDataStorePreferences(@ApplicationContext context: Context): DataStore<Preferences> {
+    fun providesDataStorePreferences(
+        @ApplicationContext context: Context,
+    ): DataStore<Preferences> {
         return context.dataStore
     }
 

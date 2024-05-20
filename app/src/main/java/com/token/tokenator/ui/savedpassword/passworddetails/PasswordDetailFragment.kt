@@ -7,15 +7,18 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.token.tokenator.R
 import com.token.tokenator.databinding.PasswordDetailFragmentBinding
 import com.token.tokenator.utilities.Clipuous
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
-
     private val viewModel: PasswordDetailViewModel by viewModels()
     private var _binding: PasswordDetailFragmentBinding? = null
     private val binding get() = _binding!!
@@ -25,7 +28,10 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
         _binding = null
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         _binding = PasswordDetailFragmentBinding.bind(view)
@@ -38,8 +44,12 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
 
         val token = arguments?.getString("token").toString().toIntOrNull()
 
-        token?.let {
-            viewModel.getToken(it)
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                token?.let {
+                    viewModel.getToken(it)
+                }
+            }
         }
 
         binding.buttonUpdatePassword.setOnClickListener {
@@ -48,7 +58,7 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
                     viewModel.insert(
                         login = binding.tokenLoginName.text.toString().trim(),
                         token = binding.tokenPassword.text.toString(),
-                        passwordName = binding.tokenName.text.toString().trim()
+                        passwordName = binding.tokenName.text.toString().trim(),
                     )
                     Toast.makeText(requireContext(), R.string.password_saved, Toast.LENGTH_SHORT)
                         .show()
@@ -56,15 +66,27 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
             }
         }
 
-        binding.tokenName.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        binding.tokenName.addTextChangedListener(
+            object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int,
+                ) {}
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                override fun onTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    before: Int,
+                    count: Int,
+                ) {}
 
-            override fun afterTextChanged(s: Editable?) {
-                binding.buttonUpdatePassword.isEnabled = s?.trim()?.length != 0
-            }
-        })
+                override fun afterTextChanged(s: Editable?) {
+                    binding.buttonUpdatePassword.isEnabled = s?.trim()?.length != 0
+                }
+            },
+        )
 
         binding.loginTextField.setEndIconOnClickListener {
             copyToClipBoard(binding.tokenLoginName.text.toString())
@@ -84,7 +106,7 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
         Toast.makeText(
             requireContext(),
             message,
-            Toast.LENGTH_SHORT
+            Toast.LENGTH_SHORT,
         ).show()
     }
 }
