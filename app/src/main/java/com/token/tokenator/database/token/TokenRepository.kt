@@ -14,13 +14,13 @@ class TokenRepository(private val tokenDao: TokenDao) {
 
     suspend fun insert(token: Token) = tokenDao.insert(token)
 
-    fun insertPassphrase(passphrase: Passphrase) = tokenDao.insertPhrase(passphrase)
+    suspend fun insertPassphrase(passphrase: Passphrase) = tokenDao.insertPhrase(passphrase)
 
-    fun delete(token: Token) = tokenDao.delete(token)
+    suspend fun delete(token: Token) = tokenDao.delete(token)
 
     fun updateToken(token: Token) = tokenDao.updateToken(token)
 
-    fun getOneTokenById(id: Int): Token? = tokenDao.getTokenById(id)
+    suspend fun getOneTokenById(id: Int): Token? = tokenDao.getTokenById(id)
 
     fun getOneTokenByName(name: String): Token? = tokenDao.getTokenByName(name)
 }

@@ -140,7 +140,8 @@
                         app:layout_constraintEnd_toStartOf="@+id/passphrase_switch"
                         app:layout_constraintStart_toEndOf="@+id/phrase_edit_text"
                         app:layout_constraintTop_toTopOf="@+id/passphrase_switch"
-                        app:srcCompat="@drawable/ic_save" />
+                        android:tint="@color/yellow"
+                        app:srcCompat="@drawable/ic_save_round" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
