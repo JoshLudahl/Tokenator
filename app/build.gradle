@@ -14,7 +14,7 @@ plugins {
 
 android {
     def target = 34
-    buildToolsVersion = "34.0"
+    buildToolsVersion = "34.0.0"
     namespace 'com.token.tokenator'
     compileSdk target
 
@@ -22,8 +22,8 @@ android {
         applicationId "com.token.tokenator"
         minSdkVersion 23
         targetSdkVersion target
-        versionCode 48
-        versionName "1.66"
+        versionCode 49
+        versionName "1.67"
 
         testInstrumentationRunner "com.token.tokenator.HiltAndroidJUnitRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
