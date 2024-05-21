@@ -74,7 +74,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/passphrase"
-                    android:textColor="#039BE5"
+                    android:textColor="@color/light_blue"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -110,9 +110,10 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         android:hint="@string/enter_a_passphrase"
-                        android:textColorHint="#1E88E5"
                         android:imeOptions="actionDone"
                         android:maxLength="15"
+                        android:backgroundTint="@color/lighter_gray"
+                        android:textColorHint="@color/light_gray"
                         android:text="@{viewModel.passphrase.phrase}"
                         app:layout_constrainedWidth="true"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -154,7 +155,7 @@
                     android:layout_marginTop="16dp"
                     android:clickable="false"
                     android:text="@string/no_repeat_characters"
-                    android:textColor="#039BE5"
+                    android:textColor="@color/light_blue"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/passphrase_section" />
 
@@ -216,7 +217,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/characters"
-                    android:textColor="#039BE5"
+                    android:textColor="@color/light_blue"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/no_repeats_section" />
 
