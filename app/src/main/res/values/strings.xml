@@ -74,6 +74,6 @@
     <string name="enter">Enter</string>
     <string name="edit_saved_token" translatable="false">Edit saved token</string>
     <string name="string_value_placeholder" translatable="false">placeholder</string>
-    <string name="feature_view_share_password_title">Share Password</string>
-    <string name="feature_view_share_password_description">"Now you can save your password with an app or person. "</string>
+    <string name="feature_view_share_password_title" translatable="false">Share Password</string>
+    <string name="feature_view_share_password_description" translatable="false">"Now you can save your password with an app or person. "</string>
 </resources>
