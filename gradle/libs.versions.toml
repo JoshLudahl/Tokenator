@@ -1,15 +1,16 @@
 [versions]
 accessibilityTestFramework = "4.1.1"
-appcompat = "1.6.1"
+appcompat = "1.7.0"
 constraintlayout = "2.1.4"
 core = "1.5.0"
 coreKtx = "1.13.1"
 datastorePreferences = "1.1.1"
 espressoLibraryKotlin = "2023.9.01"
 featureDelivery = "2.1.0"
-firebaseBom = "33.0.0"
+firebaseBom = "33.1.1"
+firebaseCrashlyticsGradle = "3.0.2"
 fluidSlider = "0.3.1"
-googleServices = "4.4.1"
+googleServices = "4.4.2"
 gradle = "8.5.0"
 hiltAndroid = "2.51.1"
 hiltAndroidGradlePlugin = "2.51.1"
@@ -19,7 +20,7 @@ junit = "4.13.2"
 kotlinGradlePlugin = "2.0.0"
 legacySupportV4 = "1.0.0"
 lifecycleExtensions = "2.2.0"
-lifecycleLivedataKtx = "2.8.0"
+lifecycleLivedataKtx = "2.8.2"
 material = "1.12.0"
 materialTapTargetPrompt = "3.3.2"
 mockitoCore = "5.4.0"
@@ -60,6 +61,7 @@ feature-delivery = { module = "com.google.android.play:feature-delivery", versio
 feature-delivery-ktx = { module = "com.google.android.play:feature-delivery-ktx", version.ref = "featureDelivery" }
 firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-crashlytics-gradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebaseCrashlyticsGradle" }
 firebase-crashlytics-ktx = { module = "com.google.firebase:firebase-crashlytics-ktx" }
 firebase-database-ktx = { module = "com.google.firebase:firebase-database-ktx" }
 firebase-perf-ktx = { module = "com.google.firebase:firebase-perf-ktx" }
