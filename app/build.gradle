@@ -20,7 +20,7 @@ android {
 
     defaultConfig {
         applicationId "com.token.tokenator"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion target
         versionCode 52
         versionName "1.70"
