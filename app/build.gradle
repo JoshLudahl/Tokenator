@@ -20,10 +20,10 @@ android {
 
     defaultConfig {
         applicationId "com.token.tokenator"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion target
-        versionCode 49
-        versionName "1.67"
+        versionCode 52
+        versionName "1.70"
 
         testInstrumentationRunner "com.token.tokenator.HiltAndroidJUnitRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
@@ -150,6 +150,14 @@ dependencies {
 
     // Add the dependency for the Firebase SDK for Google Analytics
     implementation libs.firebase.analytics.ktx
+
+    // This dependency is downloaded from the Google’s Maven repository.
+    // Make sure you also include that repository in your project's build.gradle file.
+    implementation(libs.feature.delivery)
+
+    // For Kotlin users, also import the Kotlin extensions library for Play Feature Delivery:
+    implementation(libs.feature.delivery.ktx)
+
 
     // Add Performance lib
     implementation libs.firebase.perf.ktx

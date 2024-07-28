@@ -1,15 +1,17 @@
 [versions]
 accessibilityTestFramework = "4.1.1"
-appcompat = "1.6.1"
+appcompat = "1.7.0"
 constraintlayout = "2.1.4"
-core = "1.5.0"
+core = "1.6.1"
 coreKtx = "1.13.1"
 datastorePreferences = "1.1.1"
 espressoLibraryKotlin = "2023.9.01"
-firebaseBom = "33.0.0"
+featureDelivery = "2.1.0"
+firebaseBom = "33.1.2"
+firebaseCrashlyticsGradle = "3.0.2"
 fluidSlider = "0.3.1"
-googleServices = "4.4.1"
-gradle = "8.4.1"
+googleServices = "4.4.2"
+gradle = "8.5.1"
 hiltAndroid = "2.51.1"
 hiltAndroidGradlePlugin = "2.51.1"
 hiltAndroidTesting = "2.51.1"
@@ -18,15 +20,15 @@ junit = "4.13.2"
 kotlinGradlePlugin = "2.0.0"
 legacySupportV4 = "1.0.0"
 lifecycleExtensions = "2.2.0"
-lifecycleLivedataKtx = "2.8.0"
+lifecycleLivedataKtx = "2.8.4"
 material = "1.12.0"
 materialTapTargetPrompt = "3.3.2"
 mockitoCore = "5.4.0"
 navigationFragmentKtx = "2.7.7"
-orchestrator = "1.4.2"
+orchestrator = "1.5.0"
 perfPlugin = "1.4.2"
 roomRuntime = "2.6.1"
-runner = "1.5.2"
+runner = "1.6.1"
 
 [libraries]
 accessibility-test-framework = { module = "com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework", version.ref = "accessibilityTestFramework" }
@@ -55,8 +57,11 @@ androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "
 androidx-rules = { module = "androidx.test:rules", version.ref = "core" }
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
 espresso-library-kotlin = { module = "com.github.JoshLudahl:espresso-library-kotlin", version.ref = "espressoLibraryKotlin" }
+feature-delivery = { module = "com.google.android.play:feature-delivery", version.ref = "featureDelivery" }
+feature-delivery-ktx = { module = "com.google.android.play:feature-delivery-ktx", version.ref = "featureDelivery" }
 firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-crashlytics-gradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebaseCrashlyticsGradle" }
 firebase-crashlytics-ktx = { module = "com.google.firebase:firebase-crashlytics-ktx" }
 firebase-database-ktx = { module = "com.google.firebase:firebase-database-ktx" }
 firebase-perf-ktx = { module = "com.google.firebase:firebase-perf-ktx" }
