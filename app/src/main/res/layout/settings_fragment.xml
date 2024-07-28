@@ -113,7 +113,7 @@
                         android:imeOptions="actionDone"
                         android:maxLength="15"
                         android:backgroundTint="@color/lighter_gray"
-                        android:textColorHint="@color/light_gray"
+                        android:textColorHint="@color/dark_gray"
                         android:text="@{viewModel.passphrase.phrase}"
                         app:layout_constrainedWidth="true"
                         app:layout_constraintBottom_toBottomOf="parent"
