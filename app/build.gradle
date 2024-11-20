@@ -13,8 +13,8 @@ plugins {
 }
 
 android {
-    def target = 34
-    buildToolsVersion = "34.0.0"
+    def target = 35
+    buildToolsVersion = "35.0.0"
     namespace 'com.token.tokenator'
     compileSdk target
 
