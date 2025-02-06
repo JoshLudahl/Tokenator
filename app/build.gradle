@@ -44,6 +44,10 @@ android {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = " debug"
+            resValue "string", "app_name", "Tokenator debug"
         }
     }
 
