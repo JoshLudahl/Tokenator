@@ -54,6 +54,7 @@ android {
     buildFeatures {
         viewBinding true
         dataBinding true
+        buildConfig true
     }
 
     compileOptions {
@@ -101,7 +102,9 @@ ktlint {
     }
 }
 
-tasks.getByPath("preBuild").dependsOn("ktlintFormat")
+tasks.named("preBuild") {
+    dependsOn("ktlintFormat")
+}
 
 dependencies {
     implementation libs.androidx.core.ktx
