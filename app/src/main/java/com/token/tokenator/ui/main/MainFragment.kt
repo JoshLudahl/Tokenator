@@ -36,6 +36,7 @@ import com.token.tokenator.model.Type
 import com.token.tokenator.utilities.Clipuous
 import com.token.tokenator.utilities.DataPref
 import com.token.tokenator.utilities.FeatureDiscovery
+import com.token.tokenator.utilities.IntentHelper
 import com.token.tokenator.utilities.Tokenator
 import com.token.tokenator.utilities.alert.GenericAlert
 import dagger.hilt.android.AndroidEntryPoint
@@ -145,11 +146,15 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             findNavController().navigate(R.id.action_mainFragment_to_savedTokenFragment)
         }
 
-        binding.generatedField.setOnClickListener {
+        binding.generatedField.setOnClickListener { view ->
             if (viewModel.token.value.isNotEmpty()) {
                 copyToClipBoard(viewModel.token.value)
                 showToast("Copied to clipboard")
             }
+        }
+
+        binding.shareTokenButton.setOnClickListener {
+            IntentHelper.handleShareClick(viewModel.token.value, requireContext())
         }
 
         binding.privacyPolicyText.setOnClickListener {

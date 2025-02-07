@@ -462,15 +462,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2">
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/generated_field"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
                     android:clickable="true"
+                    android:drawableEnd="@drawable/ic_content_copy_round"
                     android:focusable="true"
                     android:gravity="center"
                     android:hint="@string/click_to_generate_password"
@@ -490,6 +490,19 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <ImageView
+                android:id="@+id/share_token_button"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/feature_view_share_password_description"
+                android:src="@drawable/ic_share_round"
+
+                android:visibility="@{viewModel.token.empty ? view.GONE : view.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout7" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/app_footer"
                 android:layout_width="match_parent"
@@ -500,7 +513,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout7">
+                app:layout_constraintTop_toBottomOf="@+id/share_token_button">
 
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -540,7 +553,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/settings"
+                android:text="@string/quick_settings"
                 android:textColor="@color/light_blue"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tokenator_logo" />

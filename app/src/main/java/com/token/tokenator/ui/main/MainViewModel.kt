@@ -50,6 +50,9 @@ class MainViewModel
     ViewModel(), LifecycleObserver {
         var version: String
         private val _token = MutableStateFlow<String>("")
+        val token: StateFlow<String>
+            get() = _token
+
         private val _length = MutableStateFlow<Float>(0f)
 
         private val _tokenNameEditTextLabelVisibility = MutableLiveData<Int>()
@@ -139,9 +142,6 @@ class MainViewModel
                 }
             }
         }
-
-        val token: StateFlow<String>
-            get() = _token
 
         val length: StateFlow<Float>
             get() = _length

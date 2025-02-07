@@ -1,7 +1,5 @@
 package com.token.tokenator.ui.savedpassword.passworddetails
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -22,6 +20,7 @@ import com.token.tokenator.R
 import com.token.tokenator.databinding.PasswordDetailFragmentBinding
 import com.token.tokenator.utilities.Clipuous
 import com.token.tokenator.utilities.FeatureDiscovery
+import com.token.tokenator.utilities.IntentHelper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -120,23 +119,9 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
     private fun setUpListeners() {
         binding.shareButton.setOnClickListener {
             viewModel.token.value?.token?.let { token ->
-                requireContext().handleShareClick(token)
+                IntentHelper.handleShareClick(token, requireContext())
             }
         }
-    }
-
-    private fun Context.handleShareClick(token: String) {
-        val sendIntent =
-            Intent(
-                Intent.ACTION_SEND,
-            ).apply {
-                putExtra(Intent.EXTRA_TEXT, token)
-                type = "text/plain"
-            }
-
-        val shareIntent = Intent.createChooser(sendIntent, null)
-
-        startActivity(shareIntent)
     }
 
     private fun copyToClipBoard(text: String) {
