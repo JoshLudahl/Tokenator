@@ -1,6 +1,7 @@
 [versions]
 accessibilityTestFramework = "4.1.1"
 appcompat = "1.7.0"
+appUpdate = "2.1.0"
 constraintlayout = "2.2.0"
 core = "1.6.1"
 coreKtx = "1.15.0"
@@ -56,6 +57,8 @@ androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "
 androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "roomRuntime" }
 androidx-rules = { module = "androidx.test:rules", version.ref = "core" }
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
+app-update = { module = "com.google.android.play:app-update", version.ref = "appUpdate" }
+app-update-ktx = { module = "com.google.android.play:app-update-ktx", version.ref = "appUpdate" }
 espresso-library-kotlin = { module = "com.github.JoshLudahl:espresso-library-kotlin", version.ref = "espressoLibraryKotlin" }
 feature-delivery = { module = "com.google.android.play:feature-delivery", version.ref = "featureDelivery" }
 feature-delivery-ktx = { module = "com.google.android.play:feature-delivery-ktx", version.ref = "featureDelivery" }

@@ -123,6 +123,9 @@ dependencies {
 
     implementation libs.androidx.room.ktx
 
+    implementation libs.app.update
+    implementation libs.app.update.ktx
+
     // To use Kotlin Symbol Processing (KSP)
     ksp libs.androidx.room.compiler
 
