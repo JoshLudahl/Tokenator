@@ -10,7 +10,6 @@ espressoLibraryKotlin = "2023.9.01"
 featureDelivery = "2.1.0"
 firebaseBom = "33.9.0"
 firebaseCrashlyticsGradle = "3.0.3"
-fluidSlider = "0.3.1"
 googleServices = "4.4.2"
 gradle = "8.8.1"
 hiltAndroid = "2.55"
@@ -71,7 +70,6 @@ firebase-crashlytics-gradle = { module = "com.google.firebase:firebase-crashlyti
 firebase-crashlytics-ktx = { module = "com.google.firebase:firebase-crashlytics-ktx" }
 firebase-database-ktx = { module = "com.google.firebase:firebase-database-ktx" }
 firebase-perf-ktx = { module = "com.google.firebase:firebase-perf-ktx" }
-fluid-slider = { module = "com.ramotion.fluidslider:fluid-slider", version.ref = "fluidSlider" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }

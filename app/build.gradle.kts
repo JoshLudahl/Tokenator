@@ -183,9 +183,6 @@ dependencies {
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
-    // Fluid Slider
-    implementation(libs.fluid.slider)
-
     // Feature discovery
     implementation(libs.material.tap.target.prompt)
 
