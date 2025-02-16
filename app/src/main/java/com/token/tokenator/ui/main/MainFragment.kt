@@ -323,11 +323,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             if (item.key.isChecked) chars.add(item.value)
         }
 
-        var length: Int = (binding.fluidSlider.position * 100).toInt()
-        if (length < 8) {
-            binding.fluidSlider.position = 0.08f
-            length = 8
-        }
+        var length: Int = (binding.fluidSlider.value).toInt()
 
         val stringList = mutableListOf<String>()
         viewModel.allCharacters.value.forEach {
@@ -356,7 +352,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             password.isNotEmpty() -> {
                 viewModel.apply {
                     setToken(password)
-                    setLength(binding.fluidSlider.position)
+                    setLength(binding.fluidSlider.value)
                     setTokenNameEditTextLabelVisible()
                     setTokenNameEditTextFieldVisibility()
                 }
