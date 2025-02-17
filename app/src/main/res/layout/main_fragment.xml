@@ -309,17 +309,18 @@
                     android:id="@+id/fluid_slider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:stepSize="1"
+                    app:trackHeight="16dp"
+                    app:thumbWidth="16dp"
+                    android:theme="@style/Widget.Material3.Slider"
                     android:valueFrom="8"
                     android:valueTo="100"
-                    android:stepSize="1"
-                    android:theme="@style/Widget.Material3.Slider"
-                    />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edit_text_length"
