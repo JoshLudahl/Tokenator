@@ -116,6 +116,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                             viewModel.setShouldShowToastToFalse()
                             showToast("You make touch")
                         }
+
                         else -> Unit
                     }
                 }
@@ -169,7 +170,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                     start: Int,
                     count: Int,
                     after: Int,
-                ) {}
+                ) {
+                }
 
                 override fun onTextChanged(
                     s: CharSequence?,
@@ -221,12 +223,15 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 Type.NUMERIC -> {
                     switchNumeric
                 }
+
                 Type.LOWERCASE -> {
                     switchLowerCase
                 }
+
                 Type.SPECIAL -> {
                     switchSpecialCharacter
                 }
+
                 Type.UPPERCASE -> {
                     switchUpperCase
                 }
@@ -362,6 +367,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                     tokenName.requestFocus()
                 }
             }
+
             else -> showToast(getString(R.string.toast_length_warning))
         }
     }
