@@ -10,7 +10,7 @@ class TokenRepository(private val tokenDao: TokenDao) {
     val allTokensByName: LiveData<List<Token>> = tokenDao.getAllTokensByName()
     val allTokensByDate: LiveData<List<Token>> = tokenDao.getAllTokensByDate()
     val passphrase: LiveData<Passphrase>? = tokenDao.getPassphrase()
-    val passphraseflow: Flow<Passphrase>? = tokenDao.getPassphraseFlow()
+    val passphraseflow: Flow<Passphrase?> = tokenDao.getPassphraseFlow()
 
     suspend fun insert(token: Token) = tokenDao.insert(token)
 

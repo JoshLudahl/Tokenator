@@ -20,7 +20,7 @@ interface TokenDao {
     fun getPassphrase(): LiveData<Passphrase>?
 
     @Query("SELECT * FROM passphrase WHERE id = 0")
-    fun getPassphraseFlow(): Flow<Passphrase>?
+    fun getPassphraseFlow(): Flow<Passphrase?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(token: Token)
