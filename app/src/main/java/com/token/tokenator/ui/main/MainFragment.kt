@@ -92,6 +92,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     @Inject
     lateinit var tokenRepository: TokenRepository
 
+    @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel: MainViewModel by viewModels()
@@ -266,7 +267,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
             else -> {
                 viewModel.insert(
-                    passwordName = binding.tokenName.editableText.toString().trim(),
+                    passwordName =
+                        binding.tokenName.editableText
+                            .toString()
+                            .trim(),
                     token = binding.generatedField.text.toString(),
                     login = binding.tokenLoginName.text?.toString(),
                 )
@@ -341,7 +345,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                     .toString()
                     .toBoolean()
             ) {
-                true -> binding.viewModel?.passphrase?.value?.phrase
+                true ->
+                    binding.viewModel
+                        ?.passphrase
+                        ?.value
+                        ?.phrase
                 else -> null
             }
         val password =
@@ -385,11 +393,12 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     private fun showToast(message: String) {
-        Toast.makeText(
-            requireContext(),
-            message,
-            Toast.LENGTH_SHORT,
-        ).show()
+        Toast
+            .makeText(
+                requireContext(),
+                message,
+                Toast.LENGTH_SHORT,
+            ).show()
     }
 
     private fun hideKeyboard(activity: Activity) {

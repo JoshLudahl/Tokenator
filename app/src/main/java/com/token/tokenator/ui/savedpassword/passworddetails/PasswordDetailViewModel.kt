@@ -26,7 +26,8 @@ class PasswordDetailViewModel
     @Inject
     constructor(
         private val tokenRepository: TokenRepository,
-    ) : ViewModel(), LifecycleObserver {
+    ) : ViewModel(),
+        LifecycleObserver {
         private val _token = MutableLiveData<Token>()
         val token: LiveData<Token>
             get() = _token

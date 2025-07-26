@@ -17,12 +17,13 @@ import kotlinx.coroutines.launch
 class GenericAlert(
     @StringRes val title: Int,
 ) : DialogFragment() {
+    @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: GenericDialogFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel: GenericAlertViewModel by viewModels()
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return activity?.let { fragmentActivity ->
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
+        activity?.let { fragmentActivity ->
             // Use the Builder class for convenient dialog construction
             val builder = AlertDialog.Builder(fragmentActivity)
             // Create the AlertDialog object and return it
@@ -54,5 +55,4 @@ class GenericAlert(
             }
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
-    }
 }

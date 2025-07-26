@@ -22,20 +22,17 @@ object Utilities {
     @Provides
     fun providesClipboardManager(
         @ApplicationContext context: Context,
-    ): ClipboardManager {
-        return ContextCompat.getSystemService(
+    ): ClipboardManager =
+        ContextCompat.getSystemService(
             context,
             ClipboardManager::class.java,
         ) as ClipboardManager
-    }
 
     @Singleton
     @Provides
     fun providesDataStorePreferences(
         @ApplicationContext context: Context,
-    ): DataStore<Preferences> {
-        return context.dataStore
-    }
+    ): DataStore<Preferences> = context.dataStore
 
     @DataStoreCharacterPopulation
     @Singleton

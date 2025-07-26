@@ -27,7 +27,8 @@ class SettingsViewModel
         private val tokenRepository: TokenRepository,
         private val dataStore: DataStore<Preferences>,
         @DataStorePassPhraseIncluded private val includePassPhrase: String,
-    ) : ViewModel(), LifecycleObserver {
+    ) : ViewModel(),
+        LifecycleObserver {
         val specialCharList: LiveData<List<SettingsItem>> = repository.allCharacters.asLiveData()
         val numericCharList: LiveData<List<SettingsItem>> = repository.allNumericChars
         val lowerCaseCharList: LiveData<List<SettingsItem>> = repository.allLowerCaseChars

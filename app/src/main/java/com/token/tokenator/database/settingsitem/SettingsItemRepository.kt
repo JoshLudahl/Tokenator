@@ -5,7 +5,9 @@ import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Type
 import kotlinx.coroutines.flow.Flow
 
-class SettingsItemRepository(private val settingsItemDao: SettingsItemDao) {
+class SettingsItemRepository(
+    private val settingsItemDao: SettingsItemDao,
+) {
     val allCharacters: Flow<List<SettingsItem>> =
         settingsItemDao.getAllCharacters()
 

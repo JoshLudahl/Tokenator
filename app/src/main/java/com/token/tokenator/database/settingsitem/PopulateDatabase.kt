@@ -91,11 +91,10 @@ object PopulateDatabase {
     private fun buildItem(
         number: Char,
         type: Type,
-    ): SettingsItem {
-        return SettingsItem(
+    ): SettingsItem =
+        SettingsItem(
             item = number.toString(),
             included = true,
             category = type,
         )
-    }
 }

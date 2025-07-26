@@ -15,12 +15,13 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class PrivacyPolicyDialogFragment : DialogFragment() {
+    @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: PrivacyPolicyDialogFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel: PrivacyPolicyDialogViewModel by viewModels()
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return activity?.let { fragmentActivity ->
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
+        activity?.let { fragmentActivity ->
             // Use the Builder class for convenient dialog construction
             val builder = AlertDialog.Builder(fragmentActivity)
             // Create the AlertDialog object and return it
@@ -49,5 +50,4 @@ class PrivacyPolicyDialogFragment : DialogFragment() {
             }
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
-    }
 }

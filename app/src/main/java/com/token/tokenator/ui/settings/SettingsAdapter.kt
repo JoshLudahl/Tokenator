@@ -13,8 +13,9 @@ class SettingsAdapter(
 ) : ListAdapter<SettingsItem, SettingsAdapter.ViewHolder>(SettingsItemDiffCallback()) {
     private var settingsItemList = emptyList<SettingsItem>()
 
-    class ViewHolder(private val itemBinding: LayoutSettingGridItemBinding) :
-        RecyclerView.ViewHolder(
+    class ViewHolder(
+        private val itemBinding: LayoutSettingGridItemBinding,
+    ) : RecyclerView.ViewHolder(
             itemBinding.root,
         ) {
         fun bind(
@@ -30,15 +31,15 @@ class SettingsAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): ViewHolder {
-        return LayoutSettingGridItemBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false,
-        ).let {
-            ViewHolder(it)
-        }
-    }
+    ): ViewHolder =
+        LayoutSettingGridItemBinding
+            .inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false,
+            ).let {
+                ViewHolder(it)
+            }
 
     override fun onBindViewHolder(
         holder: ViewHolder,
@@ -61,18 +62,16 @@ class SettingsItemDiffCallback : DiffUtil.ItemCallback<SettingsItem>() {
     override fun areItemsTheSame(
         oldItem: SettingsItem,
         newItem: SettingsItem,
-    ): Boolean {
-        return oldItem.id == newItem.id
-    }
+    ): Boolean = oldItem.id == newItem.id
 
     override fun areContentsTheSame(
         oldItem: SettingsItem,
         newItem: SettingsItem,
-    ): Boolean {
-        return oldItem == newItem
-    }
+    ): Boolean = oldItem == newItem
 }
 
-class SettingsListener(val clickListener: (setting: SettingsItem) -> Unit) {
+class SettingsListener(
+    val clickListener: (setting: SettingsItem) -> Unit,
+) {
     fun onClick(setting: SettingsItem) = clickListener(setting)
 }

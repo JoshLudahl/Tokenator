@@ -15,12 +15,14 @@ import com.token.tokenator.model.Token
 import com.token.tokenator.utilities.Clipuous
 import com.token.tokenator.utilities.Encryption
 
-class SavedPasswordAdapter(private val clickListener: TokenListener) :
-    ListAdapter<Token, SavedPasswordAdapter.ViewHolder>(SavedPasswordsDiffCallback) {
+class SavedPasswordAdapter(
+    private val clickListener: TokenListener,
+) : ListAdapter<Token, SavedPasswordAdapter.ViewHolder>(SavedPasswordsDiffCallback) {
     private var savedTokenList = emptyList<Token>()
 
-    class ViewHolder(private val itemBinding: LayoutSavedTokenListItemBinding) :
-        RecyclerView.ViewHolder(
+    class ViewHolder(
+        private val itemBinding: LayoutSavedTokenListItemBinding,
+    ) : RecyclerView.ViewHolder(
             itemBinding.root,
         ) {
         fun bind(
@@ -81,11 +83,12 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
                         itemBinding.root.context,
                     )
                 }
-                Snackbar.make(
-                    itemBinding.root.rootView,
-                    itemBinding.root.resources.getText(R.string.toast_copied_to_clipboard),
-                    Snackbar.LENGTH_SHORT,
-                ).show()
+                Snackbar
+                    .make(
+                        itemBinding.root.rootView,
+                        itemBinding.root.resources.getText(R.string.toast_copied_to_clipboard),
+                        Snackbar.LENGTH_SHORT,
+                    ).show()
             }
 
             itemBinding.executePendingBindings()
@@ -95,15 +98,15 @@ class SavedPasswordAdapter(private val clickListener: TokenListener) :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): ViewHolder {
-        return LayoutSavedTokenListItemBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false,
-        ).let {
-            ViewHolder(it)
-        }
-    }
+    ): ViewHolder =
+        LayoutSavedTokenListItemBinding
+            .inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false,
+            ).let {
+                ViewHolder(it)
+            }
 
     override fun onBindViewHolder(
         holder: ViewHolder,
@@ -123,18 +126,16 @@ object SavedPasswordsDiffCallback : DiffUtil.ItemCallback<Token>() {
     override fun areItemsTheSame(
         oldItem: Token,
         newItem: Token,
-    ): Boolean {
-        return oldItem.id == newItem.id
-    }
+    ): Boolean = oldItem.id == newItem.id
 
     override fun areContentsTheSame(
         oldItem: Token,
         newItem: Token,
-    ): Boolean {
-        return oldItem == newItem
-    }
+    ): Boolean = oldItem == newItem
 }
 
-class TokenListener(val clickListener: (token: Token) -> Unit) {
+class TokenListener(
+    val clickListener: (token: Token) -> Unit,
+) {
     fun onClick(token: Token) = clickListener(token)
 }

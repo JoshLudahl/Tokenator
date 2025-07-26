@@ -9,6 +9,8 @@ import com.token.tokenator.databinding.SecurityFragmentBinding
 
 class SecurityFragment : Fragment(R.layout.security_fragment) {
     private val viewModel: SecurityViewModel by viewModels()
+
+    @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: SecurityFragmentBinding? = null
     private val binding get() = _binding!!
 

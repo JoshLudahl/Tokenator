@@ -8,8 +8,37 @@ import kotlin.random.nextInt
 object Tokenator {
     private val arrayOfSpecialCharacters =
         arrayListOf(
-            33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 58, 59, 60, 61, 62,
-            63, 64, 91, 92, 93, 94, 95, 96, 123, 124, 125, 126,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            45,
+            46,
+            47,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            123,
+            124,
+            125,
+            126,
         )
 
     private const val TOTAL_CHARACTERS = 92
@@ -156,21 +185,13 @@ object Tokenator {
     private fun getRandomNumber(
         lowerBound: Int,
         upperBound: Int,
-    ): Int {
-        return Random.nextInt(lowerBound..upperBound)
-    }
+    ): Int = Random.nextInt(lowerBound..upperBound)
 
-    private fun generateRandomNumber(): Int {
-        return getRandomNumber(0, 9)
-    }
+    private fun generateRandomNumber(): Int = getRandomNumber(0, 9)
 
-    private fun generateRandomLowercaseLetter(): Char {
-        return getRandomNumber(97, 122).toChar()
-    }
+    private fun generateRandomLowercaseLetter(): Char = getRandomNumber(97, 122).toChar()
 
-    private fun generateRandomUppercaseLetter(): Char {
-        return getRandomNumber(65, 90).toChar()
-    }
+    private fun generateRandomUppercaseLetter(): Char = getRandomNumber(65, 90).toChar()
 
     private fun generateRandomSpecialCharacter(): Char {
         val index = getRandomNumber(0, arrayOfSpecialCharacters.size - 1)

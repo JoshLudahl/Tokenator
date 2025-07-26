@@ -85,12 +85,11 @@ class MainScreen {
         // TODO updated to check for exclusion
     }
 
-    private fun getSwitchTypeRes(type: Type): Int {
-        return when (type) {
+    private fun getSwitchTypeRes(type: Type): Int =
+        when (type) {
             Type.LOWERCASE -> MainScreenElement.SWITCH_LOWERCASE
             Type.NUMERIC -> MainScreenElement.SWITCH_NUMERIC
             Type.SPECIAL -> MainScreenElement.SWITCH_SPECIAL_CHARACTERS
             Type.UPPERCASE -> MainScreenElement.SWITCH_UPPERCASE
         }.id
-    }
 }

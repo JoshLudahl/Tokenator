@@ -38,6 +38,8 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
     }
 
     private val viewModel: SettingsViewModel by viewModels()
+
+    @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: SettingsFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -103,7 +105,11 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
         }
 
         binding.savePassphrase.setOnClickListener {
-            if (binding.phraseEditText.text.toString().trim().isNotEmpty()) {
+            if (binding.phraseEditText.text
+                    .toString()
+                    .trim()
+                    .isNotEmpty()
+            ) {
                 callInsertPassPhrase(binding.phraseEditText.text.toString())
             } else {
                 callInsertPassPhrase("")
@@ -144,10 +150,11 @@ class SettingsFragment : Fragment(R.layout.settings_fragment) {
     }
 
     private fun showToast(message: String) {
-        Toast.makeText(
-            requireContext(),
-            message,
-            Toast.LENGTH_SHORT,
-        ).show()
+        Toast
+            .makeText(
+                requireContext(),
+                message,
+                Toast.LENGTH_SHORT,
+            ).show()
     }
 }

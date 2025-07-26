@@ -46,8 +46,8 @@ class MainViewModel
         @DataStoreNumeric private var numeric: String,
         @DataStoreSpecialCharacters var specialCharacters: String,
         @DataStoreUppercase var uppercase: String,
-    ) :
-    ViewModel(), LifecycleObserver {
+    ) : ViewModel(),
+        LifecycleObserver {
         var version: String
         private val _token = MutableStateFlow<String>("")
         val token: StateFlow<String>

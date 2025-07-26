@@ -24,28 +24,29 @@ object DataSourceModule {
     @Provides
     fun providesTokenDatabase(
         @ApplicationContext context: Context,
-    ) = Room.databaseBuilder(
-        context,
-        TokenDatabase::class.java,
-        "token_database",
-    ).addMigrations(
-        object : Migration(4, 5) {
-            override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL(
-                    "CREATE TABLE `passphrase` (`id` INTEGER NOT NULL, `phrase` TEXT, " +
-                        "PRIMARY KEY(`id`))",
-                )
-            }
-        },
-    ).addMigrations(
-        object : Migration(5, 6) {
-            override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL(
-                    "ALTER TABLE token_table ADD COLUMN login TEXT DEFAULT NULL",
-                )
-            }
-        },
-    ).build()
+    ) = Room
+        .databaseBuilder(
+            context,
+            TokenDatabase::class.java,
+            "token_database",
+        ).addMigrations(
+            object : Migration(4, 5) {
+                override fun migrate(database: SupportSQLiteDatabase) {
+                    database.execSQL(
+                        "CREATE TABLE `passphrase` (`id` INTEGER NOT NULL, `phrase` TEXT, " +
+                            "PRIMARY KEY(`id`))",
+                    )
+                }
+            },
+        ).addMigrations(
+            object : Migration(5, 6) {
+                override fun migrate(database: SupportSQLiteDatabase) {
+                    database.execSQL(
+                        "ALTER TABLE token_table ADD COLUMN login TEXT DEFAULT NULL",
+                    )
+                }
+            },
+        ).build()
 
     @Singleton
     @Provides
@@ -59,11 +60,12 @@ object DataSourceModule {
     @Provides
     fun providesSettingsItemDatabase(
         @ApplicationContext context: Context,
-    ) = Room.databaseBuilder(
-        context,
-        SettingsItemDatabase::class.java,
-        "settingsitem_database",
-    ).build()
+    ) = Room
+        .databaseBuilder(
+            context,
+            SettingsItemDatabase::class.java,
+            "settingsitem_database",
+        ).build()
 
     @Singleton
     @Provides

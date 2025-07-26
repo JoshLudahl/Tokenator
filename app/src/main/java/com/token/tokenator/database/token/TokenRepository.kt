@@ -5,7 +5,9 @@ import com.token.tokenator.model.Passphrase
 import com.token.tokenator.model.Token
 import kotlinx.coroutines.flow.Flow
 
-class TokenRepository(private val tokenDao: TokenDao) {
+class TokenRepository(
+    private val tokenDao: TokenDao,
+) {
     val allTokens: LiveData<List<Token>> = tokenDao.getAllTokens()
     val allTokensByName: LiveData<List<Token>> = tokenDao.getAllTokensByName()
     val allTokensByDate: LiveData<List<Token>> = tokenDao.getAllTokensByDate()

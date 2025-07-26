@@ -36,6 +36,8 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
     lateinit var dataStore: DataStore<Preferences>
 
     private val viewModel: PasswordDetailViewModel by viewModels()
+
+    @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: PasswordDetailFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -72,11 +74,18 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
             token?.let {
                 if (binding.buttonUpdatePassword.isEnabled) {
                     viewModel.insert(
-                        login = binding.tokenLoginName.text.toString().trim(),
+                        login =
+                            binding.tokenLoginName.text
+                                .toString()
+                                .trim(),
                         token = binding.tokenPassword.text.toString(),
-                        passwordName = binding.tokenName.text.toString().trim(),
+                        passwordName =
+                            binding.tokenName.text
+                                .toString()
+                                .trim(),
                     )
-                    Toast.makeText(requireContext(), R.string.password_saved, Toast.LENGTH_SHORT)
+                    Toast
+                        .makeText(requireContext(), R.string.password_saved, Toast.LENGTH_SHORT)
                         .show()
                 }
             }
@@ -130,11 +139,12 @@ class PasswordDetailFragment : Fragment(R.layout.password_detail_fragment) {
     }
 
     private fun showToast(message: String) {
-        Toast.makeText(
-            requireContext(),
-            message,
-            Toast.LENGTH_SHORT,
-        ).show()
+        Toast
+            .makeText(
+                requireContext(),
+                message,
+                Toast.LENGTH_SHORT,
+            ).show()
     }
 
     private fun handleFeature() {

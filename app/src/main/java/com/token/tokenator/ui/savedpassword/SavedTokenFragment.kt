@@ -17,6 +17,8 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
     private val viewModel: SavedTokenViewModel by viewModels()
+
+    @Suppress("ktlint:standard:backing-property-naming")
     private var _binding: SavedTokenFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -25,7 +27,6 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
-
         _binding = SavedTokenFragmentBinding.bind(view)
         binding.tokenViewModel = viewModel
         binding.lifecycleOwner = this.viewLifecycleOwner
@@ -67,11 +68,9 @@ class SavedTokenFragment : Fragment(R.layout.saved_token_fragment) {
                     lifecycleScope.launch {
                         viewModel.delete(token)
                     }
-                }
-                .setNegativeButton(getText(R.string.no)) { dialog, _ ->
+                }.setNegativeButton(getText(R.string.no)) { dialog, _ ->
                     dialog.cancel()
-                }
-                .create()
+                }.create()
 
         dialog.show()
     }
