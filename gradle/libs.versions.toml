@@ -8,8 +8,8 @@ coreKtx = "1.16.0"
 datastorePreferences = "1.1.7"
 espressoLibraryKotlin = "2023.9.01"
 featureDelivery = "2.1.0"
-firebaseBom = "33.16.0"
-firebaseCrashlyticsGradle = "3.0.4"
+firebaseBom = "34.0.0"
+firebaseCrashlyticsGradle = "3.0.5"
 googleServices = "4.4.3"
 gradle = "8.11.1"
 hiltAndroid = "2.57"
@@ -29,7 +29,7 @@ materialTapTargetPrompt = "3.3.2"
 mockitoCore = "5.18.0"
 navigationFragmentKtx = "2.9.2"
 orchestrator = "1.5.1"
-perfPlugin = "1.4.2"
+perfPlugin = "2.0.0"
 roomRuntime = "2.7.2"
 runner = "1.6.2"
 
@@ -64,12 +64,12 @@ app-update-ktx = { module = "com.google.android.play:app-update-ktx", version.re
 espresso-library-kotlin = { module = "com.github.JoshLudahl:espresso-library-kotlin", version.ref = "espressoLibraryKotlin" }
 feature-delivery = { module = "com.google.android.play:feature-delivery", version.ref = "featureDelivery" }
 feature-delivery-ktx = { module = "com.google.android.play:feature-delivery-ktx", version.ref = "featureDelivery" }
-firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-crashlytics-gradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebaseCrashlyticsGradle" }
-firebase-crashlytics-ktx = { module = "com.google.firebase:firebase-crashlytics-ktx" }
-firebase-database-ktx = { module = "com.google.firebase:firebase-database-ktx" }
-firebase-perf-ktx = { module = "com.google.firebase:firebase-perf-ktx" }
+firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
+firebase-database = { module = "com.google.firebase:firebase-database" }
+firebase-perf = { module = "com.google.firebase:firebase-perf" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
