@@ -300,6 +300,8 @@
                 style="@style/layout_background_section"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -307,20 +309,36 @@
 
                 <com.google.android.material.slider.Slider
                     android:id="@+id/fluid_slider"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginEnd="8dp"
                     android:stepSize="1"
-                    app:trackHeight="16dp"
-                    app:thumbWidth="16dp"
                     android:theme="@style/Widget.Material3.Slider"
                     android:valueFrom="8"
                     android:valueTo="100"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/slider_value_text"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:thumbWidth="16dp"
+                    app:trackHeight="16dp" />
+
+                <TextView
+                    android:id="@+id/slider_value_text"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/slider_value_background"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:text="8"
+                    app:layout_constraintBottom_toBottomOf="@+id/fluid_slider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/fluid_slider"
+                    app:layout_constraintTop_toTopOf="@+id/fluid_slider"
+                    tools:text="50" />
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edit_text_length"

@@ -209,6 +209,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             toggleSwitch(Type.SPECIAL)
         }
 
+        binding.fluidSlider.addOnChangeListener { slider, value, fromUser ->
+            binding.sliderValueText.text = value.toInt().toString()
+        }
+
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.noRepeatFlow.collect { repeatable ->
