@@ -14,8 +14,8 @@ plugins {
 }
 
 android {
-    val target = 35
-    buildToolsVersion = "35.0.0"
+    val target = 36
+    buildToolsVersion = "36.0.0"
     namespace = "com.token.tokenator"
     compileSdk = target
 
@@ -23,8 +23,8 @@ android {
         applicationId = "com.token.tokenator"
         minSdk = 24
         targetSdk = target
-        versionCode = 61
-        versionName = "1.80"
+        versionCode = 62
+        versionName = "1.81"
 
         testInstrumentationRunner = "com.token.tokenator.HiltAndroidJUnitRunner"
         testInstrumentationRunnerArguments.putAll(mutableMapOf("clearPackageData" to "true"))
