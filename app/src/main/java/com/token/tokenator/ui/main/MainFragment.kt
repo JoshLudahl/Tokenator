@@ -39,6 +39,7 @@ import com.token.tokenator.utilities.FeatureDiscovery
 import com.token.tokenator.utilities.IntentHelper
 import com.token.tokenator.utilities.Tokenator
 import com.token.tokenator.utilities.alert.GenericAlert
+import com.token.tokenator.utilities.shareAppIntent
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -211,6 +212,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         binding.fluidSlider.addOnChangeListener { slider, value, fromUser ->
             binding.sliderValueText.text = value.toInt().toString()
+        }
+
+        binding.shareButton.setOnClickListener {
+            shareAppIntent(requireContext())
         }
 
         lifecycleScope.launch {
