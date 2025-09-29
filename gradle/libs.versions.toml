@@ -30,7 +30,7 @@ mockitoCore = "5.19.0"
 navigationFragmentKtx = "2.9.5"
 orchestrator = "1.6.1"
 perfPlugin = "2.0.1"
-roomRuntime = "2.8.0"
+roomRuntime = "2.8.1"
 runner = "1.7.0"
 
 [libraries]
