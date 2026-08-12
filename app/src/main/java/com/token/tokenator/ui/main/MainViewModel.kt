@@ -1,13 +1,9 @@
 package com.token.tokenator.ui.main
 
 import android.util.Log
-import android.view.View
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.token.tokenator.BuildConfig
@@ -46,8 +42,7 @@ class MainViewModel
         @DataStoreNumeric private var numeric: String,
         @DataStoreSpecialCharacters var specialCharacters: String,
         @DataStoreUppercase var uppercase: String,
-    ) : ViewModel(),
-        LifecycleObserver {
+    ) : ViewModel() {
         var version: String
         private val _token = MutableStateFlow<String>("")
         val token: StateFlow<String>
@@ -55,12 +50,12 @@ class MainViewModel
 
         private val _length = MutableStateFlow<Float>(0f)
 
-        private val _tokenNameEditTextLabelVisibility = MutableLiveData<Int>()
-        val tokenNameEditTextLabelVisibility: LiveData<Int>
+        private val _tokenNameEditTextLabelVisibility = MutableStateFlow(false)
+        val tokenNameEditTextLabelVisibility: StateFlow<Boolean>
             get() = _tokenNameEditTextLabelVisibility
 
-        private val _tokenNameEditTextFieldVisibility = MutableLiveData<Int>()
-        val tokenNameEditTextFieldVisibility: LiveData<Int>
+        private val _tokenNameEditTextFieldVisibility = MutableStateFlow(false)
+        val tokenNameEditTextFieldVisibility: StateFlow<Boolean>
             get() = _tokenNameEditTextFieldVisibility
 
         private val _allCharacters = MutableStateFlow<List<SettingsItem>>(emptyList())
@@ -98,8 +93,8 @@ class MainViewModel
             Log.i("MainViewModel", "Initialized")
             version = "Version ${BuildConfig.VERSION_NAME}"
             Log.i("VERSION", version)
-            _tokenNameEditTextLabelVisibility.value = View.GONE
-            _tokenNameEditTextFieldVisibility.value = View.GONE
+            _tokenNameEditTextLabelVisibility.value = false
+            _tokenNameEditTextFieldVisibility.value = false
 
             // set switches
             viewModelScope.launch {
@@ -158,11 +153,11 @@ class MainViewModel
         }
 
         fun setTokenNameEditTextFieldVisibility() {
-            _tokenNameEditTextFieldVisibility.value = View.VISIBLE
+            _tokenNameEditTextFieldVisibility.value = true
         }
 
         fun setTokenNameEditTextLabelVisible() {
-            _tokenNameEditTextLabelVisibility.value = View.VISIBLE
+            _tokenNameEditTextLabelVisibility.value = true
         }
 
         fun showEasterEggToast() {

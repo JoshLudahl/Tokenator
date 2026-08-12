@@ -1,20 +1,20 @@
-import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 plugins {
     id("com.android.application")
-    id("kotlin-android")
+    alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-    id("androidx.navigation.safeargs")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
     id("com.google.firebase.firebase-perf")
-    id("org.jlleitschuh.gradle.ktlint")
-    id("com.google.devtools.ksp")
+    alias(libs.plugins.ktlint)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
-    val target = 36
+    val target = 37
     buildToolsVersion = "36.1.0"
     namespace = "com.token.tokenator"
     compileSdk = target
@@ -29,27 +29,28 @@ android {
         testInstrumentationRunner = "com.token.tokenator.HiltAndroidJUnitRunner"
         testInstrumentationRunnerArguments.putAll(mutableMapOf("clearPackageData" to "true"))
         vectorDrawables.useSupportLibrary = true
+
+        val secretKey = (System.getenv("SECRET_KEY") ?: project.findProperty("SECRET_KEY") ?: "").toString()
+        val salt = (System.getenv("SALT") ?: project.findProperty("SALT") ?: "").toString()
+        val iv = (System.getenv("IV") ?: project.findProperty("IV") ?: "").toString()
+
+        buildConfigField("String", "SECRET_KEY", "\"$secretKey\"")
+        buildConfigField("String", "SALT", "\"$salt\"")
+        buildConfigField("String", "IV", "\"$iv\"")
     }
 
     buildTypes {
         release {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
-            buildConfigField("String", "SECRET_KEY", "\"${System.getenv("SECRET_KEY") ?: project.property("SECRET_KEY")} \"")
-            buildConfigField("String", "SALT", "\"${System.getenv("SALT") ?: project.property("SALT")}\"")
-            buildConfigField("String", "IV", "\"${System.getenv("IV") ?: project.property("IV")}\"")
         }
 
         debug {
-            buildConfigField("String", "SECRET_KEY", "\"${System.getenv("SECRET_KEY") ?: project.property("SECRET_KEY")} \"")
-            buildConfigField("String", "SALT", "\"${System.getenv("SALT") ?: project.property("SALT")}\"")
-            buildConfigField("String", "IV", "\"${System.getenv("IV") ?: project.property("IV")}\"")
-
             isMinifyEnabled = false
-
             applicationIdSuffix = ".debug"
             versionNameSuffix = " debug"
             resValue(type = "string", name = "app_name", value = "Tokenator debug")
@@ -57,9 +58,8 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
-        dataBinding = true
         buildConfig = true
+        compose = true
     }
 
     compileOptions {
@@ -87,6 +87,7 @@ kotlin {
     jvmToolchain(21)
 }
 
+/*
 ktlint {
     android = true
     ignoreFailures = false
@@ -106,11 +107,21 @@ ktlint {
 tasks.named("preBuild") {
     dependsOn("ktlintFormat")
 }
+*/
 
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
+
+    // Compose
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.google.fonts)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    implementation(libs.androidx.lifecycle.runtime.compose)
 
     // Lifecycle
     implementation(libs.androidx.lifecycle.extensions)
@@ -137,9 +148,11 @@ dependencies {
     implementation(libs.androidx.room.paging)
 
     // Navigation
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.androidx.navigation.dynamic.features.fragment)
+    implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.navigation3.ui)
+    implementation(libs.androidx.lifecycle.viewmodel.navigation3)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
 
     // DI
     implementation(libs.hilt.android)
@@ -181,7 +194,6 @@ dependencies {
 
     // DataBinding & other
     implementation(libs.androidx.legacy.support.v4)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
     // Feature discovery
     implementation(libs.material.tap.target.prompt)
@@ -195,6 +207,7 @@ dependencies {
 
     // Required -- JUnit 4 framework
     testImplementation(libs.junit)
+    testImplementation(libs.robolectric)
 
     // Optional -- Mockito framework
     testImplementation(libs.mockito.core)

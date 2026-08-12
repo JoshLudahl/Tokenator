@@ -9,6 +9,7 @@ class TokenRepository(
     private val tokenDao: TokenDao,
 ) {
     val allTokens: LiveData<List<Token>> = tokenDao.getAllTokens()
+    val allTokensFlow: Flow<List<Token>> = tokenDao.getAllTokensFlow()
     val allTokensByName: LiveData<List<Token>> = tokenDao.getAllTokensByName()
     val allTokensByDate: LiveData<List<Token>> = tokenDao.getAllTokensByDate()
     val passphrase: LiveData<Passphrase>? = tokenDao.getPassphrase()

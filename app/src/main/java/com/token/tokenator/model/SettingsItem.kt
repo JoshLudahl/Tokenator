@@ -10,13 +10,12 @@ import androidx.room.PrimaryKey
     indices = [Index(value = arrayOf("item"), unique = true)],
 )
 data class SettingsItem(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     @ColumnInfo(name = "item")
     val item: String,
     @ColumnInfo(name = "included")
-    var included: Boolean,
+    val included: Boolean,
     @ColumnInfo(name = "category")
     val category: Type,
-) {
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
-}
+)

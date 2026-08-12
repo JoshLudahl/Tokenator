@@ -1,10 +1,6 @@
 package com.token.tokenator.ui.savedpassword.passworddetails
 
 import android.util.Log
-import android.view.View
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.token.tokenator.database.token.TokenRepository
@@ -13,6 +9,8 @@ import com.token.tokenator.utilities.Encryption
 import com.token.tokenator.utilities.TOKENATOR_TAG
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -26,19 +24,14 @@ class PasswordDetailViewModel
     @Inject
     constructor(
         private val tokenRepository: TokenRepository,
-    ) : ViewModel(),
-        LifecycleObserver {
-        private val _token = MutableLiveData<Token>()
-        val token: LiveData<Token>
+    ) : ViewModel() {
+        private val _token = MutableStateFlow<Token?>(null)
+        val token: StateFlow<Token?>
             get() = _token
 
-        private val _shouldShowWarning = MutableLiveData<Int>()
-        val shouldShowWarning: LiveData<Int>
+        private val _shouldShowWarning = MutableStateFlow(false)
+        val shouldShowWarning: StateFlow<Boolean>
             get() = _shouldShowWarning
-
-        init {
-            _shouldShowWarning.value = View.GONE
-        }
 
         fun getToken(id: Int) {
             viewModelScope.launch {
@@ -54,20 +47,21 @@ class PasswordDetailViewModel
                     )
                 _token.value = token
 
-                _shouldShowWarning.value =
-                    if (isOldPassword(newToken?.date ?: Date().toString())) View.VISIBLE else View.GONE
+                _shouldShowWarning.value = isOldPassword(newToken?.date ?: Date().toString())
                 Log.i(TOKENATOR_TAG, "DATE: ${_token.value?.date}")
             }
         }
 
-        private fun isOldPassword(date: String): Boolean {
-            val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH)
-            val firstDate: Date = sdf.parse(date) ?: Date()
-            val secondDate = Date()
-            val diffInMillies = abs(secondDate.time - firstDate.time)
-
-            return TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) > 90
-        }
+        private fun isOldPassword(date: String): Boolean =
+            try {
+                val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH)
+                val firstDate: Date = sdf.parse(date) ?: Date()
+                val secondDate = Date()
+                val diffInMillies = abs(secondDate.time - firstDate.time)
+                TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS) > 90
+            } catch (e: Exception) {
+                false
+            }
 
         fun insert(
             passwordName: String,
@@ -75,7 +69,6 @@ class PasswordDetailViewModel
             login: String? = null,
         ) {
             try {
-                // val encryptedName = Encryption.encrypt(passwordName) ?: "No name"
                 val encryptedToken = Encryption.encrypt(token)
                 val encryptedLogin =
                     login?.trim()?.let {
@@ -88,21 +81,18 @@ class PasswordDetailViewModel
 
                 encryptedToken?.let {
                     viewModelScope.launch(Dispatchers.IO) {
-                        _token.value?.title = passwordName
-                        encryptedLogin?.let {
-                            _token.value?.login = it
+                        val currentToken = _token.value
+                        if (currentToken != null) {
+                            val updatedToken =
+                                currentToken.copy(
+                                    title = passwordName,
+                                    token = encryptedToken,
+                                    login = encryptedLogin,
+                                    date = Date().toString(),
+                                )
+                            tokenRepository.updateToken(updatedToken)
+                            _token.value = updatedToken
                         }
-                        _token.value?.apply {
-                            date = Date().toString()
-                            this.token = encryptedToken
-                        }
-
-                        _token.value?.let {
-                            tokenRepository.updateToken(
-                                it,
-                            )
-                        }
-
                         Log.i("DATABASE", "Saved to database")
                     }
                 }

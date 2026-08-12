@@ -1,21 +1,19 @@
 package com.token.tokenator.ui.settings
 
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.database.token.TokenRepository
+import com.token.tokenator.di.DataStoreNoRepeat
 import com.token.tokenator.di.DataStorePassPhraseIncluded
 import com.token.tokenator.model.Passphrase
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.utilities.DataPref
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,17 +25,23 @@ class SettingsViewModel
         private val tokenRepository: TokenRepository,
         private val dataStore: DataStore<Preferences>,
         @DataStorePassPhraseIncluded private val includePassPhrase: String,
-    ) : ViewModel(),
-        LifecycleObserver {
-        val specialCharList: LiveData<List<SettingsItem>> = repository.allCharacters.asLiveData()
-        val numericCharList: LiveData<List<SettingsItem>> = repository.allNumericChars
-        val lowerCaseCharList: LiveData<List<SettingsItem>> = repository.allLowerCaseChars
-        val upperCaseCharList: LiveData<List<SettingsItem>> = repository.allUpperCaseChars
-        val passphrase: LiveData<Passphrase>? = tokenRepository.passphrase
+        @DataStoreNoRepeat val noRepeatKey: String,
+    ) : ViewModel() {
+        val allCharacters: StateFlow<List<SettingsItem>> =
+            repository.allCharacters
+                .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
+        val passphrase: StateFlow<Passphrase?> =
+            tokenRepository.passphraseflow
+                .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
 
         private val _switchPassphrase = MutableStateFlow(true)
         val switchPassphrase: StateFlow<Boolean>
             get() = _switchPassphrase
+
+        private val _switchNoRepeat = MutableStateFlow(true)
+        val switchNoRepeat: StateFlow<Boolean>
+            get() = _switchNoRepeat
 
         init {
             viewModelScope.launch {
@@ -45,28 +49,38 @@ class SettingsViewModel
                     (DataPref.readDataStore(includePassPhrase, dataStore) ?: true)
                         .toString()
                         .toBoolean()
+
+                _switchNoRepeat.value =
+                    (DataPref.readDataStore(noRepeatKey, dataStore) ?: true)
+                        .toString()
+                        .toBoolean()
             }
         }
 
         fun updateItems(settingsItem: SettingsItem) {
+            Log.d("SettingsViewModel", "Updating item: ${settingsItem.item}, included: ${settingsItem.included}, id: ${settingsItem.id}")
             viewModelScope.launch {
                 repository.update(settingsItem)
             }
         }
 
-        fun insertPassphrase(passphrase: Passphrase) {
+        fun insertPassphrase(phrase: String) {
             viewModelScope.launch {
-                tokenRepository.insertPassphrase(passphrase = passphrase)
+                tokenRepository.insertPassphrase(Passphrase(phrase = phrase))
             }
         }
 
         fun updatePassphrase(checked: Boolean) {
+            _switchPassphrase.value = checked
             viewModelScope.launch {
                 DataPref.saveDataStore(includePassPhrase, checked, dataStore)
             }
         }
 
-        fun togglePassphraseSwitch() {
-            _switchPassphrase.value = !switchPassphrase.value
+        fun updateNoRepeat(checked: Boolean) {
+            _switchNoRepeat.value = checked
+            viewModelScope.launch {
+                DataPref.saveDataStore(noRepeatKey, checked, dataStore)
+            }
         }
     }

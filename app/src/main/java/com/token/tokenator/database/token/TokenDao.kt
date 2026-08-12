@@ -31,6 +31,9 @@ interface TokenDao {
     @Query("SELECT * FROM token_table")
     fun getAllTokens(): LiveData<List<Token>>
 
+    @Query("SELECT * FROM token_table")
+    fun getAllTokensFlow(): Flow<List<Token>>
+
     @Query("SELECT * FROM token_table ORDER BY title ASC")
     fun getAllTokensByName(): LiveData<List<Token>>
 
