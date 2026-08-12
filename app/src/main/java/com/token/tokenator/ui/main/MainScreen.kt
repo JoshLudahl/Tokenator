@@ -149,69 +149,6 @@ fun MainScreen(
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            // Length Section
-            SectionHeader(text = "Length")
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                shape = MaterialTheme.shapes.large,
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
-            ) {
-                Row(
-                    modifier = Modifier.padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Slider(
-                        value = sliderValue,
-                        onValueChange = { sliderValue = it },
-                        valueRange = 8f..100f,
-                        steps = 92,
-                        modifier = Modifier.weight(1f),
-                        colors = SliderDefaults.colors(
-                            thumbColor = MaterialTheme.colorScheme.secondary,
-                            activeTrackColor = MaterialTheme.colorScheme.secondary,
-                            inactiveTrackColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f)
-                        )
-                    )
-                    Spacer(modifier = Modifier.width(16.dp))
-                    Text(
-                        text = sliderValue.toInt().toString(),
-                        style = MaterialTheme.typography.titleLarge,
-                        color = MaterialTheme.colorScheme.primary,
-                        fontWeight = FontWeight.ExtraBold
-                    )
-                }
-            }
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            // Options Section
-            SectionHeader(text = "Options")
-            Column(
-                modifier = Modifier
-                    .clip(MaterialTheme.shapes.large)
-                    .background(MaterialTheme.colorScheme.surface)
-            ) {
-                FinanceSwitch(
-                    label = stringResource(R.string.uppercase_letters),
-                    checked = switchUpperCase,
-                    onCheckedChange = { viewModel.saveSwitchState(Type.UPPERCASE, it) }
-                )
-                FinanceSwitch(
-                    label = stringResource(R.string.lowercase_letters),
-                    checked = switchLowerCase,
-                    onCheckedChange = { viewModel.saveSwitchState(Type.LOWERCASE, it) }
-                )
-                FinanceSwitch(
-                    label = stringResource(R.string.numeric),
-                    checked = switchNumeric,
-                    onCheckedChange = { viewModel.saveSwitchState(Type.NUMERIC, it) }
-                )
-                FinanceSwitch(
-                    label = stringResource(R.string.special_characters),
-                    checked = switchSpecial,
-                    onCheckedChange = { viewModel.saveSwitchState(Type.SPECIAL, it) }
-                )
-            }
 
             Button(
                 onClick = {
@@ -295,6 +232,72 @@ fun MainScreen(
                         }
                     }
                 }
+            }
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            // Length Section
+            SectionHeader(text = "Length")
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = MaterialTheme.shapes.large,
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+            ) {
+                Row(
+                    modifier = Modifier.padding(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Slider(
+                        value = sliderValue,
+                        onValueChange = { sliderValue = it },
+                        valueRange = 8f..100f,
+                        steps = 92,
+                        modifier = Modifier.weight(1f),
+                        colors = SliderDefaults.colors(
+                            thumbColor = MaterialTheme.colorScheme.secondary,
+                            activeTrackColor = MaterialTheme.colorScheme.secondary,
+                            inactiveTrackColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f)
+                        )
+                    )
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Text(
+                        text = sliderValue.toInt().toString(),
+                        style = MaterialTheme.typography.titleLarge,
+                        color = MaterialTheme.colorScheme.primary,
+                        fontWeight = FontWeight.ExtraBold
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            // Options Section
+            SectionHeader(text = "Options")
+            Column(
+                modifier = Modifier
+                    .clip(MaterialTheme.shapes.large)
+                    .background(MaterialTheme.colorScheme.surface)
+            ) {
+                FinanceSwitch(
+                    label = stringResource(R.string.uppercase_letters),
+                    checked = switchUpperCase,
+                    onCheckedChange = { viewModel.saveSwitchState(Type.UPPERCASE, it) }
+                )
+                FinanceSwitch(
+                    label = stringResource(R.string.lowercase_letters),
+                    checked = switchLowerCase,
+                    onCheckedChange = { viewModel.saveSwitchState(Type.LOWERCASE, it) }
+                )
+                FinanceSwitch(
+                    label = stringResource(R.string.numeric),
+                    checked = switchNumeric,
+                    onCheckedChange = { viewModel.saveSwitchState(Type.NUMERIC, it) }
+                )
+                FinanceSwitch(
+                    label = stringResource(R.string.special_characters),
+                    checked = switchSpecial,
+                    onCheckedChange = { viewModel.saveSwitchState(Type.SPECIAL, it) }
+                )
             }
 
             Spacer(modifier = Modifier.height(48.dp))
