@@ -1,6 +1,5 @@
 package com.token.tokenator.ui.settings
 
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,6 +24,7 @@ import com.token.tokenator.R
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Type
 import com.token.tokenator.navigation.Navigator
+import com.token.tokenator.ui.theme.FinTextDark
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -46,34 +46,25 @@ fun SettingsScreen(
 
     Scaffold(
         topBar = {
-            LargeTopAppBar(
+            CenterAlignedTopAppBar(
                 title = {
-                    Column {
-                        Text(
-                            text = stringResource(R.string.settings),
-                            style = MaterialTheme.typography.displayLarge,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Text(
-                            text = "CUSTOMIZE YOUR VAULT",
-                            style = MaterialTheme.typography.labelMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
+                    Text(
+                        text = "Customize",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.ExtraBold
+                    )
                 },
                 navigationIcon = {
                     IconButton(onClick = { navigator.goBack() }) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_arrow_circle_left),
                             contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(32.dp)
+                            modifier = Modifier.size(24.dp)
                         )
                     }
                 },
-                colors = TopAppBarDefaults.largeTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                    titleContentColor = MaterialTheme.colorScheme.onBackground
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background
                 )
             )
         },
@@ -84,77 +75,63 @@ fun SettingsScreen(
                 .padding(paddingValues)
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(20.dp),
+                .padding(horizontal = 24.dp),
         ) {
+            Spacer(modifier = Modifier.height(16.dp))
+
             // Passphrase Section
-            SectionHeader(text = stringResource(R.string.passphrase))
-            Surface(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(MaterialTheme.shapes.large),
-                color = MaterialTheme.colorScheme.surface
+            SectionHeader(text = "Passphrase")
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = MaterialTheme.shapes.large,
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Box(
-                            modifier = Modifier
-                                .size(36.dp)
-                                .clip(MaterialTheme.shapes.small)
-                                .background(MaterialTheme.colorScheme.surfaceVariant),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_passphrase),
-                                contentDescription = null,
-                                modifier = Modifier.size(20.dp),
-                                tint = MaterialTheme.colorScheme.primary
-                            )
-                        }
-                        Spacer(modifier = Modifier.width(16.dp))
                         Text(
-                            text = "Use Passphrase",
+                            text = "Use custom phrase",
                             style = MaterialTheme.typography.bodyLarge,
+                            fontWeight = FontWeight.Medium,
                             modifier = Modifier.weight(1f)
                         )
                         Switch(
                             checked = switchPassphrase,
-                            onCheckedChange = { viewModel.updatePassphrase(it) }
+                            onCheckedChange = { viewModel.updatePassphrase(it) },
+                            colors = SwitchDefaults.colors(
+                                checkedThumbColor = MaterialTheme.colorScheme.secondary,
+                                checkedTrackColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.5f)
+                            )
                         )
                     }
                     
-                    Spacer(modifier = Modifier.height(16.dp))
-                    
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        TextField(
-                            value = passphraseText,
-                            onValueChange = { passphraseText = it },
-                            placeholder = { Text(stringResource(R.string.enter_a_passphrase)) },
-                            modifier = Modifier.weight(1f),
-                            colors = TextFieldDefaults.colors(
-                                focusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
-                                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
-                                focusedIndicatorColor = Color.Transparent,
-                                unfocusedIndicatorColor = Color.Transparent
-                            ),
-                            shape = MaterialTheme.shapes.medium,
-                            singleLine = true
-                        )
-                        Spacer(modifier = Modifier.width(12.dp))
-                        IconButton(
-                            onClick = {
-                                viewModel.insertPassphrase(passphraseText)
-                                Toast.makeText(context, R.string.passphrase_saved, Toast.LENGTH_SHORT).show()
-                            },
-                            modifier = Modifier
-                                .size(48.dp)
-                                .clip(MaterialTheme.shapes.medium)
-                                .background(MaterialTheme.colorScheme.primary)
-                        ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_save_round),
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.onPrimary
+                    if (switchPassphrase) {
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            OutlinedTextField(
+                                value = passphraseText,
+                                onValueChange = { passphraseText = it },
+                                placeholder = { Text(stringResource(R.string.enter_a_passphrase)) },
+                                modifier = Modifier.weight(1f),
+                                shape = MaterialTheme.shapes.medium,
+                                singleLine = true
                             )
+                            Spacer(modifier = Modifier.width(12.dp))
+                            IconButton(
+                                onClick = {
+                                    viewModel.insertPassphrase(passphraseText)
+                                    Toast.makeText(context, R.string.passphrase_saved, Toast.LENGTH_SHORT).show()
+                                },
+                                modifier = Modifier
+                                    .size(48.dp)
+                                    .clip(MaterialTheme.shapes.medium)
+                                    .background(MaterialTheme.colorScheme.primary)
+                            ) {
+                                Icon(
+                                    painter = painterResource(id = R.drawable.ic_save_round),
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.onPrimary
+                                )
+                            }
                         }
                     }
                 }
@@ -163,12 +140,11 @@ fun SettingsScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             // Security Options
-            SectionHeader(text = "SECURITY OPTIONS")
-            Surface(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(MaterialTheme.shapes.large),
-                color = MaterialTheme.colorScheme.surface
+            SectionHeader(text = "Security")
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = MaterialTheme.shapes.large,
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
             ) {
                 Row(
                     modifier = Modifier
@@ -176,29 +152,19 @@ fun SettingsScreen(
                         .padding(16.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .size(36.dp)
-                            .clip(MaterialTheme.shapes.small)
-                            .background(MaterialTheme.colorScheme.surfaceVariant),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_repeat),
-                            contentDescription = null,
-                            modifier = Modifier.size(20.dp),
-                            tint = MaterialTheme.colorScheme.primary
-                        )
-                    }
-                    Spacer(modifier = Modifier.width(16.dp))
                     Text(
                         text = stringResource(R.string.no_repeat_characters),
                         style = MaterialTheme.typography.bodyLarge,
+                        fontWeight = FontWeight.Medium,
                         modifier = Modifier.weight(1f)
                     )
                     Switch(
                         checked = switchNoRepeat,
-                        onCheckedChange = { viewModel.updateNoRepeat(it) }
+                        onCheckedChange = { viewModel.updateNoRepeat(it) },
+                        colors = SwitchDefaults.colors(
+                            checkedThumbColor = MaterialTheme.colorScheme.secondary,
+                            checkedTrackColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.5f)
+                        )
                     )
                 }
             }
@@ -206,13 +172,13 @@ fun SettingsScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             // Characters Section
-            SectionHeader(text = stringResource(R.string.characters))
+            SectionHeader(text = "Active Characters")
             
             val types = listOf(
-                Type.UPPERCASE to stringResource(R.string.uppercase_letters),
-                Type.LOWERCASE to stringResource(R.string.lowercase_letters),
-                Type.NUMERIC to stringResource(R.string.numeric),
-                Type.SPECIAL to stringResource(R.string.special_characters)
+                Type.UPPERCASE to "Uppercase",
+                Type.LOWERCASE to "Lowercase",
+                Type.NUMERIC to "Numbers",
+                Type.SPECIAL to "Symbols"
             )
 
             types.forEach { (type, title) ->
@@ -220,7 +186,7 @@ fun SettingsScreen(
                 if (items.isNotEmpty()) {
                     Text(
                         text = title,
-                        style = MaterialTheme.typography.labelSmall,
+                        style = MaterialTheme.typography.labelLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.padding(start = 4.dp, bottom = 8.dp, top = 16.dp)
                     )
@@ -256,7 +222,7 @@ fun CharacterBox(
             .size(44.dp)
             .clip(MaterialTheme.shapes.small)
             .background(
-                if (item.included) MaterialTheme.colorScheme.primary 
+                if (item.included) MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f)
                 else MaterialTheme.colorScheme.surfaceVariant
             )
             .clickable {
@@ -267,9 +233,9 @@ fun CharacterBox(
         Text(
             text = item.item,
             style = MaterialTheme.typography.titleMedium,
-            color = if (item.included) MaterialTheme.colorScheme.onPrimary 
+            color = if (item.included) MaterialTheme.colorScheme.secondary 
                     else MaterialTheme.colorScheme.onSurface,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.ExtraBold
         )
     }
 }
@@ -277,10 +243,10 @@ fun CharacterBox(
 @Composable
 private fun SectionHeader(text: String) {
     Text(
-        text = text.uppercase(),
-        style = MaterialTheme.typography.labelMedium,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
-        fontWeight = FontWeight.Bold,
-        modifier = Modifier.padding(start = 4.dp, bottom = 8.dp)
+        text = text,
+        style = MaterialTheme.typography.titleMedium,
+        color = FinTextDark,
+        fontWeight = FontWeight.ExtraBold,
+        modifier = Modifier.padding(bottom = 12.dp)
     )
 }

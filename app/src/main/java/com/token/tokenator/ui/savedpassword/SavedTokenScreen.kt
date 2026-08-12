@@ -24,6 +24,7 @@ import com.token.tokenator.R
 import com.token.tokenator.model.Token
 import com.token.tokenator.navigation.Navigator
 import com.token.tokenator.navigation.Route
+import com.token.tokenator.ui.theme.FinTextDark
 import com.token.tokenator.utilities.Clipuous
 import com.token.tokenator.utilities.Encryption
 
@@ -39,73 +40,110 @@ fun SavedTokenScreen(
 
     Scaffold(
         topBar = {
-            LargeTopAppBar(
+            CenterAlignedTopAppBar(
                 title = {
-                    Column {
-                        Text(
-                            text = stringResource(R.string.saved_passwords),
-                            style = MaterialTheme.typography.displayLarge,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Text(
-                            text = "${tokens.size} PASSWORDS",
-                            style = MaterialTheme.typography.labelMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
+                    Text(
+                        text = "My Vault",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.ExtraBold
+                    )
                 },
                 navigationIcon = {
                     IconButton(onClick = { navigator.goBack() }) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_arrow_circle_left),
                             contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(32.dp)
+                            modifier = Modifier.size(24.dp)
                         )
                     }
                 },
-                colors = TopAppBarDefaults.largeTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                    titleContentColor = MaterialTheme.colorScheme.onBackground
+                actions = {
+                    IconButton(onClick = { /* TODO: Search or filter */ }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_abc_upper), // Placeholder for dots/search
+                            contentDescription = null,
+                            modifier = Modifier.size(24.dp)
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.background
                 )
             )
         },
         containerColor = MaterialTheme.colorScheme.background,
     ) { paddingValues ->
-        Box(
+        Column(
             modifier = Modifier
                 .padding(paddingValues)
-                .fillMaxSize(),
+                .fillMaxSize()
+                .padding(horizontal = 24.dp),
         ) {
+            Spacer(modifier = Modifier.height(16.dp))
+            
+            // Stats/Info Card (Optional, similar to "Budget for October" in image)
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = MaterialTheme.shapes.large,
+                colors = CardDefaults.cardColors(containerColor = FinTextDark)
+            ) {
+                Row(
+                    modifier = Modifier.padding(20.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column {
+                        Text(
+                            text = "Total Passwords",
+                            color = Color.White.copy(alpha = 0.7f),
+                            style = MaterialTheme.typography.labelMedium
+                        )
+                        Text(
+                            text = tokens.size.toString(),
+                            color = Color.White,
+                            style = MaterialTheme.typography.headlineMedium,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_tokenator),
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(40.dp)
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            Text(
+                text = "Recent Items",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.ExtraBold,
+                color = FinTextDark
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
             if (noTokens) {
-                Text(
-                    text = stringResource(R.string.no_saved_passwords),
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.align(Alignment.Center),
-                )
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    Text(
+                        text = stringResource(R.string.no_saved_passwords),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             } else {
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
-                    contentPadding = PaddingValues(20.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                    contentPadding = PaddingValues(bottom = 24.dp)
                 ) {
-                    item {
-                        Text(
-                            text = "ALL ITEMS",
-                            style = MaterialTheme.typography.labelMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(bottom = 8.dp)
-                        )
-                    }
                     items(tokens) { token ->
-                        TokenItem(
+                        FinanceTokenItem(
                             token = token,
                             onDelete = { tokenToDelete = it },
-                            onEdit = {
-                                navigator.navigate(Route.PasswordDetail(it.id))
-                            },
+                            onEdit = { navigator.navigate(Route.PasswordDetail(it.id)) }
                         )
                     }
                 }
@@ -116,50 +154,45 @@ fun SavedTokenScreen(
     if (tokenToDelete != null) {
         AlertDialog(
             onDismissRequest = { tokenToDelete = null },
-            title = { Text(text = stringResource(R.string.alert_confirm_delete)) },
-            text = { Text(text = stringResource(R.string.alert_delete_message)) },
+            title = { Text(text = "Delete Password?") },
+            text = { Text(text = "Are you sure you want to remove this item from your vault?") },
             confirmButton = {
                 TextButton(onClick = {
                     tokenToDelete?.let { viewModel.delete(it) }
                     tokenToDelete = null
                 }) {
-                    Text(text = stringResource(R.string.yes))
+                    Text("Delete", color = MaterialTheme.colorScheme.error)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { tokenToDelete = null }) {
-                    Text(text = stringResource(R.string.no))
+                    Text("Cancel")
                 }
             },
-            containerColor = MaterialTheme.colorScheme.surface,
-            titleContentColor = MaterialTheme.colorScheme.onSurface,
-            textContentColor = MaterialTheme.colorScheme.onSurfaceVariant
+            shape = MaterialTheme.shapes.large,
+            containerColor = MaterialTheme.colorScheme.surface
         )
     }
 }
 
 @Composable
-fun TokenItem(
+fun FinanceTokenItem(
     token: Token,
     onDelete: (Token) -> Unit,
     onEdit: (Token) -> Unit,
 ) {
     val context = LocalContext.current
-    var isVisible by remember { mutableStateOf(false) }
-    val decryptedToken = remember(token.token, isVisible) {
-        if (isVisible) Encryption.decrypt(token.token) ?: "Error" else "••••••••••••"
-    }
     val decryptedLogin = remember(token.login) {
         token.login?.let { Encryption.decrypt(it) } ?: ""
     }
 
-    Surface(
+    Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(MaterialTheme.shapes.large)
             .clickable { onEdit(token) },
-        color = MaterialTheme.colorScheme.surface,
-        tonalElevation = 2.dp
+        shape = MaterialTheme.shapes.large,
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Row(
             modifier = Modifier
@@ -167,12 +200,12 @@ fun TokenItem(
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            // Icon
+            // Soft-colored icon background
             Box(
                 modifier = Modifier
-                    .size(48.dp)
+                    .size(52.dp)
                     .clip(MaterialTheme.shapes.medium)
-                    .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)),
+                    .background(MaterialTheme.colorScheme.primaryContainer),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -188,37 +221,18 @@ fun TokenItem(
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = token.title,
-                    style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.onSurface,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = FinTextDark,
                     fontWeight = FontWeight.Bold,
                 )
-                if (decryptedLogin.isNotEmpty()) {
-                    Text(
-                        text = decryptedLogin,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                }
-                Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = decryptedToken,
+                    text = if (decryptedLogin.isNotEmpty()) decryptedLogin else "No login saved",
                     style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.secondary,
-                    letterSpacing = if (isVisible) 0.sp else 2.sp
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
 
-            Row {
-                IconButton(onClick = { isVisible = !isVisible }) {
-                    Icon(
-                        painter = painterResource(
-                            id = if (isVisible) R.drawable.ic_visibility_round else R.drawable.ic_visibility_off_round
-                        ),
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.size(20.dp)
-                    )
-                }
+            Column(horizontalAlignment = Alignment.End) {
                 IconButton(onClick = {
                     val fullToken = Encryption.decrypt(token.token) ?: ""
                     Clipuous.copyToClipboard(fullToken, context)
@@ -227,7 +241,7 @@ fun TokenItem(
                     Icon(
                         painter = painterResource(id = R.drawable.ic_content_copy_round),
                         contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        tint = FinTextDark,
                         modifier = Modifier.size(20.dp)
                     )
                 }

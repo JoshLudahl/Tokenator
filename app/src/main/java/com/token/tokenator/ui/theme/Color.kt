@@ -2,49 +2,51 @@ package com.token.tokenator.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Modern Palette from Inspiration Image
-val ColorBackgroundBlack = Color(0xFF000000)
-val ColorSurfaceDark = Color(0xFF1C1C1E)
-val ColorSurfaceVariantDark = Color(0xFF2C2C2E)
-val ColorPrimaryCyan = Color(0xFFB2FFFC)
-val ColorAccentOrange = Color(0xFFFD7014)
-val ColorWarningYellow = Color(0xFFFFD600)
-val ColorTextWhite = Color(0xFFFFFFFF)
-val ColorTextGray = Color(0xFF8E8E93)
-val ColorTextGrayDark = Color(0xFF48484A)
-val ColorErrorRed = Color(0xFFFF453A)
+// Finance Inspiration Palette
+val FinBackground = Color(0xFFF5F7FA)
+val FinSurfaceDark = Color(0xFF2D343C)
+val FinSurfaceLight = Color(0xFFFFFFFF)
+val FinPrimaryBlue = Color(0xFF96C1D8)
+val FinAccentYellow = Color(0xFFFDBC1F)
+val FinTextGray = Color(0xFF8E99A6)
+val FinTextDark = Color(0xFF1F262E)
+val FinSuccessGreen = Color(0xFFD8E9E4)
+val FinErrorRed = Color(0xFFEBE4EB)
 
-// Material 3 Color Scheme - Light (Optional)
-val primaryLight = Color(0xFF006A6A)
-val onPrimaryLight = Color(0xFFFFFFFF)
-val primaryContainerLight = Color(0xFF6FF6F6)
-val onPrimaryContainerLight = Color(0xFF002020)
+// Material 3 Color Scheme - Light (Primary)
+val primaryLight = FinPrimaryBlue
+val onPrimaryLight = Color.White
+val primaryContainerLight = FinPrimaryBlue.copy(alpha = 0.2f)
+val onPrimaryContainerLight = FinTextDark
+
+val secondaryLight = FinAccentYellow
+val onSecondaryLight = Color.White
+val secondaryContainerLight = FinAccentYellow.copy(alpha = 0.2f)
+val onSecondaryContainerLight = FinTextDark
+
+val backgroundLight = FinBackground
+val onBackgroundLight = FinTextDark
+val surfaceLight = FinSurfaceLight
+val onSurfaceLight = FinTextDark
+val surfaceVariantLight = Color(0xFFF1F4F8)
+val onSurfaceVariantLight = FinTextGray
+val outlineLight = Color(0xFFE1E4E8)
 
 // Material 3 Color Scheme - Dark
-val primaryDark = ColorPrimaryCyan
-val onPrimaryDark = ColorBackgroundBlack
-val primaryContainerDark = Color(0xFF005050)
-val onPrimaryContainerDark = ColorPrimaryCyan
+val primaryDark = Color(0xFFB2D6E8)
+val onPrimaryDark = Color(0xFF1F262E)
+val primaryContainerDark = Color(0xFF004D4D)
+val onPrimaryContainerDark = Color(0xFFB2FFFF)
 
-val secondaryDark = ColorAccentOrange
-val onSecondaryDark = Color.White
-val secondaryContainerDark = Color(0xFF663F00)
-val onSecondaryContainerDark = Color(0xFFFFDDB3)
+val secondaryDark = FinAccentYellow
+val onSecondaryDark = Color.Black
+val secondaryContainerDark = Color(0xFF664D00)
+val onSecondaryContainerDark = Color(0xFFFFE082)
 
-val tertiaryDark = ColorWarningYellow
-val onTertiaryDark = Color.Black
-val tertiaryContainerDark = Color(0xFF4C4700)
-val onTertiaryContainerDark = ColorWarningYellow
-
-val errorDark = ColorErrorRed
-val onErrorDark = Color(0xFF690005)
-val errorContainerDark = Color(0xFF93000A)
-val onErrorContainerDark = Color(0xFFFFDAD6)
-
-val backgroundDark = ColorBackgroundBlack
-val onBackgroundDark = ColorTextWhite
-val surfaceDark = ColorSurfaceDark
-val onSurfaceDark = ColorTextWhite
-val surfaceVariantDark = ColorSurfaceVariantDark
-val onSurfaceVariantDark = ColorTextGray
-val outlineDark = ColorTextGrayDark
+val backgroundDark = Color(0xFF121417)
+val onBackgroundDark = Color.White
+val surfaceDark = Color(0xFF1F262E)
+val onSurfaceDark = Color.White
+val surfaceVariantDark = Color(0xFF2D343C)
+val onSurfaceVariantDark = Color(0xFF8E99A6)
+val outlineDark = Color(0xFF3E444B)
