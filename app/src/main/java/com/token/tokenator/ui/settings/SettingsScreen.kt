@@ -4,12 +4,36 @@ import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,9 +48,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.token.tokenator.R
 import com.token.tokenator.model.SettingsItem
-import com.token.tokenator.navigation.Navigator
-
 import com.token.tokenator.model.Type
+import com.token.tokenator.navigation.Navigator
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -56,7 +79,9 @@ fun SettingsScreen(
                 title = {
                     Text(
                         text = stringResource(R.string.settings),
-                        modifier = Modifier.fillMaxWidth().padding(end = 16.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(end = 16.dp),
                         textAlign = TextAlign.End,
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp,
@@ -255,9 +280,13 @@ fun CharacterGrid(
                         .background(
                             if (item.included) Color(0xFFFD7014) else Color.White,
                             shape = MaterialTheme.shapes.extraSmall,
-                        ).clickable {
+                        )
+                        .clickable {
                             val newItem = item.copy(included = !item.included)
-                            Log.d("SettingsScreen", "Tapped: ${item.item}, Old: ${item.included}, New: ${newItem.included}, ID: ${newItem.id}")
+                            Log.d(
+                                "SettingsScreen",
+                                "Tapped: ${item.item}, Old: ${item.included}, New: ${newItem.included}, ID: ${newItem.id}"
+                            )
                             onItemClick(newItem)
                         },
                 contentAlignment = Alignment.Center,
