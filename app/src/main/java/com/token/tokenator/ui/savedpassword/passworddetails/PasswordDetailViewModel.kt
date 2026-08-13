@@ -83,15 +83,23 @@ class PasswordDetailViewModel
                     viewModelScope.launch(Dispatchers.IO) {
                         val currentToken = _token.value
                         if (currentToken != null) {
+                            val date = Date().toString()
                             val updatedToken =
                                 currentToken.copy(
                                     title = passwordName,
                                     token = encryptedToken,
                                     login = encryptedLogin,
-                                    date = Date().toString(),
+                                    date = date,
                                 )
                             tokenRepository.updateToken(updatedToken)
-                            _token.value = updatedToken
+
+                            _token.value =
+                                currentToken.copy(
+                                    title = passwordName,
+                                    token = tokenValue,
+                                    login = login,
+                                    date = date,
+                                )
                         }
                         Log.i("DATABASE", "Saved to database")
                     }
