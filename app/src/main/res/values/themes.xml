@@ -14,10 +14,10 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="splashScreenTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_screen</item>
-        <item name="android:statusBarColor">@color/blackish</item>
-        <item name="android:screenOrientation">portrait</item>
+    <style name="splashScreenTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/blackish</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_icon</item>
+        <item name="postSplashScreenTheme">@style/Theme.Tokenator</item>
     </style>
 
 

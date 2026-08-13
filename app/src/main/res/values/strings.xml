@@ -77,4 +77,17 @@
     <string name="string_value_placeholder" translatable="false">placeholder</string>
     <string name="feature_view_share_password_title" translatable="false">Share Password</string>
     <string name="feature_view_share_password_description" translatable="false">"Now you can share your password with an app or person. "</string>
+    <string name="data_loss">Loss of Data</string>
+    <string name="data_loss_message">We are not responsible for lost or missing data in the event a password can no longer be decrypted. This can occur when 3rd party library changes their encryption and we can no longer decrypt older tokens. It is recommended that you back up all of your data.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title_1" translatable="false">Secure Generation</string>
+    <string name="onboarding_description_1" translatable="false">Generate strong, secure passwords with customizable options including length and character types.</string>
+    <string name="onboarding_title_2" translatable="false">Local Storage</string>
+    <string name="onboarding_description_2" translatable="false">Your passwords are stored locally on your device, ensuring complete privacy and control.</string>
+    <string name="onboarding_title_3" translatable="false">Easy Management</string>
+    <string name="onboarding_description_3" translatable="false">Organize and search through your saved tokens with ease. Copy them to your clipboard instantly.</string>
+    <string name="onboarding_button_next" translatable="false">Next</string>
+    <string name="onboarding_button_get_started" translatable="false">Get Started</string>
+    <string name="onboarding_button_skip" translatable="false">Skip</string>
 </resources>

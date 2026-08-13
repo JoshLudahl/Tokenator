@@ -1,5 +1,6 @@
 [versions]
 accessibilityTestFramework = "4.1.1"
+activity = "1.13.0"
 appcompat = "1.7.1"
 appUpdate = "2.1.0"
 composeBom = "2026.06.01"
@@ -39,9 +40,11 @@ perfPlugin = "2.0.2"
 robolectric = "4.16.1"
 roomRuntime = "2.8.4"
 runner = "1.7.0"
+splashscreen = "1.2.0"
 
 [libraries]
 accessibility-test-framework = { module = "com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework", version.ref = "accessibilityTestFramework" }
+androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
@@ -78,6 +81,7 @@ androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "
 androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "roomRuntime" }
 androidx-rules = { module = "androidx.test:rules", version.ref = "core" }
 androidx-runner = { module = "androidx.test:runner", version.ref = "runner" }
+androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "splashscreen" }
 app-update = { module = "com.google.android.play:app-update", version.ref = "appUpdate" }
 app-update-ktx = { module = "com.google.android.play:app-update-ktx", version.ref = "appUpdate" }
 espresso-library-kotlin = { module = "com.github.JoshLudahl:espresso-library-kotlin", version.ref = "espressoLibraryKotlin" }

@@ -7,8 +7,16 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
@@ -28,6 +36,8 @@ import com.token.tokenator.navigation.rememberNavigationState
 import com.token.tokenator.navigation.toEntries
 import com.token.tokenator.ui.generate.AddPasswordScreen
 import com.token.tokenator.ui.main.MainScreen
+import com.token.tokenator.ui.onboarding.OnboardingScreen
+import com.token.tokenator.ui.onboarding.OnboardingViewModel
 import com.token.tokenator.ui.savedpassword.SavedTokenScreen
 import com.token.tokenator.ui.savedpassword.passworddetails.TokenDetailScreen
 import com.token.tokenator.ui.security.SecurityScreen
@@ -38,6 +48,7 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val onboardingViewModel: OnboardingViewModel by viewModels()
     private lateinit var appUpdateManager: AppUpdateManager
     private lateinit var aut: Task<AppUpdateInfo>
     private val updateType = AppUpdateType.FLEXIBLE
@@ -54,6 +65,9 @@ class MainActivity : ComponentActivity() {
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen().setKeepOnScreenCondition {
+            onboardingViewModel.isOnboardingCompleted.value == null
+        }
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         appUpdateManager = AppUpdateManagerFactory.create(applicationContext)
@@ -69,8 +83,25 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun TokenatorApp() {
-        val startRoute = Route.Main
-        val topLevelRoutes = remember { setOf(Route.Main, Route.SavedToken, Route.Settings) }
+        val isOnboardingCompleted by onboardingViewModel.isOnboardingCompleted.collectAsState()
+
+        if (isOnboardingCompleted == null) {
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colorScheme.background,
+            ) {}
+            return
+        }
+
+        val startRoute = if (isOnboardingCompleted == true) Route.Main else Route.Onboarding
+        val topLevelRoutes =
+            remember(isOnboardingCompleted) {
+                if (isOnboardingCompleted == true) {
+                    setOf(Route.Main, Route.SavedToken, Route.Settings)
+                } else {
+                    setOf(Route.Onboarding)
+                }
+            }
 
         val navigationState =
             rememberNavigationState(
@@ -88,6 +119,7 @@ class MainActivity : ComponentActivity() {
                 entry<Route.PasswordDetail> { key -> TokenDetailScreen(key.id, navigator) }
                 entry<Route.Settings> { SettingsScreen(navigator) }
                 entry<Route.Security> { SecurityScreen(navigator) }
+                entry<Route.Onboarding> { OnboardingScreen(navigator) }
             }
 
         NavDisplay(

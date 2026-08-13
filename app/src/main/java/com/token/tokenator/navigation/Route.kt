@@ -27,4 +27,7 @@ sealed interface Route : NavKey {
 
     @Serializable
     data object PrivacyPolicy : Route
+
+    @Serializable
+    data object Onboarding : Route
 }

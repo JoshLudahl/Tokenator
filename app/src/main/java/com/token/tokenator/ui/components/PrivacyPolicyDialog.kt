@@ -86,6 +86,13 @@ fun PrivacyPolicyDialog(
                     body = stringResource(R.string.privacy_policy_data_message),
                 )
 
+                Spacer(modifier = Modifier.height(32.dp))
+
+                PolicySection(
+                    title = stringResource(R.string.data_loss),
+                    body = stringResource(R.string.data_loss_message),
+                )
+
                 Spacer(modifier = Modifier.height(48.dp))
 
                 Button(

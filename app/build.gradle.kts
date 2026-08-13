@@ -104,8 +104,10 @@ tasks.named("preBuild") {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.splashscreen)
 
     // Compose
     implementation(platform(libs.androidx.compose.bom))

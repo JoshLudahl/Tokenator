@@ -78,4 +78,9 @@ object Utilities {
     @Singleton
     @Provides
     fun dataStorePassPhraseIncludedString(): String = "PASSPHRASE_INCLUDED"
+
+    @DataStoreOnboarding
+    @Singleton
+    @Provides
+    fun dataStoreOnboardingString(): String = "ONBOARDING_COMPLETED"
 }

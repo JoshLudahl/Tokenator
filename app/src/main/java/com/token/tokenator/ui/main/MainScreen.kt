@@ -22,12 +22,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.MoreVert
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
@@ -78,7 +76,6 @@ fun MainScreen(
     val context = LocalContext.current
     val focusManager = LocalFocusManager.current
     val tokens by viewModel.tokens.collectAsStateWithLifecycle()
-    val allTokens by viewModel.allTokens.collectAsStateWithLifecycle()
     val searchQuery by viewModel.searchQuery.collectAsStateWithLifecycle()
     var expanded by rememberSaveable { mutableStateOf(false) }
 
@@ -248,8 +245,8 @@ fun MainScreen(
                         Icon(
                             painter = painterResource(id = R.drawable.ic_tokenator),
                             contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
                             modifier = Modifier.size(64.dp),
+                            tint = Color.Unspecified,
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(
@@ -263,11 +260,6 @@ fun MainScreen(
                         if (searchQuery.isBlank()) {
                             Button(
                                 onClick = { navigator.navigate(Route.AddPassword) },
-                                shape = MaterialTheme.shapes.medium,
-                                colors =
-                                    ButtonDefaults.buttonColors(
-                                        containerColor = MaterialTheme.colorScheme.primary,
-                                    ),
                             ) {
                                 Text(
                                     text = "Add Your First Password",
@@ -402,7 +394,7 @@ fun VaultTokenItem(
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
-                    text = if (decryptedLogin.isNotEmpty()) decryptedLogin else "No username saved",
+                    text = decryptedLogin.ifEmpty { "No username saved" },
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 1,
