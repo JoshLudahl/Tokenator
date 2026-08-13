@@ -3,6 +3,7 @@ package com.token.tokenator.ui.main
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -17,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -38,6 +40,7 @@ fun MainScreen(
     viewModel: MainViewModel = hiltViewModel(),
 ) {
     val context = LocalContext.current
+    val focusManager = LocalFocusManager.current
     val tokens by viewModel.tokens.collectAsStateWithLifecycle()
     val allTokens by viewModel.allTokens.collectAsStateWithLifecycle()
     val searchQuery by viewModel.searchQuery.collectAsStateWithLifecycle()
@@ -101,6 +104,10 @@ fun MainScreen(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null
+                ) { focusManager.clearFocus() }
                 .padding(horizontal = 24.dp),
         ) {
             // Search Bar
@@ -138,6 +145,7 @@ fun MainScreen(
                 modifier = Modifier.fillMaxWidth(),
                 colors = SearchBarDefaults.colors(
                     containerColor = MaterialTheme.colorScheme.surface,
+                    dividerColor = Color.Transparent
                 )
             ) {
                 LazyColumn(
