@@ -58,7 +58,7 @@ fun TokenDetailScreen(
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        text = "NEW LOGIN",
+                        text = "",
                         style = MaterialTheme.typography.labelMedium,
                         fontWeight = FontWeight.Bold,
                         letterSpacing = 1.sp

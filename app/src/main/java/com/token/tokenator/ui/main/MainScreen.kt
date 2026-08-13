@@ -138,14 +138,11 @@ fun MainScreen(
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_settings_round),
                                 contentDescription = "Settings",
-                                modifier = Modifier.size(24.dp)
+                                modifier = Modifier.size(28.dp)
                             )
                         }
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background
-                )
             )
         },
         floatingActionButton = {
