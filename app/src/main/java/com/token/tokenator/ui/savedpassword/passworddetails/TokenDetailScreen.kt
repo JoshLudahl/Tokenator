@@ -1,5 +1,6 @@
 package com.token.tokenator.ui.savedpassword.passworddetails
 
+import android.os.Build
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -17,7 +18,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -146,7 +146,9 @@ fun TokenDetailScreen(
                 onValueChange = { loginName = it },
                 onCopy = {
                     Clipuous.copyToClipboard(loginName, context)
-                    Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
+                    if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
+                        Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
+                    }
                 },
             )
 
@@ -157,8 +159,10 @@ fun TokenDetailScreen(
                 value = passwordValue,
                 onValueChange = { passwordValue = it },
                 onCopy = {
-                    Clipuous.copyToClipboard(passwordValue, context)
-                    Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
+                    Clipuous.copyToClipboard(passwordValue, context, isSensitive = true)
+                    if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
+                        Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
+                    }
                 },
                 isPassword = true
             )
