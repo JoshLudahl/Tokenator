@@ -205,7 +205,7 @@ fun AddPasswordScreen(
                     ) {
                         Text(
                             text = "GENERATED PASSWORD",
-                            color = Color.White.copy(alpha = 0.6f),
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
                             style = MaterialTheme.typography.labelMedium,
                             letterSpacing = 1.5.sp,
                             fontWeight = FontWeight.Bold
@@ -247,7 +247,7 @@ fun AddPasswordScreen(
                     ) {
                         Text(
                             text = "Tap box to copy",
-                            color = Color.White.copy(alpha = 0.4f),
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
                             style = MaterialTheme.typography.bodySmall
                         )
 
@@ -430,10 +430,7 @@ fun AddPasswordScreen(
                         )
                     )
 
-                    HorizontalDivider(
-                        modifier = Modifier.padding(vertical = 16.dp),
-                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
-                    )
+                    Spacer(modifier = Modifier.height(16.dp))
 
                     Text(
                         text = "Included Character Types",
