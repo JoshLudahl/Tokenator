@@ -151,7 +151,7 @@ fun AddPasswordScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(MaterialTheme.shapes.extraLarge)
-                    .background(MaterialTheme.colorScheme.inverseSurface)
+                    .background(MaterialTheme.colorScheme.primaryContainer)
                     .clickable {
                         if (token.isNotEmpty()) {
                             Clipuous.copyToClipboard(token, context)

@@ -43,6 +43,8 @@ fun SettingsScreen(
         allCharacters.groupBy { it.category }
     }
 
+    var showPrivacyPolicy by remember { mutableStateOf(false) }
+
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -205,8 +207,38 @@ fun SettingsScreen(
                 }
             }
             
+            Spacer(modifier = Modifier.height(32.dp))
+
+            // Legal Section
+            SectionHeader(text = "Legal")
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = MaterialTheme.shapes.large,
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+            ) {
+                Row(
+                    modifier = Modifier
+                        .clickable { showPrivacyPolicy = true }
+                        .padding(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "Privacy Policy",
+                        style = MaterialTheme.typography.bodyLarge,
+                        fontWeight = FontWeight.Medium,
+                        modifier = Modifier.weight(1f)
+                    )
+                }
+            }
+            
             Spacer(modifier = Modifier.height(48.dp))
         }
+    }
+
+    if (showPrivacyPolicy) {
+        com.token.tokenator.ui.components.PrivacyPolicyDialog(
+            onDismiss = { showPrivacyPolicy = false },
+        )
     }
 }
 

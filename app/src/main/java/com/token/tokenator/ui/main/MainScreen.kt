@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -41,7 +42,6 @@ fun MainScreen(
     val searchQuery by viewModel.searchQuery.collectAsStateWithLifecycle()
 
     var tokenToDelete by remember { mutableStateOf<Token?>(null) }
-    var showPrivacyPolicy by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -74,7 +74,7 @@ fun MainScreen(
                 onClick = { navigator.navigate(Route.AddPassword) },
                 icon = {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_add),
+                        imageVector = Icons.Rounded.Add,
                         contentDescription = "Add Password",
                         tint = MaterialTheme.colorScheme.onSecondary,
                         modifier = Modifier.size(24.dp)
@@ -102,64 +102,6 @@ fun MainScreen(
                 .padding(horizontal = 24.dp),
         ) {
             Spacer(modifier = Modifier.height(12.dp))
-
-            // Vault Header Summary Card
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(MaterialTheme.shapes.extraLarge)
-                    .background(MaterialTheme.colorScheme.inverseSurface)
-                    .padding(24.dp)
-            ) {
-                Column {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Column {
-                            Text(
-                                text = "TOTAL SAVED PASSWORDS",
-                                color = Color.White.copy(alpha = 0.6f),
-                                style = MaterialTheme.typography.labelSmall,
-                                letterSpacing = 1.5.sp,
-                                fontWeight = FontWeight.Bold
-                            )
-                            Spacer(modifier = Modifier.height(4.dp))
-                            Text(
-                                text = "${allTokens.size}",
-                                color = Color.White,
-                                style = MaterialTheme.typography.headlineLarge,
-                                fontWeight = FontWeight.ExtraBold
-                            )
-                        }
-
-                        // Add Password Hero Button inside top card
-                        Button(
-                            onClick = { navigator.navigate(Route.AddPassword) },
-                            shape = MaterialTheme.shapes.medium,
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = MaterialTheme.colorScheme.secondary
-                            ),
-                            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 10.dp)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Rounded.Add,
-                                contentDescription = null,
-                                modifier = Modifier.size(18.dp)
-                            )
-                            Spacer(modifier = Modifier.width(6.dp))
-                            Text(
-                                text = "Add",
-                                fontWeight = FontWeight.Bold,
-                                style = MaterialTheme.typography.labelLarge
-                            )
-                        }
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
 
             // Search Bar
             OutlinedTextField(
@@ -207,13 +149,6 @@ fun MainScreen(
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.ExtraBold,
                     color = MaterialTheme.colorScheme.onSurface
-                )
-
-                Text(
-                    text = "Privacy",
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.clickable { showPrivacyPolicy = true }
                 )
             }
 
@@ -319,11 +254,6 @@ fun MainScreen(
         )
     }
 
-    if (showPrivacyPolicy) {
-        com.token.tokenator.ui.components.PrivacyPolicyDialog(
-            onDismiss = { showPrivacyPolicy = false },
-        )
-    }
 }
 
 @Composable
