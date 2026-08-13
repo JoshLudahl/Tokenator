@@ -22,7 +22,10 @@ import com.google.android.play.core.install.InstallStateUpdatedListener
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
-import com.token.tokenator.navigation.*
+import com.token.tokenator.navigation.Navigator
+import com.token.tokenator.navigation.Route
+import com.token.tokenator.navigation.rememberNavigationState
+import com.token.tokenator.navigation.toEntries
 import com.token.tokenator.ui.generate.AddPasswordScreen
 import com.token.tokenator.ui.main.MainScreen
 import com.token.tokenator.ui.savedpassword.SavedTokenScreen
@@ -30,7 +33,6 @@ import com.token.tokenator.ui.savedpassword.passworddetails.TokenDetailScreen
 import com.token.tokenator.ui.security.SecurityScreen
 import com.token.tokenator.ui.settings.SettingsScreen
 import com.token.tokenator.ui.theme.AppTheme
-
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

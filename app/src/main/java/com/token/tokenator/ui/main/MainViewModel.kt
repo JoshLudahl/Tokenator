@@ -106,19 +106,21 @@ class MainViewModel
         private val _searchQuery = MutableStateFlow("")
         val searchQuery: StateFlow<String> get() = _searchQuery
 
-        val allTokens: StateFlow<List<Token>> = repository.allTokensFlow
-            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+        val allTokens: StateFlow<List<Token>> =
+            repository.allTokensFlow
+                .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
-        val tokens: StateFlow<List<Token>> = combine(allTokens, searchQuery) { list, query ->
-            if (query.isBlank()) {
-                list
-            } else {
-                list.filter { token ->
-                    token.title.contains(query, ignoreCase = true) ||
-                        (token.login?.let { Encryption.decrypt(it) }?.contains(query, ignoreCase = true) == true)
+        val tokens: StateFlow<List<Token>> =
+            combine(allTokens, searchQuery) { list, query ->
+                if (query.isBlank()) {
+                    list
+                } else {
+                    list.filter { token ->
+                        token.title.contains(query, ignoreCase = true) ||
+                            (token.login?.let { Encryption.decrypt(it) }?.contains(query, ignoreCase = true) == true)
+                    }
                 }
-            }
-        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+            }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
         fun setSearchQuery(query: String) {
             _searchQuery.value = query

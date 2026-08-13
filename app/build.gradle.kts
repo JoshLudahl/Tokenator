@@ -1,8 +1,7 @@
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 plugins {
     id("com.android.application")
-    alias(libs.plugins.kotlin.android)
-    id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
@@ -72,10 +71,6 @@ android {
         animationsDisabled = true
     }
 
-    kapt {
-        correctErrorTypes = true
-    }
-
     packaging {
         resources {
             excludes += "META-INF/*"
@@ -87,7 +82,6 @@ kotlin {
     jvmToolchain(21)
 }
 
-/*
 ktlint {
     android = true
     ignoreFailures = false
@@ -107,7 +101,6 @@ ktlint {
 tasks.named("preBuild") {
     dependsOn("ktlintFormat")
 }
-*/
 
 dependencies {
     implementation(libs.androidx.core.ktx)
@@ -132,7 +125,6 @@ dependencies {
 
     // Room Database
     implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.compiler)
 
     implementation(libs.androidx.room.ktx)
 
@@ -188,7 +180,7 @@ dependencies {
     // For instrumented tests.
     androidTestImplementation(libs.hilt.android.testing)
     // ...with Kotlin.
-    kaptAndroidTest(libs.hilt.android.compiler)
+    kspAndroidTest(libs.hilt.android.compiler)
 
     // Styling
     implementation(libs.material)

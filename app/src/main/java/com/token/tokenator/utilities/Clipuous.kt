@@ -21,9 +21,10 @@ object Clipuous {
         val clipData = ClipData.newPlainText(R.string.secret_sauce.toString(), text)
 
         if (isSensitive) {
-            clipData.description.extras = PersistableBundle().apply {
-                putBoolean("android.content.extra.IS_SENSITIVE", true)
-            }
+            clipData.description.extras =
+                PersistableBundle().apply {
+                    putBoolean("android.content.extra.IS_SENSITIVE", true)
+                }
         }
 
         clipboardManager.setPrimaryClip(clipData)

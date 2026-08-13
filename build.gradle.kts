@@ -1,6 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
 
+    configurations.all {
+        resolutionStrategy {
+            force("org.jetbrains:annotations:23.0.0")
+        }
+    }
+
     dependencies {
         classpath(libs.androidx.navigation.safe.args.gradle.plugin)
         classpath(libs.gradle)
@@ -8,12 +14,10 @@ buildscript {
         classpath(libs.firebase.crashlytics.gradle)
         classpath(libs.perf.plugin)
         classpath(libs.hilt.android.gradle.plugin)
-        classpath(libs.kotlin.gradle.plugin)
     }
 }
 
 plugins {
-    alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.ktlint)

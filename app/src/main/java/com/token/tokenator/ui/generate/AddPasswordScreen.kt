@@ -97,13 +97,14 @@ fun AddPasswordScreen(
         if (switchSpecial) types.add(Type.SPECIAL)
 
         val excluded = allCharacters.filter { !it.included }.map { it.item }
-        val generated = Tokenator.generate(
-            length = sliderValue.toInt(),
-            includesTypesList = types,
-            excludedCharacters = excluded,
-            doNotRepeat = noRepeat,
-            includePhrase = if (switchPassphrase) passphrase?.phrase ?: "" else "",
-        )
+        val generated =
+            Tokenator.generate(
+                length = sliderValue.toInt(),
+                includesTypesList = types,
+                excludedCharacters = excluded,
+                doNotRepeat = noRepeat,
+                includePhrase = if (switchPassphrase) passphrase?.phrase ?: "" else "",
+            )
 
         if (generated.isNotEmpty()) {
             viewModel.setToken(generated)
@@ -119,22 +120,24 @@ fun AddPasswordScreen(
     }
 
     // Calculate password strength indicator
-    val passwordStrength = remember(token) {
-        when {
-            token.length >= 16 && (switchUpperCase && switchLowerCase && switchNumeric && switchSpecial) -> "VERY STRONG"
-            token.length >= 12 -> "STRONG"
-            token.length >= 8 -> "MEDIUM"
-            token.isEmpty() -> "NONE"
-            else -> "WEAK"
+    val passwordStrength =
+        remember(token) {
+            when {
+                token.length >= 16 && (switchUpperCase && switchLowerCase && switchNumeric && switchSpecial) -> "VERY STRONG"
+                token.length >= 12 -> "STRONG"
+                token.length >= 8 -> "MEDIUM"
+                token.isEmpty() -> "NONE"
+                else -> "WEAK"
+            }
         }
-    }
 
-    val strengthColor = when (passwordStrength) {
-        "VERY STRONG" -> Color(0xFF10B981)
-        "STRONG" -> Color(0xFF10B981)
-        "MEDIUM" -> Color(0xFFF59E0B)
-        else -> Color(0xFFEF4444)
-    }
+    val strengthColor =
+        when (passwordStrength) {
+            "VERY STRONG" -> Color(0xFF10B981)
+            "STRONG" -> Color(0xFF10B981)
+            "MEDIUM" -> Color(0xFFF59E0B)
+            else -> Color(0xFFEF4444)
+        }
 
     Scaffold(
         topBar = {
@@ -143,7 +146,7 @@ fun AddPasswordScreen(
                     Text(
                         text = "New Password",
                         style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.ExtraBold
+                        fontWeight = FontWeight.ExtraBold,
                     )
                 },
                 navigationIcon = {
@@ -151,7 +154,7 @@ fun AddPasswordScreen(
                         Icon(
                             painter = painterResource(id = R.drawable.ic_arrow_circle_left),
                             contentDescription = "Back",
-                            modifier = Modifier.size(28.dp)
+                            modifier = Modifier.size(28.dp),
                         )
                     }
                 },
@@ -160,70 +163,73 @@ fun AddPasswordScreen(
                         Icon(
                             painter = painterResource(id = R.drawable.ic_settings_round),
                             contentDescription = "Settings",
-                            modifier = Modifier.size(28.dp)
+                            modifier = Modifier.size(28.dp),
                         )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background
-                )
+                colors =
+                    TopAppBarDefaults.topAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.background,
+                    ),
             )
         },
         containerColor = MaterialTheme.colorScheme.background,
     ) { paddingValues ->
         Column(
-            modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 24.dp),
+            modifier =
+                Modifier
+                    .padding(paddingValues)
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .padding(horizontal = 24.dp),
         ) {
             Spacer(modifier = Modifier.height(8.dp))
 
             // Hero Card showing generated password
             Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(MaterialTheme.shapes.extraLarge)
-                    .background(MaterialTheme.colorScheme.primaryContainer)
-                    .clickable {
-                        if (token.isNotEmpty()) {
-                            Clipuous.copyToClipboard(token, context, isSensitive = true)
-                            Toast.makeText(
-                                context,
-                                R.string.toast_copied_to_clipboard,
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
-                    .padding(24.dp)
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .clip(MaterialTheme.shapes.extraLarge)
+                        .background(MaterialTheme.colorScheme.primaryContainer)
+                        .clickable {
+                            if (token.isNotEmpty()) {
+                                Clipuous.copyToClipboard(token, context, isSensitive = true)
+                                Toast
+                                    .makeText(
+                                        context,
+                                        R.string.toast_copied_to_clipboard,
+                                        Toast.LENGTH_SHORT,
+                                    ).show()
+                            }
+                        }.padding(24.dp),
             ) {
                 Column {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Text(
                             text = "GENERATED PASSWORD",
                             color = MaterialTheme.colorScheme.onPrimaryContainer,
                             style = MaterialTheme.typography.labelMedium,
                             letterSpacing = 1.5.sp,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
                         )
 
                         // Strength badge
                         if (token.isNotEmpty()) {
                             Surface(
                                 shape = RoundedCornerShape(12.dp),
-                                color = strengthColor.copy(alpha = 0.2f)
+                                color = strengthColor.copy(alpha = 0.2f),
                             ) {
                                 Text(
                                     text = passwordStrength,
                                     color = strengthColor,
                                     style = MaterialTheme.typography.labelSmall,
                                     fontWeight = FontWeight.ExtraBold,
-                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
+                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
                                 )
                             }
                         }
@@ -236,7 +242,7 @@ fun AddPasswordScreen(
                         color = Color.White,
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.Bold,
-                        maxLines = 2
+                        maxLines = 2,
                     )
 
                     Spacer(modifier = Modifier.height(20.dp))
@@ -244,35 +250,37 @@ fun AddPasswordScreen(
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Text(
                             text = "Tap box to copy",
                             color = MaterialTheme.colorScheme.onPrimaryContainer,
-                            style = MaterialTheme.typography.bodySmall
+                            style = MaterialTheme.typography.bodySmall,
                         )
 
                         IconButton(
                             onClick = {
                                 if (token.isNotEmpty()) {
                                     Clipuous.copyToClipboard(token, context, isSensitive = true)
-                                    Toast.makeText(
-                                        context,
-                                        R.string.toast_copied_to_clipboard,
-                                        Toast.LENGTH_SHORT
-                                    ).show()
+                                    Toast
+                                        .makeText(
+                                            context,
+                                            R.string.toast_copied_to_clipboard,
+                                            Toast.LENGTH_SHORT,
+                                        ).show()
                                 }
                             },
-                            modifier = Modifier
-                                .size(36.dp)
-                                .clip(CircleShape)
-                                .background(Color.White.copy(alpha = 0.1f))
+                            modifier =
+                                Modifier
+                                    .size(36.dp)
+                                    .clip(CircleShape)
+                                    .background(Color.White.copy(alpha = 0.1f)),
                         ) {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_content_copy_round),
                                 contentDescription = "Copy",
                                 tint = Color.White,
-                                modifier = Modifier.size(18.dp)
+                                modifier = Modifier.size(18.dp),
                             )
                         }
                     }
@@ -284,27 +292,28 @@ fun AddPasswordScreen(
             // Primary Generate Password Button
             Button(
                 onClick = generateNewToken,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(60.dp),
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .height(60.dp),
                 shape = MaterialTheme.shapes.extraLarge,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.secondary
-                )
+                colors =
+                    ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondary,
+                    ),
             ) {
                 Icon(
                     imageVector = Icons.Rounded.GeneratingTokens,
                     contentDescription = null,
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier.size(24.dp),
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     text = "Generate Password",
                     style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
                 )
             }
-
 
             Spacer(modifier = Modifier.height(28.dp))
 
@@ -313,7 +322,7 @@ fun AddPasswordScreen(
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.large,
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
             ) {
                 Column(modifier = Modifier.padding(20.dp)) {
                     OutlinedTextField(
@@ -328,16 +337,17 @@ fun AddPasswordScreen(
                                 painter = painterResource(id = R.drawable.ic_label_round),
                                 contentDescription = null,
                                 tint = MaterialTheme.colorScheme.primary,
-                                modifier = Modifier.size(20.dp)
+                                modifier = Modifier.size(20.dp),
                             )
                         },
                         singleLine = true,
-                        colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = MaterialTheme.colorScheme.primary,
-                            unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
-                            focusedContainerColor = MaterialTheme.colorScheme.surface,
-                            unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-                        )
+                        colors =
+                            OutlinedTextFieldDefaults.colors(
+                                focusedBorderColor = MaterialTheme.colorScheme.primary,
+                                unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
+                                focusedContainerColor = MaterialTheme.colorScheme.surface,
+                                unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                            ),
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -354,16 +364,17 @@ fun AddPasswordScreen(
                                 painter = painterResource(id = R.drawable.ic_login_round),
                                 contentDescription = null,
                                 tint = MaterialTheme.colorScheme.primary,
-                                modifier = Modifier.size(20.dp)
+                                modifier = Modifier.size(20.dp),
                             )
                         },
                         singleLine = true,
-                        colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = MaterialTheme.colorScheme.primary,
-                            unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
-                            focusedContainerColor = MaterialTheme.colorScheme.surface,
-                            unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-                        )
+                        colors =
+                            OutlinedTextFieldDefaults.colors(
+                                focusedBorderColor = MaterialTheme.colorScheme.primary,
+                                unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
+                                focusedContainerColor = MaterialTheme.colorScheme.surface,
+                                unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                            ),
                     )
 
                     Spacer(modifier = Modifier.height(24.dp))
@@ -371,33 +382,37 @@ fun AddPasswordScreen(
                     Button(
                         onClick = {
                             if (tokenName.isBlank()) {
-                                Toast.makeText(
-                                    context,
-                                    "Please enter an app/website name",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Toast
+                                    .makeText(
+                                        context,
+                                        "Please enter an app/website name",
+                                        Toast.LENGTH_SHORT,
+                                    ).show()
                             } else if (token.isEmpty()) {
-                                Toast.makeText(
-                                    context,
-                                    "Please generate a password first",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Toast
+                                    .makeText(
+                                        context,
+                                        "Please generate a password first",
+                                        Toast.LENGTH_SHORT,
+                                    ).show()
                             } else {
                                 viewModel.insert(tokenName, token, loginName)
-                                Toast.makeText(context, R.string.password_saved, Toast.LENGTH_SHORT)
+                                Toast
+                                    .makeText(context, R.string.password_saved, Toast.LENGTH_SHORT)
                                     .show()
                                 navigator.goBack()
                             }
                         },
                         enabled = tokenName.isNotBlank() && token.isNotEmpty(),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(56.dp)
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .height(56.dp),
                     ) {
                         Text(
                             text = "Save Password to Vault",
                             style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
                         )
                     }
                 }
@@ -412,31 +427,31 @@ fun AddPasswordScreen(
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.large,
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
             ) {
                 Column(modifier = Modifier.padding(20.dp)) {
                     // Length Row Header
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Text(
                             text = "Password Length",
                             style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onSurface
+                            color = MaterialTheme.colorScheme.onSurface,
                         )
                         Surface(
                             shape = MaterialTheme.shapes.small,
-                            color = MaterialTheme.colorScheme.primaryContainer
+                            color = MaterialTheme.colorScheme.primaryContainer,
                         ) {
                             Text(
                                 text = "${sliderValue.toInt()} chars",
                                 style = MaterialTheme.typography.labelLarge,
                                 color = MaterialTheme.colorScheme.primary,
                                 fontWeight = FontWeight.ExtraBold,
-                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
                             )
                         }
                     }
@@ -452,11 +467,12 @@ fun AddPasswordScreen(
                         valueRange = 8f..100f,
                         steps = 92,
                         modifier = Modifier.fillMaxWidth(),
-                        colors = SliderDefaults.colors(
-                            thumbColor = MaterialTheme.colorScheme.secondary,
-                            activeTrackColor = MaterialTheme.colorScheme.secondary,
-                            inactiveTrackColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f)
-                        )
+                        colors =
+                            SliderDefaults.colors(
+                                thumbColor = MaterialTheme.colorScheme.secondary,
+                                activeTrackColor = MaterialTheme.colorScheme.secondary,
+                                inactiveTrackColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f),
+                            ),
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -466,7 +482,7 @@ fun AddPasswordScreen(
                         style = MaterialTheme.typography.labelLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(bottom = 12.dp)
+                        modifier = Modifier.padding(bottom = 12.dp),
                     )
 
                     // Quick Character Toggles
@@ -477,7 +493,7 @@ fun AddPasswordScreen(
                         onCheckedChange = {
                             viewModel.saveSwitchState(Type.UPPERCASE, it)
                             generateNewToken()
-                        }
+                        },
                     )
                     QuickToggleItem(
                         label = stringResource(R.string.lowercase_letters),
@@ -486,7 +502,7 @@ fun AddPasswordScreen(
                         onCheckedChange = {
                             viewModel.saveSwitchState(Type.LOWERCASE, it)
                             generateNewToken()
-                        }
+                        },
                     )
                     QuickToggleItem(
                         label = stringResource(R.string.numeric),
@@ -495,7 +511,7 @@ fun AddPasswordScreen(
                         onCheckedChange = {
                             viewModel.saveSwitchState(Type.NUMERIC, it)
                             generateNewToken()
-                        }
+                        },
                     )
                     QuickToggleItem(
                         label = stringResource(R.string.special_characters),
@@ -504,7 +520,7 @@ fun AddPasswordScreen(
                         onCheckedChange = {
                             viewModel.saveSwitchState(Type.SPECIAL, it)
                             generateNewToken()
-                        }
+                        },
                     )
                 }
             }
@@ -521,7 +537,7 @@ private fun QuickSettingsHeader(text: String) {
         style = MaterialTheme.typography.titleMedium,
         color = MaterialTheme.colorScheme.onSurface,
         fontWeight = FontWeight.ExtraBold,
-        modifier = Modifier.padding(bottom = 12.dp)
+        modifier = Modifier.padding(bottom = 12.dp),
     )
 }
 
@@ -533,43 +549,46 @@ private fun QuickToggleItem(
     onCheckedChange: (Boolean) -> Unit,
 ) {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onCheckedChange(!checked) }
-            .padding(vertical = 8.dp),
-        verticalAlignment = Alignment.CenterVertically
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .clickable { onCheckedChange(!checked) }
+                .padding(vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = label,
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.SemiBold,
-                color = MaterialTheme.colorScheme.onSurface
+                color = MaterialTheme.colorScheme.onSurface,
             )
             Text(
                 text = subtext,
                 style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
         Switch(
             checked = checked,
             onCheckedChange = onCheckedChange,
-            thumbContent = if (checked) {
-                {
-                    Icon(
-                        imageVector = Icons.Filled.Check,
-                        contentDescription = null,
-                        modifier = Modifier.size(SwitchDefaults.IconSize),
-                    )
-                }
-            } else {
-                null
-            },
-            colors = SwitchDefaults.colors(
-                checkedThumbColor = MaterialTheme.colorScheme.primary,
-                checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
-            )
+            thumbContent =
+                if (checked) {
+                    {
+                        Icon(
+                            imageVector = Icons.Filled.Check,
+                            contentDescription = null,
+                            modifier = Modifier.size(SwitchDefaults.IconSize),
+                        )
+                    }
+                } else {
+                    null
+                },
+            colors =
+                SwitchDefaults.colors(
+                    checkedThumbColor = MaterialTheme.colorScheme.primary,
+                    checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                ),
         )
     }
 }

@@ -66,9 +66,10 @@ fun SettingsScreen(
 
     var passphraseText by remember(passphrase) { mutableStateOf(passphrase?.phrase ?: "") }
 
-    val groupedCharacters = remember(allCharacters) {
-        allCharacters.groupBy { it.category }
-    }
+    val groupedCharacters =
+        remember(allCharacters) {
+            allCharacters.groupBy { it.category }
+        }
 
     var showPrivacyPolicy by remember { mutableStateOf(false) }
 
@@ -79,7 +80,7 @@ fun SettingsScreen(
                     Text(
                         text = "Settings",
                         style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.ExtraBold
+                        fontWeight = FontWeight.ExtraBold,
                     )
                 },
                 navigationIcon = {
@@ -87,7 +88,7 @@ fun SettingsScreen(
                         Icon(
                             painter = painterResource(id = R.drawable.ic_arrow_circle_left),
                             contentDescription = null,
-                            modifier = Modifier.size(28.dp)
+                            modifier = Modifier.size(28.dp),
                         )
                     }
                 },
@@ -96,11 +97,12 @@ fun SettingsScreen(
         containerColor = MaterialTheme.colorScheme.background,
     ) { paddingValues ->
         Column(
-            modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 24.dp),
+            modifier =
+                Modifier
+                    .padding(paddingValues)
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .padding(horizontal = 24.dp),
         ) {
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -109,7 +111,7 @@ fun SettingsScreen(
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.large,
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -117,26 +119,28 @@ fun SettingsScreen(
                             text = "Use custom phrase",
                             style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.Medium,
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.weight(1f),
                         )
                         Switch(
                             checked = switchPassphrase,
                             onCheckedChange = { viewModel.updatePassphrase(it) },
-                            thumbContent = if (switchPassphrase) {
-                                {
-                                    Icon(
-                                        imageVector = Icons.Filled.Check,
-                                        contentDescription = null,
-                                        modifier = Modifier.size(SwitchDefaults.IconSize),
-                                    )
-                                }
-                            } else {
-                                null
-                            },
-                            colors = SwitchDefaults.colors(
-                                checkedThumbColor = MaterialTheme.colorScheme.primary,
-                                checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
-                            )
+                            thumbContent =
+                                if (switchPassphrase) {
+                                    {
+                                        Icon(
+                                            imageVector = Icons.Filled.Check,
+                                            contentDescription = null,
+                                            modifier = Modifier.size(SwitchDefaults.IconSize),
+                                        )
+                                    }
+                                } else {
+                                    null
+                                },
+                            colors =
+                                SwitchDefaults.colors(
+                                    checkedThumbColor = MaterialTheme.colorScheme.primary,
+                                    checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                                ),
                         )
                     }
 
@@ -149,27 +153,29 @@ fun SettingsScreen(
                                 placeholder = { Text(stringResource(R.string.enter_a_passphrase)) },
                                 modifier = Modifier.weight(1f),
                                 shape = MaterialTheme.shapes.medium,
-                                singleLine = true
+                                singleLine = true,
                             )
                             Spacer(modifier = Modifier.width(12.dp))
                             IconButton(
                                 onClick = {
                                     viewModel.insertPassphrase(passphraseText)
-                                    Toast.makeText(
-                                        context,
-                                        R.string.passphrase_saved,
-                                        Toast.LENGTH_SHORT
-                                    ).show()
+                                    Toast
+                                        .makeText(
+                                            context,
+                                            R.string.passphrase_saved,
+                                            Toast.LENGTH_SHORT,
+                                        ).show()
                                 },
-                                modifier = Modifier
-                                    .size(48.dp)
-                                    .clip(MaterialTheme.shapes.medium)
-                                    .background(MaterialTheme.colorScheme.primary)
+                                modifier =
+                                    Modifier
+                                        .size(48.dp)
+                                        .clip(MaterialTheme.shapes.medium)
+                                        .background(MaterialTheme.colorScheme.primary),
                             ) {
                                 Icon(
                                     painter = painterResource(id = R.drawable.ic_save_round),
                                     contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onPrimary
+                                    tint = MaterialTheme.colorScheme.onPrimary,
                                 )
                             }
                         }
@@ -184,38 +190,41 @@ fun SettingsScreen(
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.large,
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
             ) {
                 Row(
-                    modifier = Modifier
-                        .clickable { viewModel.updateNoRepeat(!switchNoRepeat) }
-                        .padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    modifier =
+                        Modifier
+                            .clickable { viewModel.updateNoRepeat(!switchNoRepeat) }
+                            .padding(16.dp),
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
                         text = stringResource(R.string.no_repeat_characters),
                         style = MaterialTheme.typography.bodyLarge,
                         fontWeight = FontWeight.Medium,
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier.weight(1f),
                     )
                     Switch(
                         checked = switchNoRepeat,
                         onCheckedChange = { viewModel.updateNoRepeat(it) },
-                        thumbContent = if (switchNoRepeat) {
-                            {
-                                Icon(
-                                    imageVector = Icons.Filled.Check,
-                                    contentDescription = null,
-                                    modifier = Modifier.size(SwitchDefaults.IconSize),
-                                )
-                            }
-                        } else {
-                            null
-                        },
-                        colors = SwitchDefaults.colors(
-                            checkedThumbColor = MaterialTheme.colorScheme.primary,
-                            checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
-                        )
+                        thumbContent =
+                            if (switchNoRepeat) {
+                                {
+                                    Icon(
+                                        imageVector = Icons.Filled.Check,
+                                        contentDescription = null,
+                                        modifier = Modifier.size(SwitchDefaults.IconSize),
+                                    )
+                                }
+                            } else {
+                                null
+                            },
+                        colors =
+                            SwitchDefaults.colors(
+                                checkedThumbColor = MaterialTheme.colorScheme.primary,
+                                checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                            ),
                     )
                 }
             }
@@ -225,12 +234,13 @@ fun SettingsScreen(
             // Characters Section
             SectionHeader(text = "Active Characters")
 
-            val types = listOf(
-                Type.UPPERCASE to "Uppercase",
-                Type.LOWERCASE to "Lowercase",
-                Type.NUMERIC to "Numbers",
-                Type.SPECIAL to "Symbols"
-            )
+            val types =
+                listOf(
+                    Type.UPPERCASE to "Uppercase",
+                    Type.LOWERCASE to "Lowercase",
+                    Type.NUMERIC to "Numbers",
+                    Type.SPECIAL to "Symbols",
+                )
 
             types.forEach { (type, title) ->
                 val items = groupedCharacters[type] ?: emptyList()
@@ -239,16 +249,17 @@ fun SettingsScreen(
                         text = title,
                         style = MaterialTheme.typography.labelLarge,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(start = 4.dp, bottom = 8.dp, top = 16.dp)
+                        modifier = Modifier.padding(start = 4.dp, bottom = 8.dp, top = 16.dp),
                     )
 
                     FlowRow(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clip(MaterialTheme.shapes.large)
-                            .background(MaterialTheme.colorScheme.surface)
-                            .padding(8.dp),
-                        horizontalArrangement = Arrangement.Start
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .clip(MaterialTheme.shapes.large)
+                                .background(MaterialTheme.colorScheme.surface)
+                                .padding(8.dp),
+                        horizontalArrangement = Arrangement.Start,
                     ) {
                         items.forEach { item ->
                             CharacterBox(item = item) { viewModel.updateItems(it) }
@@ -264,19 +275,20 @@ fun SettingsScreen(
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.large,
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
             ) {
                 Row(
-                    modifier = Modifier
-                        .clickable { showPrivacyPolicy = true }
-                        .padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                    modifier =
+                        Modifier
+                            .clickable { showPrivacyPolicy = true }
+                            .padding(16.dp),
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
                         text = "Privacy Policy",
                         style = MaterialTheme.typography.bodyLarge,
                         fontWeight = FontWeight.Medium,
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier.weight(1f),
                     )
                 }
             }
@@ -295,28 +307,35 @@ fun SettingsScreen(
 @Composable
 fun CharacterBox(
     item: SettingsItem,
-    onClick: (SettingsItem) -> Unit
+    onClick: (SettingsItem) -> Unit,
 ) {
     Box(
-        modifier = Modifier
-            .padding(6.dp)
-            .size(44.dp)
-            .clip(MaterialTheme.shapes.small)
-            .background(
-                if (item.included) MaterialTheme.colorScheme.primaryContainer
-                else MaterialTheme.colorScheme.surfaceVariant
-            )
-            .clickable {
-                onClick(item.copy(included = !item.included))
-            },
-        contentAlignment = Alignment.Center
+        modifier =
+            Modifier
+                .padding(6.dp)
+                .size(44.dp)
+                .clip(MaterialTheme.shapes.small)
+                .background(
+                    if (item.included) {
+                        MaterialTheme.colorScheme.primaryContainer
+                    } else {
+                        MaterialTheme.colorScheme.surfaceVariant
+                    },
+                ).clickable {
+                    onClick(item.copy(included = !item.included))
+                },
+        contentAlignment = Alignment.Center,
     ) {
         Text(
             text = item.item,
             style = MaterialTheme.typography.titleMedium,
-            color = if (item.included) MaterialTheme.colorScheme.onPrimaryContainer
-            else MaterialTheme.colorScheme.onSurface,
-            fontWeight = FontWeight.ExtraBold
+            color =
+                if (item.included) {
+                    MaterialTheme.colorScheme.onPrimaryContainer
+                } else {
+                    MaterialTheme.colorScheme.onSurface
+                },
+            fontWeight = FontWeight.ExtraBold,
         )
     }
 }
@@ -328,6 +347,6 @@ private fun SectionHeader(text: String) {
         style = MaterialTheme.typography.titleMedium,
         color = MaterialTheme.colorScheme.onSurface,
         fontWeight = FontWeight.ExtraBold,
-        modifier = Modifier.padding(bottom = 12.dp)
+        modifier = Modifier.padding(bottom = 12.dp),
     )
 }

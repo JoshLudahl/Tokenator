@@ -4,7 +4,19 @@ import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,14 +25,34 @@ import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.MoreVert
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SearchBar
+import androidx.compose.material3.SearchBarDefaults
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
@@ -28,7 +60,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.token.tokenator.R
@@ -71,14 +102,14 @@ fun MainScreen(
                                         IconButton(onClick = { expanded = false }) {
                                             Icon(
                                                 imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                                                contentDescription = "Back"
+                                                contentDescription = "Back",
                                             )
                                         }
                                     } else {
                                         Icon(
                                             painter = painterResource(id = R.drawable.ic_search),
                                             contentDescription = "Search",
-                                            modifier = Modifier.size(20.dp)
+                                            modifier = Modifier.size(20.dp),
                                         )
                                     }
                                 },
@@ -88,7 +119,7 @@ fun MainScreen(
                                             Icon(
                                                 painter = painterResource(id = R.drawable.close),
                                                 contentDescription = "Clear search",
-                                                modifier = Modifier.size(18.dp)
+                                                modifier = Modifier.size(18.dp),
                                             )
                                         }
                                     }
@@ -97,13 +128,15 @@ fun MainScreen(
                         },
                         expanded = expanded,
                         onExpandedChange = { expanded = it },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .heightIn(max = if (expanded) Dp.Unspecified else 56.dp),
-                        colors = SearchBarDefaults.colors(
-                            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
-                            dividerColor = Color.Transparent
-                        )
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .heightIn(max = if (expanded) Dp.Unspecified else 56.dp),
+                        colors =
+                            SearchBarDefaults.colors(
+                                containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+                                dividerColor = Color.Transparent,
+                            ),
                     ) {
                         LazyColumn(
                             modifier = Modifier.fillMaxWidth(),
@@ -126,7 +159,7 @@ fun MainScreen(
                                         }
                                     },
                                     onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
-                                    onDelete = { tokenToDelete = token }
+                                    onDelete = { tokenToDelete = token },
                                 )
                             }
                         }
@@ -138,7 +171,7 @@ fun MainScreen(
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_settings_round),
                                 contentDescription = "Settings",
-                                modifier = Modifier.size(28.dp)
+                                modifier = Modifier.size(28.dp),
                             )
                         }
                     }
@@ -153,7 +186,7 @@ fun MainScreen(
                         imageVector = Icons.Rounded.Add,
                         contentDescription = "Add Password",
                         tint = MaterialTheme.colorScheme.onSecondary,
-                        modifier = Modifier.size(24.dp)
+                        modifier = Modifier.size(24.dp),
                     )
                 },
                 text = {
@@ -161,38 +194,39 @@ fun MainScreen(
                         text = "New Password",
                         fontWeight = FontWeight.Bold,
                         style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSecondary
+                        color = MaterialTheme.colorScheme.onSecondary,
                     )
                 },
                 containerColor = MaterialTheme.colorScheme.secondary,
                 shape = MaterialTheme.shapes.extraLarge,
-                modifier = Modifier.padding(bottom = 8.dp)
+                modifier = Modifier.padding(bottom = 8.dp),
             )
         },
         containerColor = MaterialTheme.colorScheme.background,
     ) { paddingValues ->
         Column(
-            modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize()
-                .clickable(
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = null
-                ) { focusManager.clearFocus() }
-                .padding(horizontal = 24.dp),
+            modifier =
+                Modifier
+                    .padding(paddingValues)
+                    .fillMaxSize()
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null,
+                    ) { focusManager.clearFocus() }
+                    .padding(horizontal = 24.dp),
         ) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
                     text = if (searchQuery.isNotBlank()) "Search Results (${tokens.size})" else "All Passwords",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.ExtraBold,
-                    color = MaterialTheme.colorScheme.onSurface
+                    color = MaterialTheme.colorScheme.onSurface,
                 )
             }
 
@@ -201,27 +235,28 @@ fun MainScreen(
             // Password List
             if (tokens.isEmpty()) {
                 Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f),
-                    contentAlignment = Alignment.Center
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .weight(1f),
+                    contentAlignment = Alignment.Center,
                 ) {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier.padding(32.dp)
+                        modifier = Modifier.padding(32.dp),
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_tokenator),
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
-                            modifier = Modifier.size(64.dp)
+                            modifier = Modifier.size(64.dp),
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(
                             text = if (searchQuery.isNotBlank()) "No passwords matching \"$searchQuery\"" else stringResource(R.string.no_saved_passwords),
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            fontWeight = FontWeight.Medium
+                            fontWeight = FontWeight.Medium,
                         )
                         Spacer(modifier = Modifier.height(24.dp))
 
@@ -229,13 +264,14 @@ fun MainScreen(
                             Button(
                                 onClick = { navigator.navigate(Route.AddPassword) },
                                 shape = MaterialTheme.shapes.medium,
-                                colors = ButtonDefaults.buttonColors(
-                                    containerColor = MaterialTheme.colorScheme.primary
-                                )
+                                colors =
+                                    ButtonDefaults.buttonColors(
+                                        containerColor = MaterialTheme.colorScheme.primary,
+                                    ),
                             ) {
                                 Text(
                                     text = "Add Your First Password",
-                                    fontWeight = FontWeight.Bold
+                                    fontWeight = FontWeight.Bold,
                                 )
                             }
                         }
@@ -243,11 +279,12 @@ fun MainScreen(
                 }
             } else {
                 LazyColumn(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(1f),
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .weight(1f),
                     verticalArrangement = Arrangement.spacedBy(14.dp),
-                    contentPadding = PaddingValues(bottom = 90.dp)
+                    contentPadding = PaddingValues(bottom = 90.dp),
                 ) {
                     items(tokens, key = { it.id }) { token ->
                         VaultTokenItem(
@@ -265,7 +302,7 @@ fun MainScreen(
                                 }
                             },
                             onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
-                            onDelete = { tokenToDelete = token }
+                            onDelete = { tokenToDelete = token },
                         )
                     }
                 }
@@ -280,7 +317,7 @@ fun MainScreen(
             title = {
                 Text(
                     text = "Delete Password?",
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
                 )
             },
             text = {
@@ -301,10 +338,9 @@ fun MainScreen(
                 }
             },
             shape = MaterialTheme.shapes.large,
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = MaterialTheme.colorScheme.surface,
         )
     }
-
 }
 
 @Composable
@@ -315,32 +351,36 @@ fun VaultTokenItem(
     onEdit: () -> Unit,
     onDelete: () -> Unit,
 ) {
-    val decryptedLogin = remember(token.login) {
-        token.login?.let { Encryption.decrypt(it) } ?: ""
-    }
+    val decryptedLogin =
+        remember(token.login) {
+            token.login?.let { Encryption.decrypt(it) } ?: ""
+        }
     var showMenu by remember { mutableStateOf(false) }
 
     Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onEdit() },
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .clickable { onEdit() },
         shape = RoundedCornerShape(30.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
         Row(
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth(),
+            modifier =
+                Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             // Icon Badge
             Box(
-                modifier = Modifier
-                    .size(52.dp)
-                    .clip(MaterialTheme.shapes.extraLarge)
-                    .background(MaterialTheme.colorScheme.onSecondaryContainer),
-                contentAlignment = Alignment.Center
+                modifier =
+                    Modifier
+                        .size(52.dp)
+                        .clip(MaterialTheme.shapes.extraLarge)
+                        .background(MaterialTheme.colorScheme.onSecondaryContainer),
+                contentAlignment = Alignment.Center,
             ) {
                 Text(
                     text = token.title.take(1).uppercase(),
@@ -358,14 +398,14 @@ fun VaultTokenItem(
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface,
                     fontWeight = FontWeight.Bold,
-                    maxLines = 1
+                    maxLines = 1,
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = if (decryptedLogin.isNotEmpty()) decryptedLogin else "No username saved",
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 1
+                    maxLines = 1,
                 )
             }
 
@@ -375,13 +415,13 @@ fun VaultTokenItem(
                         imageVector = Icons.Rounded.MoreVert,
                         contentDescription = "More options",
                         tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(24.dp)
+                        modifier = Modifier.size(24.dp),
                     )
                 }
 
                 DropdownMenu(
                     expanded = showMenu,
-                    onDismissRequest = { showMenu = false }
+                    onDismissRequest = { showMenu = false },
                 ) {
                     DropdownMenuItem(
                         text = { Text("Copy Password") },
@@ -393,9 +433,9 @@ fun VaultTokenItem(
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_content_copy_round),
                                 contentDescription = null,
-                                modifier = Modifier.size(20.dp)
+                                modifier = Modifier.size(20.dp),
                             )
-                        }
+                        },
                     )
                     DropdownMenuItem(
                         text = { Text("Copy Username") },
@@ -407,10 +447,10 @@ fun VaultTokenItem(
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_login_round),
                                 contentDescription = null,
-                                modifier = Modifier.size(20.dp)
+                                modifier = Modifier.size(20.dp),
                             )
                         },
-                        enabled = decryptedLogin.isNotEmpty()
+                        enabled = decryptedLogin.isNotEmpty(),
                     )
                     DropdownMenuItem(
                         text = { Text("Delete", color = MaterialTheme.colorScheme.error) },
@@ -423,9 +463,9 @@ fun VaultTokenItem(
                                 painter = painterResource(id = R.drawable.ic_delete_round),
                                 contentDescription = null,
                                 tint = MaterialTheme.colorScheme.error,
-                                modifier = Modifier.size(20.dp)
+                                modifier = Modifier.size(20.dp),
                             )
-                        }
+                        },
                     )
                 }
             }

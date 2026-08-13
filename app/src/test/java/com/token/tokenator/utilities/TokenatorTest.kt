@@ -13,12 +13,11 @@ import org.robolectric.annotation.Config
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [34])
 class TokenatorTest {
-
     @Test
     fun testSupportedCharactersContainsAllCategories() {
         val all = SupportedCharacters.all
         assertTrue(all.isNotEmpty())
-        
+
         val uppercase = all.filter { it.category == Type.UPPERCASE }
         val lowercase = all.filter { it.category == Type.LOWERCASE }
         val numeric = all.filter { it.category == Type.NUMERIC }
@@ -35,15 +34,19 @@ class TokenatorTest {
         val excludedList = listOf("A", "B", "C", "1", "2", "!")
         val typesList = mutableListOf(Type.UPPERCASE, Type.LOWERCASE, Type.NUMERIC, Type.SPECIAL)
 
-        val result = Tokenator.generate(
-            length = 50,
-            includesTypesList = typesList,
-            excludedCharacters = excludedList,
-            doNotRepeat = false
-        )
+        val result =
+            Tokenator.generate(
+                length = 50,
+                includesTypesList = typesList,
+                excludedCharacters = excludedList,
+                doNotRepeat = false,
+            )
 
         for (excludedChar in excludedList) {
-            assertFalse("Generated password should not contain excluded character '$excludedChar'", result.contains(excludedChar))
+            assertFalse(
+                "Generated password should not contain excluded character '$excludedChar'",
+                result.contains(excludedChar),
+            )
         }
     }
 }
