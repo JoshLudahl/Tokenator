@@ -6,6 +6,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.MoreVert
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -184,6 +186,7 @@ fun FinanceTokenItem(
     val decryptedLogin = remember(token.login) {
         token.login?.let { Encryption.decrypt(it) } ?: ""
     }
+    var showMenu by remember { mutableStateOf(false) }
 
     Card(
         modifier = Modifier
@@ -231,17 +234,68 @@ fun FinanceTokenItem(
                 )
             }
 
-            Column(horizontalAlignment = Alignment.End) {
-                IconButton(onClick = {
-                    val fullToken = Encryption.decrypt(token.token) ?: ""
-                    Clipuous.copyToClipboard(fullToken, context)
-                    Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
-                }) {
+            Box {
+                IconButton(onClick = { showMenu = true }) {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_content_copy_round),
-                        contentDescription = null,
+                        imageVector = Icons.Rounded.MoreVert,
+                        contentDescription = "More options",
                         tint = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier.size(20.dp)
+                    )
+                }
+
+                DropdownMenu(
+                    expanded = showMenu,
+                    onDismissRequest = { showMenu = false }
+                ) {
+                    DropdownMenuItem(
+                        text = { Text("Copy Password") },
+                        onClick = {
+                            showMenu = false
+                            val fullToken = Encryption.decrypt(token.token) ?: ""
+                            Clipuous.copyToClipboard(fullToken, context)
+                            Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
+                        },
+                        leadingIcon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_content_copy_round),
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
+                    )
+                    DropdownMenuItem(
+                        text = { Text("Copy Username") },
+                        onClick = {
+                            showMenu = false
+                            if (decryptedLogin.isNotEmpty()) {
+                                Clipuous.copyToClipboard(decryptedLogin, context)
+                                Toast.makeText(context, "Username copied", Toast.LENGTH_SHORT).show()
+                            }
+                        },
+                        leadingIcon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_login_round),
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        },
+                        enabled = decryptedLogin.isNotEmpty()
+                    )
+                    DropdownMenuItem(
+                        text = { Text("Delete", color = MaterialTheme.colorScheme.error) },
+                        onClick = {
+                            showMenu = false
+                            onDelete(token)
+                        },
+                        leadingIcon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_delete_round),
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.error,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
                     )
                 }
             }
