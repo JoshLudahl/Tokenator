@@ -105,8 +105,6 @@ tasks.named("preBuild") {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.splashscreen)
 
     // Compose
@@ -120,7 +118,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
 
     // Lifecycle
-    implementation(libs.androidx.lifecycle.extensions)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
@@ -137,10 +134,6 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     // optional - Test helpers
-    testImplementation(libs.androidx.room.testing)
-
-    // optional - Paging 3 Integration
-    implementation(libs.androidx.room.paging)
 
     // Navigation
     implementation(libs.androidx.navigation3.runtime)
@@ -157,26 +150,6 @@ dependencies {
     // Firebase
     // Import the BoM for the Firebase platform
     implementation(platform(libs.firebase.bom))
-
-    // When using the BoM, you don't specify versions in Firebase library dependencies
-    implementation(libs.firebase.crashlytics)
-
-    // Add the dependency for the Realtime Database library
-    // When using the BoM, you don't specify versions in Firebase library dependencies
-    implementation(libs.firebase.database)
-
-    // Add the dependency for the Firebase SDK for Google Analytics
-    implementation(libs.firebase.analytics)
-
-    // This dependency is downloaded from the Google’s Maven repository.
-    // Make sure you also include that repository in your project's build.gradle file.
-    implementation(libs.feature.delivery)
-
-    // For Kotlin users, also import the Kotlin extensions library for Play Feature Delivery:
-    implementation(libs.feature.delivery.ktx)
-
-    // Add Performance lib
-    implementation(libs.firebase.perf)
 
     // For instrumented tests.
     androidTestImplementation(libs.hilt.android.testing)
@@ -198,9 +171,6 @@ dependencies {
 
     // Optional -- Mockito framework
     testImplementation(libs.mockito.core)
-
-    // Core library
-    androidTestImplementation(libs.androidx.core)
 
     // AndroidJUnitRunner and JUnit Rules
     androidTestImplementation(libs.androidx.runner)
