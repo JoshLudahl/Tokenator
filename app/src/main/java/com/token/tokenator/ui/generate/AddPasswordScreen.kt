@@ -265,6 +265,68 @@ fun AddPasswordScreen(
                 )
             }
 
+
+            Spacer(modifier = Modifier.height(28.dp))
+
+            // Save to Vault Form
+            QuickSettingsHeader(text = "Save to Vault")
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = MaterialTheme.shapes.large,
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+            ) {
+                Column(modifier = Modifier.padding(20.dp)) {
+                    OutlinedTextField(
+                        value = tokenName,
+                        onValueChange = { tokenName = it },
+                        label = { Text("App / Website Name") },
+                        placeholder = { Text("e.g. Google, Netflix, Work Email") },
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = MaterialTheme.shapes.medium,
+                        singleLine = true
+                    )
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    OutlinedTextField(
+                        value = loginName,
+                        onValueChange = { loginName = it },
+                        label = { Text("Username / Email") },
+                        placeholder = { Text("e.g. alex@example.com") },
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = MaterialTheme.shapes.medium,
+                        singleLine = true
+                    )
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    Button(
+                        onClick = {
+                            if (tokenName.isBlank()) {
+                                Toast.makeText(context, "Please enter an app/website name", Toast.LENGTH_SHORT).show()
+                            } else if (token.isEmpty()) {
+                                Toast.makeText(context, "Please generate a password first", Toast.LENGTH_SHORT).show()
+                            } else {
+                                viewModel.insert(tokenName, token, loginName)
+                                Toast.makeText(context, R.string.password_saved, Toast.LENGTH_SHORT).show()
+                                navigator.goBack()
+                            }
+                        },
+                        enabled = tokenName.isNotBlank() && token.isNotEmpty(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(56.dp),
+                        shape = MaterialTheme.shapes.medium
+                    ) {
+                        Text(
+                            text = "Save Password to Vault",
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+            }
+
             Spacer(modifier = Modifier.height(28.dp))
 
             // Quick Settings header right below Generate Button
@@ -371,67 +433,6 @@ fun AddPasswordScreen(
                             generateNewToken()
                         }
                     )
-                }
-            }
-
-            Spacer(modifier = Modifier.height(28.dp))
-
-            // Save to Vault Form
-            QuickSettingsHeader(text = "Save to Vault")
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                shape = MaterialTheme.shapes.large,
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
-            ) {
-                Column(modifier = Modifier.padding(20.dp)) {
-                    OutlinedTextField(
-                        value = tokenName,
-                        onValueChange = { tokenName = it },
-                        label = { Text("App / Website Name") },
-                        placeholder = { Text("e.g. Google, Netflix, Work Email") },
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = MaterialTheme.shapes.medium,
-                        singleLine = true
-                    )
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    OutlinedTextField(
-                        value = loginName,
-                        onValueChange = { loginName = it },
-                        label = { Text("Username / Email") },
-                        placeholder = { Text("e.g. alex@example.com") },
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = MaterialTheme.shapes.medium,
-                        singleLine = true
-                    )
-
-                    Spacer(modifier = Modifier.height(24.dp))
-
-                    Button(
-                        onClick = {
-                            if (tokenName.isBlank()) {
-                                Toast.makeText(context, "Please enter an app/website name", Toast.LENGTH_SHORT).show()
-                            } else if (token.isEmpty()) {
-                                Toast.makeText(context, "Please generate a password first", Toast.LENGTH_SHORT).show()
-                            } else {
-                                viewModel.insert(tokenName, token, loginName)
-                                Toast.makeText(context, R.string.password_saved, Toast.LENGTH_SHORT).show()
-                                navigator.goBack()
-                            }
-                        },
-                        enabled = tokenName.isNotBlank() && token.isNotEmpty(),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(56.dp),
-                        shape = MaterialTheme.shapes.medium
-                    ) {
-                        Text(
-                            text = "Save Password to Vault",
-                            style = MaterialTheme.typography.titleMedium,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
                 }
             }
 
