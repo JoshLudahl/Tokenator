@@ -26,8 +26,6 @@ import com.token.tokenator.R
 import com.token.tokenator.model.Token
 import com.token.tokenator.navigation.Navigator
 import com.token.tokenator.navigation.Route
-import com.token.tokenator.ui.theme.FinSurfaceDark
-import com.token.tokenator.ui.theme.FinTextDark
 import com.token.tokenator.utilities.Clipuous
 import com.token.tokenator.utilities.Encryption
 
@@ -110,7 +108,7 @@ fun MainScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(MaterialTheme.shapes.extraLarge)
-                    .background(FinSurfaceDark)
+                    .background(MaterialTheme.colorScheme.inverseSurface)
                     .padding(24.dp)
             ) {
                 Column {
@@ -208,7 +206,7 @@ fun MainScreen(
                     text = if (searchQuery.isNotBlank()) "Search Results (${tokens.size})" else "All Passwords",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.ExtraBold,
-                    color = FinTextDark
+                    color = MaterialTheme.colorScheme.onSurface
                 )
 
                 Text(
@@ -375,7 +373,7 @@ fun VaultTokenItem(
                 Text(
                     text = token.title,
                     style = MaterialTheme.typography.bodyLarge,
-                    color = FinTextDark,
+                    color = MaterialTheme.colorScheme.onSurface,
                     fontWeight = FontWeight.Bold,
                     maxLines = 1
                 )

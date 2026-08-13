@@ -24,7 +24,6 @@ import com.token.tokenator.R
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Type
 import com.token.tokenator.navigation.Navigator
-import com.token.tokenator.ui.theme.FinTextDark
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -245,7 +244,7 @@ private fun SectionHeader(text: String) {
     Text(
         text = text,
         style = MaterialTheme.typography.titleMedium,
-        color = FinTextDark,
+        color = MaterialTheme.colorScheme.onSurface,
         fontWeight = FontWeight.ExtraBold,
         modifier = Modifier.padding(bottom = 12.dp)
     )

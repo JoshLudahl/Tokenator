@@ -24,7 +24,6 @@ import com.token.tokenator.R
 import com.token.tokenator.model.Token
 import com.token.tokenator.navigation.Navigator
 import com.token.tokenator.navigation.Route
-import com.token.tokenator.ui.theme.FinTextDark
 import com.token.tokenator.utilities.Clipuous
 import com.token.tokenator.utilities.Encryption
 
@@ -85,7 +84,7 @@ fun SavedTokenScreen(
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.large,
-                colors = CardDefaults.cardColors(containerColor = FinTextDark)
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.inverseSurface)
             ) {
                 Row(
                     modifier = Modifier.padding(20.dp),
@@ -120,7 +119,7 @@ fun SavedTokenScreen(
                 text = "Recent Items",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.ExtraBold,
-                color = FinTextDark
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -222,7 +221,7 @@ fun FinanceTokenItem(
                 Text(
                     text = token.title,
                     style = MaterialTheme.typography.bodyLarge,
-                    color = FinTextDark,
+                    color = MaterialTheme.colorScheme.onSurface,
                     fontWeight = FontWeight.Bold,
                 )
                 Text(
@@ -241,7 +240,7 @@ fun FinanceTokenItem(
                     Icon(
                         painter = painterResource(id = R.drawable.ic_content_copy_round),
                         contentDescription = null,
-                        tint = FinTextDark,
+                        tint = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier.size(20.dp)
                     )
                 }

@@ -30,8 +30,6 @@ import com.token.tokenator.model.Type
 import com.token.tokenator.navigation.Navigator
 import com.token.tokenator.navigation.Route
 import com.token.tokenator.ui.main.MainViewModel
-import com.token.tokenator.ui.theme.FinSurfaceDark
-import com.token.tokenator.ui.theme.FinTextDark
 import com.token.tokenator.utilities.Clipuous
 import com.token.tokenator.utilities.Tokenator
 
@@ -153,7 +151,7 @@ fun AddPasswordScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(MaterialTheme.shapes.extraLarge)
-                    .background(FinSurfaceDark)
+                    .background(MaterialTheme.colorScheme.inverseSurface)
                     .clickable {
                         if (token.isNotEmpty()) {
                             Clipuous.copyToClipboard(token, context)
@@ -349,7 +347,7 @@ fun AddPasswordScreen(
                             text = "Password Length",
                             style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.Bold,
-                            color = FinTextDark
+                            color = MaterialTheme.colorScheme.onSurface
                         )
                         Surface(
                             shape = MaterialTheme.shapes.small,
@@ -446,7 +444,7 @@ private fun QuickSettingsHeader(text: String) {
     Text(
         text = text,
         style = MaterialTheme.typography.titleMedium,
-        color = FinTextDark,
+        color = MaterialTheme.colorScheme.onSurface,
         fontWeight = FontWeight.ExtraBold,
         modifier = Modifier.padding(bottom = 12.dp)
     )
@@ -471,7 +469,7 @@ private fun QuickToggleItem(
                 text = label,
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.SemiBold,
-                color = FinTextDark
+                color = MaterialTheme.colorScheme.onSurface
             )
             Text(
                 text = subtext,
