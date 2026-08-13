@@ -228,44 +228,6 @@ fun SettingsScreen(
                                 ),
                         )
                     }
-
-                    val isSecurityEnabled by viewModel.isSecurityEnabled.collectAsStateWithLifecycle()
-
-                    Row(
-                        modifier =
-                            Modifier
-                                .clickable { viewModel.updateSecurity(!isSecurityEnabled) }
-                                .padding(16.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        Text(
-                            text = "App Security (PIN/Pattern/Biometric)",
-                            style = MaterialTheme.typography.bodyLarge,
-                            fontWeight = FontWeight.Medium,
-                            modifier = Modifier.weight(1f),
-                        )
-                        Switch(
-                            checked = isSecurityEnabled,
-                            onCheckedChange = { viewModel.updateSecurity(it) },
-                            thumbContent =
-                                if (isSecurityEnabled) {
-                                    {
-                                        Icon(
-                                            imageVector = Icons.Filled.Check,
-                                            contentDescription = null,
-                                            modifier = Modifier.size(SwitchDefaults.IconSize),
-                                        )
-                                    }
-                                } else {
-                                    null
-                                },
-                            colors =
-                                SwitchDefaults.colors(
-                                    checkedThumbColor = MaterialTheme.colorScheme.primary,
-                                    checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
-                                ),
-                        )
-                    }
                 }
             }
 

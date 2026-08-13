@@ -7,19 +7,15 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.biometric.BiometricManager
-import androidx.biometric.BiometricPrompt
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
@@ -45,25 +41,18 @@ import com.token.tokenator.ui.onboarding.OnboardingScreen
 import com.token.tokenator.ui.onboarding.OnboardingViewModel
 import com.token.tokenator.ui.savedpassword.SavedTokenScreen
 import com.token.tokenator.ui.savedpassword.passworddetails.TokenDetailScreen
-import com.token.tokenator.ui.security.SecurityManager
 import com.token.tokenator.ui.settings.SettingsScreen
 import com.token.tokenator.ui.theme.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : FragmentActivity() {
     private val onboardingViewModel: OnboardingViewModel by viewModels()
 
-    @Inject
-    lateinit var securityManager: SecurityManager
-
     private lateinit var appUpdateManager: AppUpdateManager
     private lateinit var aut: Task<AppUpdateInfo>
     private val updateType = AppUpdateType.FLEXIBLE
-
-    private var isAuthenticated by mutableStateOf(false)
 
     private val listener =
         InstallStateUpdatedListener { state ->
@@ -86,139 +75,10 @@ class MainActivity : FragmentActivity() {
         aut = appUpdateManager.appUpdateInfo
         checkIsUpdateAvailable()
 
-        lifecycleScope.launch {
-            securityManager.isSecurityEnabled.collect { enabled ->
-                Log.d("MainActivity", "Security enabled: $enabled, Authenticated: ${securityManager.isAuthenticated.value}")
-                if (enabled && !securityManager.isAuthenticated.value) {
-                    val biometricManager = BiometricManager.from(this@MainActivity)
-                    val authenticators = BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.DEVICE_CREDENTIAL
-
-                    val canAuthenticate = biometricManager.canAuthenticate(authenticators)
-                    Log.d("MainActivity", "canAuthenticate status: $canAuthenticate")
-
-                    when (canAuthenticate) {
-                        BiometricManager.BIOMETRIC_SUCCESS -> {
-                            Log.d("MainActivity", "Can authenticate, showing prompt")
-                            showBiometricPrompt()
-                        }
-                        BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
-                            Log.e("MainActivity", "No biometric features available on this device.")
-                            securityManager.setAuthenticated(true)
-                        }
-                        BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
-                            Log.e("MainActivity", "Biometric features are currently unavailable.")
-                            securityManager.setAuthenticated(true)
-                        }
-                        BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
-                            Log.e("MainActivity", "The user has not enrolled any biometrics or device credentials.")
-                            // Optionally, prompt the user to enroll or just allow access
-                            securityManager.setAuthenticated(true)
-                        }
-                        else -> {
-                            Log.e("MainActivity", "Biometric status unknown: $canAuthenticate")
-                            securityManager.setAuthenticated(true)
-                        }
-                    }
-                } else if (!enabled) {
-                    securityManager.setAuthenticated(true)
-                }
-            }
-        }
-
         setContent {
             AppTheme {
-                val isAuthenticated by securityManager.isAuthenticated.collectAsState()
-                if (isAuthenticated) {
-                    TokenatorApp()
-                } else {
-                    Surface(
-                        modifier = Modifier.fillMaxSize(),
-                        color = MaterialTheme.colorScheme.background,
-                    ) {}
-                }
+                TokenatorApp()
             }
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (securityManager.isSecurityEnabled.value && !securityManager.isAuthenticated.value) {
-            showBiometricPrompt()
-        }
-    }
-
-    private var isPromptShowing = false
-
-    private fun showBiometricPrompt() {
-        if (isPromptShowing) return
-        isPromptShowing = true
-        val executor = ContextCompat.getMainExecutor(this)
-        val biometricPrompt =
-            BiometricPrompt(
-                this,
-                executor,
-                object : BiometricPrompt.AuthenticationCallback() {
-                    override fun onAuthenticationError(
-                        errorCode: Int,
-                        errString: CharSequence,
-                    ) {
-                        super.onAuthenticationError(errorCode, errString)
-                        isPromptShowing = false
-                        Log.e("MainActivity", "Auth error: $errorCode - $errString")
-                        if (errorCode == BiometricPrompt.ERROR_USER_CANCELED ||
-                            errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON ||
-                            errorCode == BiometricPrompt.ERROR_LOCKOUT ||
-                            errorCode == BiometricPrompt.ERROR_LOCKOUT_PERMANENT
-                        ) {
-                            finish()
-                        } else {
-                            Toast
-                                .makeText(
-                                    applicationContext,
-                                    "Authentication error: $errString",
-                                    Toast.LENGTH_SHORT,
-                                ).show()
-                        }
-                    }
-
-                    override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
-                        super.onAuthenticationSucceeded(result)
-                        isPromptShowing = false
-                        Log.d("MainActivity", "Auth succeeded")
-                        securityManager.setAuthenticated(true)
-                    }
-
-                    override fun onAuthenticationFailed() {
-                        super.onAuthenticationFailed()
-                        isPromptShowing = false
-                        Log.d("MainActivity", "Auth failed")
-                        Toast
-                            .makeText(
-                                applicationContext,
-                                "Authentication failed",
-                                Toast.LENGTH_SHORT,
-                            ).show()
-                    }
-                },
-            )
-
-        val promptInfo =
-            BiometricPrompt.PromptInfo
-                .Builder()
-                .setTitle("Tokenator Security")
-                .setSubtitle("Unlock your vault")
-                .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.DEVICE_CREDENTIAL)
-                .build()
-
-        biometricPrompt.authenticate(promptInfo)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        // Reset authentication when app goes to background if security is enabled
-        if (securityManager.isSecurityEnabled.value) {
-            Log.d("MainActivity", "App backgrounded, resetting authentication")
-            securityManager.resetAuthentication()
         }
     }
 

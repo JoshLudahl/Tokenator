@@ -11,7 +11,6 @@ import com.token.tokenator.di.DataStoreNoRepeat
 import com.token.tokenator.di.DataStorePassPhraseIncluded
 import com.token.tokenator.model.Passphrase
 import com.token.tokenator.model.SettingsItem
-import com.token.tokenator.ui.security.SecurityManager
 import com.token.tokenator.utilities.DataPref
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,7 +29,6 @@ class SettingsViewModel
         private val dataStore: DataStore<Preferences>,
         @DataStorePassPhraseIncluded private val includePassPhrase: String,
         @DataStoreNoRepeat val noRepeatKey: String,
-        private val securityManager: SecurityManager,
     ) : ViewModel() {
         val allCharacters: StateFlow<List<SettingsItem>> =
             repository.allCharacters
@@ -47,8 +45,6 @@ class SettingsViewModel
         private val _switchNoRepeat = MutableStateFlow(true)
         val switchNoRepeat: StateFlow<Boolean>
             get() = _switchNoRepeat
-
-        val isSecurityEnabled: StateFlow<Boolean> = securityManager.isSecurityEnabled
 
         init {
             viewModelScope.launch {
@@ -89,9 +85,5 @@ class SettingsViewModel
             viewModelScope.launch {
                 DataPref.saveDataStore(noRepeatKey, checked, dataStore)
             }
-        }
-
-        fun updateSecurity(enabled: Boolean) {
-            securityManager.setSecurityEnabled(enabled)
         }
     }
