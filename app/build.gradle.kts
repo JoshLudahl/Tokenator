@@ -158,7 +158,6 @@ dependencies {
     // Import the BoM for the Firebase platform
     implementation(platform(libs.firebase.bom))
 
-    // Add the dependencies for the Crashlytics and Analytics libraries
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation(libs.firebase.crashlytics)
 
@@ -187,16 +186,9 @@ dependencies {
     // Styling
     implementation(libs.material)
 
-    // DataBinding & other
-    implementation(libs.androidx.legacy.support.v4)
-
-    // Feature discovery
-    implementation(libs.material.tap.target.prompt)
-
     // DataStore
     implementation(libs.androidx.datastore.preferences)
 
-    // TESTING
     // Testing Navigation
     androidTestImplementation(libs.androidx.navigation.testing)
 
