@@ -7,7 +7,9 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.MoreVert
@@ -18,11 +20,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -51,23 +55,92 @@ fun MainScreen(
 
     Scaffold(
         topBar = {
-            CenterAlignedTopAppBar(
+            TopAppBar(
                 title = {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(
-                            text = "Tokenator",
-                            style = MaterialTheme.typography.titleLarge,
-                            fontWeight = FontWeight.ExtraBold
+                    SearchBar(
+                        inputField = {
+                            SearchBarDefaults.InputField(
+                                query = searchQuery,
+                                onQueryChange = { viewModel.setSearchQuery(it) },
+                                onSearch = { expanded = false },
+                                expanded = expanded,
+                                onExpandedChange = { expanded = it },
+                                placeholder = { Text("Search passwords...") },
+                                leadingIcon = {
+                                    if (expanded) {
+                                        IconButton(onClick = { expanded = false }) {
+                                            Icon(
+                                                imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                                                contentDescription = "Back"
+                                            )
+                                        }
+                                    } else {
+                                        Icon(
+                                            painter = painterResource(id = R.drawable.ic_search),
+                                            contentDescription = "Search",
+                                            modifier = Modifier.size(20.dp)
+                                        )
+                                    }
+                                },
+                                trailingIcon = {
+                                    if (searchQuery.isNotEmpty()) {
+                                        IconButton(onClick = { viewModel.setSearchQuery("") }) {
+                                            Icon(
+                                                painter = painterResource(id = R.drawable.close),
+                                                contentDescription = "Clear search",
+                                                modifier = Modifier.size(18.dp)
+                                            )
+                                        }
+                                    }
+                                },
+                            )
+                        },
+                        expanded = expanded,
+                        onExpandedChange = { expanded = it },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .heightIn(max = if (expanded) Dp.Unspecified else 56.dp),
+                        colors = SearchBarDefaults.colors(
+                            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+                            dividerColor = Color.Transparent
                         )
+                    ) {
+                        LazyColumn(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalArrangement = Arrangement.spacedBy(14.dp),
+                            contentPadding = PaddingValues(16.dp),
+                        ) {
+                            items(tokens, key = { it.id }) { token ->
+                                VaultTokenItem(
+                                    token = token,
+                                    onCopy = {
+                                        val fullToken = Encryption.decrypt(token.token) ?: ""
+                                        Clipuous.copyToClipboard(fullToken, context)
+                                        Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
+                                    },
+                                    onCopyUsername = {
+                                        val login = token.login?.let { Encryption.decrypt(it) } ?: ""
+                                        if (login.isNotEmpty()) {
+                                            Clipuous.copyToClipboard(login, context)
+                                            Toast.makeText(context, "Username copied", Toast.LENGTH_SHORT).show()
+                                        }
+                                    },
+                                    onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
+                                    onDelete = { tokenToDelete = token }
+                                )
+                            }
+                        }
                     }
                 },
                 actions = {
-                    IconButton(onClick = { navigator.navigate(Route.Settings) }) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_settings_round),
-                            contentDescription = "Settings",
-                            modifier = Modifier.size(24.dp)
-                        )
+                    if (!expanded) {
+                        IconButton(onClick = { navigator.navigate(Route.Settings) }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_settings_round),
+                                contentDescription = "Settings",
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -111,72 +184,7 @@ fun MainScreen(
                 ) { focusManager.clearFocus() }
                 .padding(horizontal = 24.dp),
         ) {
-            // Search Bar
-            SearchBar(
-                inputField = {
-                    SearchBarDefaults.InputField(
-                        query = searchQuery,
-                        onQueryChange = { viewModel.setSearchQuery(it) },
-                        onSearch = { expanded = false },
-                        expanded = expanded,
-                        onExpandedChange = { expanded = it },
-                        placeholder = { Text("Search passwords or accounts...") },
-                        leadingIcon = {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_search),
-                                contentDescription = "Search",
-                                modifier = Modifier.size(20.dp)
-                            )
-                        },
-                        trailingIcon = {
-                            if (searchQuery.isNotEmpty()) {
-                                IconButton(onClick = { viewModel.setSearchQuery("") }) {
-                                    Icon(
-                                        painter = painterResource(id = R.drawable.close),
-                                        contentDescription = "Clear search",
-                                        modifier = Modifier.size(18.dp)
-                                    )
-                                }
-                            }
-                        },
-                    )
-                },
-                expanded = expanded,
-                onExpandedChange = { expanded = it },
-                modifier = Modifier.fillMaxWidth(),
-                colors = SearchBarDefaults.colors(
-                    containerColor = MaterialTheme.colorScheme.surface,
-                    dividerColor = Color.Transparent
-                )
-            ) {
-                LazyColumn(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(14.dp),
-                    contentPadding = PaddingValues(16.dp),
-                ) {
-                    items(tokens, key = { it.id }) { token ->
-                        VaultTokenItem(
-                            token = token,
-                            onCopy = {
-                                val fullToken = Encryption.decrypt(token.token) ?: ""
-                                Clipuous.copyToClipboard(fullToken, context)
-                                Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
-                            },
-                            onCopyUsername = {
-                                val login = token.login?.let { Encryption.decrypt(it) } ?: ""
-                                if (login.isNotEmpty()) {
-                                    Clipuous.copyToClipboard(login, context)
-                                    Toast.makeText(context, "Username copied", Toast.LENGTH_SHORT).show()
-                                }
-                            },
-                            onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
-                            onDelete = { tokenToDelete = token }
-                        )
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -319,7 +327,7 @@ fun VaultTokenItem(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onEdit() },
-        shape = MaterialTheme.shapes.large,
+        shape = RoundedCornerShape(30.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {

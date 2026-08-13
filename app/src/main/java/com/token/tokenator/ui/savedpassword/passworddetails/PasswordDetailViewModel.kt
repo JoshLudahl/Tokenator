@@ -63,13 +63,13 @@ class PasswordDetailViewModel
                 false
             }
 
-        fun insert(
+        fun updateToken(
             passwordName: String,
-            token: String,
+            tokenValue: String,
             login: String? = null,
         ) {
             try {
-                val encryptedToken = Encryption.encrypt(token)
+                val encryptedToken = Encryption.encrypt(tokenValue)
                 val encryptedLogin =
                     login?.trim()?.let {
                         if (it.isNotEmpty()) {
@@ -98,6 +98,12 @@ class PasswordDetailViewModel
                 }
             } catch (e: Exception) {
                 Log.i("Error:", e.message.toString())
+            }
+        }
+
+        fun deleteToken(token: Token) {
+            viewModelScope.launch(Dispatchers.IO) {
+                tokenRepository.delete(token)
             }
         }
     }

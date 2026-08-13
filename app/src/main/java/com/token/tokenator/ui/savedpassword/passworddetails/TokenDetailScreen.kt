@@ -15,6 +15,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -39,6 +41,13 @@ fun TokenDetailScreen(
     var tokenName by remember(token) { mutableStateOf(token?.title ?: "") }
     var loginName by remember(token) { mutableStateOf(token?.login ?: "") }
     var passwordValue by remember(token) { mutableStateOf(token?.token ?: "") }
+    var showDeleteDialog by remember { mutableStateOf(false) }
+
+    val hasChanges = remember(token, tokenName, loginName, passwordValue) {
+        token?.let {
+            tokenName != it.title || loginName != (it.login ?: "") || passwordValue != it.token
+        } ?: false
+    }
 
     LaunchedEffect(passwordId) {
         viewModel.getToken(passwordId)
@@ -66,31 +75,15 @@ fun TokenDetailScreen(
                     }
                 },
                 actions = {
-                    IconButton(
-                        onClick = {
-                            viewModel.insert(tokenName, passwordValue, loginName)
-                            Toast.makeText(context, R.string.password_saved, Toast.LENGTH_SHORT).show()
-                            navigator.goBack()
-                        },
-                        modifier = Modifier
-                            .padding(end = 8.dp)
-                            .size(40.dp)
-                            .clip(MaterialTheme.shapes.small)
-                            .background(MaterialTheme.colorScheme.primary),
-                        enabled = tokenName.isNotEmpty()
-                    ) {
+                    IconButton(onClick = { showDeleteDialog = true }) {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_add),
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onPrimary,
-                            modifier = Modifier.size(24.dp)
+                            painter = painterResource(id = R.drawable.ic_delete_round),
+                            contentDescription = "Delete",
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(32.dp)
                         )
                     }
-                },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                    titleContentColor = MaterialTheme.colorScheme.onBackground
-                )
+                }
             )
         },
         containerColor = MaterialTheme.colorScheme.background,
@@ -111,12 +104,21 @@ fun TokenDetailScreen(
                     .background(MaterialTheme.colorScheme.surface),
                 contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_tokenator),
-                    contentDescription = null,
-                    modifier = Modifier.size(60.dp),
-                    tint = MaterialTheme.colorScheme.primary
-                )
+                // Icon Badge
+                Box(
+                    modifier = Modifier
+                        .size(52.dp)
+                        .clip(MaterialTheme.shapes.extraLarge)
+                        .background(MaterialTheme.colorScheme.onSecondaryContainer),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = token?.title?.take(1)?.uppercase() ?: "P",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.ExtraBold,
+                        color = MaterialTheme.colorScheme.secondaryContainer,
+                    )
+                }
             }
             
             Spacer(modifier = Modifier.height(16.dp))
@@ -158,7 +160,30 @@ fun TokenDetailScreen(
                     Clipuous.copyToClipboard(passwordValue, context)
                     Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
                 },
+                isPassword = true
             )
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Button(
+                onClick = {
+                    viewModel.updateToken(tokenName, passwordValue, loginName)
+                    Toast.makeText(context, "Changes saved", Toast.LENGTH_SHORT).show()
+                },
+                enabled = hasChanges,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary
+                )
+            ) {
+                Text(
+                    text = "SAVE CHANGES",
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 1.sp
+                )
+            }
 
             Spacer(modifier = Modifier.height(24.dp))
 
@@ -220,6 +245,32 @@ fun TokenDetailScreen(
 
             Spacer(modifier = Modifier.height(32.dp))
         }
+
+        if (showDeleteDialog) {
+            AlertDialog(
+                onDismissRequest = { showDeleteDialog = false },
+                title = { Text("Delete Password") },
+                text = { Text("Are you sure you want to delete this password? This action cannot be undone.") },
+                confirmButton = {
+                    TextButton(
+                        onClick = {
+                            token?.let {
+                                viewModel.deleteToken(it)
+                                showDeleteDialog = false
+                                navigator.goBack()
+                            }
+                        }
+                    ) {
+                        Text("Delete", color = MaterialTheme.colorScheme.error)
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { showDeleteDialog = false }) {
+                        Text("Cancel")
+                    }
+                }
+            )
+        }
     }
 }
 
@@ -229,7 +280,10 @@ fun ModernDetailField(
     value: String,
     onValueChange: (String) -> Unit,
     onCopy: (() -> Unit)? = null,
+    isPassword: Boolean = false,
 ) {
+    var passwordVisible by remember { mutableStateOf(!isPassword) }
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -251,6 +305,7 @@ fun ModernDetailField(
                 value = value,
                 onValueChange = onValueChange,
                 modifier = Modifier.weight(1f),
+                visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                 colors = TextFieldDefaults.colors(
                     focusedContainerColor = Color.Transparent,
                     unfocusedContainerColor = Color.Transparent,
@@ -263,6 +318,21 @@ fun ModernDetailField(
                 textStyle = MaterialTheme.typography.bodyLarge,
                 singleLine = true
             )
+            if (isPassword) {
+                IconButton(
+                    onClick = { passwordVisible = !passwordVisible },
+                    modifier = Modifier
+                        .size(36.dp)
+                ) {
+                    Icon(
+                        painter = painterResource(id = if (passwordVisible) R.drawable.ic_visibility_round else R.drawable.ic_visibility_off_round),
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(18.dp)
+                    )
+                }
+                Spacer(modifier = Modifier.width(8.dp))
+            }
             if (onCopy != null) {
                 IconButton(
                     onClick = onCopy,
