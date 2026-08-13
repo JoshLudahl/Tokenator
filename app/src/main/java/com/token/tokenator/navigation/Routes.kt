@@ -12,6 +12,9 @@ sealed interface Route : NavKey {
     data object SavedToken : Route
 
     @Serializable
+    data object AddPassword : Route
+
+    @Serializable
     data class PasswordDetail(
         val id: Int,
     ) : Route

@@ -1,12 +1,11 @@
 package com.token.tokenator.ui.main
 
 import android.widget.Toast
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -22,13 +21,13 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.token.tokenator.R
-import com.token.tokenator.model.Type
+import com.token.tokenator.model.Token
 import com.token.tokenator.navigation.Navigator
 import com.token.tokenator.navigation.Route
 import com.token.tokenator.ui.theme.FinSurfaceDark
 import com.token.tokenator.ui.theme.FinTextDark
 import com.token.tokenator.utilities.Clipuous
-import com.token.tokenator.utilities.Tokenator
+import com.token.tokenator.utilities.Encryption
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,52 +36,75 @@ fun MainScreen(
     viewModel: MainViewModel = hiltViewModel(),
 ) {
     val context = LocalContext.current
-    val token by viewModel.token.collectAsStateWithLifecycle()
-    val switchUpperCase by viewModel.switchUpperCase.collectAsStateWithLifecycle()
-    val switchLowerCase by viewModel.switchLowerCase.collectAsStateWithLifecycle()
-    val switchNumeric by viewModel.switchNumeric.collectAsStateWithLifecycle()
-    val switchSpecial by viewModel.switchSpecialCharacter.collectAsStateWithLifecycle()
-    val showTokenNameField by viewModel.tokenNameEditTextFieldVisibility.collectAsStateWithLifecycle()
-    val noRepeat by viewModel.noRepeatFlow.collectAsStateWithLifecycle(initialValue = true)
-    val passphrase by viewModel.passphrase.collectAsStateWithLifecycle()
-    val allCharacters by viewModel.allCharacters.collectAsStateWithLifecycle()
+    val tokens by viewModel.tokens.collectAsStateWithLifecycle()
+    val allTokens by viewModel.allTokens.collectAsStateWithLifecycle()
+    val searchQuery by viewModel.searchQuery.collectAsStateWithLifecycle()
 
-    var tokenName by remember { mutableStateOf("") }
-    var loginName by remember { mutableStateOf("") }
-    var sliderValue by remember { mutableStateOf(8f) }
+    var tokenToDelete by remember { mutableStateOf<Token?>(null) }
     var showPrivacyPolicy by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
                 title = {
-                    Text(
-                        text = "Dashboard",
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.ExtraBold
-                    )
-                },
-                navigationIcon = {
-                    IconButton(onClick = { /* TODO: Menu action */ }) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_abc_lower), // Temporary placeholder for grid icon
+                            painter = painterResource(id = R.drawable.ic_tokenator),
                             contentDescription = null,
-                            modifier = Modifier.size(24.dp)
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(28.dp)
+                        )
+                        Spacer(modifier = Modifier.width(10.dp))
+                        Text(
+                            text = "My Vault",
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.ExtraBold
                         )
                     }
                 },
                 actions = {
-                    IconButton(onClick = { navigator.navigate(Route.SavedToken) }) {
+                    IconButton(onClick = { navigator.navigate(Route.Security) }) {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_bookmark_round),
-                            contentDescription = null,
+                            painter = painterResource(id = R.drawable.ic_danger_circle),
+                            contentDescription = "Security",
+                            modifier = Modifier.size(24.dp)
+                        )
+                    }
+                    IconButton(onClick = { navigator.navigate(Route.Settings) }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_settings_round),
+                            contentDescription = "Settings",
                             modifier = Modifier.size(24.dp)
                         )
                     }
                 },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.background
                 )
+            )
+        },
+        floatingActionButton = {
+            ExtendedFloatingActionButton(
+                onClick = { navigator.navigate(Route.AddPassword) },
+                icon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_add),
+                        contentDescription = "Add Password",
+                        tint = MaterialTheme.colorScheme.onSecondary,
+                        modifier = Modifier.size(24.dp)
+                    )
+                },
+                text = {
+                    Text(
+                        text = "New Password",
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onSecondary
+                    )
+                },
+                containerColor = MaterialTheme.colorScheme.secondary,
+                shape = MaterialTheme.shapes.extraLarge,
+                modifier = Modifier.padding(bottom = 8.dp)
             )
         },
         containerColor = MaterialTheme.colorScheme.background,
@@ -91,237 +113,224 @@ fun MainScreen(
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState())
                 .padding(horizontal = 24.dp),
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(12.dp))
 
-            // Generated Token Card (Premium Card Look)
+            // Vault Header Summary Card
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(180.dp)
                     .clip(MaterialTheme.shapes.extraLarge)
                     .background(FinSurfaceDark)
-                    .clickable {
-                        if (token.isNotEmpty()) {
-                            Clipuous.copyToClipboard(token, context)
-                            Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
-                        }
-                    }
                     .padding(24.dp)
             ) {
                 Column {
-                    Text(
-                        text = "Generated Token",
-                        color = Color.White.copy(alpha = 0.7f),
-                        style = MaterialTheme.typography.labelLarge
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = if (token.isEmpty()) "••••••••" else token,
-                        color = Color.White,
-                        style = MaterialTheme.typography.displayMedium,
-                        fontWeight = FontWeight.Bold,
-                        maxLines = 1
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.Bottom
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(
-                            text = "SECURE VAULT",
-                            color = Color.White.copy(alpha = 0.5f),
-                            style = MaterialTheme.typography.labelSmall,
-                            letterSpacing = 2.sp
-                        )
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_tokenator),
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(32.dp)
-                        )
-                    }
-                }
-            }
+                        Column {
+                            Text(
+                                text = "TOTAL SAVED PASSWORDS",
+                                color = Color.White.copy(alpha = 0.6f),
+                                style = MaterialTheme.typography.labelSmall,
+                                letterSpacing = 1.5.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = "${allTokens.size}",
+                                color = Color.White,
+                                style = MaterialTheme.typography.headlineLarge,
+                                fontWeight = FontWeight.ExtraBold
+                            )
+                        }
 
-            Spacer(modifier = Modifier.height(32.dp))
-
-
-            Button(
-                onClick = {
-                    val types = mutableListOf<Type>()
-                    if (switchUpperCase) types.add(Type.UPPERCASE)
-                    if (switchLowerCase) types.add(Type.LOWERCASE)
-                    if (switchNumeric) types.add(Type.NUMERIC)
-                    if (switchSpecial) types.add(Type.SPECIAL)
-
-                    val excluded = allCharacters.filter { !it.included }.map { it.item }
-                    val generated = Tokenator.generate(
-                        length = sliderValue.toInt(),
-                        includesTypesList = types,
-                        excludedCharacters = excluded,
-                        doNotRepeat = noRepeat,
-                        includePhrase = passphrase?.phrase ?: "",
-                    )
-
-                    if (generated.isNotEmpty()) {
-                        viewModel.setToken(generated)
-                        viewModel.setLength(sliderValue)
-                        viewModel.setTokenNameEditTextLabelVisible()
-                        viewModel.setTokenNameEditTextFieldVisibility()
-                    }
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 32.dp)
-                    .height(64.dp),
-                shape = MaterialTheme.shapes.extraLarge,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.secondary
-                )
-            ) {
-                Text(
-                    text = "Generate Token",
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold
-                )
-            }
-
-            if (showTokenNameField) {
-                SectionHeader(text = "Save to Vault")
-                Column(
-                    modifier = Modifier
-                        .clip(MaterialTheme.shapes.large)
-                        .background(MaterialTheme.colorScheme.surface)
-                        .padding(20.dp)
-                ) {
-                    OutlinedTextField(
-                        value = tokenName,
-                        onValueChange = { tokenName = it },
-                        label = { Text("App/Website Name") },
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = MaterialTheme.shapes.medium
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-                    OutlinedTextField(
-                        value = loginName,
-                        onValueChange = { loginName = it },
-                        label = { Text("Login/Username") },
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = MaterialTheme.shapes.medium
-                    )
-
-                    if (tokenName.isNotEmpty()) {
+                        // Add Password Hero Button inside top card
                         Button(
-                            onClick = {
-                                viewModel.insert(tokenName, token, loginName)
-                                Toast.makeText(context, R.string.password_saved, Toast.LENGTH_SHORT).show()
-                                tokenName = ""
-                                loginName = ""
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = 24.dp)
-                                .height(56.dp),
-                            shape = MaterialTheme.shapes.medium
+                            onClick = { navigator.navigate(Route.AddPassword) },
+                            shape = MaterialTheme.shapes.medium,
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.secondary
+                            ),
+                            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 10.dp)
                         ) {
-                            Text("Confirm Save")
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_add),
+                                contentDescription = null,
+                                modifier = Modifier.size(18.dp)
+                            )
+                            Spacer(modifier = Modifier.width(6.dp))
+                            Text(
+                                text = "+ Add",
+                                fontWeight = FontWeight.Bold,
+                                style = MaterialTheme.typography.labelLarge
+                            )
                         }
                     }
                 }
             }
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
-            // Length Section
-            SectionHeader(text = "Length")
-            Card(
+            // Search Bar
+            OutlinedTextField(
+                value = searchQuery,
+                onValueChange = { viewModel.setSearchQuery(it) },
+                placeholder = { Text("Search passwords or accounts...") },
+                leadingIcon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_search),
+                        contentDescription = "Search",
+                        modifier = Modifier.size(20.dp)
+                    )
+                },
+                trailingIcon = {
+                    if (searchQuery.isNotEmpty()) {
+                        IconButton(onClick = { viewModel.setSearchQuery("") }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.close),
+                                contentDescription = "Clear search",
+                                modifier = Modifier.size(18.dp)
+                            )
+                        }
+                    }
+                },
                 modifier = Modifier.fillMaxWidth(),
-                shape = MaterialTheme.shapes.large,
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
-            ) {
-                Row(
-                    modifier = Modifier.padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Slider(
-                        value = sliderValue,
-                        onValueChange = { sliderValue = it },
-                        valueRange = 8f..100f,
-                        steps = 92,
-                        modifier = Modifier.weight(1f),
-                        colors = SliderDefaults.colors(
-                            thumbColor = MaterialTheme.colorScheme.secondary,
-                            activeTrackColor = MaterialTheme.colorScheme.secondary,
-                            inactiveTrackColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f)
-                        )
-                    )
-                    Spacer(modifier = Modifier.width(16.dp))
-                    Text(
-                        text = sliderValue.toInt().toString(),
-                        style = MaterialTheme.typography.titleLarge,
-                        color = MaterialTheme.colorScheme.primary,
-                        fontWeight = FontWeight.ExtraBold
-                    )
-                }
-            }
+                shape = MaterialTheme.shapes.medium,
+                singleLine = true,
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                    focusedContainerColor = MaterialTheme.colorScheme.surface
+                )
+            )
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Options Section
-            SectionHeader(text = "Options")
-            Column(
-                modifier = Modifier
-                    .clip(MaterialTheme.shapes.large)
-                    .background(MaterialTheme.colorScheme.surface)
-            ) {
-                FinanceSwitch(
-                    label = stringResource(R.string.uppercase_letters),
-                    checked = switchUpperCase,
-                    onCheckedChange = { viewModel.saveSwitchState(Type.UPPERCASE, it) }
-                )
-                FinanceSwitch(
-                    label = stringResource(R.string.lowercase_letters),
-                    checked = switchLowerCase,
-                    onCheckedChange = { viewModel.saveSwitchState(Type.LOWERCASE, it) }
-                )
-                FinanceSwitch(
-                    label = stringResource(R.string.numeric),
-                    checked = switchNumeric,
-                    onCheckedChange = { viewModel.saveSwitchState(Type.NUMERIC, it) }
-                )
-                FinanceSwitch(
-                    label = stringResource(R.string.special_characters),
-                    checked = switchSpecial,
-                    onCheckedChange = { viewModel.saveSwitchState(Type.SPECIAL, it) }
-                )
-            }
-
-            Spacer(modifier = Modifier.height(48.dp))
-            
-            // Minimal Footer
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceEvenly
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
+                    text = if (searchQuery.isNotBlank()) "Search Results (${tokens.size})" else "All Passwords",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = FinTextDark
+                )
+
+                Text(
                     text = "Privacy",
-                    style = MaterialTheme.typography.labelLarge,
+                    style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.clickable { showPrivacyPolicy = true }
                 )
-                Text(
-                    text = "Settings",
-                    style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.clickable { navigator.navigate(Route.Settings) }
-                )
             }
-            Spacer(modifier = Modifier.height(32.dp))
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            // Password List
+            if (tokens.isEmpty()) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.padding(32.dp)
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_tokenator),
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
+                            modifier = Modifier.size(64.dp)
+                        )
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Text(
+                            text = if (searchQuery.isNotBlank()) "No passwords matching \"$searchQuery\"" else stringResource(R.string.no_saved_passwords),
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontWeight = FontWeight.Medium
+                        )
+                        Spacer(modifier = Modifier.height(24.dp))
+
+                        if (searchQuery.isBlank()) {
+                            Button(
+                                onClick = { navigator.navigate(Route.AddPassword) },
+                                shape = MaterialTheme.shapes.medium,
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = MaterialTheme.colorScheme.primary
+                                )
+                            ) {
+                                Text(
+                                    text = "Add Your First Password",
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
+                        }
+                    }
+                }
+            } else {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(14.dp),
+                    contentPadding = PaddingValues(bottom = 90.dp)
+                ) {
+                    items(tokens, key = { it.id }) { token ->
+                        VaultTokenItem(
+                            token = token,
+                            onCopy = {
+                                val fullToken = Encryption.decrypt(token.token) ?: ""
+                                Clipuous.copyToClipboard(fullToken, context)
+                                Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
+                            },
+                            onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
+                            onDelete = { tokenToDelete = token }
+                        )
+                    }
+                }
+            }
         }
+    }
+
+    // Delete Confirmation Dialog
+    if (tokenToDelete != null) {
+        AlertDialog(
+            onDismissRequest = { tokenToDelete = null },
+            title = {
+                Text(
+                    text = "Delete Password?",
+                    fontWeight = FontWeight.Bold
+                )
+            },
+            text = {
+                Text(text = "Are you sure you want to remove \"${tokenToDelete?.title}\" from your vault?")
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    tokenToDelete?.let { viewModel.delete(it) }
+                    tokenToDelete = null
+                    Toast.makeText(context, "Password deleted", Toast.LENGTH_SHORT).show()
+                }) {
+                    Text("Delete", color = MaterialTheme.colorScheme.error, fontWeight = FontWeight.Bold)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { tokenToDelete = null }) {
+                    Text("Cancel")
+                }
+            },
+            shape = MaterialTheme.shapes.large,
+            containerColor = MaterialTheme.colorScheme.surface
+        )
     }
 
     if (showPrivacyPolicy) {
@@ -332,44 +341,84 @@ fun MainScreen(
 }
 
 @Composable
-fun SectionHeader(text: String) {
-    Text(
-        text = text,
-        style = MaterialTheme.typography.titleMedium,
-        color = FinTextDark,
-        fontWeight = FontWeight.ExtraBold,
-        modifier = Modifier.padding(bottom = 12.dp)
-    )
-}
-
-@Composable
-fun FinanceSwitch(
-    label: String,
-    checked: Boolean,
-    onCheckedChange: (Boolean) -> Unit,
+fun VaultTokenItem(
+    token: Token,
+    onCopy: () -> Unit,
+    onEdit: () -> Unit,
+    onDelete: () -> Unit,
 ) {
-    Row(
+    val decryptedLogin = remember(token.login) {
+        token.login?.let { Encryption.decrypt(it) } ?: ""
+    }
+
+    Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onCheckedChange(!checked) }
-            .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically,
+            .clickable { onEdit() },
+        shape = MaterialTheme.shapes.large,
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
-        Text(
-            text = label,
-            style = MaterialTheme.typography.bodyLarge,
-            fontWeight = FontWeight.Medium,
-            modifier = Modifier.weight(1f)
-        )
-        Switch(
-            checked = checked,
-            onCheckedChange = onCheckedChange,
-            colors = SwitchDefaults.colors(
-                checkedThumbColor = MaterialTheme.colorScheme.secondary,
-                checkedTrackColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.5f),
-                uncheckedThumbColor = Color.White,
-                uncheckedTrackColor = Color.LightGray.copy(alpha = 0.5f)
-            )
-        )
+        Row(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            // Icon Badge
+            Box(
+                modifier = Modifier
+                    .size(52.dp)
+                    .clip(MaterialTheme.shapes.medium)
+                    .background(MaterialTheme.colorScheme.primaryContainer),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = token.title.take(1).uppercase(),
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = MaterialTheme.colorScheme.primary
+                )
+            }
+
+            Spacer(modifier = Modifier.width(16.dp))
+
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = token.title,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = FinTextDark,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1
+                )
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(
+                    text = if (decryptedLogin.isNotEmpty()) decryptedLogin else "No username saved",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1
+                )
+            }
+
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                IconButton(onClick = onCopy) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_content_copy_round),
+                        contentDescription = "Copy Password",
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+
+                IconButton(onClick = onDelete) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_delete_round),
+                        contentDescription = "Delete",
+                        tint = MaterialTheme.colorScheme.error.copy(alpha = 0.7f),
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+            }
+        }
     }
 }

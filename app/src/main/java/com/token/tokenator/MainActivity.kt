@@ -23,6 +23,7 @@ import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.token.tokenator.navigation.*
+import com.token.tokenator.ui.generate.AddPasswordScreen
 import com.token.tokenator.ui.main.MainScreen
 import com.token.tokenator.ui.savedpassword.SavedTokenScreen
 import com.token.tokenator.ui.savedpassword.passworddetails.TokenDetailScreen
@@ -79,6 +80,7 @@ class MainActivity : ComponentActivity() {
         val entryProvider =
             entryProvider<NavKey> {
                 entry<Route.Main> { MainScreen(navigator) }
+                entry<Route.AddPassword> { AddPasswordScreen(navigator) }
                 entry<Route.SavedToken> { SavedTokenScreen(navigator) }
                 entry<Route.PasswordDetail> { key -> TokenDetailScreen(key.id, navigator) }
                 entry<Route.Settings> { SettingsScreen(navigator) }
