@@ -4,12 +4,21 @@ import androidx.lifecycle.LiveData
 import com.token.tokenator.model.SettingsItem
 import com.token.tokenator.model.Type
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class SettingsItemRepository(
     private val settingsItemDao: SettingsItemDao,
 ) {
+    val inactiveCharacters: Flow<List<SettingsItem>> =
+        settingsItemDao.getInactiveCharacters()
+
     val allCharacters: Flow<List<SettingsItem>> =
-        settingsItemDao.getAllCharacters()
+        inactiveCharacters.map { inactiveList ->
+            val inactiveItemsSet = inactiveList.map { it.item }.toSet()
+            SupportedCharacters.all.map { supportedItem ->
+                supportedItem.copy(included = !inactiveItemsSet.contains(supportedItem.item))
+            }
+        }
 
     val allExcludedCharacters: LiveData<List<SettingsItem>> =
         settingsItemDao.getAllExcluded()
@@ -28,5 +37,13 @@ class SettingsItemRepository(
 
     suspend fun insert(settingsItem: SettingsItem) = settingsItemDao.insert(settingsItem)
 
-    suspend fun update(settingsItem: SettingsItem) = settingsItemDao.updateCharacter(settingsItem)
+    suspend fun update(settingsItem: SettingsItem) {
+        if (settingsItem.included) {
+            // Now included (active), remove from inactive table
+            settingsItemDao.deleteByItem(settingsItem.item)
+        } else {
+            // Now excluded (inactive), store in inactive table
+            settingsItemDao.insert(settingsItem.copy(included = false))
+        }
+    }
 }

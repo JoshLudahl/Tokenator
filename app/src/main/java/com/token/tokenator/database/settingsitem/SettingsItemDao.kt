@@ -18,6 +18,9 @@ interface SettingsItemDao {
     @Query("SELECT * FROM character_table")
     fun getAllCharacters(): Flow<List<SettingsItem>>
 
+    @Query("SELECT * FROM character_table")
+    fun getInactiveCharacters(): Flow<List<SettingsItem>>
+
     @Query("SELECT * FROM character_table WHERE category = :category")
     fun getAllByCategory(category: Type): LiveData<List<SettingsItem>>
 
@@ -26,4 +29,7 @@ interface SettingsItemDao {
 
     @Update
     suspend fun updateCharacter(settingsItem: SettingsItem)
+
+    @Query("DELETE FROM character_table WHERE item = :item")
+    suspend fun deleteByItem(item: String)
 }

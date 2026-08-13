@@ -28,6 +28,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.token.tokenator.R
 import com.token.tokenator.model.Type
 import com.token.tokenator.navigation.Navigator
+import com.token.tokenator.navigation.Route
 import com.token.tokenator.ui.main.MainViewModel
 import com.token.tokenator.ui.theme.FinSurfaceDark
 import com.token.tokenator.ui.theme.FinTextDark
@@ -48,6 +49,7 @@ fun AddPasswordScreen(
     val switchSpecial by viewModel.switchSpecialCharacter.collectAsStateWithLifecycle()
     val noRepeat by viewModel.noRepeatFlow.collectAsStateWithLifecycle(initialValue = true)
     val passphrase by viewModel.passphrase.collectAsStateWithLifecycle()
+    val switchPassphrase by viewModel.switchPassphrase.collectAsStateWithLifecycle()
     val allCharacters by viewModel.allCharacters.collectAsStateWithLifecycle()
 
     var tokenName by remember { mutableStateOf("") }
@@ -68,7 +70,7 @@ fun AddPasswordScreen(
             includesTypesList = types,
             excludedCharacters = excluded,
             doNotRepeat = noRepeat,
-            includePhrase = passphrase?.phrase ?: "",
+            includePhrase = if (switchPassphrase) passphrase?.phrase ?: "" else "",
         )
 
         if (generated.isNotEmpty()) {
@@ -117,6 +119,15 @@ fun AddPasswordScreen(
                         Icon(
                             painter = painterResource(id = R.drawable.ic_arrow_circle_left),
                             contentDescription = "Back",
+                            modifier = Modifier.size(28.dp)
+                        )
+                    }
+                },
+                actions = {
+                    IconButton(onClick = { navigator.navigate(Route.Settings) }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_settings_round),
+                            contentDescription = "Settings",
                             modifier = Modifier.size(28.dp)
                         )
                     }

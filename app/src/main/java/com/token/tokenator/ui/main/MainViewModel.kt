@@ -12,6 +12,7 @@ import com.token.tokenator.database.token.TokenRepository
 import com.token.tokenator.di.DataStoreLowercase
 import com.token.tokenator.di.DataStoreNoRepeat
 import com.token.tokenator.di.DataStoreNumeric
+import com.token.tokenator.di.DataStorePassPhraseIncluded
 import com.token.tokenator.di.DataStoreSpecialCharacters
 import com.token.tokenator.di.DataStoreUppercase
 import com.token.tokenator.model.Passphrase
@@ -45,6 +46,7 @@ class MainViewModel
         @DataStoreNumeric private var numeric: String,
         @DataStoreSpecialCharacters var specialCharacters: String,
         @DataStoreUppercase var uppercase: String,
+        @DataStorePassPhraseIncluded var includePassphrase: String,
     ) : ViewModel() {
         var version: String
         private val _token = MutableStateFlow<String>("")
@@ -91,6 +93,15 @@ class MainViewModel
         private val _passphrase = MutableStateFlow<Passphrase?>(null)
         val passphrase: StateFlow<Passphrase?>
             get() = _passphrase
+
+        private val _switchPassphrase = MutableStateFlow(true)
+        val switchPassphrase: StateFlow<Boolean>
+            get() = _switchPassphrase
+
+        val switchPassphraseFlow: Flow<Boolean> =
+            dataStore.data.map { preferences ->
+                (preferences[stringPreferencesKey(includePassphrase)] ?: true).toString().toBoolean()
+            }
 
         private val _searchQuery = MutableStateFlow("")
         val searchQuery: StateFlow<String> get() = _searchQuery
@@ -159,6 +170,12 @@ class MainViewModel
                     (DataPref.readDataStore(uppercase, dataStore) ?: true)
                         .toString()
                         .toBoolean()
+            }
+
+            viewModelScope.launch {
+                switchPassphraseFlow.collectLatest {
+                    _switchPassphrase.value = it
+                }
             }
 
             viewModelScope.launch {
