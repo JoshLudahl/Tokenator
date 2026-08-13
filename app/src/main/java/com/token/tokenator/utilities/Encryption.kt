@@ -3,6 +3,7 @@ package com.token.tokenator.utilities
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.util.Base64
+import androidx.annotation.VisibleForTesting
 import com.token.tokenator.BuildConfig
 import java.security.KeyStore
 import javax.crypto.Cipher
@@ -24,6 +25,9 @@ private const val AES_MODE = "AES/GCM/NoPadding"
 private const val V2_PREFIX = "v2:"
 
 object Encryption {
+    @VisibleForTesting
+    internal var secretKeyProvider: () -> SecretKey = { getOrCreateSecretKey() }
+
     private fun getOrCreateSecretKey(): SecretKey {
         val keyStore = KeyStore.getInstance(ANDROID_KEYSTORE).apply { load(null) }
         val entry = keyStore.getEntry(ALIAS, null)
@@ -49,7 +53,7 @@ object Encryption {
     fun encrypt(strToEncrypt: String): String? {
         if (strToEncrypt.isEmpty()) return ""
         try {
-            val secretKey = getOrCreateSecretKey()
+            val secretKey = secretKeyProvider()
             val cipher = Cipher.getInstance(AES_MODE)
             cipher.init(Cipher.ENCRYPT_MODE, secretKey)
 
@@ -87,7 +91,7 @@ object Encryption {
             System.arraycopy(combined, 1, iv, 0, ivLength)
             System.arraycopy(combined, 1 + ivLength, encryptedBytes, 0, encryptedBytes.size)
 
-            val secretKey = getOrCreateSecretKey()
+            val secretKey = secretKeyProvider()
             val cipher = Cipher.getInstance(AES_MODE)
             val spec = GCMParameterSpec(128, iv)
             cipher.init(Cipher.DECRYPT_MODE, secretKey, spec)

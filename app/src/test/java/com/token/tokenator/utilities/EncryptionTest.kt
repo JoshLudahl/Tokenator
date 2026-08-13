@@ -4,14 +4,22 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
+import javax.crypto.KeyGenerator
 
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [34])
 class EncryptionTest {
+    @Before
+    fun setup() {
+        val testKey = KeyGenerator.getInstance("AES").apply { init(256) }.generateKey()
+        Encryption.secretKeyProvider = { testKey }
+    }
+
     @Test
     fun testEncryptionDecryptionV2() {
         val originalText = "SensitivePassword123"
