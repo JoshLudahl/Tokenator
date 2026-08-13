@@ -31,6 +31,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
@@ -321,8 +322,22 @@ fun AddPasswordScreen(
                         label = { Text("App / Website Name") },
                         placeholder = { Text("e.g. Google, Netflix, Work Email") },
                         modifier = Modifier.fillMaxWidth(),
-                        shape = MaterialTheme.shapes.medium,
-                        singleLine = true
+                        shape = MaterialTheme.shapes.large,
+                        leadingIcon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_label_round),
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        },
+                        singleLine = true,
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = MaterialTheme.colorScheme.primary,
+                            unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
+                            focusedContainerColor = MaterialTheme.colorScheme.surface,
+                            unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                        )
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -333,8 +348,22 @@ fun AddPasswordScreen(
                         label = { Text("Username / Email") },
                         placeholder = { Text("e.g. alex@example.com") },
                         modifier = Modifier.fillMaxWidth(),
-                        shape = MaterialTheme.shapes.medium,
-                        singleLine = true
+                        shape = MaterialTheme.shapes.large,
+                        leadingIcon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_login_round),
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        },
+                        singleLine = true,
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = MaterialTheme.colorScheme.primary,
+                            unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
+                            focusedContainerColor = MaterialTheme.colorScheme.surface,
+                            unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                        )
                     )
 
                     Spacer(modifier = Modifier.height(24.dp))
