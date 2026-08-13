@@ -115,7 +115,7 @@ fun MainScreen(
                                     token = token,
                                     onCopy = {
                                         val fullToken = Encryption.decrypt(token.token) ?: ""
-                                        Clipuous.copyToClipboard(fullToken, context)
+                                        Clipuous.copyToClipboard(fullToken, context, isSensitive = true)
                                         Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
                                     },
                                     onCopyUsername = {
@@ -254,7 +254,7 @@ fun MainScreen(
                             token = token,
                             onCopy = {
                                 val fullToken = Encryption.decrypt(token.token) ?: ""
-                                Clipuous.copyToClipboard(fullToken, context)
+                                Clipuous.copyToClipboard(fullToken, context, isSensitive = true)
                                 Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
                             },
                             onCopyUsername = {

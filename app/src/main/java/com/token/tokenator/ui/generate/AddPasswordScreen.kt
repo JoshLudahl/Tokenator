@@ -187,7 +187,7 @@ fun AddPasswordScreen(
                     .background(MaterialTheme.colorScheme.primaryContainer)
                     .clickable {
                         if (token.isNotEmpty()) {
-                            Clipuous.copyToClipboard(token, context)
+                            Clipuous.copyToClipboard(token, context, isSensitive = true)
                             Toast.makeText(
                                 context,
                                 R.string.toast_copied_to_clipboard,
@@ -254,7 +254,7 @@ fun AddPasswordScreen(
                         IconButton(
                             onClick = {
                                 if (token.isNotEmpty()) {
-                                    Clipuous.copyToClipboard(token, context)
+                                    Clipuous.copyToClipboard(token, context, isSensitive = true)
                                     Toast.makeText(
                                         context,
                                         R.string.toast_copied_to_clipboard,

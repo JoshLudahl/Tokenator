@@ -11,7 +11,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -133,9 +132,16 @@ fun TokenDetailScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             ModernDetailField(
-                label = stringResource(R.string.name_entry_field),
+                label = "Name",
                 value = tokenName,
                 onValueChange = { tokenName = it },
+                leadingIcon = R.drawable.ic_label_round,
+                onCopy = {
+                    Clipuous.copyToClipboard(tokenName, context)
+                    if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
+                        Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
+                    }
+                }
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -144,6 +150,7 @@ fun TokenDetailScreen(
                 label = stringResource(R.string.login_input_field),
                 value = loginName,
                 onValueChange = { loginName = it },
+                leadingIcon = R.drawable.ic_login_round,
                 onCopy = {
                     Clipuous.copyToClipboard(loginName, context)
                     if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
@@ -158,6 +165,7 @@ fun TokenDetailScreen(
                 label = stringResource(R.string.token),
                 value = passwordValue,
                 onValueChange = { passwordValue = it },
+                leadingIcon = R.drawable.ic_password_round,
                 onCopy = {
                     Clipuous.copyToClipboard(passwordValue, context, isSensitive = true)
                     if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
@@ -167,7 +175,7 @@ fun TokenDetailScreen(
                 isPassword = true
             )
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Button(
                 onClick = {
@@ -283,76 +291,77 @@ fun ModernDetailField(
     label: String,
     value: String,
     onValueChange: (String) -> Unit,
+    leadingIcon: Int,
     onCopy: (() -> Unit)? = null,
     isPassword: Boolean = false,
 ) {
     var passwordVisible by remember { mutableStateOf(!isPassword) }
 
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(MaterialTheme.shapes.large)
-            .background(MaterialTheme.colorScheme.surface)
-            .padding(16.dp)
+        modifier = Modifier.fillMaxWidth()
     ) {
         Text(
             text = label.uppercase(),
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(start = 4.dp, bottom = 8.dp)
         )
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(top = 4.dp)
-        ) {
-            TextField(
-                value = value,
-                onValueChange = onValueChange,
-                modifier = Modifier.weight(1f),
-                visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color.Transparent,
-                    unfocusedContainerColor = Color.Transparent,
-                    disabledContainerColor = Color.Transparent,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    focusedTextColor = MaterialTheme.colorScheme.onSurface,
-                    unfocusedTextColor = MaterialTheme.colorScheme.onSurface
-                ),
-                textStyle = MaterialTheme.typography.bodyLarge,
-                singleLine = true
+
+        OutlinedTextField(
+            value = value,
+            onValueChange = onValueChange,
+            modifier = Modifier.fillMaxWidth(),
+            shape = MaterialTheme.shapes.large,
+            leadingIcon = {
+                Icon(
+                    painter = painterResource(id = leadingIcon),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(20.dp)
+                )
+            },
+            trailingIcon = {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(end = 4.dp)
+                ) {
+                    if (isPassword) {
+                        IconButton(
+                            onClick = { passwordVisible = !passwordVisible },
+                            modifier = Modifier.size(36.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(id = if (passwordVisible) R.drawable.ic_visibility_round else R.drawable.ic_visibility_off_round),
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
+                    }
+                    if (onCopy != null) {
+                        IconButton(
+                            onClick = onCopy,
+                            modifier = Modifier.size(36.dp)
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_content_copy_round),
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
+                    }
+                }
+            },
+            visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+            singleLine = true,
+            textStyle = MaterialTheme.typography.bodyLarge,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = MaterialTheme.colorScheme.primary,
+                unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
+                focusedContainerColor = MaterialTheme.colorScheme.surface,
+                unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                cursorColor = MaterialTheme.colorScheme.primary
             )
-            if (isPassword) {
-                IconButton(
-                    onClick = { passwordVisible = !passwordVisible },
-                    modifier = Modifier
-                        .size(36.dp)
-                ) {
-                    Icon(
-                        painter = painterResource(id = if (passwordVisible) R.drawable.ic_visibility_round else R.drawable.ic_visibility_off_round),
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.size(18.dp)
-                    )
-                }
-                Spacer(modifier = Modifier.width(8.dp))
-            }
-            if (onCopy != null) {
-                IconButton(
-                    onClick = onCopy,
-                    modifier = Modifier
-                        .size(36.dp)
-                        .clip(MaterialTheme.shapes.small)
-                        .background(MaterialTheme.colorScheme.surfaceVariant)
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_content_copy_round),
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.size(18.dp)
-                    )
-                }
-            }
-        }
+        )
     }
 }
