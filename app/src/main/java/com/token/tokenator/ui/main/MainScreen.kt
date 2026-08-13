@@ -6,6 +6,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -48,28 +50,14 @@ fun MainScreen(
             CenterAlignedTopAppBar(
                 title = {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_tokenator),
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(28.dp)
-                        )
-                        Spacer(modifier = Modifier.width(10.dp))
                         Text(
-                            text = "My Vault",
+                            text = "Tokenator",
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.ExtraBold
                         )
                     }
                 },
                 actions = {
-                    IconButton(onClick = { navigator.navigate(Route.Security) }) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_danger_circle),
-                            contentDescription = "Security",
-                            modifier = Modifier.size(24.dp)
-                        )
-                    }
                     IconButton(onClick = { navigator.navigate(Route.Settings) }) {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_settings_round),
@@ -158,13 +146,13 @@ fun MainScreen(
                             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 10.dp)
                         ) {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_add),
+                                imageVector = Icons.Rounded.Add,
                                 contentDescription = null,
                                 modifier = Modifier.size(18.dp)
                             )
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
-                                text = "+ Add",
+                                text = "Add",
                                 fontWeight = FontWeight.Bold,
                                 style = MaterialTheme.typography.labelLarge
                             )
