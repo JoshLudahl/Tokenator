@@ -18,6 +18,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -124,9 +126,20 @@ fun SettingsScreen(
                         Switch(
                             checked = switchPassphrase,
                             onCheckedChange = { viewModel.updatePassphrase(it) },
+                            thumbContent = if (switchPassphrase) {
+                                {
+                                    Icon(
+                                        imageVector = Icons.Filled.Check,
+                                        contentDescription = null,
+                                        modifier = Modifier.size(SwitchDefaults.IconSize),
+                                    )
+                                }
+                            } else {
+                                null
+                            },
                             colors = SwitchDefaults.colors(
-                                checkedThumbColor = MaterialTheme.colorScheme.secondary,
-                                checkedTrackColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.5f)
+                                checkedThumbColor = MaterialTheme.colorScheme.primary,
+                                checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
                             )
                         )
                     }
@@ -192,9 +205,20 @@ fun SettingsScreen(
                     Switch(
                         checked = switchNoRepeat,
                         onCheckedChange = { viewModel.updateNoRepeat(it) },
+                        thumbContent = if (switchNoRepeat) {
+                            {
+                                Icon(
+                                    imageVector = Icons.Filled.Check,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(SwitchDefaults.IconSize),
+                                )
+                            }
+                        } else {
+                            null
+                        },
                         colors = SwitchDefaults.colors(
-                            checkedThumbColor = MaterialTheme.colorScheme.secondary,
-                            checkedTrackColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.5f)
+                            checkedThumbColor = MaterialTheme.colorScheme.primary,
+                            checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f)
                         )
                     )
                 }

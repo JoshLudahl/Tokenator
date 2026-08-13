@@ -320,7 +320,7 @@ fun VaultTokenItem(
             .fillMaxWidth()
             .clickable { onEdit() },
         shape = MaterialTheme.shapes.large,
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Row(
@@ -333,7 +333,7 @@ fun VaultTokenItem(
             Box(
                 modifier = Modifier
                     .size(52.dp)
-                    .clip(MaterialTheme.shapes.medium)
+                    .clip(MaterialTheme.shapes.extraLarge)
                     .background(MaterialTheme.colorScheme.onSecondaryContainer),
                 contentAlignment = Alignment.Center
             ) {
