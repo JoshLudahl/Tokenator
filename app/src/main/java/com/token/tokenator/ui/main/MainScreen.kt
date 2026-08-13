@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -40,6 +41,7 @@ fun MainScreen(
     val tokens by viewModel.tokens.collectAsStateWithLifecycle()
     val allTokens by viewModel.allTokens.collectAsStateWithLifecycle()
     val searchQuery by viewModel.searchQuery.collectAsStateWithLifecycle()
+    var expanded by rememberSaveable { mutableStateOf(false) }
 
     var tokenToDelete by remember { mutableStateOf<Token?>(null) }
 
@@ -101,41 +103,62 @@ fun MainScreen(
                 .fillMaxSize()
                 .padding(horizontal = 24.dp),
         ) {
-            Spacer(modifier = Modifier.height(12.dp))
-
             // Search Bar
-            OutlinedTextField(
-                value = searchQuery,
-                onValueChange = { viewModel.setSearchQuery(it) },
-                placeholder = { Text("Search passwords or accounts...") },
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_search),
-                        contentDescription = "Search",
-                        modifier = Modifier.size(20.dp)
+            SearchBar(
+                inputField = {
+                    SearchBarDefaults.InputField(
+                        query = searchQuery,
+                        onQueryChange = { viewModel.setSearchQuery(it) },
+                        onSearch = { expanded = false },
+                        expanded = expanded,
+                        onExpandedChange = { expanded = it },
+                        placeholder = { Text("Search passwords or accounts...") },
+                        leadingIcon = {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_search),
+                                contentDescription = "Search",
+                                modifier = Modifier.size(20.dp)
+                            )
+                        },
+                        trailingIcon = {
+                            if (searchQuery.isNotEmpty()) {
+                                IconButton(onClick = { viewModel.setSearchQuery("") }) {
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.close),
+                                        contentDescription = "Clear search",
+                                        modifier = Modifier.size(18.dp)
+                                    )
+                                }
+                            }
+                        },
                     )
                 },
-                trailingIcon = {
-                    if (searchQuery.isNotEmpty()) {
-                        IconButton(onClick = { viewModel.setSearchQuery("") }) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.close),
-                                contentDescription = "Clear search",
-                                modifier = Modifier.size(18.dp)
-                            )
-                        }
-                    }
-                },
+                expanded = expanded,
+                onExpandedChange = { expanded = it },
                 modifier = Modifier.fillMaxWidth(),
-                shape = MaterialTheme.shapes.medium,
-                singleLine = true,
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = MaterialTheme.colorScheme.primary,
-                    unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
-                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-                    focusedContainerColor = MaterialTheme.colorScheme.surface
+                colors = SearchBarDefaults.colors(
+                    containerColor = MaterialTheme.colorScheme.surface,
                 )
-            )
+            ) {
+                LazyColumn(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(14.dp),
+                    contentPadding = PaddingValues(16.dp),
+                ) {
+                    items(tokens, key = { it.id }) { token ->
+                        VaultTokenItem(
+                            token = token,
+                            onCopy = {
+                                val fullToken = Encryption.decrypt(token.token) ?: ""
+                                Clipuous.copyToClipboard(fullToken, context)
+                                Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
+                            },
+                            onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
+                            onDelete = { tokenToDelete = token }
+                        )
+                    }
+                }
+            }
 
             Spacer(modifier = Modifier.height(24.dp))
 
