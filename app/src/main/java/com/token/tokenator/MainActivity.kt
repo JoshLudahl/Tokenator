@@ -29,7 +29,8 @@ import com.token.tokenator.ui.savedpassword.SavedTokenScreen
 import com.token.tokenator.ui.savedpassword.passworddetails.TokenDetailScreen
 import com.token.tokenator.ui.security.SecurityScreen
 import com.token.tokenator.ui.settings.SettingsScreen
-import com.token.tokenator.ui.theme.TokenatorTheme
+import com.token.tokenator.ui.theme.AppTheme
+
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -58,7 +59,7 @@ class MainActivity : ComponentActivity() {
         checkIsUpdateAvailable()
 
         setContent {
-            TokenatorTheme {
+            AppTheme {
                 TokenatorApp()
             }
         }
