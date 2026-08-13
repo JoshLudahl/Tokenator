@@ -192,40 +192,80 @@ fun SettingsScreen(
                 shape = MaterialTheme.shapes.large,
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
             ) {
-                Row(
-                    modifier =
-                        Modifier
-                            .clickable { viewModel.updateNoRepeat(!switchNoRepeat) }
-                            .padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(
-                        text = stringResource(R.string.no_repeat_characters),
-                        style = MaterialTheme.typography.bodyLarge,
-                        fontWeight = FontWeight.Medium,
-                        modifier = Modifier.weight(1f),
-                    )
-                    Switch(
-                        checked = switchNoRepeat,
-                        onCheckedChange = { viewModel.updateNoRepeat(it) },
-                        thumbContent =
-                            if (switchNoRepeat) {
-                                {
-                                    Icon(
-                                        imageVector = Icons.Filled.Check,
-                                        contentDescription = null,
-                                        modifier = Modifier.size(SwitchDefaults.IconSize),
-                                    )
-                                }
-                            } else {
-                                null
-                            },
-                        colors =
-                            SwitchDefaults.colors(
-                                checkedThumbColor = MaterialTheme.colorScheme.primary,
-                                checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
-                            ),
-                    )
+                Column {
+                    Row(
+                        modifier =
+                            Modifier
+                                .clickable { viewModel.updateNoRepeat(!switchNoRepeat) }
+                                .padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(
+                            text = stringResource(R.string.no_repeat_characters),
+                            style = MaterialTheme.typography.bodyLarge,
+                            fontWeight = FontWeight.Medium,
+                            modifier = Modifier.weight(1f),
+                        )
+                        Switch(
+                            checked = switchNoRepeat,
+                            onCheckedChange = { viewModel.updateNoRepeat(it) },
+                            thumbContent =
+                                if (switchNoRepeat) {
+                                    {
+                                        Icon(
+                                            imageVector = Icons.Filled.Check,
+                                            contentDescription = null,
+                                            modifier = Modifier.size(SwitchDefaults.IconSize),
+                                        )
+                                    }
+                                } else {
+                                    null
+                                },
+                            colors =
+                                SwitchDefaults.colors(
+                                    checkedThumbColor = MaterialTheme.colorScheme.primary,
+                                    checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                                ),
+                        )
+                    }
+
+                    val isSecurityEnabled by viewModel.isSecurityEnabled.collectAsStateWithLifecycle()
+
+                    Row(
+                        modifier =
+                            Modifier
+                                .clickable { viewModel.updateSecurity(!isSecurityEnabled) }
+                                .padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(
+                            text = "App Security (PIN/Pattern/Biometric)",
+                            style = MaterialTheme.typography.bodyLarge,
+                            fontWeight = FontWeight.Medium,
+                            modifier = Modifier.weight(1f),
+                        )
+                        Switch(
+                            checked = isSecurityEnabled,
+                            onCheckedChange = { viewModel.updateSecurity(it) },
+                            thumbContent =
+                                if (isSecurityEnabled) {
+                                    {
+                                        Icon(
+                                            imageVector = Icons.Filled.Check,
+                                            contentDescription = null,
+                                            modifier = Modifier.size(SwitchDefaults.IconSize),
+                                        )
+                                    }
+                                } else {
+                                    null
+                                },
+                            colors =
+                                SwitchDefaults.colors(
+                                    checkedThumbColor = MaterialTheme.colorScheme.primary,
+                                    checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                                ),
+                        )
+                    }
                 }
             }
 

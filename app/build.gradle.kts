@@ -105,6 +105,7 @@ tasks.named("preBuild") {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.biometric.ktx)
     implementation(libs.androidx.splashscreen)
 
     // Compose
