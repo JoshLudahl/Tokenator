@@ -252,13 +252,13 @@ fun MainScreen(
         Box(
             modifier =
                 Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues),
+                    .fillMaxSize(),
         ) {
             Column(
                 modifier =
                     Modifier
                         .fillMaxSize()
+                        .padding(paddingValues)
                         .clickable(
                             interactionSource = remember { MutableInteractionSource() },
                             indication = null,
@@ -365,7 +365,7 @@ fun MainScreen(
                 modifier =
                     Modifier
                         .align(Alignment.BottomCenter)
-                        .offset(y = -FloatingToolbarDefaults.ScreenOffset)
+                        .padding(bottom = paddingValues.calculateBottomPadding() + FloatingToolbarDefaults.ScreenOffset)
                         .zIndex(1f),
                 expanded = true,
                 leadingContent = {
@@ -425,7 +425,7 @@ fun MainScreen(
                             androidx.compose.ui.unit
                                 .IntOffset(sortButtonX.toInt(), 0)
                         }.align(Alignment.BottomStart)
-                        .padding(bottom = 100.dp)
+                        .padding(bottom = 100.dp + paddingValues.calculateBottomPadding())
                         .zIndex(2f),
             ) {
                 VerticalFloatingToolbar(
