@@ -7,15 +7,19 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.biometric.BiometricPrompt
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
@@ -49,6 +53,9 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainActivity : FragmentActivity() {
     private val onboardingViewModel: OnboardingViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels()
+
+    private var isAuthenticated by mutableStateOf(false)
 
     private lateinit var appUpdateManager: AppUpdateManager
     private lateinit var aut: Task<AppUpdateInfo>
@@ -67,7 +74,8 @@ class MainActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen().setKeepOnScreenCondition {
-            onboardingViewModel.isOnboardingCompleted.value == null
+            onboardingViewModel.isOnboardingCompleted.value == null ||
+                mainViewModel.isBiometricEnabled.value == null
         }
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -85,8 +93,61 @@ class MainActivity : FragmentActivity() {
     @Composable
     fun TokenatorApp() {
         val isOnboardingCompleted by onboardingViewModel.isOnboardingCompleted.collectAsState()
+        val isBiometricEnabled by mainViewModel.isBiometricEnabled.collectAsState()
 
-        if (isOnboardingCompleted == null) {
+        if (isOnboardingCompleted == null || isBiometricEnabled == null) {
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colorScheme.background,
+            ) {}
+            return
+        }
+
+        if (isBiometricEnabled == true && !isAuthenticated) {
+            val context = LocalContext.current
+            val executor = remember { ContextCompat.getMainExecutor(context) }
+            val biometricPrompt =
+                remember {
+                    BiometricPrompt(
+                        this,
+                        executor,
+                        object : BiometricPrompt.AuthenticationCallback() {
+                            override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                                super.onAuthenticationSucceeded(result)
+                                isAuthenticated = true
+                            }
+
+                            override fun onAuthenticationError(
+                                errorCode: Int,
+                                errString: CharSequence,
+                            ) {
+                                super.onAuthenticationError(errorCode, errString)
+                                if (errorCode == BiometricPrompt.ERROR_USER_CANCELED ||
+                                    errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON
+                                ) {
+                                    finish()
+                                }
+                            }
+                        },
+                    )
+                }
+
+            val promptInfo =
+                remember {
+                    BiometricPrompt.PromptInfo
+                        .Builder()
+                        .setTitle("Tokenator")
+                        .setSubtitle("Authenticate to access your tokens")
+                        .setAllowedAuthenticators(
+                            androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG or
+                                androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL,
+                        ).build()
+                }
+
+            androidx.compose.runtime.LaunchedEffect(Unit) {
+                biometricPrompt.authenticate(promptInfo)
+            }
+
             Surface(
                 modifier = Modifier.fillMaxSize(),
                 color = MaterialTheme.colorScheme.background,

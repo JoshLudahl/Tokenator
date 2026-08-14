@@ -83,4 +83,9 @@ object Utilities {
     @Singleton
     @Provides
     fun dataStoreOnboardingString(): String = "ONBOARDING_COMPLETED"
+
+    @DataStoreBiometric
+    @Singleton
+    @Provides
+    fun dataStoreBiometricString(): String = "BIOMETRIC_AUTH"
 }

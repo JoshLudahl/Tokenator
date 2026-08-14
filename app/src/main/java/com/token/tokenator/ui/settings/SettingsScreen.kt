@@ -62,6 +62,7 @@ fun SettingsScreen(
     val passphrase by viewModel.passphrase.collectAsStateWithLifecycle()
     val switchPassphrase by viewModel.switchPassphrase.collectAsStateWithLifecycle()
     val switchNoRepeat by viewModel.switchNoRepeat.collectAsStateWithLifecycle()
+    val switchBiometric by viewModel.switchBiometric.collectAsStateWithLifecycle()
     val context = LocalContext.current
 
     var passphraseText by remember(passphrase) { mutableStateOf(passphrase?.phrase ?: "") }
@@ -211,6 +212,42 @@ fun SettingsScreen(
                             onCheckedChange = { viewModel.updateNoRepeat(it) },
                             thumbContent =
                                 if (switchNoRepeat) {
+                                    {
+                                        Icon(
+                                            imageVector = Icons.Filled.Check,
+                                            contentDescription = null,
+                                            modifier = Modifier.size(SwitchDefaults.IconSize),
+                                        )
+                                    }
+                                } else {
+                                    null
+                                },
+                            colors =
+                                SwitchDefaults.colors(
+                                    checkedThumbColor = MaterialTheme.colorScheme.primary,
+                                    checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                                ),
+                        )
+                    }
+
+                    Row(
+                        modifier =
+                            Modifier
+                                .clickable { viewModel.updateBiometric(!switchBiometric) }
+                                .padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(
+                            text = "Biometric / PIN Authentication",
+                            style = MaterialTheme.typography.bodyLarge,
+                            fontWeight = FontWeight.Medium,
+                            modifier = Modifier.weight(1f),
+                        )
+                        Switch(
+                            checked = switchBiometric,
+                            onCheckedChange = { viewModel.updateBiometric(it) },
+                            thumbContent =
+                                if (switchBiometric) {
                                     {
                                         Icon(
                                             imageVector = Icons.Filled.Check,

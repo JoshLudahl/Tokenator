@@ -41,3 +41,7 @@ annotation class DataStorePassPhraseIncluded
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class DataStoreOnboarding
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class DataStoreBiometric

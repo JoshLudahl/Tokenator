@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.database.token.TokenRepository
+import com.token.tokenator.di.DataStoreBiometric
 import com.token.tokenator.di.DataStoreNoRepeat
 import com.token.tokenator.di.DataStorePassPhraseIncluded
 import com.token.tokenator.model.Passphrase
@@ -29,6 +30,7 @@ class SettingsViewModel
         private val dataStore: DataStore<Preferences>,
         @DataStorePassPhraseIncluded private val includePassPhrase: String,
         @DataStoreNoRepeat val noRepeatKey: String,
+        @DataStoreBiometric private val biometricKey: String,
     ) : ViewModel() {
         val allCharacters: StateFlow<List<SettingsItem>> =
             repository.allCharacters
@@ -46,6 +48,10 @@ class SettingsViewModel
         val switchNoRepeat: StateFlow<Boolean>
             get() = _switchNoRepeat
 
+        private val _switchBiometric = MutableStateFlow(false)
+        val switchBiometric: StateFlow<Boolean>
+            get() = _switchBiometric
+
         init {
             viewModelScope.launch {
                 _switchPassphrase.value =
@@ -55,6 +61,11 @@ class SettingsViewModel
 
                 _switchNoRepeat.value =
                     (DataPref.readDataStore(noRepeatKey, dataStore) ?: true)
+                        .toString()
+                        .toBoolean()
+
+                _switchBiometric.value =
+                    (DataPref.readDataStore(biometricKey, dataStore) ?: false)
                         .toString()
                         .toBoolean()
             }
@@ -84,6 +95,13 @@ class SettingsViewModel
             _switchNoRepeat.value = checked
             viewModelScope.launch {
                 DataPref.saveDataStore(noRepeatKey, checked, dataStore)
+            }
+        }
+
+        fun updateBiometric(checked: Boolean) {
+            _switchBiometric.value = checked
+            viewModelScope.launch {
+                DataPref.saveDataStore(biometricKey, checked, dataStore)
             }
         }
     }
