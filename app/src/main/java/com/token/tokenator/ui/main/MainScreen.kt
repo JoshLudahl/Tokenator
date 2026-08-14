@@ -53,8 +53,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -164,7 +168,16 @@ fun MainScreen(
                 },
                 actions = {
                     if (!expanded) {
-                        IconButton(onClick = { navigator.navigate(Route.Settings) }) {
+                        IconButton(
+                            onClick = { navigator.navigate(Route.Settings) },
+                            modifier =
+                                Modifier
+                                    .testTag("SETTINGS_BUTTON")
+                                    .semantics {
+                                        contentDescription = "SETTINGS_BUTTON"
+                                        testTag = "SETTINGS_BUTTON"
+                                    },
+                        ) {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_settings_round),
                                 contentDescription = stringResource(id = R.string.settings),
@@ -178,6 +191,14 @@ fun MainScreen(
         floatingActionButton = {
             ExtendedFloatingActionButton(
                 onClick = { navigator.navigate(Route.AddPassword) },
+                modifier =
+                    Modifier
+                        .padding(bottom = 8.dp)
+                        .testTag("ADD_PASSWORD_FAB")
+                        .semantics {
+                            contentDescription = "ADD_PASSWORD_FAB"
+                            testTag = "ADD_PASSWORD_FAB"
+                        },
                 icon = {
                     Icon(
                         imageVector = Icons.Rounded.Add,
@@ -196,7 +217,6 @@ fun MainScreen(
                 },
                 containerColor = MaterialTheme.colorScheme.secondary,
                 shape = MaterialTheme.shapes.extraLarge,
-                modifier = Modifier.padding(bottom = 8.dp),
             )
         },
         containerColor = MaterialTheme.colorScheme.background,

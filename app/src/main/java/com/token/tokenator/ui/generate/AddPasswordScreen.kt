@@ -52,8 +52,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -295,7 +299,12 @@ fun AddPasswordScreen(
                 modifier =
                     Modifier
                         .fillMaxWidth()
-                        .height(60.dp),
+                        .height(60.dp)
+                        .testTag("GENERATE_TOKEN_BUTTON")
+                        .semantics {
+                            contentDescription = "GENERATE_TOKEN_BUTTON"
+                            testTag = "GENERATE_TOKEN_BUTTON"
+                        },
                 shape = MaterialTheme.shapes.extraLarge,
                 colors =
                     ButtonDefaults.buttonColors(
@@ -330,7 +339,14 @@ fun AddPasswordScreen(
                         onValueChange = { tokenName = it },
                         label = { Text(stringResource(id = R.string.app_website_name)) },
                         placeholder = { Text(stringResource(id = R.string.app_website_name_placeholder)) },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .testTag("TOKEN_NAME_FIELD")
+                                .semantics {
+                                    contentDescription = "TOKEN_NAME_FIELD"
+                                    testTag = "TOKEN_NAME_FIELD"
+                                },
                         shape = MaterialTheme.shapes.large,
                         leadingIcon = {
                             Icon(
@@ -407,7 +423,12 @@ fun AddPasswordScreen(
                         modifier =
                             Modifier
                                 .fillMaxWidth()
-                                .height(56.dp),
+                                .height(56.dp)
+                                .testTag("SAVE_TOKEN_BUTTON")
+                                .semantics {
+                                    contentDescription = "SAVE_TOKEN_BUTTON"
+                                    testTag = "SAVE_TOKEN_BUTTON"
+                                },
                     ) {
                         Text(
                             text = stringResource(id = R.string.save_password_to_vault),
@@ -485,7 +506,6 @@ fun AddPasswordScreen(
                         modifier = Modifier.padding(bottom = 12.dp),
                     )
 
-                    // Quick Character Toggles
                     QuickToggleItem(
                         label = stringResource(R.string.uppercase_letters),
                         subtext = "A-Z",
@@ -494,6 +514,13 @@ fun AddPasswordScreen(
                             viewModel.saveSwitchState(Type.UPPERCASE, it)
                             generateNewToken()
                         },
+                        modifier =
+                            Modifier
+                                .testTag("SWITCH_UPPERCASE")
+                                .semantics {
+                                    contentDescription = "SWITCH_UPPERCASE"
+                                    testTag = "SWITCH_UPPERCASE"
+                                },
                     )
                     QuickToggleItem(
                         label = stringResource(R.string.lowercase_letters),
@@ -503,6 +530,13 @@ fun AddPasswordScreen(
                             viewModel.saveSwitchState(Type.LOWERCASE, it)
                             generateNewToken()
                         },
+                        modifier =
+                            Modifier
+                                .testTag("SWITCH_LOWERCASE")
+                                .semantics {
+                                    contentDescription = "SWITCH_LOWERCASE"
+                                    testTag = "SWITCH_LOWERCASE"
+                                },
                     )
                     QuickToggleItem(
                         label = stringResource(R.string.numeric),
@@ -512,6 +546,13 @@ fun AddPasswordScreen(
                             viewModel.saveSwitchState(Type.NUMERIC, it)
                             generateNewToken()
                         },
+                        modifier =
+                            Modifier
+                                .testTag("SWITCH_NUMERIC")
+                                .semantics {
+                                    contentDescription = "SWITCH_NUMERIC"
+                                    testTag = "SWITCH_NUMERIC"
+                                },
                     )
                     QuickToggleItem(
                         label = stringResource(R.string.special_characters),
@@ -521,6 +562,13 @@ fun AddPasswordScreen(
                             viewModel.saveSwitchState(Type.SPECIAL, it)
                             generateNewToken()
                         },
+                        modifier =
+                            Modifier
+                                .testTag("SWITCH_SPECIAL")
+                                .semantics {
+                                    contentDescription = "SWITCH_SPECIAL"
+                                    testTag = "SWITCH_SPECIAL"
+                                },
                     )
                 }
             }
@@ -547,10 +595,11 @@ private fun QuickToggleItem(
     subtext: String,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Row(
         modifier =
-            Modifier
+            modifier
                 .fillMaxWidth()
                 .clickable { onCheckedChange(!checked) }
                 .padding(vertical = 8.dp),
