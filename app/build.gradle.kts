@@ -14,7 +14,7 @@ plugins {
 
 android {
     val target = 37
-    buildToolsVersion = "36.1.0"
+    buildToolsVersion = "37.0"
     namespace = "com.token.tokenator"
     compileSdk = target
 
