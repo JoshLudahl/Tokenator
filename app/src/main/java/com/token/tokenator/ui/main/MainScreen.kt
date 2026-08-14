@@ -205,6 +205,7 @@ fun MainScreen(
                         modifier =
                             Modifier
                                 .fillMaxWidth()
+                                .padding(horizontal = 16.dp)
                                 .heightIn(max = 56.dp),
                         colors =
                             SearchBarDefaults.colors(
@@ -564,7 +565,7 @@ fun VaultTokenItem(
         Row(
             modifier =
                 Modifier
-                    .padding(16.dp)
+                    .padding(start = 16.dp)
                     .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
         ) {
