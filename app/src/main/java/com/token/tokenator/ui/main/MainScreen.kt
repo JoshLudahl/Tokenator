@@ -559,7 +559,7 @@ fun VaultTokenItem(
                 .fillMaxWidth()
                 .clickable { onEdit() },
         shape = RoundedCornerShape(30.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
         Row(
