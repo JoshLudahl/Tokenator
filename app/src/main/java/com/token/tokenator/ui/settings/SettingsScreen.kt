@@ -17,9 +17,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.rounded.Save
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -170,11 +172,11 @@ fun SettingsScreen(
                                 modifier =
                                     Modifier
                                         .size(48.dp)
-                                        .clip(MaterialTheme.shapes.medium)
+                                        .clip(CircleShape)
                                         .background(MaterialTheme.colorScheme.primary),
                             ) {
                                 Icon(
-                                    painter = painterResource(id = R.drawable.ic_save_round),
+                                    imageVector = Icons.Rounded.Save,
                                     contentDescription = null,
                                     tint = MaterialTheme.colorScheme.onPrimary,
                                 )

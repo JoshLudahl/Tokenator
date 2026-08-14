@@ -470,7 +470,7 @@ fun AddPasswordScreen(
                             Text(
                                 text = "${sliderValue.toInt()} chars",
                                 style = MaterialTheme.typography.labelLarge,
-                                color = MaterialTheme.colorScheme.primary,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer,
                                 fontWeight = FontWeight.ExtraBold,
                                 modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
                             )
