@@ -21,7 +21,7 @@ class TokenRepository(
 
     suspend fun delete(token: Token) = tokenDao.delete(token)
 
-    fun updateToken(token: Token) = tokenDao.updateToken(token)
+    suspend fun updateToken(token: Token) = tokenDao.updateToken(token)
 
     suspend fun getOneTokenById(id: Int): Token? = tokenDao.getTokenById(id)
 

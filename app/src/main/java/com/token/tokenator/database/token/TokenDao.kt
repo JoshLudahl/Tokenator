@@ -47,5 +47,5 @@ interface TokenDao {
     fun getTokenByName(title: String): Token?
 
     @Update
-    fun updateToken(token: Token)
+    suspend fun updateToken(token: Token)
 }

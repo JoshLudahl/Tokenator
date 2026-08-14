@@ -69,6 +69,22 @@ fun TokenDetailScreen(
     var passwordValue by remember(token) { mutableStateOf(token?.token ?: "") }
     var showDeleteDialog by remember { mutableStateOf(false) }
 
+    LaunchedEffect(Unit) {
+        viewModel.generatedPassword.collect { newPassword ->
+            passwordValue = newPassword
+        }
+    }
+
+    LaunchedEffect(Unit) {
+        viewModel.updateStatus.collect { success ->
+            if (success) {
+                Toast.makeText(context, R.string.changes_saved, Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "Failed to update token", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     val hasChanges =
         remember(token, tokenName, loginName, passwordValue) {
             token?.let {
@@ -211,7 +227,6 @@ fun TokenDetailScreen(
             Button(
                 onClick = {
                     viewModel.updateToken(tokenName, passwordValue, loginName)
-                    Toast.makeText(context, R.string.changes_saved, Toast.LENGTH_SHORT).show()
                 },
                 enabled = hasChanges,
                 modifier =
@@ -232,7 +247,7 @@ fun TokenDetailScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            if (shouldShowWarning) {
+            if (true) {
                 Surface(
                     modifier = Modifier.fillMaxWidth(),
                     shape = MaterialTheme.shapes.large,
@@ -264,7 +279,7 @@ fun TokenDetailScreen(
                             )
                         }
                         Spacer(modifier = Modifier.weight(1f))
-                        TextButton(onClick = { /* Action to update */ }) {
+                        TextButton(onClick = { viewModel.generateNewPassword() }) {
                             Text(stringResource(id = R.string.fix_now), color = MaterialTheme.colorScheme.tertiary, fontWeight = FontWeight.Bold)
                         }
                     }
