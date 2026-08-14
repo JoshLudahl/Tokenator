@@ -383,9 +383,9 @@ fun CharacterBox(
                 .clip(MaterialTheme.shapes.small)
                 .background(
                     if (item.included) {
-                        MaterialTheme.colorScheme.primaryContainer
+                        MaterialTheme.colorScheme.tertiaryContainer
                     } else {
-                        MaterialTheme.colorScheme.surfaceVariant
+                        MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.2f)
                     },
                 ).clickable {
                     onClick(item.copy(included = !item.included))
@@ -397,9 +397,9 @@ fun CharacterBox(
             style = MaterialTheme.typography.titleMedium,
             color =
                 if (item.included) {
-                    MaterialTheme.colorScheme.onPrimaryContainer
+                    MaterialTheme.colorScheme.onTertiaryContainer
                 } else {
-                    MaterialTheme.colorScheme.onSurface
+                    MaterialTheme.colorScheme.onTertiaryContainer.copy(alpha = 0.5f)
                 },
             fontWeight = FontWeight.ExtraBold,
         )
