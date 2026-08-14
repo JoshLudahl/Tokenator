@@ -119,6 +119,9 @@
     <string name="add_your_first_password">Add Your First Password</string>
     <string name="no_username_saved">No username saved</string>
     <string name="more_options">More options</string>
+    <string name="sort" translatable="false">Sort</string>
+    <string name="sort_by_updated" translatable="false">Sort by last updated</string>
+    <string name="sort_a_z" translatable="false">Sort A-Z</string>
     <string name="considered_updating_token">Consider updating your token.</string>
     <string name="my_vault">My Vault</string>
     <string name="total_passwords">Total Passwords</string>

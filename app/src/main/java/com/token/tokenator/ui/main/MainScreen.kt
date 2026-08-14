@@ -1,6 +1,12 @@
 package com.token.tokenator.ui.main
 
 import android.widget.Toast
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -14,6 +20,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -23,7 +30,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.FilterList
 import androidx.compose.material.icons.rounded.MoreVert
+import androidx.compose.material.icons.rounded.SortByAlpha
+import androidx.compose.material.icons.rounded.Update
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -31,7 +41,11 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.FilledIconButton
+import androidx.compose.material3.FloatingToolbarDefaults
+import androidx.compose.material3.FloatingToolbarExitDirection
+import androidx.compose.material3.HorizontalFloatingToolbar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -41,6 +55,7 @@ import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.VerticalFloatingToolbar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -51,6 +66,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.testTag
@@ -62,6 +80,7 @@ import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.token.tokenator.R
@@ -71,7 +90,7 @@ import com.token.tokenator.navigation.Route
 import com.token.tokenator.utilities.Clipuous
 import com.token.tokenator.utilities.Encryption
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun MainScreen(
     navigator: Navigator,
@@ -81,11 +100,26 @@ fun MainScreen(
     val focusManager = LocalFocusManager.current
     val tokens by viewModel.tokens.collectAsStateWithLifecycle()
     val searchQuery by viewModel.searchQuery.collectAsStateWithLifecycle()
+    val currentSortOrder by viewModel.sortOrder.collectAsStateWithLifecycle()
     var expanded by rememberSaveable { mutableStateOf(false) }
 
     var tokenToDelete by remember { mutableStateOf<Token?>(null) }
+    var sortMenuExpanded by remember { mutableStateOf(false) }
+    var sortButtonX by remember { mutableStateOf(0f) }
+
+    val floatingToolbarScrollBehavior =
+        FloatingToolbarDefaults.exitAlwaysScrollBehavior(
+            exitDirection = FloatingToolbarExitDirection.Bottom,
+        )
 
     Scaffold(
+        modifier =
+            Modifier
+                .nestedScroll(floatingToolbarScrollBehavior)
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = null,
+                ) { sortMenuExpanded = false },
         topBar = {
             TopAppBar(
                 title = {
@@ -167,157 +201,213 @@ fun MainScreen(
                     }
                 },
                 actions = {
-                    if (!expanded) {
-                        IconButton(
-                            onClick = { navigator.navigate(Route.Settings) },
-                            modifier =
-                                Modifier
-                                    .testTag("SETTINGS_BUTTON")
-                                    .semantics {
-                                        contentDescription = "SETTINGS_BUTTON"
-                                        testTag = "SETTINGS_BUTTON"
-                                    },
-                        ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_settings_round),
-                                contentDescription = stringResource(id = R.string.settings),
-                                modifier = Modifier.size(28.dp),
-                            )
-                        }
-                    }
+                    // Settings button moved to HorizontalFloatingToolbar
                 },
-            )
-        },
-        floatingActionButton = {
-            ExtendedFloatingActionButton(
-                onClick = { navigator.navigate(Route.AddPassword) },
-                modifier =
-                    Modifier
-                        .padding(bottom = 8.dp)
-                        .testTag("ADD_PASSWORD_FAB")
-                        .semantics {
-                            contentDescription = "ADD_PASSWORD_FAB"
-                            testTag = "ADD_PASSWORD_FAB"
-                        },
-                icon = {
-                    Icon(
-                        imageVector = Icons.Rounded.Add,
-                        contentDescription = stringResource(id = R.string.new_password),
-                        tint = MaterialTheme.colorScheme.onSecondary,
-                        modifier = Modifier.size(24.dp),
-                    )
-                },
-                text = {
-                    Text(
-                        text = stringResource(id = R.string.new_password),
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onSecondary,
-                    )
-                },
-                containerColor = MaterialTheme.colorScheme.secondary,
-                shape = MaterialTheme.shapes.extraLarge,
             )
         },
         containerColor = MaterialTheme.colorScheme.background,
     ) { paddingValues ->
-        Column(
+        Box(
             modifier =
                 Modifier
-                    .padding(paddingValues)
                     .fillMaxSize()
-                    .clickable(
-                        interactionSource = remember { MutableInteractionSource() },
-                        indication = null,
-                    ) { focusManager.clearFocus() }
-                    .padding(horizontal = 24.dp),
+                    .padding(paddingValues),
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
+            Column(
+                modifier =
+                    Modifier
+                        .fillMaxSize()
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null,
+                        ) { focusManager.clearFocus() }
+                        .padding(horizontal = 24.dp),
             ) {
-                Text(
-                    text = if (searchQuery.isNotBlank()) stringResource(id = R.string.search_results_count, tokens.size) else stringResource(id = R.string.all_passwords),
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.ExtraBold,
-                    color = MaterialTheme.colorScheme.onSurface,
-                )
-            }
+                Spacer(modifier = Modifier.height(16.dp))
 
-            Spacer(modifier = Modifier.height(12.dp))
-
-            // Password List
-            if (tokens.isEmpty()) {
-                Box(
-                    modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .weight(1f),
-                    contentAlignment = Alignment.Center,
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier.padding(32.dp),
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_tokenator),
-                            contentDescription = null,
-                            modifier = Modifier.size(64.dp),
-                            tint = Color.Unspecified,
-                        )
-                        Spacer(modifier = Modifier.height(16.dp))
-                        Text(
-                            text = if (searchQuery.isNotBlank()) stringResource(id = R.string.no_passwords_matching, searchQuery) else stringResource(R.string.no_saved_passwords),
-                            style = MaterialTheme.typography.bodyLarge,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            fontWeight = FontWeight.Medium,
-                        )
-                        Spacer(modifier = Modifier.height(24.dp))
+                    Text(
+                        text = if (searchQuery.isNotBlank()) stringResource(id = R.string.search_results_count, tokens.size) else stringResource(id = R.string.all_passwords),
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.ExtraBold,
+                        color = MaterialTheme.colorScheme.onSurface,
+                    )
+                }
 
-                        if (searchQuery.isBlank()) {
-                            Button(
-                                onClick = { navigator.navigate(Route.AddPassword) },
-                            ) {
-                                Text(
-                                    text = stringResource(id = R.string.add_your_first_password),
-                                    fontWeight = FontWeight.Bold,
-                                )
+                Spacer(modifier = Modifier.height(12.dp))
+
+                // Password List
+                if (tokens.isEmpty()) {
+                    Box(
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .weight(1f),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier.padding(32.dp),
+                        ) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_tokenator),
+                                contentDescription = null,
+                                modifier = Modifier.size(64.dp),
+                                tint = Color.Unspecified,
+                            )
+                            Spacer(modifier = Modifier.height(16.dp))
+                            Text(
+                                text = if (searchQuery.isNotBlank()) stringResource(id = R.string.no_passwords_matching, searchQuery) else stringResource(R.string.no_saved_passwords),
+                                style = MaterialTheme.typography.bodyLarge,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                fontWeight = FontWeight.Medium,
+                            )
+                            Spacer(modifier = Modifier.height(24.dp))
+
+                            if (searchQuery.isBlank()) {
+                                Button(
+                                    onClick = { navigator.navigate(Route.AddPassword) },
+                                ) {
+                                    Text(
+                                        text = stringResource(id = R.string.add_your_first_password),
+                                        fontWeight = FontWeight.Bold,
+                                    )
+                                }
                             }
                         }
                     }
-                }
-            } else {
-                LazyColumn(
-                    modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .weight(1f),
-                    verticalArrangement = Arrangement.spacedBy(14.dp),
-                    contentPadding = PaddingValues(bottom = 90.dp),
-                ) {
-                    items(tokens, key = { it.id }) { token ->
-                        VaultTokenItem(
-                            token = token,
-                            onCopy = {
-                                val fullToken = Encryption.decrypt(token.token) ?: ""
-                                Clipuous.copyToClipboard(fullToken, context, isSensitive = true)
-                                Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
-                            },
-                            onCopyUsername = {
-                                val login = token.login?.let { Encryption.decrypt(it) } ?: ""
-                                if (login.isNotEmpty()) {
-                                    Clipuous.copyToClipboard(login, context)
-                                    Toast.makeText(context, R.string.toast_username_copied, Toast.LENGTH_SHORT).show()
-                                }
-                            },
-                            onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
-                            onDelete = { tokenToDelete = token },
-                        )
+                } else {
+                    LazyColumn(
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .weight(1f),
+                        verticalArrangement = Arrangement.spacedBy(14.dp),
+                        contentPadding = PaddingValues(bottom = 90.dp),
+                    ) {
+                        items(tokens, key = { it.id }) { token ->
+                            VaultTokenItem(
+                                token = token,
+                                onCopy = {
+                                    val fullToken = Encryption.decrypt(token.token) ?: ""
+                                    Clipuous.copyToClipboard(fullToken, context, isSensitive = true)
+                                    Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
+                                },
+                                onCopyUsername = {
+                                    val login = token.login?.let { Encryption.decrypt(it) } ?: ""
+                                    if (login.isNotEmpty()) {
+                                        Clipuous.copyToClipboard(login, context)
+                                        Toast.makeText(context, R.string.toast_username_copied, Toast.LENGTH_SHORT).show()
+                                    }
+                                },
+                                onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
+                                onDelete = { tokenToDelete = token },
+                            )
+                        }
                     }
                 }
+            }
+
+            HorizontalFloatingToolbar(
+                modifier =
+                    Modifier
+                        .align(Alignment.BottomCenter)
+                        .offset(y = -FloatingToolbarDefaults.ScreenOffset)
+                        .zIndex(1f),
+                expanded = true,
+                leadingContent = {
+                    IconButton(
+                        onClick = { sortMenuExpanded = !sortMenuExpanded },
+                        modifier =
+                            Modifier.onGloballyPositioned { coordinates ->
+                                sortButtonX = coordinates.positionInRoot().x
+                            },
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.FilterList,
+                            contentDescription = stringResource(id = R.string.sort),
+                        )
+                    }
+                },
+                trailingContent = {
+                    IconButton(
+                        onClick = { navigator.navigate(Route.Settings) },
+                        modifier =
+                            Modifier
+                                .testTag("SETTINGS_BUTTON")
+                                .semantics {
+                                    contentDescription = "SETTINGS_BUTTON"
+                                    testTag = "SETTINGS_BUTTON"
+                                },
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_settings_round),
+                            contentDescription = stringResource(id = R.string.settings),
+                            modifier = Modifier.size(28.dp),
+                        )
+                    }
+                },
+                content = {
+                    FilledIconButton(
+                        modifier = Modifier.width(64.dp),
+                        onClick = { navigator.navigate(Route.AddPassword) },
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Add,
+                            contentDescription = stringResource(id = R.string.new_password),
+                        )
+                    }
+                },
+                scrollBehavior = floatingToolbarScrollBehavior,
+            )
+
+            // FAB Menu (Sort Options)
+            AnimatedVisibility(
+                visible = sortMenuExpanded,
+                enter = fadeIn(tween(200)) + slideInVertically(tween(200)) { it / 2 },
+                exit = fadeOut(tween(200)) + slideOutVertically(tween(200)) { it / 2 },
+                modifier =
+                    Modifier
+                        .offset {
+                            androidx.compose.ui.unit
+                                .IntOffset(sortButtonX.toInt(), 0)
+                        }.align(Alignment.BottomStart)
+                        .padding(bottom = 100.dp)
+                        .zIndex(2f),
+            ) {
+                VerticalFloatingToolbar(
+                    expanded = true,
+                    content = {
+                        IconButton(
+                            onClick = {
+                                viewModel.setSortOrder(TokenSortOrder.DATE)
+                                sortMenuExpanded = false
+                            },
+                        ) {
+                            Icon(
+                                imageVector = Icons.Rounded.Update,
+                                contentDescription = stringResource(id = R.string.sort_by_updated),
+                                tint = if (currentSortOrder == TokenSortOrder.DATE) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
+                            )
+                        }
+                        IconButton(
+                            onClick = {
+                                viewModel.setSortOrder(TokenSortOrder.NAME)
+                                sortMenuExpanded = false
+                            },
+                        ) {
+                            Icon(
+                                imageVector = Icons.Rounded.SortByAlpha,
+                                contentDescription = stringResource(id = R.string.sort_a_z),
+                                tint = if (currentSortOrder == TokenSortOrder.NAME) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
+                            )
+                        }
+                    },
+                )
             }
         }
     }
