@@ -116,6 +116,9 @@ class MainViewModel
         private val _sortOrder = MutableStateFlow(TokenSortOrder.DATE)
         val sortOrder: StateFlow<TokenSortOrder> get() = _sortOrder
 
+        private val _snackbarMessage = MutableStateFlow<Int?>(null)
+        val snackbarMessage: StateFlow<Int?> get() = _snackbarMessage
+
         val allTokens: StateFlow<List<Token>> =
             repository.allTokensFlow
                 .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
@@ -152,6 +155,14 @@ class MainViewModel
 
         fun setSortOrder(order: TokenSortOrder) {
             _sortOrder.value = order
+        }
+
+        fun showSnackbar(resId: Int) {
+            _snackbarMessage.value = resId
+        }
+
+        fun clearSnackbar() {
+            _snackbarMessage.value = null
         }
 
         fun delete(token: Token) {

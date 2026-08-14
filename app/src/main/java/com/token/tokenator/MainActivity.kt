@@ -54,6 +54,7 @@ import kotlinx.coroutines.launch
 class MainActivity : FragmentActivity() {
     private val onboardingViewModel: OnboardingViewModel by viewModels()
     private val mainViewModel: MainViewModel by viewModels()
+    private val mainScreenViewModel: com.token.tokenator.ui.main.MainViewModel by viewModels()
 
     private var isAuthenticated by mutableStateOf(false)
 
@@ -175,8 +176,8 @@ class MainActivity : FragmentActivity() {
 
         val entryProvider =
             entryProvider<NavKey> {
-                entry<Route.Main> { MainScreen(navigator) }
-                entry<Route.AddPassword> { AddPasswordScreen(navigator) }
+                entry<Route.Main> { MainScreen(navigator, mainScreenViewModel) }
+                entry<Route.AddPassword> { AddPasswordScreen(navigator, mainScreenViewModel) }
                 entry<Route.SavedToken> { SavedTokenScreen(navigator) }
                 entry<Route.PasswordDetail> { key -> TokenDetailScreen(key.id, navigator) }
                 entry<Route.Settings> { SettingsScreen(navigator) }

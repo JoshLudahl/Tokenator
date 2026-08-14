@@ -1,6 +1,5 @@
 package com.token.tokenator.ui.main
 
-import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -26,6 +25,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
@@ -52,14 +52,19 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.VerticalFloatingToolbar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -89,6 +94,7 @@ import com.token.tokenator.navigation.Navigator
 import com.token.tokenator.navigation.Route
 import com.token.tokenator.utilities.Clipuous
 import com.token.tokenator.utilities.Encryption
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -101,11 +107,34 @@ fun MainScreen(
     val tokens by viewModel.tokens.collectAsStateWithLifecycle()
     val searchQuery by viewModel.searchQuery.collectAsStateWithLifecycle()
     val currentSortOrder by viewModel.sortOrder.collectAsStateWithLifecycle()
+    val snackbarMessage by viewModel.snackbarMessage.collectAsStateWithLifecycle()
+    val messageText = snackbarMessage?.let { stringResource(id = it) }
     var expanded by rememberSaveable { mutableStateOf(false) }
 
     var tokenToDelete by remember { mutableStateOf<Token?>(null) }
     var sortMenuExpanded by remember { mutableStateOf(false) }
-    var sortButtonX by remember { mutableStateOf(0f) }
+    var sortButtonX by remember { mutableFloatStateOf(0f) }
+
+    val listState = rememberLazyListState()
+    val searchListState = rememberLazyListState()
+    val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
+
+    val copiedText = stringResource(id = R.string.toast_copied_to_clipboard)
+    val usernameCopiedText = stringResource(id = R.string.toast_username_copied)
+    val passwordDeletedText = stringResource(id = R.string.toast_password_deleted)
+
+    LaunchedEffect(currentSortOrder) {
+        listState.animateScrollToItem(0)
+        searchListState.animateScrollToItem(0)
+    }
+
+    LaunchedEffect(messageText) {
+        messageText?.let { text ->
+            snackbarHostState.showSnackbar(text)
+            viewModel.clearSnackbar()
+        }
+    }
 
     val floatingToolbarScrollBehavior =
         FloatingToolbarDefaults.exitAlwaysScrollBehavior(
@@ -174,28 +203,35 @@ fun MainScreen(
                             ),
                     ) {
                         LazyColumn(
+                            state = searchListState,
                             modifier = Modifier.fillMaxWidth(),
                             verticalArrangement = Arrangement.spacedBy(14.dp),
                             contentPadding = PaddingValues(16.dp),
                         ) {
                             items(tokens, key = { it.id }) { token ->
-                                VaultTokenItem(
-                                    token = token,
-                                    onCopy = {
-                                        val fullToken = Encryption.decrypt(token.token) ?: ""
-                                        Clipuous.copyToClipboard(fullToken, context, isSensitive = true)
-                                        Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
-                                    },
-                                    onCopyUsername = {
-                                        val login = token.login?.let { Encryption.decrypt(it) } ?: ""
-                                        if (login.isNotEmpty()) {
-                                            Clipuous.copyToClipboard(login, context)
-                                            Toast.makeText(context, R.string.toast_username_copied, Toast.LENGTH_SHORT).show()
-                                        }
-                                    },
-                                    onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
-                                    onDelete = { tokenToDelete = token },
-                                )
+                                Box(modifier = Modifier.animateItem()) {
+                                    VaultTokenItem(
+                                        token = token,
+                                        onCopy = {
+                                            val fullToken = Encryption.decrypt(token.token) ?: ""
+                                            Clipuous.copyToClipboard(fullToken, context, isSensitive = true)
+                                            scope.launch {
+                                                snackbarHostState.showSnackbar(copiedText)
+                                            }
+                                        },
+                                        onCopyUsername = {
+                                            val login = token.login?.let { Encryption.decrypt(it) } ?: ""
+                                            if (login.isNotEmpty()) {
+                                                Clipuous.copyToClipboard(login, context)
+                                                scope.launch {
+                                                    snackbarHostState.showSnackbar(usernameCopiedText)
+                                                }
+                                            }
+                                        },
+                                        onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
+                                        onDelete = { tokenToDelete = token },
+                                    )
+                                }
                             }
                         }
                     }
@@ -203,6 +239,12 @@ fun MainScreen(
                 actions = {
                     // Settings button moved to HorizontalFloatingToolbar
                 },
+            )
+        },
+        snackbarHost = {
+            SnackbarHost(
+                hostState = snackbarHostState,
+                modifier = Modifier.padding(bottom = 80.dp),
             )
         },
         containerColor = MaterialTheme.colorScheme.background,
@@ -282,6 +324,7 @@ fun MainScreen(
                     }
                 } else {
                     LazyColumn(
+                        state = listState,
                         modifier =
                             Modifier
                                 .fillMaxWidth()
@@ -290,23 +333,29 @@ fun MainScreen(
                         contentPadding = PaddingValues(bottom = 90.dp),
                     ) {
                         items(tokens, key = { it.id }) { token ->
-                            VaultTokenItem(
-                                token = token,
-                                onCopy = {
-                                    val fullToken = Encryption.decrypt(token.token) ?: ""
-                                    Clipuous.copyToClipboard(fullToken, context, isSensitive = true)
-                                    Toast.makeText(context, R.string.toast_copied_to_clipboard, Toast.LENGTH_SHORT).show()
-                                },
-                                onCopyUsername = {
-                                    val login = token.login?.let { Encryption.decrypt(it) } ?: ""
-                                    if (login.isNotEmpty()) {
-                                        Clipuous.copyToClipboard(login, context)
-                                        Toast.makeText(context, R.string.toast_username_copied, Toast.LENGTH_SHORT).show()
-                                    }
-                                },
-                                onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
-                                onDelete = { tokenToDelete = token },
-                            )
+                            Box(modifier = Modifier.animateItem()) {
+                                VaultTokenItem(
+                                    token = token,
+                                    onCopy = {
+                                        val fullToken = Encryption.decrypt(token.token) ?: ""
+                                        Clipuous.copyToClipboard(fullToken, context, isSensitive = true)
+                                        scope.launch {
+                                            snackbarHostState.showSnackbar(copiedText)
+                                        }
+                                    },
+                                    onCopyUsername = {
+                                        val login = token.login?.let { Encryption.decrypt(it) } ?: ""
+                                        if (login.isNotEmpty()) {
+                                            Clipuous.copyToClipboard(login, context)
+                                            scope.launch {
+                                                snackbarHostState.showSnackbar(usernameCopiedText)
+                                            }
+                                        }
+                                    },
+                                    onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
+                                    onDelete = { tokenToDelete = token },
+                                )
+                            }
                         }
                     }
                 }
@@ -429,7 +478,9 @@ fun MainScreen(
                 TextButton(onClick = {
                     tokenToDelete?.let { viewModel.delete(it) }
                     tokenToDelete = null
-                    Toast.makeText(context, R.string.toast_password_deleted, Toast.LENGTH_SHORT).show()
+                    scope.launch {
+                        snackbarHostState.showSnackbar(passwordDeletedText)
+                    }
                 }) {
                     Text(stringResource(id = R.string.delete), color = MaterialTheme.colorScheme.error, fontWeight = FontWeight.Bold)
                 }

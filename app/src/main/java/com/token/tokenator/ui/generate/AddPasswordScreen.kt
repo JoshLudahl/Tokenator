@@ -1,6 +1,5 @@
 package com.token.tokenator.ui.generate
 
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -35,6 +34,8 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
@@ -46,6 +47,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -70,6 +72,7 @@ import com.token.tokenator.navigation.Route
 import com.token.tokenator.ui.main.MainViewModel
 import com.token.tokenator.utilities.Clipuous
 import com.token.tokenator.utilities.Tokenator
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -91,6 +94,10 @@ fun AddPasswordScreen(
     var tokenName by remember { mutableStateOf("") }
     var loginName by remember { mutableStateOf("") }
     var sliderValue by remember { mutableFloatStateOf(16f) }
+
+    val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
+    val copiedText = stringResource(id = R.string.toast_copied_to_clipboard)
 
     // Helper function to trigger generation
     val generateNewToken = {
@@ -177,6 +184,7 @@ fun AddPasswordScreen(
                     ),
             )
         },
+        snackbarHost = { SnackbarHost(snackbarHostState) },
         containerColor = MaterialTheme.colorScheme.background,
     ) { paddingValues ->
         Column(
@@ -199,12 +207,9 @@ fun AddPasswordScreen(
                         .clickable {
                             if (token.isNotEmpty()) {
                                 Clipuous.copyToClipboard(token, context, isSensitive = true)
-                                Toast
-                                    .makeText(
-                                        context,
-                                        R.string.toast_copied_to_clipboard,
-                                        Toast.LENGTH_SHORT,
-                                    ).show()
+                                scope.launch {
+                                    snackbarHostState.showSnackbar(copiedText)
+                                }
                             }
                         }.padding(24.dp),
             ) {
@@ -266,12 +271,9 @@ fun AddPasswordScreen(
                             onClick = {
                                 if (token.isNotEmpty()) {
                                     Clipuous.copyToClipboard(token, context, isSensitive = true)
-                                    Toast
-                                        .makeText(
-                                            context,
-                                            R.string.toast_copied_to_clipboard,
-                                            Toast.LENGTH_SHORT,
-                                        ).show()
+                                    scope.launch {
+                                        snackbarHostState.showSnackbar(copiedText)
+                                    }
                                 }
                             },
                             modifier =
@@ -398,24 +400,12 @@ fun AddPasswordScreen(
                     Button(
                         onClick = {
                             if (tokenName.isBlank()) {
-                                Toast
-                                    .makeText(
-                                        context,
-                                        R.string.error_enter_app_name,
-                                        Toast.LENGTH_SHORT,
-                                    ).show()
+                                viewModel.showSnackbar(R.string.error_enter_app_name)
                             } else if (token.isEmpty()) {
-                                Toast
-                                    .makeText(
-                                        context,
-                                        R.string.error_generate_password_first,
-                                        Toast.LENGTH_SHORT,
-                                    ).show()
+                                viewModel.showSnackbar(R.string.error_generate_password_first)
                             } else {
                                 viewModel.insert(tokenName, token, loginName)
-                                Toast
-                                    .makeText(context, R.string.password_saved, Toast.LENGTH_SHORT)
-                                    .show()
+                                viewModel.showSnackbar(R.string.password_saved)
                                 navigator.goBack()
                             }
                         },
