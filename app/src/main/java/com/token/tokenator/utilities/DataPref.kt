@@ -21,9 +21,17 @@ object DataPref {
         value: Boolean,
         dataStore: DataStore<Preferences>,
     ) {
+        saveDataStore(key, value.toString(), dataStore)
+    }
+
+    suspend fun saveDataStore(
+        key: String,
+        value: String,
+        dataStore: DataStore<Preferences>,
+    ) {
         val dataStoreKey = stringPreferencesKey(key)
         dataStore.edit { preferences ->
-            preferences[dataStoreKey] = value.toString()
+            preferences[dataStoreKey] = value
         }
     }
 }

@@ -334,6 +334,21 @@ fun SettingsScreen(
                 }
             }
 
+            Spacer(modifier = Modifier.height(32.dp))
+
+            // Version Info
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    text = viewModel.version,
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(bottom = 32.dp),
+                )
+            }
+
             Spacer(modifier = Modifier.height(48.dp))
         }
     }

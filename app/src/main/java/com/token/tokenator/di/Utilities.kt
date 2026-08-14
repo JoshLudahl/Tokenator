@@ -88,4 +88,9 @@ object Utilities {
     @Singleton
     @Provides
     fun dataStoreBiometricString(): String = "BIOMETRIC_AUTH"
+
+    @DataStoreSortOrder
+    @Singleton
+    @Provides
+    fun dataStoreSortOrderString(): String = "SORT_ORDER"
 }

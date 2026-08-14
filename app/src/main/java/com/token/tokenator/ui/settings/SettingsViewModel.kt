@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.token.tokenator.BuildConfig
 import com.token.tokenator.database.settingsitem.SettingsItemRepository
 import com.token.tokenator.database.token.TokenRepository
 import com.token.tokenator.di.DataStoreBiometric
@@ -32,6 +33,8 @@ class SettingsViewModel
         @DataStoreNoRepeat val noRepeatKey: String,
         @DataStoreBiometric private val biometricKey: String,
     ) : ViewModel() {
+        val version = "Version ${BuildConfig.VERSION_NAME}"
+
         val allCharacters: StateFlow<List<SettingsItem>> =
             repository.allCharacters
                 .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())

@@ -45,3 +45,7 @@ annotation class DataStoreOnboarding
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class DataStoreBiometric
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class DataStoreSortOrder

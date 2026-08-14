@@ -13,6 +13,7 @@ import com.token.tokenator.di.DataStoreLowercase
 import com.token.tokenator.di.DataStoreNoRepeat
 import com.token.tokenator.di.DataStoreNumeric
 import com.token.tokenator.di.DataStorePassPhraseIncluded
+import com.token.tokenator.di.DataStoreSortOrder
 import com.token.tokenator.di.DataStoreSpecialCharacters
 import com.token.tokenator.di.DataStoreUppercase
 import com.token.tokenator.model.Passphrase
@@ -54,6 +55,7 @@ class MainViewModel
         @DataStoreSpecialCharacters var specialCharacters: String,
         @DataStoreUppercase var uppercase: String,
         @DataStorePassPhraseIncluded var includePassphrase: String,
+        @DataStoreSortOrder private var sortOrderKey: String,
     ) : ViewModel() {
         var version: String
         private val _token = MutableStateFlow<String>("")
@@ -113,7 +115,7 @@ class MainViewModel
         private val _searchQuery = MutableStateFlow("")
         val searchQuery: StateFlow<String> get() = _searchQuery
 
-        private val _sortOrder = MutableStateFlow(TokenSortOrder.DATE)
+        private val _sortOrder = MutableStateFlow(TokenSortOrder.NAME)
         val sortOrder: StateFlow<TokenSortOrder> get() = _sortOrder
 
         private val _snackbarMessage = MutableStateFlow<Int?>(null)
@@ -155,6 +157,9 @@ class MainViewModel
 
         fun setSortOrder(order: TokenSortOrder) {
             _sortOrder.value = order
+            viewModelScope.launch {
+                DataPref.saveDataStore(sortOrderKey, order.name, dataStore)
+            }
         }
 
         fun showSnackbar(resId: Int) {
@@ -222,6 +227,16 @@ class MainViewModel
             viewModelScope.launch {
                 settingsItemRepository.allCharacters.collect { characters ->
                     _allCharacters.value = characters
+                }
+            }
+
+            viewModelScope.launch {
+                DataPref.readDataStore(sortOrderKey, dataStore)?.let { savedOrder ->
+                    try {
+                        _sortOrder.value = TokenSortOrder.valueOf(savedOrder)
+                    } catch (e: Exception) {
+                        _sortOrder.value = TokenSortOrder.NAME
+                    }
                 }
             }
         }
