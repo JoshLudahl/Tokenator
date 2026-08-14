@@ -30,6 +30,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
@@ -157,6 +158,15 @@ fun SettingsScreen(
                                 modifier = Modifier.weight(1f),
                                 shape = MaterialTheme.shapes.medium,
                                 singleLine = true,
+                                colors =
+                                    OutlinedTextFieldDefaults.colors(
+                                        focusedBorderColor = MaterialTheme.colorScheme.primary,
+                                        unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
+                                        focusedContainerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.1f),
+                                        unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.2f),
+                                        focusedLabelColor = MaterialTheme.colorScheme.primary,
+                                        unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    ),
                             )
                             Spacer(modifier = Modifier.width(12.dp))
                             IconButton(
@@ -401,7 +411,7 @@ private fun SectionHeader(text: String) {
     Text(
         text = text,
         style = MaterialTheme.typography.titleMedium,
-        color = MaterialTheme.colorScheme.onSurface,
+        color = MaterialTheme.colorScheme.primary,
         fontWeight = FontWeight.ExtraBold,
         modifier = Modifier.padding(bottom = 12.dp),
     )

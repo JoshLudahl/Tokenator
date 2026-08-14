@@ -150,7 +150,7 @@ fun SavedTokenScreen(
                 text = stringResource(id = R.string.recent_items),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.ExtraBold,
-                color = MaterialTheme.colorScheme.onSurface,
+                color = MaterialTheme.colorScheme.primary,
             )
 
             Spacer(modifier = Modifier.height(16.dp))

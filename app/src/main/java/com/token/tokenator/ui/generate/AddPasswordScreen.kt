@@ -354,7 +354,6 @@ fun AddPasswordScreen(
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_label_round),
                                 contentDescription = null,
-                                tint = MaterialTheme.colorScheme.primary,
                                 modifier = Modifier.size(20.dp),
                             )
                         },
@@ -363,8 +362,12 @@ fun AddPasswordScreen(
                             OutlinedTextFieldDefaults.colors(
                                 focusedBorderColor = MaterialTheme.colorScheme.primary,
                                 unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
-                                focusedContainerColor = MaterialTheme.colorScheme.surface,
-                                unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                                focusedContainerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.1f),
+                                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.2f),
+                                focusedLabelColor = MaterialTheme.colorScheme.primary,
+                                unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                                focusedLeadingIconColor = MaterialTheme.colorScheme.primary,
+                                unfocusedLeadingIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
                             ),
                     )
 
@@ -381,7 +384,6 @@ fun AddPasswordScreen(
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_login_round),
                                 contentDescription = null,
-                                tint = MaterialTheme.colorScheme.primary,
                                 modifier = Modifier.size(20.dp),
                             )
                         },
@@ -390,8 +392,12 @@ fun AddPasswordScreen(
                             OutlinedTextFieldDefaults.colors(
                                 focusedBorderColor = MaterialTheme.colorScheme.primary,
                                 unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
-                                focusedContainerColor = MaterialTheme.colorScheme.surface,
-                                unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                                focusedContainerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.1f),
+                                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.2f),
+                                focusedLabelColor = MaterialTheme.colorScheme.primary,
+                                unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                                focusedLeadingIconColor = MaterialTheme.colorScheme.primary,
+                                unfocusedLeadingIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
                             ),
                     )
 
@@ -573,7 +579,7 @@ private fun QuickSettingsHeader(text: String) {
     Text(
         text = text,
         style = MaterialTheme.typography.titleMedium,
-        color = MaterialTheme.colorScheme.onSurface,
+        color = MaterialTheme.colorScheme.primary,
         fontWeight = FontWeight.ExtraBold,
         modifier = Modifier.padding(bottom = 12.dp),
     )
