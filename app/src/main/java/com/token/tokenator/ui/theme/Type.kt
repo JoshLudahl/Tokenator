@@ -16,7 +16,7 @@ val provider =
 val bodyFontFamily =
     FontFamily(
         Font(
-            googleFont = GoogleFont("Newsreader"),
+            googleFont = GoogleFont("Roboto"),
             fontProvider = provider,
         ),
     )
@@ -24,7 +24,7 @@ val bodyFontFamily =
 val displayFontFamily =
     FontFamily(
         Font(
-            googleFont = GoogleFont("IBM Plex Sans"),
+            googleFont = GoogleFont("Roboto"),
             fontProvider = provider,
         ),
     )

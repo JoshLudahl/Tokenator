@@ -247,8 +247,8 @@ fun AddPasswordScreen(
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Text(
-                        text = if (token.isEmpty()) "••••••••••••••••" else token,
-                        color = Color.White,
+                        text = token.ifEmpty { "••••••••••••••••" },
+                        color = MaterialTheme.colorScheme.onPrimaryContainer,
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.Bold,
                         maxLines = 2,
@@ -280,12 +280,12 @@ fun AddPasswordScreen(
                                 Modifier
                                     .size(36.dp)
                                     .clip(CircleShape)
-                                    .background(Color.White.copy(alpha = 0.1f)),
+                                    .background(MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.1f)),
                         ) {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_content_copy_round),
                                 contentDescription = "Copy",
-                                tint = Color.White,
+                                tint = MaterialTheme.colorScheme.onPrimaryContainer,
                                 modifier = Modifier.size(18.dp),
                             )
                         }
