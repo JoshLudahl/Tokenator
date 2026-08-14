@@ -27,11 +27,15 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.input.clearText
+import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.FilterList
 import androidx.compose.material.icons.rounded.MoreVert
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.SortByAlpha
 import androidx.compose.material.icons.rounded.Update
 import androidx.compose.material3.AlertDialog
@@ -40,6 +44,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExpandedFullScreenSearchBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.FilledIconButton
@@ -58,6 +63,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.VerticalFloatingToolbar
+import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -65,8 +71,8 @@ import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -83,7 +89,6 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -109,7 +114,9 @@ fun MainScreen(
     val currentSortOrder by viewModel.sortOrder.collectAsStateWithLifecycle()
     val snackbarMessage by viewModel.snackbarMessage.collectAsStateWithLifecycle()
     val messageText = snackbarMessage?.let { stringResource(id = it) }
-    var expanded by rememberSaveable { mutableStateOf(false) }
+
+    val searchBarState = rememberSearchBarState()
+    val searchTextFieldState = rememberTextFieldState(initialText = searchQuery)
 
     var tokenToDelete by remember { mutableStateOf<Token?>(null) }
     var sortMenuExpanded by remember { mutableStateOf(false) }
@@ -136,6 +143,19 @@ fun MainScreen(
         }
     }
 
+    LaunchedEffect(searchTextFieldState) {
+        snapshotFlow { searchTextFieldState.text }.collect {
+            viewModel.setSearchQuery(it.toString())
+        }
+    }
+
+    // Sync external searchQuery changes to TextFieldState (e.g. on clear)
+    LaunchedEffect(searchQuery) {
+        if (searchQuery != searchTextFieldState.text.toString()) {
+            searchTextFieldState.setTextAndPlaceCursorAtEnd(searchQuery)
+        }
+    }
+
     val floatingToolbarScrollBehavior =
         FloatingToolbarDefaults.exitAlwaysScrollBehavior(
             exitDirection = FloatingToolbarExitDirection.Bottom,
@@ -150,91 +170,48 @@ fun MainScreen(
                     indication = null,
                 ) { sortMenuExpanded = false },
         topBar = {
+            val inputField = @Composable {
+                SearchBarDefaults.InputField(
+                    textFieldState = searchTextFieldState,
+                    searchBarState = searchBarState,
+                    onSearch = { scope.launch { searchBarState.animateToCollapsed() } },
+                    placeholder = { Text(stringResource(id = R.string.search_passwords)) },
+                    leadingIcon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_search),
+                            contentDescription = stringResource(id = R.string.search_passwords),
+                            modifier = Modifier.size(20.dp),
+                        )
+                    },
+                    trailingIcon = {
+                        if (searchTextFieldState.text.isNotEmpty()) {
+                            IconButton(onClick = { searchTextFieldState.clearText() }) {
+                                Icon(
+                                    painter = painterResource(id = R.drawable.close),
+                                    contentDescription = stringResource(id = R.string.search_clear),
+                                    modifier = Modifier.size(18.dp),
+                                )
+                            }
+                        }
+                    },
+                )
+            }
+
             TopAppBar(
                 title = {
                     SearchBar(
-                        inputField = {
-                            SearchBarDefaults.InputField(
-                                query = searchQuery,
-                                onQueryChange = { viewModel.setSearchQuery(it) },
-                                onSearch = { expanded = false },
-                                expanded = expanded,
-                                onExpandedChange = { expanded = it },
-                                placeholder = { Text(stringResource(id = R.string.search_passwords)) },
-                                leadingIcon = {
-                                    if (expanded) {
-                                        IconButton(onClick = { expanded = false }) {
-                                            Icon(
-                                                imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                                                contentDescription = stringResource(id = R.string.search_back),
-                                            )
-                                        }
-                                    } else {
-                                        Icon(
-                                            painter = painterResource(id = R.drawable.ic_search),
-                                            contentDescription = stringResource(id = R.string.search_passwords),
-                                            modifier = Modifier.size(20.dp),
-                                        )
-                                    }
-                                },
-                                trailingIcon = {
-                                    if (searchQuery.isNotEmpty()) {
-                                        IconButton(onClick = { viewModel.setSearchQuery("") }) {
-                                            Icon(
-                                                painter = painterResource(id = R.drawable.close),
-                                                contentDescription = stringResource(id = R.string.search_clear),
-                                                modifier = Modifier.size(18.dp),
-                                            )
-                                        }
-                                    }
-                                },
-                            )
-                        },
-                        expanded = expanded,
-                        onExpandedChange = { expanded = it },
+                        state = searchBarState,
+                        inputField = inputField,
                         modifier =
                             Modifier
                                 .fillMaxWidth()
-                                .heightIn(max = if (expanded) Dp.Unspecified else 56.dp),
+                                .heightIn(max = 56.dp),
                         colors =
                             SearchBarDefaults.colors(
                                 containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
                                 dividerColor = Color.Transparent,
                             ),
-                    ) {
-                        LazyColumn(
-                            state = searchListState,
-                            modifier = Modifier.fillMaxWidth(),
-                            verticalArrangement = Arrangement.spacedBy(14.dp),
-                            contentPadding = PaddingValues(16.dp),
-                        ) {
-                            items(tokens, key = { it.id }) { token ->
-                                Box(modifier = Modifier.animateItem()) {
-                                    VaultTokenItem(
-                                        token = token,
-                                        onCopy = {
-                                            val fullToken = Encryption.decrypt(token.token) ?: ""
-                                            Clipuous.copyToClipboard(fullToken, context, isSensitive = true)
-                                            scope.launch {
-                                                snackbarHostState.showSnackbar(copiedText)
-                                            }
-                                        },
-                                        onCopyUsername = {
-                                            val login = token.login?.let { Encryption.decrypt(it) } ?: ""
-                                            if (login.isNotEmpty()) {
-                                                Clipuous.copyToClipboard(login, context)
-                                                scope.launch {
-                                                    snackbarHostState.showSnackbar(usernameCopiedText)
-                                                }
-                                            }
-                                        },
-                                        onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
-                                        onDelete = { tokenToDelete = token },
-                                    )
-                                }
-                            }
-                        }
-                    }
+                    )
                 },
                 actions = {
                     // Settings button moved to HorizontalFloatingToolbar
@@ -394,7 +371,7 @@ fun MainScreen(
                                 },
                     ) {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_settings_round),
+                            imageVector = Icons.Rounded.Settings,
                             contentDescription = stringResource(id = R.string.settings),
                             modifier = Modifier.size(28.dp),
                         )
@@ -457,6 +434,71 @@ fun MainScreen(
                         }
                     },
                 )
+            }
+
+            // Expanded Search Results
+            ExpandedFullScreenSearchBar(
+                state = searchBarState,
+                inputField = {
+                    SearchBarDefaults.InputField(
+                        textFieldState = searchTextFieldState,
+                        searchBarState = searchBarState,
+                        onSearch = { scope.launch { searchBarState.animateToCollapsed() } },
+                        placeholder = { Text(stringResource(id = R.string.search_passwords)) },
+                        leadingIcon = {
+                            IconButton(onClick = { scope.launch { searchBarState.animateToCollapsed() } }) {
+                                Icon(
+                                    imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                                    contentDescription = stringResource(id = R.string.search_back),
+                                )
+                            }
+                        },
+                        trailingIcon = {
+                            if (searchTextFieldState.text.isNotEmpty()) {
+                                IconButton(onClick = { searchTextFieldState.clearText() }) {
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.close),
+                                        contentDescription = stringResource(id = R.string.search_clear),
+                                        modifier = Modifier.size(18.dp),
+                                    )
+                                }
+                            }
+                        },
+                    )
+                },
+            ) {
+                LazyColumn(
+                    state = searchListState,
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalArrangement = Arrangement.spacedBy(14.dp),
+                    contentPadding = PaddingValues(16.dp),
+                ) {
+                    items(tokens, key = { it.id }) { token ->
+                        Box(modifier = Modifier.animateItem()) {
+                            VaultTokenItem(
+                                token = token,
+                                onCopy = {
+                                    val fullToken = Encryption.decrypt(token.token) ?: ""
+                                    Clipuous.copyToClipboard(fullToken, context, isSensitive = true)
+                                    scope.launch {
+                                        snackbarHostState.showSnackbar(copiedText)
+                                    }
+                                },
+                                onCopyUsername = {
+                                    val login = token.login?.let { Encryption.decrypt(it) } ?: ""
+                                    if (login.isNotEmpty()) {
+                                        Clipuous.copyToClipboard(login, context)
+                                        scope.launch {
+                                            snackbarHostState.showSnackbar(usernameCopiedText)
+                                        }
+                                    }
+                                },
+                                onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
+                                onDelete = { tokenToDelete = token },
+                            )
+                        }
+                    }
+                }
             }
         }
     }
