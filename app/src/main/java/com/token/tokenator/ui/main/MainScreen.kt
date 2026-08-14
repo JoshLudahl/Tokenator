@@ -93,19 +93,19 @@ fun MainScreen(
                                 onSearch = { expanded = false },
                                 expanded = expanded,
                                 onExpandedChange = { expanded = it },
-                                placeholder = { Text("Search passwords...") },
+                                placeholder = { Text(stringResource(id = R.string.search_passwords)) },
                                 leadingIcon = {
                                     if (expanded) {
                                         IconButton(onClick = { expanded = false }) {
                                             Icon(
                                                 imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
-                                                contentDescription = "Back",
+                                                contentDescription = stringResource(id = R.string.search_back),
                                             )
                                         }
                                     } else {
                                         Icon(
                                             painter = painterResource(id = R.drawable.ic_search),
-                                            contentDescription = "Search",
+                                            contentDescription = stringResource(id = R.string.search_passwords),
                                             modifier = Modifier.size(20.dp),
                                         )
                                     }
@@ -115,7 +115,7 @@ fun MainScreen(
                                         IconButton(onClick = { viewModel.setSearchQuery("") }) {
                                             Icon(
                                                 painter = painterResource(id = R.drawable.close),
-                                                contentDescription = "Clear search",
+                                                contentDescription = stringResource(id = R.string.search_clear),
                                                 modifier = Modifier.size(18.dp),
                                             )
                                         }
@@ -152,7 +152,7 @@ fun MainScreen(
                                         val login = token.login?.let { Encryption.decrypt(it) } ?: ""
                                         if (login.isNotEmpty()) {
                                             Clipuous.copyToClipboard(login, context)
-                                            Toast.makeText(context, "Username copied", Toast.LENGTH_SHORT).show()
+                                            Toast.makeText(context, R.string.toast_username_copied, Toast.LENGTH_SHORT).show()
                                         }
                                     },
                                     onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
@@ -167,7 +167,7 @@ fun MainScreen(
                         IconButton(onClick = { navigator.navigate(Route.Settings) }) {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_settings_round),
-                                contentDescription = "Settings",
+                                contentDescription = stringResource(id = R.string.settings),
                                 modifier = Modifier.size(28.dp),
                             )
                         }
@@ -181,14 +181,14 @@ fun MainScreen(
                 icon = {
                     Icon(
                         imageVector = Icons.Rounded.Add,
-                        contentDescription = "Add Password",
+                        contentDescription = stringResource(id = R.string.new_password),
                         tint = MaterialTheme.colorScheme.onSecondary,
                         modifier = Modifier.size(24.dp),
                     )
                 },
                 text = {
                     Text(
-                        text = "New Password",
+                        text = stringResource(id = R.string.new_password),
                         fontWeight = FontWeight.Bold,
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSecondary,
@@ -220,7 +220,7 @@ fun MainScreen(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    text = if (searchQuery.isNotBlank()) "Search Results (${tokens.size})" else "All Passwords",
+                    text = if (searchQuery.isNotBlank()) stringResource(id = R.string.search_results_count, tokens.size) else stringResource(id = R.string.all_passwords),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.ExtraBold,
                     color = MaterialTheme.colorScheme.onSurface,
@@ -250,7 +250,7 @@ fun MainScreen(
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(
-                            text = if (searchQuery.isNotBlank()) "No passwords matching \"$searchQuery\"" else stringResource(R.string.no_saved_passwords),
+                            text = if (searchQuery.isNotBlank()) stringResource(id = R.string.no_passwords_matching, searchQuery) else stringResource(R.string.no_saved_passwords),
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontWeight = FontWeight.Medium,
@@ -262,7 +262,7 @@ fun MainScreen(
                                 onClick = { navigator.navigate(Route.AddPassword) },
                             ) {
                                 Text(
-                                    text = "Add Your First Password",
+                                    text = stringResource(id = R.string.add_your_first_password),
                                     fontWeight = FontWeight.Bold,
                                 )
                             }
@@ -290,7 +290,7 @@ fun MainScreen(
                                 val login = token.login?.let { Encryption.decrypt(it) } ?: ""
                                 if (login.isNotEmpty()) {
                                     Clipuous.copyToClipboard(login, context)
-                                    Toast.makeText(context, "Username copied", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(context, R.string.toast_username_copied, Toast.LENGTH_SHORT).show()
                                 }
                             },
                             onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
@@ -308,25 +308,25 @@ fun MainScreen(
             onDismissRequest = { tokenToDelete = null },
             title = {
                 Text(
-                    text = "Delete Password?",
+                    text = stringResource(id = R.string.delete_password_confirmation_title),
                     fontWeight = FontWeight.Bold,
                 )
             },
             text = {
-                Text(text = "Are you sure you want to remove \"${tokenToDelete?.title}\" from your vault?")
+                Text(text = stringResource(id = R.string.delete_password_confirmation_message_named, tokenToDelete?.title ?: ""))
             },
             confirmButton = {
                 TextButton(onClick = {
                     tokenToDelete?.let { viewModel.delete(it) }
                     tokenToDelete = null
-                    Toast.makeText(context, "Password deleted", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, R.string.toast_password_deleted, Toast.LENGTH_SHORT).show()
                 }) {
-                    Text("Delete", color = MaterialTheme.colorScheme.error, fontWeight = FontWeight.Bold)
+                    Text(stringResource(id = R.string.delete), color = MaterialTheme.colorScheme.error, fontWeight = FontWeight.Bold)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { tokenToDelete = null }) {
-                    Text("Cancel")
+                    Text(stringResource(id = R.string.cancel))
                 }
             },
             shape = MaterialTheme.shapes.large,
@@ -394,7 +394,7 @@ fun VaultTokenItem(
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
-                    text = decryptedLogin.ifEmpty { "No username saved" },
+                    text = decryptedLogin.ifEmpty { stringResource(id = R.string.no_username_saved) },
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 1,
@@ -405,7 +405,7 @@ fun VaultTokenItem(
                 IconButton(onClick = { showMenu = true }) {
                     Icon(
                         imageVector = Icons.Rounded.MoreVert,
-                        contentDescription = "More options",
+                        contentDescription = stringResource(id = R.string.more_options),
                         tint = MaterialTheme.colorScheme.primary,
                         modifier = Modifier.size(24.dp),
                     )
@@ -416,7 +416,7 @@ fun VaultTokenItem(
                     onDismissRequest = { showMenu = false },
                 ) {
                     DropdownMenuItem(
-                        text = { Text("Copy Password") },
+                        text = { Text(stringResource(id = R.string.copy_password)) },
                         onClick = {
                             showMenu = false
                             onCopy()
@@ -430,7 +430,7 @@ fun VaultTokenItem(
                         },
                     )
                     DropdownMenuItem(
-                        text = { Text("Copy Username") },
+                        text = { Text(stringResource(id = R.string.copy_username)) },
                         onClick = {
                             showMenu = false
                             onCopyUsername()
@@ -445,7 +445,7 @@ fun VaultTokenItem(
                         enabled = decryptedLogin.isNotEmpty(),
                     )
                     DropdownMenuItem(
-                        text = { Text("Delete", color = MaterialTheme.colorScheme.error) },
+                        text = { Text(stringResource(id = R.string.delete), color = MaterialTheme.colorScheme.error) },
                         onClick = {
                             showMenu = false
                             onDelete()

@@ -71,7 +71,7 @@ fun SavedTokenScreen(
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        text = "My Vault",
+                        text = stringResource(id = R.string.my_vault),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.ExtraBold,
                     )
@@ -124,7 +124,7 @@ fun SavedTokenScreen(
                 ) {
                     Column {
                         Text(
-                            text = "Total Passwords",
+                            text = stringResource(id = R.string.total_passwords),
                             color = Color.White.copy(alpha = 0.7f),
                             style = MaterialTheme.typography.labelMedium,
                         )
@@ -147,7 +147,7 @@ fun SavedTokenScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             Text(
-                text = "Recent Items",
+                text = stringResource(id = R.string.recent_items),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.ExtraBold,
                 color = MaterialTheme.colorScheme.onSurface,
@@ -184,19 +184,19 @@ fun SavedTokenScreen(
     if (tokenToDelete != null) {
         AlertDialog(
             onDismissRequest = { tokenToDelete = null },
-            title = { Text(text = "Delete Password?") },
-            text = { Text(text = "Are you sure you want to remove this item from your vault?") },
+            title = { Text(text = stringResource(id = R.string.delete_password_confirmation_title)) },
+            text = { Text(text = stringResource(id = R.string.delete_password_confirmation_message)) },
             confirmButton = {
                 TextButton(onClick = {
                     tokenToDelete?.let { viewModel.delete(it) }
                     tokenToDelete = null
                 }) {
-                    Text("Delete", color = MaterialTheme.colorScheme.error)
+                    Text(stringResource(id = R.string.delete), color = MaterialTheme.colorScheme.error)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { tokenToDelete = null }) {
-                    Text("Cancel")
+                    Text(stringResource(id = R.string.cancel))
                 }
             },
             shape = MaterialTheme.shapes.large,
@@ -261,7 +261,7 @@ fun FinanceTokenItem(
                     fontWeight = FontWeight.Bold,
                 )
                 Text(
-                    text = if (decryptedLogin.isNotEmpty()) decryptedLogin else "No login saved",
+                    text = if (decryptedLogin.isNotEmpty()) decryptedLogin else stringResource(id = R.string.no_login_saved),
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -271,7 +271,7 @@ fun FinanceTokenItem(
                 IconButton(onClick = { showMenu = true }) {
                     Icon(
                         imageVector = Icons.Rounded.MoreVert,
-                        contentDescription = "More options",
+                        contentDescription = stringResource(id = R.string.more_options),
                         tint = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier.size(20.dp),
                     )
@@ -282,7 +282,7 @@ fun FinanceTokenItem(
                     onDismissRequest = { showMenu = false },
                 ) {
                     DropdownMenuItem(
-                        text = { Text("Copy Password") },
+                        text = { Text(stringResource(id = R.string.copy_password)) },
                         onClick = {
                             showMenu = false
                             val fullToken = Encryption.decrypt(token.token) ?: ""
@@ -298,12 +298,12 @@ fun FinanceTokenItem(
                         },
                     )
                     DropdownMenuItem(
-                        text = { Text("Copy Username") },
+                        text = { Text(stringResource(id = R.string.copy_username)) },
                         onClick = {
                             showMenu = false
                             if (decryptedLogin.isNotEmpty()) {
                                 Clipuous.copyToClipboard(decryptedLogin, context)
-                                Toast.makeText(context, "Username copied", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, R.string.toast_username_copied, Toast.LENGTH_SHORT).show()
                             }
                         },
                         leadingIcon = {
@@ -316,7 +316,7 @@ fun FinanceTokenItem(
                         enabled = decryptedLogin.isNotEmpty(),
                     )
                     DropdownMenuItem(
-                        text = { Text("Delete", color = MaterialTheme.colorScheme.error) },
+                        text = { Text(stringResource(id = R.string.delete), color = MaterialTheme.colorScheme.error) },
                         onClick = {
                             showMenu = false
                             onDelete(token)

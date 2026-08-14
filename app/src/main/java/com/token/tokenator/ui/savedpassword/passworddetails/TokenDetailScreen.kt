@@ -154,7 +154,7 @@ fun TokenDetailScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = tokenName.ifEmpty { "Tokenator" },
+                text = tokenName.ifEmpty { stringResource(id = R.string.tokenator) },
                 style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface,
@@ -163,7 +163,7 @@ fun TokenDetailScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             ModernDetailField(
-                label = "Name",
+                label = stringResource(id = R.string.name),
                 value = tokenName,
                 onValueChange = { tokenName = it },
                 leadingIcon = R.drawable.ic_label_round,
@@ -211,7 +211,7 @@ fun TokenDetailScreen(
             Button(
                 onClick = {
                     viewModel.updateToken(tokenName, passwordValue, loginName)
-                    Toast.makeText(context, "Changes saved", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, R.string.changes_saved, Toast.LENGTH_SHORT).show()
                 },
                 enabled = hasChanges,
                 modifier =
@@ -224,7 +224,7 @@ fun TokenDetailScreen(
                     ),
             ) {
                 Text(
-                    text = "SAVE CHANGES",
+                    text = stringResource(id = R.string.save_changes),
                     fontWeight = FontWeight.Bold,
                     letterSpacing = 1.sp,
                 )
@@ -252,7 +252,7 @@ fun TokenDetailScreen(
                         Spacer(modifier = Modifier.width(16.dp))
                         Column {
                             Text(
-                                text = "SECURITY ALERT",
+                                text = stringResource(id = R.string.security_alert),
                                 style = MaterialTheme.typography.labelSmall,
                                 fontWeight = FontWeight.Bold,
                                 color = MaterialTheme.colorScheme.tertiary,
@@ -265,7 +265,7 @@ fun TokenDetailScreen(
                         }
                         Spacer(modifier = Modifier.weight(1f))
                         TextButton(onClick = { /* Action to update */ }) {
-                            Text("Fix now", color = MaterialTheme.colorScheme.tertiary, fontWeight = FontWeight.Bold)
+                            Text(stringResource(id = R.string.fix_now), color = MaterialTheme.colorScheme.tertiary, fontWeight = FontWeight.Bold)
                         }
                     }
                 }
@@ -295,8 +295,8 @@ fun TokenDetailScreen(
         if (showDeleteDialog) {
             AlertDialog(
                 onDismissRequest = { showDeleteDialog = false },
-                title = { Text("Delete Password") },
-                text = { Text("Are you sure you want to delete this password? This action cannot be undone.") },
+                title = { Text(stringResource(id = R.string.delete_password)) },
+                text = { Text(stringResource(id = R.string.delete_password_warning)) },
                 confirmButton = {
                     TextButton(
                         onClick = {
@@ -307,12 +307,12 @@ fun TokenDetailScreen(
                             }
                         },
                     ) {
-                        Text("Delete", color = MaterialTheme.colorScheme.error)
+                        Text(stringResource(id = R.string.delete), color = MaterialTheme.colorScheme.error)
                     }
                 },
                 dismissButton = {
                     TextButton(onClick = { showDeleteDialog = false }) {
-                        Text("Cancel")
+                        Text(stringResource(id = R.string.cancel))
                     }
                 },
             )

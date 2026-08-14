@@ -309,7 +309,7 @@ fun AddPasswordScreen(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "Generate Password",
+                    text = stringResource(id = R.string.generated_token),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                 )
@@ -318,7 +318,7 @@ fun AddPasswordScreen(
             Spacer(modifier = Modifier.height(28.dp))
 
             // Save to Vault Form
-            QuickSettingsHeader(text = "Save to Vault")
+            QuickSettingsHeader(text = stringResource(id = R.string.save_to_vault))
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.large,
@@ -328,8 +328,8 @@ fun AddPasswordScreen(
                     OutlinedTextField(
                         value = tokenName,
                         onValueChange = { tokenName = it },
-                        label = { Text("App / Website Name") },
-                        placeholder = { Text("e.g. Google, Netflix, Work Email") },
+                        label = { Text(stringResource(id = R.string.app_website_name)) },
+                        placeholder = { Text(stringResource(id = R.string.app_website_name_placeholder)) },
                         modifier = Modifier.fillMaxWidth(),
                         shape = MaterialTheme.shapes.large,
                         leadingIcon = {
@@ -355,8 +355,8 @@ fun AddPasswordScreen(
                     OutlinedTextField(
                         value = loginName,
                         onValueChange = { loginName = it },
-                        label = { Text("Username / Email") },
-                        placeholder = { Text("e.g. alex@example.com") },
+                        label = { Text(stringResource(id = R.string.username_email)) },
+                        placeholder = { Text(stringResource(id = R.string.username_email_placeholder)) },
                         modifier = Modifier.fillMaxWidth(),
                         shape = MaterialTheme.shapes.large,
                         leadingIcon = {
@@ -385,14 +385,14 @@ fun AddPasswordScreen(
                                 Toast
                                     .makeText(
                                         context,
-                                        "Please enter an app/website name",
+                                        R.string.error_enter_app_name,
                                         Toast.LENGTH_SHORT,
                                     ).show()
                             } else if (token.isEmpty()) {
                                 Toast
                                     .makeText(
                                         context,
-                                        "Please generate a password first",
+                                        R.string.error_generate_password_first,
                                         Toast.LENGTH_SHORT,
                                     ).show()
                             } else {
@@ -410,7 +410,7 @@ fun AddPasswordScreen(
                                 .height(56.dp),
                     ) {
                         Text(
-                            text = "Save Password to Vault",
+                            text = stringResource(id = R.string.save_password_to_vault),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold,
                         )
@@ -421,7 +421,7 @@ fun AddPasswordScreen(
             Spacer(modifier = Modifier.height(28.dp))
 
             // Quick Settings header right below Generate Button
-            QuickSettingsHeader(text = "Quick Settings")
+            QuickSettingsHeader(text = stringResource(id = R.string.quick_settings))
 
             // Quick Settings Container (Length Slider + Toggles)
             Card(

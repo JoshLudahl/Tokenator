@@ -79,7 +79,7 @@ fun SettingsScreen(
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        text = "Settings",
+                        text = stringResource(id = R.string.settings),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.ExtraBold,
                     )
@@ -108,7 +108,7 @@ fun SettingsScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             // Passphrase Section
-            SectionHeader(text = "Passphrase")
+            SectionHeader(text = stringResource(id = R.string.passphrase))
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.large,
@@ -117,7 +117,7 @@ fun SettingsScreen(
                 Column(modifier = Modifier.padding(16.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
-                            text = "Use custom phrase",
+                            text = stringResource(id = R.string.use_custom_phrase),
                             style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.Medium,
                             modifier = Modifier.weight(1f),
@@ -187,7 +187,7 @@ fun SettingsScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             // Security Options
-            SectionHeader(text = "Security")
+            SectionHeader(text = stringResource(id = R.string.security))
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.large,
@@ -238,7 +238,7 @@ fun SettingsScreen(
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Text(
-                            text = "Biometric / PIN Authentication",
+                            text = stringResource(id = R.string.biometric_auth),
                             style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.Medium,
                             modifier = Modifier.weight(1f),
@@ -271,14 +271,14 @@ fun SettingsScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             // Characters Section
-            SectionHeader(text = "Active Characters")
+            SectionHeader(text = stringResource(id = R.string.active_characters))
 
             val types =
                 listOf(
-                    Type.UPPERCASE to "Uppercase",
-                    Type.LOWERCASE to "Lowercase",
-                    Type.NUMERIC to "Numbers",
-                    Type.SPECIAL to "Symbols",
+                    Type.UPPERCASE to stringResource(id = R.string.uppercase),
+                    Type.LOWERCASE to stringResource(id = R.string.lowercase),
+                    Type.NUMERIC to stringResource(id = R.string.numbers),
+                    Type.SPECIAL to stringResource(id = R.string.symbols),
                 )
 
             types.forEach { (type, title) ->
@@ -310,7 +310,7 @@ fun SettingsScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             // Legal Section
-            SectionHeader(text = "Legal")
+            SectionHeader(text = stringResource(id = R.string.legal))
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.large,
@@ -324,7 +324,7 @@ fun SettingsScreen(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
-                        text = "Privacy Policy",
+                        text = stringResource(id = R.string.privacy_policy),
                         style = MaterialTheme.typography.bodyLarge,
                         fontWeight = FontWeight.Medium,
                         modifier = Modifier.weight(1f),

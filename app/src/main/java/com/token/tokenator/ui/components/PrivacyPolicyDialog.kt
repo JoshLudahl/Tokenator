@@ -100,7 +100,7 @@ fun PrivacyPolicyDialog(
                     modifier = Modifier.fillMaxWidth(),
                     shape = MaterialTheme.shapes.medium,
                 ) {
-                    Text("I Understand")
+                    Text(stringResource(id = R.string.understand))
                 }
             }
         }

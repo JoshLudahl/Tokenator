@@ -65,7 +65,7 @@ class MainActivity : FragmentActivity() {
         InstallStateUpdatedListener { state ->
             if (state.installStatus() == InstallStatus.DOWNLOADED) {
                 Log.i("MainActivity", "Update has been downloaded.")
-                Toast.makeText(this, "Update Completed. Restarting application.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.update_completed_restart, Toast.LENGTH_SHORT).show()
                 lifecycleScope.launch {
                     appUpdateManager.completeUpdate()
                 }
@@ -136,8 +136,8 @@ class MainActivity : FragmentActivity() {
                 remember {
                     BiometricPrompt.PromptInfo
                         .Builder()
-                        .setTitle("Tokenator")
-                        .setSubtitle("Authenticate to access your tokens")
+                        .setTitle(getString(R.string.tokenator))
+                        .setSubtitle(getString(R.string.authenticate_title))
                         .setAllowedAuthenticators(
                             androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG or
                                 androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL,
