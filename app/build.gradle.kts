@@ -22,7 +22,7 @@ android {
         applicationId = "com.token.tokenator"
         minSdk = 24
         targetSdk = target
-        versionCode = 65
+        versionCode = 66
         versionName = "2026.08.14"
 
         testInstrumentationRunner = "com.token.tokenator.HiltAndroidJUnitRunner"
