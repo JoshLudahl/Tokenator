@@ -241,7 +241,7 @@ fun TokenDetailScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            if (shouldShowWarning) {
+            if (shouldShowWarning || passwordValue.isEmpty()) {
                 Surface(
                     modifier = Modifier.fillMaxWidth(),
                     shape = MaterialTheme.shapes.large,
