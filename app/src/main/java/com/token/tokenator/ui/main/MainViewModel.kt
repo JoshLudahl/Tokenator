@@ -58,54 +58,40 @@ class MainViewModel
         @DataStoreSortOrder private var sortOrderKey: String,
     ) : ViewModel() {
         var version: String
-        private val _token = MutableStateFlow<String>("")
         val token: StateFlow<String>
-            get() = _token
+            field = MutableStateFlow<String>("")
 
-        private val _length = MutableStateFlow<Float>(0f)
-
-        private val _tokenNameEditTextLabelVisibility = MutableStateFlow(false)
         val tokenNameEditTextLabelVisibility: StateFlow<Boolean>
-            get() = _tokenNameEditTextLabelVisibility
+            field = MutableStateFlow(false)
 
-        private val _tokenNameEditTextFieldVisibility = MutableStateFlow(false)
         val tokenNameEditTextFieldVisibility: StateFlow<Boolean>
-            get() = _tokenNameEditTextFieldVisibility
+            field = MutableStateFlow(false)
 
-        private val _allCharacters = MutableStateFlow<List<SettingsItem>>(emptyList())
         val allCharacters: StateFlow<List<SettingsItem>>
-            get() = _allCharacters
+            field = MutableStateFlow<List<SettingsItem>>(emptyList())
 
-        private val _shouldShowEasterEggToast = MutableStateFlow<Boolean>(false)
-
-        private val _switchLowerCase = MutableStateFlow(true)
         val switchLowerCase: StateFlow<Boolean>
-            get() = _switchLowerCase
+            field = MutableStateFlow(true)
 
-        private val _switchNumeric = MutableStateFlow(true)
         val switchNumeric: StateFlow<Boolean>
-            get() = _switchNumeric
+            field = MutableStateFlow(true)
 
-        private val _switchSpecialCharacter = MutableStateFlow(true)
         val switchSpecialCharacter: StateFlow<Boolean>
-            get() = _switchSpecialCharacter
+            field = MutableStateFlow(true)
 
-        private val _switchUpperCase = MutableStateFlow(true)
         val switchUpperCase: StateFlow<Boolean>
-            get() = _switchUpperCase
+            field = MutableStateFlow(true)
 
         val noRepeatFlow: Flow<Boolean> =
             dataStore.data.map { preferences ->
                 (preferences[stringPreferencesKey(noRepeat)] ?: true).toString().toBoolean()
             }
 
-        private val _passphrase = MutableStateFlow<Passphrase?>(null)
         val passphrase: StateFlow<Passphrase?>
-            get() = _passphrase
+            field = MutableStateFlow<Passphrase?>(null)
 
-        private val _switchPassphrase = MutableStateFlow(true)
         val switchPassphrase: StateFlow<Boolean>
-            get() = _switchPassphrase
+            field = MutableStateFlow(true)
 
         val switchPassphraseFlow: Flow<Boolean> =
             dataStore.data.map { preferences ->
@@ -145,6 +131,7 @@ class MainViewModel
                                 val sdf = SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH)
                                 sdf.parse(it.date)?.time ?: 0L
                             } catch (e: Exception) {
+                                Log.i("Error:", e.message.toString())
                                 0L
                             }
                         }
@@ -180,39 +167,39 @@ class MainViewModel
             Log.i("MainViewModel", "Initialized")
             version = "Version ${BuildConfig.VERSION_NAME}"
             Log.i("VERSION", version)
-            _tokenNameEditTextLabelVisibility.value = false
-            _tokenNameEditTextFieldVisibility.value = false
+            tokenNameEditTextLabelVisibility.value = false
+            tokenNameEditTextFieldVisibility.value = false
 
             // set switches
             viewModelScope.launch {
-                repository.passphraseflow?.collectLatest {
-                    _passphrase.value = it
+                repository.passphraseflow.collectLatest {
+                    passphrase.value = it
                 }
             }
 
             viewModelScope.launch {
-                _switchLowerCase.value =
+                switchLowerCase.value =
                     (DataPref.readDataStore(lowercase, dataStore) ?: true)
                         .toString()
                         .toBoolean()
             }
 
             viewModelScope.launch {
-                _switchNumeric.value =
+                switchNumeric.value =
                     (DataPref.readDataStore(numeric, dataStore) ?: true)
                         .toString()
                         .toBoolean()
             }
 
             viewModelScope.launch {
-                _switchSpecialCharacter.value =
+                switchSpecialCharacter.value =
                     (DataPref.readDataStore(specialCharacters, dataStore) ?: true)
                         .toString()
                         .toBoolean()
             }
 
             viewModelScope.launch {
-                _switchUpperCase.value =
+                switchUpperCase.value =
                     (DataPref.readDataStore(uppercase, dataStore) ?: true)
                         .toString()
                         .toBoolean()
@@ -220,13 +207,13 @@ class MainViewModel
 
             viewModelScope.launch {
                 switchPassphraseFlow.collectLatest {
-                    _switchPassphrase.value = it
+                    switchPassphrase.value = it
                 }
             }
 
             viewModelScope.launch {
                 settingsItemRepository.allCharacters.collect { characters ->
-                    _allCharacters.value = characters
+                    allCharacters.value = characters
                 }
             }
 
@@ -235,6 +222,7 @@ class MainViewModel
                     try {
                         _sortOrder.value = TokenSortOrder.valueOf(savedOrder)
                     } catch (e: Exception) {
+                        Log.i("Error:", e.message.toString())
                         _sortOrder.value = TokenSortOrder.NAME
                     }
                 }
@@ -242,33 +230,14 @@ class MainViewModel
         }
 
         val length: StateFlow<Float>
-            get() = _length
-
-        val shouldShowEasterEggToast: StateFlow<Boolean>
-            get() = _shouldShowEasterEggToast
+            field = MutableStateFlow<Float>(0f)
 
         fun setToken(text: String) {
-            _token.value = text
+            token.value = text
         }
 
         fun setLength(value: Float) {
-            _length.value = value
-        }
-
-        fun setTokenNameEditTextFieldVisibility() {
-            _tokenNameEditTextFieldVisibility.value = true
-        }
-
-        fun setTokenNameEditTextLabelVisible() {
-            _tokenNameEditTextLabelVisibility.value = true
-        }
-
-        fun showEasterEggToast() {
-            _shouldShowEasterEggToast.value = true
-        }
-
-        fun setShouldShowToastToFalse() {
-            _shouldShowEasterEggToast.value = false
+            length.value = value
         }
 
         fun saveSwitchState(
@@ -278,22 +247,22 @@ class MainViewModel
             viewModelScope.launch {
                 when (type) {
                     Type.LOWERCASE -> {
-                        _switchLowerCase.value = checked
+                        switchLowerCase.value = checked
                         lowercase
                     }
 
                     Type.NUMERIC -> {
-                        _switchNumeric.value = checked
+                        switchNumeric.value = checked
                         numeric
                     }
 
                     Type.UPPERCASE -> {
-                        _switchUpperCase.value = checked
+                        switchUpperCase.value = checked
                         uppercase
                     }
 
                     Type.SPECIAL -> {
-                        _switchSpecialCharacter.value = checked
+                        switchSpecialCharacter.value = checked
                         specialCharacters
                     }
                 }.let {

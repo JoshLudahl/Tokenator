@@ -31,8 +31,8 @@ object DataSourceModule {
             "token_database",
         ).addMigrations(
             object : Migration(4, 5) {
-                override fun migrate(database: SupportSQLiteDatabase) {
-                    database.execSQL(
+                override fun migrate(db: SupportSQLiteDatabase) {
+                    db.execSQL(
                         "CREATE TABLE `passphrase` (`id` INTEGER NOT NULL, `phrase` TEXT, " +
                             "PRIMARY KEY(`id`))",
                     )
@@ -40,8 +40,8 @@ object DataSourceModule {
             },
         ).addMigrations(
             object : Migration(5, 6) {
-                override fun migrate(database: SupportSQLiteDatabase) {
-                    database.execSQL(
+                override fun migrate(db: SupportSQLiteDatabase) {
+                    db.execSQL(
                         "ALTER TABLE token_table ADD COLUMN login TEXT DEFAULT NULL",
                     )
                 }
