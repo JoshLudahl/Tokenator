@@ -112,7 +112,7 @@ fun TokenDetailScreen(
                         Icon(
                             painter = painterResource(id = R.drawable.ic_arrow_circle_left),
                             contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary,
+                            tint = MaterialTheme.colorScheme.onSurface,
                             modifier = Modifier.size(32.dp),
                         )
                     }
@@ -122,7 +122,7 @@ fun TokenDetailScreen(
                         Icon(
                             painter = painterResource(id = R.drawable.ic_delete_round),
                             contentDescription = "Delete",
-                            tint = MaterialTheme.colorScheme.primary,
+                            tint = MaterialTheme.colorScheme.onSurface,
                             modifier = Modifier.size(32.dp),
                         )
                     }

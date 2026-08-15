@@ -47,7 +47,7 @@ You couldn't ask for a better and easier way to generate and save passwords! Wel
 * Custom slider using FluidSlider
 
 [![Play Store](https://github.com/JoshLudahl/Tokenator/blob/master/google-play-badge.png)](https://play.google.com/store/apps/details?id=com.token.tokenator)
-[Theme Link](http://material-foundation.github.io/material-theme-builder/?primary=%238C9D4C&bodyFont=Roboto&displayFont=Roboto&colorMatch=false)
+[Theme Link](http://material-foundation.github.io/material-theme-builder/?primary=%23008FB7&bodyFont=Roboto&displayFont=Poppins&colorMatch=false)
 Google Play and the Google Play logo are trademarks of Google LLC.
 
 ## Language support

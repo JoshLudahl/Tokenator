@@ -135,6 +135,7 @@ fun SettingsScreen(
                                             imageVector = Icons.Filled.Check,
                                             contentDescription = null,
                                             modifier = Modifier.size(SwitchDefaults.IconSize),
+                                            tint = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.5f),
                                         )
                                     }
                                 } else {
@@ -162,8 +163,12 @@ fun SettingsScreen(
                                     OutlinedTextFieldDefaults.colors(
                                         focusedBorderColor = MaterialTheme.colorScheme.primary,
                                         unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
-                                        focusedContainerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.1f),
-                                        unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.2f),
+                                        focusedContainerColor = MaterialTheme.colorScheme.primaryContainer.copy(
+                                            alpha = 0.1f
+                                        ),
+                                        unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(
+                                            alpha = 0.2f
+                                        ),
                                         focusedLabelColor = MaterialTheme.colorScheme.primary,
                                         unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
                                     ),
@@ -383,11 +388,12 @@ fun CharacterBox(
                 .clip(MaterialTheme.shapes.small)
                 .background(
                     if (item.included) {
-                        MaterialTheme.colorScheme.tertiaryContainer
+                        MaterialTheme.colorScheme.primaryContainer
                     } else {
-                        MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = 0.2f)
+                        MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.2f)
                     },
-                ).clickable {
+                )
+                .clickable {
                     onClick(item.copy(included = !item.included))
                 },
         contentAlignment = Alignment.Center,
@@ -397,9 +403,9 @@ fun CharacterBox(
             style = MaterialTheme.typography.titleMedium,
             color =
                 if (item.included) {
-                    MaterialTheme.colorScheme.onTertiaryContainer
+                    MaterialTheme.colorScheme.onPrimaryContainer
                 } else {
-                    MaterialTheme.colorScheme.onTertiaryContainer.copy(alpha = 0.5f)
+                    MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.5f)
                 },
             fontWeight = FontWeight.ExtraBold,
         )

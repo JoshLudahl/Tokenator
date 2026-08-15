@@ -24,7 +24,7 @@ val bodyFontFamily =
 val displayFontFamily =
     FontFamily(
         Font(
-            googleFont = GoogleFont("Roboto"),
+            googleFont = GoogleFont("Poppins"),
             fontProvider = provider,
         ),
     )
