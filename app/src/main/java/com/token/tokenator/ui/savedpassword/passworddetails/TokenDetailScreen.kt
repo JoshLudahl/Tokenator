@@ -70,12 +70,6 @@ fun TokenDetailScreen(
     var showDeleteDialog by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
-        viewModel.generatedPassword.collect { newPassword ->
-            passwordValue = newPassword
-        }
-    }
-
-    LaunchedEffect(Unit) {
         viewModel.updateStatus.collect { success ->
             if (success) {
                 Toast.makeText(context, R.string.changes_saved, Toast.LENGTH_SHORT).show()

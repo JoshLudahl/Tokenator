@@ -48,13 +48,11 @@ class PasswordDetailViewModel
         @DataStoreUppercase private val uppercaseKey: String,
         @DataStorePassPhraseIncluded private val includePassphraseKey: String,
     ) : ViewModel() {
-        private val _token = MutableStateFlow<Token?>(null)
         val token: StateFlow<Token?>
-            get() = _token
+            field = MutableStateFlow<Token?>(null)
 
-        private val _shouldShowWarning = MutableStateFlow(false)
         val shouldShowWarning: StateFlow<Boolean>
-            get() = _shouldShowWarning
+            field = MutableStateFlow(false)
 
         private val _updateStatus = MutableSharedFlow<Boolean>()
         val updateStatus: SharedFlow<Boolean> = _updateStatus
@@ -74,10 +72,10 @@ class PasswordDetailViewModel
                         token = newToken?.token?.let { Encryption.decrypt(it) } ?: "",
                         date = newToken?.date ?: Date().toString(),
                     )
-                _token.value = token
+                this@PasswordDetailViewModel.token.value = token
 
-                _shouldShowWarning.value = isOldPassword(newToken?.date ?: Date().toString())
-                Log.i(TOKENATOR_TAG, "DATE: ${_token.value?.date}")
+                shouldShowWarning.value = isOldPassword(newToken?.date ?: Date().toString())
+                Log.i(TOKENATOR_TAG, "DATE: ${this@PasswordDetailViewModel.token.value?.date}")
             }
         }
 
@@ -110,7 +108,7 @@ class PasswordDetailViewModel
                         }
 
                     if (encryptedToken != null) {
-                        val currentToken = _token.value
+                        val currentToken = token.value
                         if (currentToken != null) {
                             val date = Date().toString()
                             val updatedToken =
@@ -122,14 +120,14 @@ class PasswordDetailViewModel
                                 )
                             tokenRepository.updateToken(updatedToken)
 
-                            _token.value =
+                            token.value =
                                 currentToken.copy(
                                     title = passwordName,
                                     token = tokenValue,
                                     login = login,
                                     date = date,
                                 )
-                            _shouldShowWarning.value = isOldPassword(date)
+                            shouldShowWarning.value = isOldPassword(date)
                             _updateStatus.emit(true)
                             Log.i("DATABASE", "Saved to database")
                         }
@@ -168,7 +166,13 @@ class PasswordDetailViewModel
                     )
 
                 if (generated.isNotEmpty()) {
-                    _generatedPassword.emit(generated)
+                    token.value?.let {
+                        updateToken(
+                            passwordName = it.title,
+                            tokenValue = generated,
+                            login = it.login,
+                        )
+                    }
                 }
             }
         }
