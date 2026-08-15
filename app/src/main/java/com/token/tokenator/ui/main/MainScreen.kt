@@ -41,6 +41,7 @@ import androidx.compose.material.icons.rounded.FilterList
 import androidx.compose.material.icons.rounded.MoreVert
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material.icons.rounded.Share
 import androidx.compose.material.icons.rounded.SortByAlpha
 import androidx.compose.material.icons.rounded.Update
 import androidx.compose.material3.AlertDialog
@@ -104,6 +105,7 @@ import com.token.tokenator.navigation.Navigator
 import com.token.tokenator.navigation.Route
 import com.token.tokenator.utilities.Clipuous
 import com.token.tokenator.utilities.Encryption
+import com.token.tokenator.utilities.IntentHelper
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
@@ -355,6 +357,10 @@ fun MainScreen(
                                     },
                                     onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
                                     onDelete = { tokenToDelete = token },
+                                    onSharePassword = {
+                                        val secret = token.token.let { Encryption.decrypt(it) } ?: ""
+                                        IntentHelper.handleShareClick(secret, context)
+                                    },
                                 )
                             }
                         }
@@ -519,6 +525,10 @@ fun MainScreen(
                                 },
                                 onEdit = { navigator.navigate(Route.PasswordDetail(token.id)) },
                                 onDelete = { tokenToDelete = token },
+                                onSharePassword = {
+                                    val secret = token.token.let { Encryption.decrypt(it) } ?: ""
+                                    IntentHelper.handleShareClick(secret, context)
+                                },
                             )
                         }
                     }
@@ -579,6 +589,7 @@ fun VaultTokenItem(
     onCopyUsername: () -> Unit,
     onEdit: () -> Unit,
     onDelete: () -> Unit,
+    onSharePassword: () -> Unit,
 ) {
     val decryptedLogin =
         remember(token.login) {
@@ -681,6 +692,22 @@ fun VaultTokenItem(
                         },
                         enabled = decryptedLogin.isNotEmpty(),
                     )
+
+                    DropdownMenuItem(
+                        text = { Text(stringResource(id = R.string.feature_view_share_password_title)) },
+                        onClick = {
+                            showMenu = false
+                            onSharePassword()
+                        },
+                        leadingIcon = {
+                            Icon(
+                                imageVector = Icons.Rounded.Share,
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp),
+                            )
+                        },
+                    )
+
                     DropdownMenuItem(
                         text = {
                             Text(
