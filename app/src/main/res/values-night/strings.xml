@@ -32,7 +32,7 @@
     <string name="copy">Copy</string>
     <string name="settings">Settings</string>
     <string name="quick_settings">Quick Settings</string>
-    <string name="generated_token">Generated token</string>
+    <string name="generated_token">Generate token</string>
     <string name="uppercase_letters">Uppercase letters</string>
     <string name="lowercase_letters">Lowercase letters</string>
     <string name="numeric">Numeric</string>
