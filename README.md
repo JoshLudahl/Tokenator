@@ -13,7 +13,7 @@ Easily generate a password ranging from 8-100 characters. Easy, so easy.
 * No ads
 * No special permissions
 * No tracking of any kind
-* No data collecting
+* No data collecting (outside of general performance for crashes, ANRs, etc.)
 
 ## Features include:
 * Clean interface
@@ -25,26 +25,21 @@ Easily generate a password ranging from 8-100 characters. Easy, so easy.
 * Customize which characters to use 
 * Save the generated password
 * The passwords are encrypted before saving to your device
+* Security toggle for using a PIN or Biometric Authentication to unlock the application
 * Easy-to-use password generator manager for managing your saved passwords
 
 You couldn't ask for a better and easier way to generate and save passwords! Welcome to the Tokenator, the easiest password generator and manager on the market.
 
 ## Uses The Following Android Technologies and Architecture
 * Written in Kotlin
-* Jetpack Navigation
-* LiveData
-* StateFlow 
-* ViewBinding
-* DataBinding 
+* Jetpack Compose libraries
+* StateFlow
 * Room Database
-* DataStore 
-* RecyclerView
+* DataStore
 * Dependency Injection using Dagger Hilt  
 * MVVM
 * Kotlin Coroutines
 * Material Design Components
-* Feature Discovery using TapTarget
-* Custom slider using FluidSlider
 
 [![Play Store](https://github.com/JoshLudahl/Tokenator/blob/master/google-play-badge.png)](https://play.google.com/store/apps/details?id=com.token.tokenator)
 [Theme Link](http://material-foundation.github.io/material-theme-builder/?primary=%23008FB7&bodyFont=Roboto&displayFont=Poppins&colorMatch=false)
