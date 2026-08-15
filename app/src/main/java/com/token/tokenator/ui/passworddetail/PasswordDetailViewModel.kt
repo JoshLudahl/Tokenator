@@ -1,4 +1,4 @@
-package com.token.tokenator.ui.savedpassword.passworddetails
+package com.token.tokenator.ui.passworddetail
 
 import android.util.Log
 import androidx.datastore.core.DataStore
@@ -145,10 +145,26 @@ class PasswordDetailViewModel
         fun generateNewPassword(length: Int = 16) {
             viewModelScope.launch {
                 val types = mutableListOf<Type>()
-                if (DataPref.readDataStore(uppercaseKey, dataStore)?.toBoolean() ?: true) types.add(Type.UPPERCASE)
-                if (DataPref.readDataStore(lowercaseKey, dataStore)?.toBoolean() ?: true) types.add(Type.LOWERCASE)
-                if (DataPref.readDataStore(numericKey, dataStore)?.toBoolean() ?: true) types.add(Type.NUMERIC)
-                if (DataPref.readDataStore(specialCharactersKey, dataStore)?.toBoolean() ?: true) types.add(Type.SPECIAL)
+                if (DataPref.readDataStore(uppercaseKey, dataStore)?.toBoolean() ?: true) {
+                    types.add(
+                        Type.UPPERCASE,
+                    )
+                }
+                if (DataPref.readDataStore(lowercaseKey, dataStore)?.toBoolean() ?: true) {
+                    types.add(
+                        Type.LOWERCASE,
+                    )
+                }
+                if (DataPref.readDataStore(numericKey, dataStore)?.toBoolean() ?: true) {
+                    types.add(
+                        Type.NUMERIC,
+                    )
+                }
+                if (DataPref.readDataStore(specialCharactersKey, dataStore)?.toBoolean() ?: true) {
+                    types.add(
+                        Type.SPECIAL,
+                    )
+                }
 
                 val allCharacters = settingsItemRepository.allCharacters.first()
                 val excluded = allCharacters.filter { !it.included }.map { it.item }

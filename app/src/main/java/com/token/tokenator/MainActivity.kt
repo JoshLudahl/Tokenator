@@ -44,8 +44,7 @@ import com.token.tokenator.ui.generate.AddPasswordScreen
 import com.token.tokenator.ui.main.MainScreen
 import com.token.tokenator.ui.onboarding.OnboardingScreen
 import com.token.tokenator.ui.onboarding.OnboardingViewModel
-import com.token.tokenator.ui.savedpassword.SavedTokenScreen
-import com.token.tokenator.ui.savedpassword.passworddetails.TokenDetailScreen
+import com.token.tokenator.ui.passworddetail.TokenDetailScreen
 import com.token.tokenator.ui.settings.SettingsScreen
 import com.token.tokenator.ui.theme.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -155,7 +154,7 @@ class MainActivity : FragmentActivity() {
         val topLevelRoutes =
             remember(isOnboardingCompleted) {
                 if (isOnboardingCompleted == true) {
-                    setOf(Route.Main, Route.SavedToken, Route.Settings)
+                    setOf(Route.Main, Route.Settings)
                 } else {
                     setOf(Route.Onboarding)
                 }
@@ -173,7 +172,6 @@ class MainActivity : FragmentActivity() {
             entryProvider<NavKey> {
                 entry<Route.Main> { MainScreen(navigator, mainScreenViewModel) }
                 entry<Route.AddPassword> { AddPasswordScreen(navigator, mainScreenViewModel) }
-                entry<Route.SavedToken> { SavedTokenScreen(navigator) }
                 entry<Route.PasswordDetail> { key -> TokenDetailScreen(key.id, navigator) }
                 entry<Route.Settings> { SettingsScreen(navigator) }
                 entry<Route.Onboarding> { OnboardingScreen(navigator) }

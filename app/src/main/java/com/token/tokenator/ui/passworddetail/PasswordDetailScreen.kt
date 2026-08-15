@@ -1,7 +1,8 @@
-package com.token.tokenator.ui.savedpassword.passworddetails
+package com.token.tokenator.ui.passworddetail
 
 import android.os.Build
 import android.widget.Toast
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -106,12 +107,7 @@ fun TokenDetailScreen(
         topBar = {
             CenterAlignedTopAppBar(
                 title = {
-                    Text(
-                        text = "",
-                        style = MaterialTheme.typography.labelMedium,
-                        fontWeight = FontWeight.Bold,
-                        letterSpacing = 1.sp,
-                    )
+                    Text(text = "")
                 },
                 navigationIcon = {
                     IconButton(onClick = { navigator.goBack() }) {
@@ -275,7 +271,7 @@ fun TokenDetailScreen(
                     shape = MaterialTheme.shapes.large,
                     color = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.1f),
                     border =
-                        androidx.compose.foundation.BorderStroke(
+                        BorderStroke(
                             1.dp,
                             MaterialTheme.colorScheme.tertiary.copy(alpha = 0.3f),
                         ),
