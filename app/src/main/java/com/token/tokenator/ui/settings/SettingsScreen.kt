@@ -21,6 +21,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.Save
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -35,6 +36,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -135,7 +137,7 @@ fun SettingsScreen(
                                             imageVector = Icons.Filled.Check,
                                             contentDescription = null,
                                             modifier = Modifier.size(SwitchDefaults.IconSize),
-                                            tint = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.5f),
+                                            tint = MaterialTheme.colorScheme.surface,
                                         )
                                     }
                                 } else {
@@ -163,12 +165,14 @@ fun SettingsScreen(
                                     OutlinedTextFieldDefaults.colors(
                                         focusedBorderColor = MaterialTheme.colorScheme.primary,
                                         unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
-                                        focusedContainerColor = MaterialTheme.colorScheme.primaryContainer.copy(
-                                            alpha = 0.1f
-                                        ),
-                                        unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(
-                                            alpha = 0.2f
-                                        ),
+                                        focusedContainerColor =
+                                            MaterialTheme.colorScheme.primaryContainer.copy(
+                                                alpha = 0.1f,
+                                            ),
+                                        unfocusedContainerColor =
+                                            MaterialTheme.colorScheme.surfaceVariant.copy(
+                                                alpha = 0.2f,
+                                            ),
                                         focusedLabelColor = MaterialTheme.colorScheme.primary,
                                         unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
                                     ),
@@ -234,6 +238,7 @@ fun SettingsScreen(
                                             imageVector = Icons.Filled.Check,
                                             contentDescription = null,
                                             modifier = Modifier.size(SwitchDefaults.IconSize),
+                                            tint = MaterialTheme.colorScheme.surface,
                                         )
                                     }
                                 } else {
@@ -270,6 +275,7 @@ fun SettingsScreen(
                                             imageVector = Icons.Filled.Check,
                                             contentDescription = null,
                                             modifier = Modifier.size(SwitchDefaults.IconSize),
+                                            tint = MaterialTheme.colorScheme.surface,
                                         )
                                     }
                                 } else {
@@ -329,23 +335,26 @@ fun SettingsScreen(
             // Legal Section
             SectionHeader(text = stringResource(id = R.string.legal))
             Card(
+                onClick = { showPrivacyPolicy = true },
                 modifier = Modifier.fillMaxWidth(),
                 shape = MaterialTheme.shapes.large,
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer),
             ) {
-                Row(
-                    modifier =
-                        Modifier
-                            .clickable { showPrivacyPolicy = true }
-                            .padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.privacy_policy),
-                        style = MaterialTheme.typography.bodyLarge,
-                        fontWeight = FontWeight.Medium,
-                        modifier = Modifier.weight(1f),
-                    )
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    TextButton(
+                        onClick = { showPrivacyPolicy = true },
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.privacy_policy),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSecondaryContainer,
+                        )
+                    }
+                    Spacer(modifier = Modifier.weight(1f))
+
+                    IconButton(onClick = { showPrivacyPolicy = true }) {
+                        Icon(imageVector = Icons.Rounded.ChevronRight, contentDescription = null)
+                    }
                 }
             }
 
@@ -392,8 +401,7 @@ fun CharacterBox(
                     } else {
                         MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.2f)
                     },
-                )
-                .clickable {
+                ).clickable {
                     onClick(item.copy(included = !item.included))
                 },
         contentAlignment = Alignment.Center,

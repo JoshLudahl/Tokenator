@@ -254,7 +254,7 @@ fun MainScreen(
                         text = if (searchQuery.isNotBlank()) stringResource(id = R.string.search_results_count, tokens.size) else stringResource(id = R.string.all_passwords),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.ExtraBold,
-                        color = MaterialTheme.colorScheme.onSurface,
+                        color = MaterialTheme.colorScheme.primary,
                     )
                 }
 

@@ -486,9 +486,9 @@ fun AddPasswordScreen(
                         modifier = Modifier.fillMaxWidth(),
                         colors =
                             SliderDefaults.colors(
-                                thumbColor = MaterialTheme.colorScheme.secondary,
+                                thumbColor = MaterialTheme.colorScheme.primary,
                                 activeTrackColor = MaterialTheme.colorScheme.secondary,
-                                inactiveTrackColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f),
+                                inactiveTrackColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.2f),
                             ),
                     )
 
@@ -624,6 +624,7 @@ private fun QuickToggleItem(
                             imageVector = Icons.Filled.Check,
                             contentDescription = null,
                             modifier = Modifier.size(SwitchDefaults.IconSize),
+                            tint = MaterialTheme.colorScheme.surface,
                         )
                     }
                 } else {
