@@ -28,14 +28,6 @@ android {
         testInstrumentationRunner = "com.token.tokenator.HiltAndroidJUnitRunner"
         testInstrumentationRunnerArguments.putAll(mutableMapOf("clearPackageData" to "true"))
         vectorDrawables.useSupportLibrary = true
-
-        val secretKey = (System.getenv("SECRET_KEY") ?: project.findProperty("SECRET_KEY") ?: "").toString()
-        val salt = (System.getenv("SALT") ?: project.findProperty("SALT") ?: "").toString()
-        val iv = (System.getenv("IV") ?: project.findProperty("IV") ?: "").toString()
-
-        buildConfigField("String", "SECRET_KEY", "\"$secretKey\"")
-        buildConfigField("String", "SALT", "\"$salt\"")
-        buildConfigField("String", "IV", "\"$iv\"")
     }
 
     buildTypes {
