@@ -401,7 +401,8 @@ fun CharacterBox(
                     } else {
                         MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.2f)
                     },
-                ).clickable {
+                )
+                .clickable {
                     onClick(item.copy(included = !item.included))
                 },
         contentAlignment = Alignment.Center,
