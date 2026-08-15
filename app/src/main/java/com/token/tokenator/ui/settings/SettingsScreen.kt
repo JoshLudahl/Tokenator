@@ -1,5 +1,6 @@
 package com.token.tokenator.ui.settings
 
+import android.R.attr.text
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -303,7 +304,11 @@ fun SettingsScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             // Characters Section
-            SectionHeader(text = stringResource(id = R.string.active_characters))
+            SectionHeaderWithButton(
+                text = stringResource(id = R.string.active_characters),
+                textButton = stringResource(id = R.string.clear_all),
+                onClick = { viewModel.clearAllItems() },
+            )
 
             val types =
                 listOf(
@@ -438,4 +443,28 @@ private fun SectionHeader(text: String) {
         fontWeight = FontWeight.ExtraBold,
         modifier = Modifier.padding(bottom = 12.dp),
     )
+}
+
+@Composable
+private fun SectionHeaderWithButton(
+    text: String,
+    textButton: String,
+    onClick: () -> Unit,
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.padding(bottom = 12.dp),
+    ) {
+        SectionHeader(text)
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        TextButton(onClick = onClick) {
+            Text(
+                text = textButton,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.primary,
+            )
+        }
+    }
 }

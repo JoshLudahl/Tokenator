@@ -32,4 +32,7 @@ interface SettingsItemDao {
 
     @Query("DELETE FROM character_table WHERE item = :item")
     suspend fun deleteByItem(item: String)
+
+    @Query("DELETE FROM character_table")
+    suspend fun deleteAllCharacters()
 }

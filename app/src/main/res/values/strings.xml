@@ -140,4 +140,5 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <string name="clear_all">RESET</string>
 </resources>

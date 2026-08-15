@@ -43,31 +43,28 @@ class SettingsViewModel
             tokenRepository.passphraseflow
                 .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
 
-        private val _switchPassphrase = MutableStateFlow(true)
         val switchPassphrase: StateFlow<Boolean>
-            get() = _switchPassphrase
+            field = MutableStateFlow(true)
 
-        private val _switchNoRepeat = MutableStateFlow(true)
         val switchNoRepeat: StateFlow<Boolean>
-            get() = _switchNoRepeat
+            field = MutableStateFlow(true)
 
-        private val _switchBiometric = MutableStateFlow(false)
         val switchBiometric: StateFlow<Boolean>
-            get() = _switchBiometric
+            field = MutableStateFlow(false)
 
         init {
             viewModelScope.launch {
-                _switchPassphrase.value =
+                switchPassphrase.value =
                     (DataPref.readDataStore(includePassPhrase, dataStore) ?: true)
                         .toString()
                         .toBoolean()
 
-                _switchNoRepeat.value =
+                switchNoRepeat.value =
                     (DataPref.readDataStore(noRepeatKey, dataStore) ?: true)
                         .toString()
                         .toBoolean()
 
-                _switchBiometric.value =
+                switchBiometric.value =
                     (DataPref.readDataStore(biometricKey, dataStore) ?: false)
                         .toString()
                         .toBoolean()
@@ -75,7 +72,10 @@ class SettingsViewModel
         }
 
         fun updateItems(settingsItem: SettingsItem) {
-            Log.d("SettingsViewModel", "Updating item: ${settingsItem.item}, included: ${settingsItem.included}, id: ${settingsItem.id}")
+            Log.d(
+                "SettingsViewModel",
+                "Updating item: ${settingsItem.item}, included: ${settingsItem.included}, id: ${settingsItem.id}",
+            )
             viewModelScope.launch {
                 repository.update(settingsItem)
             }
@@ -88,23 +88,29 @@ class SettingsViewModel
         }
 
         fun updatePassphrase(checked: Boolean) {
-            _switchPassphrase.value = checked
+            switchPassphrase.value = checked
             viewModelScope.launch {
                 DataPref.saveDataStore(includePassPhrase, checked, dataStore)
             }
         }
 
         fun updateNoRepeat(checked: Boolean) {
-            _switchNoRepeat.value = checked
+            switchNoRepeat.value = checked
             viewModelScope.launch {
                 DataPref.saveDataStore(noRepeatKey, checked, dataStore)
             }
         }
 
         fun updateBiometric(checked: Boolean) {
-            _switchBiometric.value = checked
+            switchBiometric.value = checked
             viewModelScope.launch {
                 DataPref.saveDataStore(biometricKey, checked, dataStore)
+            }
+        }
+
+        fun clearAllItems() {
+            viewModelScope.launch {
+                repository.deleteAllCharacters()
             }
         }
     }

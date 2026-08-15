@@ -46,4 +46,6 @@ class SettingsItemRepository(
             settingsItemDao.insert(settingsItem.copy(included = false))
         }
     }
+
+    suspend fun deleteAllCharacters() = settingsItemDao.deleteAllCharacters()
 }
