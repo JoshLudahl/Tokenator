@@ -29,6 +29,7 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -188,16 +189,24 @@ fun SettingsScreen(
                                             Toast.LENGTH_SHORT,
                                         ).show()
                                 },
+                                enabled = passphraseText.isNotEmpty() && passphraseText != passphrase?.phrase,
                                 modifier =
                                     Modifier
                                         .size(48.dp)
-                                        .clip(CircleShape)
-                                        .background(MaterialTheme.colorScheme.primary),
+                                        .clip(CircleShape),
+                                colors =
+                                    IconButtonDefaults.iconButtonColors(
+                                        // Enabled state
+                                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                                        // Disabled state
+                                        disabledContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+                                        disabledContentColor = MaterialTheme.colorScheme.outline,
+                                    ),
                             ) {
                                 Icon(
                                     imageVector = Icons.Rounded.Save,
                                     contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onPrimary,
                                 )
                             }
                         }
@@ -401,8 +410,7 @@ fun CharacterBox(
                     } else {
                         MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.2f)
                     },
-                )
-                .clickable {
+                ).clickable {
                     onClick(item.copy(included = !item.included))
                 },
         contentAlignment = Alignment.Center,
