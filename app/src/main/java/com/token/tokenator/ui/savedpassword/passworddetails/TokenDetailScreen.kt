@@ -182,11 +182,12 @@ fun TokenDetailScreen(
                 onCopy = {
                     Clipuous.copyToClipboard(tokenName, context)
                     if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
-                        Toast.makeText(
-                            context,
-                            R.string.toast_copied_to_clipboard,
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Toast
+                            .makeText(
+                                context,
+                                R.string.toast_copied_to_clipboard,
+                                Toast.LENGTH_SHORT,
+                            ).show()
                     }
                 },
             )
@@ -201,11 +202,12 @@ fun TokenDetailScreen(
                 onCopy = {
                     Clipuous.copyToClipboard(loginName, context)
                     if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
-                        Toast.makeText(
-                            context,
-                            R.string.toast_copied_to_clipboard,
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Toast
+                            .makeText(
+                                context,
+                                R.string.toast_copied_to_clipboard,
+                                Toast.LENGTH_SHORT,
+                            ).show()
                     }
                 },
             )
@@ -220,11 +222,12 @@ fun TokenDetailScreen(
                 onCopy = {
                     Clipuous.copyToClipboard(passwordValue, context, isSensitive = true)
                     if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
-                        Toast.makeText(
-                            context,
-                            R.string.toast_copied_to_clipboard,
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Toast
+                            .makeText(
+                                context,
+                                R.string.toast_copied_to_clipboard,
+                                Toast.LENGTH_SHORT,
+                            ).show()
                     }
                 },
                 isPassword = true,
@@ -260,10 +263,11 @@ fun TokenDetailScreen(
                     modifier = Modifier.fillMaxWidth(),
                     shape = MaterialTheme.shapes.large,
                     color = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.1f),
-                    border = androidx.compose.foundation.BorderStroke(
-                        1.dp,
-                        MaterialTheme.colorScheme.tertiary.copy(alpha = 0.3f)
-                    ),
+                    border =
+                        androidx.compose.foundation.BorderStroke(
+                            1.dp,
+                            MaterialTheme.colorScheme.tertiary.copy(alpha = 0.3f),
+                        ),
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -294,7 +298,7 @@ fun TokenDetailScreen(
                             Text(
                                 stringResource(id = R.string.fix_now),
                                 color = MaterialTheme.colorScheme.tertiary,
-                                fontWeight = FontWeight.Bold
+                                fontWeight = FontWeight.Bold,
                             )
                         }
                     }
@@ -339,7 +343,7 @@ fun TokenDetailScreen(
                     ) {
                         Text(
                             stringResource(id = R.string.delete),
-                            color = MaterialTheme.colorScheme.error
+                            color = MaterialTheme.colorScheme.error,
                         )
                     }
                 },

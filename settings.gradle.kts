@@ -5,7 +5,7 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
-        maven { url= uri("https://jitpack.io") }
+        maven { url = uri("https://jitpack.io") }
     }
 }
 plugins {
@@ -24,4 +24,4 @@ dependencyResolutionManagement {
 }
 
 include(":app")
-rootProject.name="Tokenator"
+rootProject.name = "Tokenator"
