@@ -99,7 +99,6 @@ fun PrivacyPolicyDialog(
                 Button(
                     onClick = onDismiss,
                     modifier = Modifier.fillMaxWidth(),
-                    shape = MaterialTheme.shapes.medium,
                 ) {
                     Text(stringResource(id = R.string.understand))
                 }
