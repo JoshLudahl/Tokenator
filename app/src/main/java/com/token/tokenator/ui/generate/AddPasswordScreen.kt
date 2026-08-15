@@ -2,6 +2,7 @@ package com.token.tokenator.ui.generate
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,7 +24,7 @@ import androidx.compose.material.icons.automirrored.rounded.Label
 import androidx.compose.material.icons.automirrored.rounded.Login
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.rounded.ContentCopy
-import androidx.compose.material.icons.rounded.GeneratingTokens
+import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -64,7 +65,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -254,8 +259,15 @@ fun AddPasswordScreen(
 
                     Spacer(modifier = Modifier.height(16.dp))
 
+                    val annotatedToken =
+                        if (token.isEmpty()) {
+                            AnnotatedString("••••••••••••••••")
+                        } else {
+                            buildPasswordAnnotatedString(token)
+                        }
+
                     Text(
-                        text = token.ifEmpty { "••••••••••••••••" },
+                        text = annotatedToken,
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.Bold,
@@ -326,7 +338,7 @@ fun AddPasswordScreen(
                     ),
             ) {
                 Icon(
-                    imageVector = Icons.Rounded.GeneratingTokens,
+                    imageVector = Icons.Rounded.Refresh,
                     contentDescription = null,
                     modifier = Modifier.size(24.dp),
                 )
@@ -594,6 +606,27 @@ fun AddPasswordScreen(
             }
 
             Spacer(modifier = Modifier.height(40.dp))
+        }
+    }
+}
+
+@Composable
+private fun buildPasswordAnnotatedString(password: String): AnnotatedString {
+    val isDark = isSystemInDarkTheme()
+    return remember(password, isDark) {
+        buildAnnotatedString {
+            password.forEach { char ->
+                val color =
+                    when {
+                        char.isUpperCase() -> if (isDark) Color(0xFF64B5F6) else Color(0xFF1976D2)
+                        char.isLowerCase() -> if (isDark) Color(0xFF81C784) else Color(0xFF388E3C)
+                        char.isDigit() -> if (isDark) Color(0xFFFFB74D) else Color(0xFFF57C00)
+                        else -> if (isDark) Color(0xFFF06292) else Color(0xFFC2185B)
+                    }
+                withStyle(style = SpanStyle(color = color)) {
+                    append(char)
+                }
+            }
         }
     }
 }
