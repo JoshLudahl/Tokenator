@@ -20,6 +20,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.Save
@@ -47,7 +48,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -93,7 +93,7 @@ fun SettingsScreen(
                 navigationIcon = {
                     IconButton(onClick = { navigator.goBack() }) {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_arrow_circle_left),
+                            imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
                             contentDescription = null,
                             modifier = Modifier.size(28.dp),
                         )

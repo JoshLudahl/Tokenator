@@ -22,8 +22,8 @@ android {
         applicationId = "com.token.tokenator"
         minSdk = 24
         targetSdk = target
-        versionCode = 66
-        versionName = "2026.08.14"
+        versionCode = 67
+        versionName = "2026.08.15"
 
         testInstrumentationRunner = "com.token.tokenator.HiltAndroidJUnitRunner"
         testInstrumentationRunnerArguments.putAll(mutableMapOf("clearPackageData" to "true"))

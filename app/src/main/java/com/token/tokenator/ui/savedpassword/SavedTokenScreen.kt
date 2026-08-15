@@ -18,7 +18,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.rounded.ContentCopy
+import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.MoreVert
+import androidx.compose.material.icons.rounded.SortByAlpha
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -79,7 +83,7 @@ fun SavedTokenScreen(
                 navigationIcon = {
                     IconButton(onClick = { navigator.goBack() }) {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_arrow_circle_left),
+                            imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
                             contentDescription = null,
                             modifier = Modifier.size(24.dp),
                         )
@@ -88,15 +92,19 @@ fun SavedTokenScreen(
                 actions = {
                     IconButton(onClick = { /* TODO: Search or filter */ }) {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_abc_upper), // Placeholder for dots/search
+                            imageVector = Icons.Rounded.SortByAlpha, // Placeholder for dots/search
                             contentDescription = null,
                             modifier = Modifier.size(24.dp),
                         )
                     }
                 },
                 colors =
-                    TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    TopAppBarDefaults.topAppBarColors(
                         containerColor = MaterialTheme.colorScheme.background,
+                        scrolledContainerColor = Color.Unspecified,
+                        navigationIconContentColor = Color.Unspecified,
+                        titleContentColor = Color.Unspecified,
+                        actionIconContentColor = Color.Unspecified,
                     ),
             )
         },
@@ -291,7 +299,7 @@ fun FinanceTokenItem(
                         },
                         leadingIcon = {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_content_copy_round),
+                                imageVector = Icons.Rounded.ContentCopy,
                                 contentDescription = null,
                                 modifier = Modifier.size(20.dp),
                             )
@@ -308,7 +316,7 @@ fun FinanceTokenItem(
                         },
                         leadingIcon = {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_login_round),
+                                imageVector = Icons.Rounded.ContentCopy,
                                 contentDescription = null,
                                 modifier = Modifier.size(20.dp),
                             )
@@ -323,7 +331,7 @@ fun FinanceTokenItem(
                         },
                         leadingIcon = {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_delete_round),
+                                imageVector = Icons.Rounded.Delete,
                                 contentDescription = null,
                                 tint = MaterialTheme.colorScheme.error,
                                 modifier = Modifier.size(20.dp),

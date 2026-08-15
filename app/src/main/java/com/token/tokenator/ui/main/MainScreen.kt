@@ -32,9 +32,14 @@ import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.Login
 import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.ContentCopy
+import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material.icons.rounded.FilterList
 import androidx.compose.material.icons.rounded.MoreVert
+import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.SortByAlpha
 import androidx.compose.material.icons.rounded.Update
@@ -178,7 +183,7 @@ fun MainScreen(
                     placeholder = { Text(stringResource(id = R.string.search_passwords)) },
                     leadingIcon = {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_search),
+                            imageVector = Icons.Rounded.Search,
                             contentDescription = stringResource(id = R.string.search_passwords),
                             modifier = Modifier.size(20.dp),
                         )
@@ -187,7 +192,7 @@ fun MainScreen(
                         if (searchTextFieldState.text.isNotEmpty()) {
                             IconButton(onClick = { searchTextFieldState.clearText() }) {
                                 Icon(
-                                    painter = painterResource(id = R.drawable.close),
+                                    imageVector = Icons.Rounded.Close,
                                     contentDescription = stringResource(id = R.string.search_clear),
                                     modifier = Modifier.size(18.dp),
                                 )
@@ -251,7 +256,15 @@ fun MainScreen(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
-                        text = if (searchQuery.isNotBlank()) stringResource(id = R.string.search_results_count, tokens.size) else stringResource(id = R.string.all_passwords),
+                        text =
+                            if (searchQuery.isNotBlank()) {
+                                stringResource(
+                                    id = R.string.search_results_count,
+                                    tokens.size,
+                                )
+                            } else {
+                                stringResource(id = R.string.all_passwords)
+                            },
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.ExtraBold,
                         color = MaterialTheme.colorScheme.primary,
@@ -281,7 +294,15 @@ fun MainScreen(
                             )
                             Spacer(modifier = Modifier.height(16.dp))
                             Text(
-                                text = if (searchQuery.isNotBlank()) stringResource(id = R.string.no_passwords_matching, searchQuery) else stringResource(R.string.no_saved_passwords),
+                                text =
+                                    if (searchQuery.isNotBlank()) {
+                                        stringResource(
+                                            id = R.string.no_passwords_matching,
+                                            searchQuery,
+                                        )
+                                    } else {
+                                        stringResource(R.string.no_saved_passwords)
+                                    },
                                 style = MaterialTheme.typography.bodyLarge,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                                 fontWeight = FontWeight.Medium,
@@ -316,13 +337,18 @@ fun MainScreen(
                                     token = token,
                                     onCopy = {
                                         val fullToken = Encryption.decrypt(token.token) ?: ""
-                                        Clipuous.copyToClipboard(fullToken, context, isSensitive = true)
+                                        Clipuous.copyToClipboard(
+                                            fullToken,
+                                            context,
+                                            isSensitive = true,
+                                        )
                                         scope.launch {
                                             snackbarHostState.showSnackbar(copiedText)
                                         }
                                     },
                                     onCopyUsername = {
-                                        val login = token.login?.let { Encryption.decrypt(it) } ?: ""
+                                        val login =
+                                            token.login?.let { Encryption.decrypt(it) } ?: ""
                                         if (login.isNotEmpty()) {
                                             Clipuous.copyToClipboard(login, context)
                                             scope.launch {
@@ -458,7 +484,7 @@ fun MainScreen(
                             if (searchTextFieldState.text.isNotEmpty()) {
                                 IconButton(onClick = { searchTextFieldState.clearText() }) {
                                     Icon(
-                                        painter = painterResource(id = R.drawable.close),
+                                        imageVector = Icons.Rounded.Close,
                                         contentDescription = stringResource(id = R.string.search_clear),
                                         modifier = Modifier.size(18.dp),
                                     )
@@ -515,7 +541,13 @@ fun MainScreen(
                 )
             },
             text = {
-                Text(text = stringResource(id = R.string.delete_password_confirmation_message_named, tokenToDelete?.title ?: ""))
+                Text(
+                    text =
+                        stringResource(
+                            id = R.string.delete_password_confirmation_message_named,
+                            tokenToDelete?.title ?: "",
+                        ),
+                )
             },
             confirmButton = {
                 TextButton(onClick = {
@@ -525,7 +557,11 @@ fun MainScreen(
                         snackbarHostState.showSnackbar(passwordDeletedText)
                     }
                 }) {
-                    Text(stringResource(id = R.string.delete), color = MaterialTheme.colorScheme.error, fontWeight = FontWeight.Bold)
+                    Text(
+                        stringResource(id = R.string.delete),
+                        color = MaterialTheme.colorScheme.error,
+                        fontWeight = FontWeight.Bold,
+                    )
                 }
             },
             dismissButton = {
@@ -627,7 +663,7 @@ fun VaultTokenItem(
                         },
                         leadingIcon = {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_content_copy_round),
+                                imageVector = Icons.Rounded.ContentCopy,
                                 contentDescription = null,
                                 modifier = Modifier.size(20.dp),
                             )
@@ -641,7 +677,7 @@ fun VaultTokenItem(
                         },
                         leadingIcon = {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_login_round),
+                                imageVector = Icons.AutoMirrored.Rounded.Login,
                                 contentDescription = null,
                                 modifier = Modifier.size(20.dp),
                             )
@@ -649,14 +685,19 @@ fun VaultTokenItem(
                         enabled = decryptedLogin.isNotEmpty(),
                     )
                     DropdownMenuItem(
-                        text = { Text(stringResource(id = R.string.delete), color = MaterialTheme.colorScheme.error) },
+                        text = {
+                            Text(
+                                stringResource(id = R.string.delete),
+                                color = MaterialTheme.colorScheme.error,
+                            )
+                        },
                         onClick = {
                             showMenu = false
                             onDelete()
                         },
                         leadingIcon = {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_delete_round),
+                                imageVector = Icons.Rounded.Delete,
                                 contentDescription = null,
                                 tint = MaterialTheme.colorScheme.error,
                                 modifier = Modifier.size(20.dp),

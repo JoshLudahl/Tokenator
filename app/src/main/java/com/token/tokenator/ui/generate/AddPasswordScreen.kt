@@ -18,8 +18,13 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.Label
+import androidx.compose.material.icons.automirrored.rounded.Login
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.rounded.ContentCopy
 import androidx.compose.material.icons.rounded.GeneratingTokens
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -55,7 +60,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -163,7 +167,7 @@ fun AddPasswordScreen(
                 navigationIcon = {
                     IconButton(onClick = { navigator.goBack() }) {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_arrow_circle_left),
+                            imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
                             contentDescription = "Back",
                             modifier = Modifier.size(28.dp),
                         )
@@ -172,7 +176,7 @@ fun AddPasswordScreen(
                 actions = {
                     IconButton(onClick = { navigator.navigate(Route.Settings) }) {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_settings_round),
+                            imageVector = Icons.Rounded.Settings,
                             contentDescription = "Settings",
                             modifier = Modifier.size(28.dp),
                         )
@@ -238,7 +242,11 @@ fun AddPasswordScreen(
                                     color = strengthColor,
                                     style = MaterialTheme.typography.labelSmall,
                                     fontWeight = FontWeight.ExtraBold,
-                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
+                                    modifier =
+                                        Modifier.padding(
+                                            horizontal = 10.dp,
+                                            vertical = 4.dp,
+                                        ),
                                 )
                             }
                         }
@@ -280,10 +288,14 @@ fun AddPasswordScreen(
                                 Modifier
                                     .size(36.dp)
                                     .clip(CircleShape)
-                                    .background(MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.1f)),
+                                    .background(
+                                        MaterialTheme.colorScheme.onPrimaryContainer.copy(
+                                            alpha = 0.1f,
+                                        ),
+                                    ),
                         ) {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_content_copy_round),
+                                imageVector = Icons.Rounded.ContentCopy,
                                 contentDescription = "Copy",
                                 tint = MaterialTheme.colorScheme.onPrimaryContainer,
                                 modifier = Modifier.size(18.dp),
@@ -352,7 +364,7 @@ fun AddPasswordScreen(
                         shape = MaterialTheme.shapes.large,
                         leadingIcon = {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_label_round),
+                                imageVector = Icons.AutoMirrored.Rounded.Label,
                                 contentDescription = null,
                                 modifier = Modifier.size(20.dp),
                             )
@@ -362,8 +374,14 @@ fun AddPasswordScreen(
                             OutlinedTextFieldDefaults.colors(
                                 focusedBorderColor = MaterialTheme.colorScheme.primary,
                                 unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
-                                focusedContainerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.1f),
-                                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.2f),
+                                focusedContainerColor =
+                                    MaterialTheme.colorScheme.primaryContainer.copy(
+                                        alpha = 0.1f,
+                                    ),
+                                unfocusedContainerColor =
+                                    MaterialTheme.colorScheme.surfaceVariant.copy(
+                                        alpha = 0.2f,
+                                    ),
                                 focusedLabelColor = MaterialTheme.colorScheme.primary,
                                 unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
                                 focusedLeadingIconColor = MaterialTheme.colorScheme.primary,
@@ -382,7 +400,7 @@ fun AddPasswordScreen(
                         shape = MaterialTheme.shapes.large,
                         leadingIcon = {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_login_round),
+                                imageVector = Icons.AutoMirrored.Rounded.Login,
                                 contentDescription = null,
                                 modifier = Modifier.size(20.dp),
                             )
@@ -392,8 +410,14 @@ fun AddPasswordScreen(
                             OutlinedTextFieldDefaults.colors(
                                 focusedBorderColor = MaterialTheme.colorScheme.primary,
                                 unfocusedBorderColor = MaterialTheme.colorScheme.outlineVariant,
-                                focusedContainerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.1f),
-                                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.2f),
+                                focusedContainerColor =
+                                    MaterialTheme.colorScheme.primaryContainer.copy(
+                                        alpha = 0.1f,
+                                    ),
+                                unfocusedContainerColor =
+                                    MaterialTheme.colorScheme.surfaceVariant.copy(
+                                        alpha = 0.2f,
+                                    ),
                                 focusedLabelColor = MaterialTheme.colorScheme.primary,
                                 unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
                                 focusedLeadingIconColor = MaterialTheme.colorScheme.primary,
