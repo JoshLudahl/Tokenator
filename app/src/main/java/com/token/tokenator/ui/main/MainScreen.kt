@@ -219,9 +219,6 @@ fun MainScreen(
                             ),
                     )
                 },
-                actions = {
-                    // Settings button moved to HorizontalFloatingToolbar
-                },
             )
         },
         snackbarHost = {
