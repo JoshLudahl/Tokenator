@@ -73,8 +73,8 @@ class PasswordDetailViewModel
                         date = newToken?.date ?: Date().toString(),
                     )
                 this@PasswordDetailViewModel.token.value = token
-
-                shouldShowWarning.value = isOldPassword(newToken?.date ?: Date().toString())
+                val isOld = isOldPassword(newToken?.date ?: Date().toString())
+                shouldShowWarning.value = isOld || token.token.isEmpty()
                 Log.i(TOKENATOR_TAG, "DATE: ${this@PasswordDetailViewModel.token.value?.date}")
             }
         }
