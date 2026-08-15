@@ -128,6 +128,22 @@ fun TokenDetailScreen(
                             modifier = Modifier.size(32.dp),
                         )
                     }
+
+                    IconButton(
+                        onClick = { IntentHelper.handleShareClick(passwordValue, context) },
+                        modifier =
+                            Modifier
+                                .size(56.dp)
+                                .clip(MaterialTheme.shapes.medium)
+                                .background(MaterialTheme.colorScheme.surface),
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Share,
+                            contentDescription = null,
+                            modifier = Modifier.size(28.dp),
+                            tint = MaterialTheme.colorScheme.onSurface,
+                        )
+                    }
                 },
             )
         },
@@ -140,7 +156,7 @@ fun TokenDetailScreen(
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
                     .imePadding()
-                    .padding(24.dp),
+                    .padding(horizontal = 32.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             // Large Logo/Icon
@@ -169,8 +185,6 @@ fun TokenDetailScreen(
                     )
                 }
             }
-
-            Spacer(modifier = Modifier.height(16.dp))
 
             Text(
                 text = tokenName.ifEmpty { stringResource(id = R.string.tokenator) },
@@ -310,24 +324,6 @@ fun TokenDetailScreen(
                         }
                     }
                 }
-            }
-
-            Spacer(modifier = Modifier.height(32.dp))
-
-            IconButton(
-                onClick = { IntentHelper.handleShareClick(passwordValue, context) },
-                modifier =
-                    Modifier
-                        .size(56.dp)
-                        .clip(MaterialTheme.shapes.medium)
-                        .background(MaterialTheme.colorScheme.surface),
-            ) {
-                Icon(
-                    imageVector = Icons.Rounded.Share,
-                    contentDescription = null,
-                    modifier = Modifier.size(28.dp),
-                    tint = MaterialTheme.colorScheme.secondary,
-                )
             }
 
             Spacer(modifier = Modifier.height(32.dp))

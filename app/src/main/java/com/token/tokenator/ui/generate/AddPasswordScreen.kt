@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -27,7 +26,6 @@ import androidx.compose.material.icons.rounded.ContentCopy
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -281,11 +279,25 @@ fun AddPasswordScreen(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Text(
-                            text = "Tap box to copy",
-                            color = MaterialTheme.colorScheme.onPrimaryContainer,
-                            style = MaterialTheme.typography.bodySmall,
-                        )
+                        IconButton(
+                            onClick = { generateNewToken() },
+                            modifier =
+                                Modifier
+                                    .size(36.dp)
+                                    .clip(CircleShape)
+                                    .background(
+                                        MaterialTheme.colorScheme.onPrimaryContainer.copy(
+                                            alpha = 0.1f,
+                                        ),
+                                    ),
+                        ) {
+                            Icon(
+                                imageVector = Icons.Rounded.Refresh,
+                                contentDescription = "Refresh",
+                                tint = MaterialTheme.colorScheme.onPrimaryContainer,
+                                modifier = Modifier.size(18.dp),
+                            )
+                        }
 
                         IconButton(
                             onClick = {
@@ -318,39 +330,6 @@ fun AddPasswordScreen(
             }
 
             Spacer(modifier = Modifier.height(24.dp))
-
-            // Primary Generate Password Button
-            Button(
-                onClick = generateNewToken,
-                modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .height(60.dp)
-                        .testTag("GENERATE_TOKEN_BUTTON")
-                        .semantics {
-                            contentDescription = "GENERATE_TOKEN_BUTTON"
-                            testTag = "GENERATE_TOKEN_BUTTON"
-                        },
-                shape = MaterialTheme.shapes.extraLarge,
-                colors =
-                    ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.secondary,
-                    ),
-            ) {
-                Icon(
-                    imageVector = Icons.Rounded.Refresh,
-                    contentDescription = null,
-                    modifier = Modifier.size(24.dp),
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = stringResource(id = R.string.generated_token),
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold,
-                )
-            }
-
-            Spacer(modifier = Modifier.height(28.dp))
 
             // Save to Vault Form
             QuickSettingsHeader(text = stringResource(id = R.string.save_to_vault))
@@ -638,7 +617,6 @@ private fun QuickSettingsHeader(text: String) {
         style = MaterialTheme.typography.titleMedium,
         color = MaterialTheme.colorScheme.primary,
         fontWeight = FontWeight.ExtraBold,
-        modifier = Modifier.padding(bottom = 12.dp),
     )
 }
 
