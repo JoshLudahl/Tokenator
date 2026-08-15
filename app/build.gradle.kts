@@ -22,7 +22,7 @@ android {
         applicationId = "com.token.tokenator"
         minSdk = 24
         targetSdk = target
-        versionCode = 67
+        versionCode = 68
         versionName = "2026.08.15"
 
         testInstrumentationRunner = "com.token.tokenator.HiltAndroidJUnitRunner"
@@ -32,16 +32,16 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
-            )
+
+            optimization {
+                enable = true
+            }
         }
 
         debug {
-            isMinifyEnabled = false
+            optimization {
+                enable = false
+            }
             applicationIdSuffix = ".debug"
             versionNameSuffix = " debug"
             resValue(type = "string", name = "app_name", value = "Tokenator debug")
