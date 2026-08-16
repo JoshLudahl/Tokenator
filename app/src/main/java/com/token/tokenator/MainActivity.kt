@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -95,6 +96,16 @@ class MainActivity : FragmentActivity() {
     fun TokenatorApp() {
         val isOnboardingCompleted by onboardingViewModel.isOnboardingCompleted.collectAsState()
         val isBiometricEnabled by mainViewModel.isBiometricEnabled.collectAsState()
+        val context = LocalContext.current
+
+        val canAuthenticate =
+            remember {
+                val biometricManager = BiometricManager.from(context)
+                biometricManager.canAuthenticate(
+                    BiometricManager.Authenticators.BIOMETRIC_STRONG or
+                        BiometricManager.Authenticators.DEVICE_CREDENTIAL,
+                ) == BiometricManager.BIOMETRIC_SUCCESS
+            }
 
         if (isOnboardingCompleted == null || isBiometricEnabled == null) {
             Surface(
@@ -104,8 +115,7 @@ class MainActivity : FragmentActivity() {
             return
         }
 
-        if (isBiometricEnabled == true && !isAuthenticated) {
-            val context = LocalContext.current
+        if (isBiometricEnabled == true && !isAuthenticated && canAuthenticate) {
             val executor = remember { ContextCompat.getMainExecutor(context) }
             val biometricPrompt =
                 remember {
@@ -140,8 +150,8 @@ class MainActivity : FragmentActivity() {
                         .setTitle(getString(R.string.tokenator))
                         .setSubtitle(getString(R.string.authenticate_title))
                         .setAllowedAuthenticators(
-                            androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG or
-                                androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL,
+                            BiometricManager.Authenticators.BIOMETRIC_STRONG or
+                                BiometricManager.Authenticators.DEVICE_CREDENTIAL,
                         ).build()
                 }
 
