@@ -48,8 +48,6 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExpandedFullScreenSearchBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -95,7 +93,10 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Popup
+import androidx.compose.ui.window.PopupProperties
 import androidx.compose.ui.zIndex
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -583,6 +584,38 @@ fun MainScreen(
 }
 
 @Composable
+private fun VaultMenuItem(
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    text: String,
+    onClick: () -> Unit,
+    enabled: Boolean = true,
+    tint: Color = MaterialTheme.colorScheme.onPrimaryContainer,
+) {
+    Row(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .clickable(enabled = enabled) { onClick() }
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            modifier = Modifier.size(20.dp),
+            tint = if (enabled) tint else tint.copy(alpha = 0.38f),
+        )
+        Spacer(modifier = Modifier.width(12.dp))
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelLarge,
+            color = if (enabled) tint else tint.copy(alpha = 0.38f),
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
+@Composable
 fun VaultTokenItem(
     token: Token,
     onCopy: () -> Unit,
@@ -601,133 +634,126 @@ fun VaultTokenItem(
         modifier =
             Modifier
                 .fillMaxWidth()
-                .clickable { onEdit() },
+                .clickable { if (showMenu) showMenu = false else onEdit() },
         shape = RoundedCornerShape(30.dp),
         colors = CardDefaults.cardColors(containerColor = Color.Transparent),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
-        Row(
-            modifier =
-                Modifier
-                    .padding(start = 16.dp)
-                    .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            // Icon Badge
-            Box(
+        Box(contentAlignment = Alignment.CenterEnd) {
+            Row(
                 modifier =
                     Modifier
-                        .size(52.dp)
-                        .clip(MaterialTheme.shapes.extraLarge)
-                        .background(MaterialTheme.colorScheme.onSecondaryContainer),
-                contentAlignment = Alignment.Center,
+                        .padding(start = 16.dp)
+                        .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                Text(
-                    text = token.title.take(1).uppercase(),
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.ExtraBold,
-                    color = MaterialTheme.colorScheme.secondaryContainer,
-                )
-            }
-
-            Spacer(modifier = Modifier.width(16.dp))
-
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = token.title,
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurface,
-                    fontWeight = FontWeight.Bold,
-                    maxLines = 1,
-                )
-                Spacer(modifier = Modifier.height(2.dp))
-                Text(
-                    text = decryptedLogin.ifEmpty { stringResource(id = R.string.no_username_saved) },
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 1,
-                )
-            }
-
-            Box {
-                IconButton(onClick = { showMenu = true }) {
-                    Icon(
-                        imageVector = Icons.Rounded.MoreVert,
-                        contentDescription = stringResource(id = R.string.more_options),
-                        tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.size(24.dp),
+                // Icon Badge
+                Box(
+                    modifier =
+                        Modifier
+                            .size(52.dp)
+                            .clip(MaterialTheme.shapes.extraLarge)
+                            .background(MaterialTheme.colorScheme.onSecondaryContainer),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = token.title.take(1).uppercase(),
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.ExtraBold,
+                        color = MaterialTheme.colorScheme.secondaryContainer,
                     )
                 }
 
-                DropdownMenu(
-                    expanded = showMenu,
-                    onDismissRequest = { showMenu = false },
-                ) {
-                    DropdownMenuItem(
-                        text = { Text(stringResource(id = R.string.copy_password)) },
-                        onClick = {
-                            showMenu = false
-                            onCopy()
-                        },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Rounded.ContentCopy,
-                                contentDescription = null,
-                                modifier = Modifier.size(20.dp),
-                            )
-                        },
-                    )
-                    DropdownMenuItem(
-                        text = { Text(stringResource(id = R.string.copy_username)) },
-                        onClick = {
-                            showMenu = false
-                            onCopyUsername()
-                        },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.AutoMirrored.Rounded.Login,
-                                contentDescription = null,
-                                modifier = Modifier.size(20.dp),
-                            )
-                        },
-                        enabled = decryptedLogin.isNotEmpty(),
-                    )
+                Spacer(modifier = Modifier.width(16.dp))
 
-                    DropdownMenuItem(
-                        text = { Text(stringResource(id = R.string.feature_view_share_password_title)) },
-                        onClick = {
-                            showMenu = false
-                            onSharePassword()
-                        },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Rounded.Share,
-                                contentDescription = null,
-                                modifier = Modifier.size(20.dp),
-                            )
-                        },
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = token.title,
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 1,
                     )
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Text(
+                        text = decryptedLogin.ifEmpty { stringResource(id = R.string.no_username_saved) },
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 1,
+                    )
+                }
 
-                    DropdownMenuItem(
-                        text = {
-                            Text(
-                                stringResource(id = R.string.delete),
-                                color = MaterialTheme.colorScheme.error,
-                            )
-                        },
-                        onClick = {
-                            showMenu = false
-                            onDelete()
-                        },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Rounded.Delete,
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.error,
-                                modifier = Modifier.size(20.dp),
-                            )
-                        },
-                    )
+                Box(contentAlignment = Alignment.CenterEnd) {
+                    IconButton(onClick = { showMenu = !showMenu }) {
+                        Icon(
+                            imageVector = if (showMenu) Icons.Rounded.Close else Icons.Rounded.MoreVert,
+                            contentDescription = stringResource(id = R.string.more_options),
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(24.dp),
+                        )
+                    }
+
+                    if (showMenu) {
+                        Popup(
+                            alignment = Alignment.TopEnd,
+                            offset = IntOffset(x = -150, y = 0),
+                            onDismissRequest = { showMenu = false },
+                            properties = PopupProperties(focusable = true),
+                        ) {
+                            VerticalFloatingToolbar(
+                                expanded = true,
+                                modifier = Modifier.width(200.dp),
+                                shape = RoundedCornerShape(16.dp),
+                                colors =
+                                    FloatingToolbarDefaults.standardFloatingToolbarColors(
+                                        toolbarContainerColor = MaterialTheme.colorScheme.surfaceContainer,
+                                    ),
+                            ) {
+                                // Stacking items vertically with text
+                                Column(
+                                    modifier =
+                                        Modifier
+                                            .fillMaxWidth()
+                                            .padding(vertical = 8.dp),
+                                ) {
+                                    VaultMenuItem(
+                                        icon = Icons.Rounded.ContentCopy,
+                                        text = stringResource(id = R.string.copy_password),
+                                        onClick = {
+                                            showMenu = false
+                                            onCopy()
+                                        },
+                                    )
+                                    VaultMenuItem(
+                                        icon = Icons.AutoMirrored.Rounded.Login,
+                                        text = stringResource(id = R.string.copy_username),
+                                        enabled = decryptedLogin.isNotEmpty(),
+                                        onClick = {
+                                            showMenu = false
+                                            onCopyUsername()
+                                        },
+                                    )
+                                    VaultMenuItem(
+                                        icon = Icons.Rounded.Share,
+                                        text = stringResource(id = R.string.feature_view_share_password_title),
+                                        onClick = {
+                                            showMenu = false
+                                            onSharePassword()
+                                        },
+                                    )
+                                    VaultMenuItem(
+                                        icon = Icons.Rounded.Delete,
+                                        text = stringResource(id = R.string.delete),
+                                        tint = MaterialTheme.colorScheme.error,
+                                        onClick = {
+                                            showMenu = false
+                                            onDelete()
+                                        },
+                                    )
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
