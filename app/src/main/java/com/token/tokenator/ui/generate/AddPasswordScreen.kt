@@ -44,6 +44,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -220,7 +221,9 @@ fun AddPasswordScreen(
                             }
                         }.padding(24.dp),
             ) {
-                Column {
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -581,6 +584,13 @@ fun AddPasswordScreen(
                                     testTag = "SWITCH_SPECIAL"
                                 },
                     )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+            Box(modifier = Modifier.fillMaxWidth().align(Alignment.CenterHorizontally)) {
+                TextButton(onClick = { navigator.navigate(Route.Settings) }, modifier = Modifier.fillMaxWidth()) {
+                    Text(text = "Advanced Settings")
                 }
             }
 
