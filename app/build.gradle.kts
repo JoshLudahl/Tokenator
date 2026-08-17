@@ -32,7 +32,6 @@ android {
 
     buildTypes {
         release {
-
             optimization {
                 enable = true
             }
