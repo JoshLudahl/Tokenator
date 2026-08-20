@@ -84,6 +84,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
 import androidx.compose.ui.zIndex
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.token.tokenator.R
 import com.token.tokenator.model.Token
@@ -98,7 +99,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun MainScreen(
     navigator: Navigator,
-    viewModel: MainViewModel,
+    viewModel: MainScreenViewModel = hiltViewModel<MainScreenViewModel>(),
 ) {
     val context = LocalContext.current
     val focusManager = LocalFocusManager.current

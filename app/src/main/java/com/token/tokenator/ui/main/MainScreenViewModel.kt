@@ -43,7 +43,7 @@ enum class TokenSortOrder {
 }
 
 @HiltViewModel
-class MainViewModel
+class MainScreenViewModel
     @Inject
     constructor(
         private var repository: TokenRepository,

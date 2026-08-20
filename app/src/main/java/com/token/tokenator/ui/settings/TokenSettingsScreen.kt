@@ -47,7 +47,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.token.tokenator.R
 import com.token.tokenator.model.SettingsItem
@@ -58,7 +58,7 @@ import com.token.tokenator.navigation.Navigator
 @Composable
 fun TokenSettingsScreen(
     navigator: Navigator,
-    viewModel: TokenSettingsViewModel = hiltViewModel(),
+    viewModel: TokenSettingsViewModel = hiltViewModel<TokenSettingsViewModel>(),
 ) {
     val allCharacters by viewModel.allCharacters.collectAsStateWithLifecycle()
     val passphrase by viewModel.passphrase.collectAsStateWithLifecycle()
@@ -73,8 +73,6 @@ fun TokenSettingsScreen(
         remember(allCharacters) {
             allCharacters.groupBy { it.category }
         }
-
-    var showPrivacyPolicy by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -361,7 +359,8 @@ fun CharacterBox(
                     } else {
                         MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.2f)
                     },
-                ).clickable {
+                )
+                .clickable {
                     onClick(item.copy(included = !item.included))
                 },
         contentAlignment = Alignment.Center,

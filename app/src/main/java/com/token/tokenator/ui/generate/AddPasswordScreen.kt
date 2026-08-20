@@ -64,13 +64,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.token.tokenator.R
 import com.token.tokenator.model.Type
 import com.token.tokenator.navigation.Navigator
 import com.token.tokenator.navigation.Route
-import com.token.tokenator.ui.main.MainViewModel
+import com.token.tokenator.ui.main.MainScreenViewModel
 import com.token.tokenator.utilities.Clipuous
 import com.token.tokenator.utilities.Tokenator
 import kotlinx.coroutines.launch
@@ -79,7 +79,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun AddPasswordScreen(
     navigator: Navigator,
-    viewModel: MainViewModel = hiltViewModel(),
+    viewModel: MainScreenViewModel = hiltViewModel<MainScreenViewModel>(),
 ) {
     val context = LocalContext.current
     val token by viewModel.token.collectAsStateWithLifecycle()
