@@ -19,7 +19,6 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -96,10 +95,9 @@ fun SettingsScreen(
                 onClick = { navigator.navigate(Route.TokenSettings) },
             )
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             // Legal
-            SectionHeader(text = stringResource(id = R.string.legal))
             SettingsItem(
                 title = stringResource(id = R.string.privacy_policy),
                 icon = R.drawable.privacy_tip_24px,
@@ -117,13 +115,6 @@ fun SettingsScreen(
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.info_24px),
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(Iconography.Settings.ICON_SIZE),
-                        )
-                        Spacer(modifier = Modifier.width(12.dp))
                         Text(
                             text = stringResource(id = R.string.app_name),
                             style = MaterialTheme.typography.titleMedium,
@@ -199,20 +190,12 @@ private fun SettingsItem(
                 fontWeight = FontWeight.Medium,
                 modifier = Modifier.weight(1f),
             )
-            IconButton(
-                onClick = onClick,
+            Icon(
+                painter = painterResource(id = R.drawable.chevron_forward_24px),
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.size(Iconography.Settings.ICON_SIZE),
-                colors =
-                    IconButtonDefaults.iconButtonColors(
-                        containerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f),
-                    ),
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.chevron_forward_24px),
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onSurface,
-                )
-            }
+            )
         }
     }
 }

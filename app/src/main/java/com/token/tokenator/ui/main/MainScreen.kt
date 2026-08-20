@@ -181,7 +181,7 @@ fun MainScreen(
                         if (searchTextFieldState.text.isNotEmpty()) {
                             IconButton(onClick = { searchTextFieldState.clearText() }) {
                                 Icon(
-                                    painter = painterResource(id = R.drawable.settings_24px),
+                                    painter = painterResource(id = R.drawable.close_24px),
                                     contentDescription = stringResource(id = R.string.search_clear),
                                     modifier = Modifier.size(18.dp),
                                 )
@@ -473,7 +473,7 @@ fun MainScreen(
                             if (searchTextFieldState.text.isNotEmpty()) {
                                 IconButton(onClick = { searchTextFieldState.clearText() }) {
                                     Icon(
-                                        painter = painterResource(id = R.drawable.settings_24px),
+                                        painter = painterResource(id = R.drawable.close_24px),
                                         contentDescription = stringResource(id = R.string.search_clear),
                                         modifier = Modifier.size(18.dp),
                                     )
@@ -671,7 +671,7 @@ fun VaultTokenItem(
                 Box(contentAlignment = Alignment.CenterEnd) {
                     IconButton(onClick = { showMenu = !showMenu }) {
                         Icon(
-                            painter = painterResource(id = if (showMenu) R.drawable.settings_24px else R.drawable.more_vert_24px),
+                            painter = painterResource(id = if (showMenu) R.drawable.close_24px else R.drawable.more_vert_24px),
                             contentDescription = stringResource(id = R.string.more_options),
                             tint = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.size(24.dp),
