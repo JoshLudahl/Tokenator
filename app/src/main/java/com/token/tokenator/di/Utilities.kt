@@ -93,4 +93,14 @@ object Utilities {
     @Singleton
     @Provides
     fun dataStoreSortOrderString(): String = "SORT_ORDER"
+
+    @DataStoreThemeMode
+    @Singleton
+    @Provides
+    fun dataStoreThemeModeString(): String = "THEME_MODE"
+
+    @DataStoreDynamicColor
+    @Singleton
+    @Provides
+    fun dataStoreDynamicColorString(): String = "DYNAMIC_COLOR"
 }

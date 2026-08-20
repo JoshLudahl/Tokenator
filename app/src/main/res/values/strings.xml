@@ -141,4 +141,19 @@
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
     <string name="clear_all" translatable="false">RESET</string>
+
+    <!-- New Settings Hub -->
+    <string name="token_settings">Token Settings</string>
+    <string name="appearance">Appearance</string>
+    <string name="about">About</string>
+    <string name="about_description">Tokenator is a powerful and secure password generator that puts you in control. Your data stays on your device, always.</string>
+    <string name="version_info">Version %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Theme Mode</string>
+    <string name="dynamic_color">Dynamic Color</string>
+    <string name="system_default">System Default</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="dynamic_color_description">Use colors from your wallpaper (Android 12+)</string>
 </resources>

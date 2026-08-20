@@ -49,3 +49,11 @@ annotation class DataStoreBiometric
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class DataStoreSortOrder
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class DataStoreThemeMode
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class DataStoreDynamicColor

@@ -46,7 +46,9 @@ import com.token.tokenator.ui.main.MainScreen
 import com.token.tokenator.ui.onboarding.OnboardingScreen
 import com.token.tokenator.ui.onboarding.OnboardingViewModel
 import com.token.tokenator.ui.passworddetail.TokenDetailScreen
+import com.token.tokenator.ui.settings.AppearanceScreen
 import com.token.tokenator.ui.settings.SettingsScreen
+import com.token.tokenator.ui.settings.TokenSettingsScreen
 import com.token.tokenator.ui.theme.AppTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -86,7 +88,13 @@ class MainActivity : FragmentActivity() {
         checkIsUpdateAvailable()
 
         setContent {
-            AppTheme {
+            val themeMode by mainViewModel.themeMode.collectAsState()
+            val dynamicColor by mainViewModel.dynamicColor.collectAsState()
+
+            AppTheme(
+                themeMode = themeMode,
+                dynamicColor = dynamicColor,
+            ) {
                 TokenatorApp()
             }
         }
@@ -183,6 +191,8 @@ class MainActivity : FragmentActivity() {
                 entry<Route.Main> { MainScreen(navigator, mainScreenViewModel) }
                 entry<Route.AddPassword> { AddPasswordScreen(navigator, mainScreenViewModel) }
                 entry<Route.PasswordDetail> { key -> TokenDetailScreen(key.id, navigator) }
+                entry<Route.TokenSettings> { TokenSettingsScreen(navigator) }
+                entry<Route.Appearance> { AppearanceScreen(navigator) }
                 entry<Route.Settings> { SettingsScreen(navigator) }
                 entry<Route.Onboarding> { OnboardingScreen(navigator) }
             }

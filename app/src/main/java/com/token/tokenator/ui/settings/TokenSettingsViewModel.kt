@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SettingsViewModel
+class TokenSettingsViewModel
     @Inject
     constructor(
         private val repository: SettingsItemRepository,
@@ -73,7 +73,7 @@ class SettingsViewModel
 
         fun updateItems(settingsItem: SettingsItem) {
             Log.d(
-                "SettingsViewModel",
+                "TokenSettingsViewModel",
                 "Updating item: ${settingsItem.item}, included: ${settingsItem.included}, id: ${settingsItem.id}",
             )
             viewModelScope.launch {
