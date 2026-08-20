@@ -38,6 +38,7 @@ import com.token.tokenator.BuildConfig
 import com.token.tokenator.R
 import com.token.tokenator.navigation.Navigator
 import com.token.tokenator.navigation.Route
+import com.token.tokenator.ui.theme.Iconography
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -120,7 +121,7 @@ fun SettingsScreen(
                             painter = painterResource(id = R.drawable.info_24px),
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.size(24.dp),
+                            modifier = Modifier.size(Iconography.Settings.ICON_SIZE),
                         )
                         Spacer(modifier = Modifier.width(12.dp))
                         Text(
@@ -189,7 +190,7 @@ private fun SettingsItem(
                 painter = painterResource(id = icon),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(24.dp),
+                modifier = Modifier.size(Iconography.Settings.ICON_SIZE),
             )
             Spacer(modifier = Modifier.width(16.dp))
             Text(
@@ -200,7 +201,7 @@ private fun SettingsItem(
             )
             IconButton(
                 onClick = onClick,
-                modifier = Modifier.size(24.dp),
+                modifier = Modifier.size(Iconography.Settings.ICON_SIZE),
                 colors =
                     IconButtonDefaults.iconButtonColors(
                         containerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f),
