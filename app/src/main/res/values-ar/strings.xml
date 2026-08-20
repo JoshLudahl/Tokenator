@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">إعدادات الرمز</string>
+    <string name="appearance">المظهر</string>
+    <string name="about">حول</string>
+    <string name="about_description">Tokenator هو مولد كلمات مرور قوي وآمن يمنحك السيطرة. بياناتك تبقى على جهازك دائمًا.</string>
+    <string name="version_info">الإصدار %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">وضع المظهر</string>
+    <string name="dynamic_color">لون ديناميكي</string>
+    <string name="system_default">افتراضي النظام</string>
+    <string name="light">فاتح</string>
+    <string name="dark">داكن</string>
+    <string name="dynamic_color_description">استخدام ألوان من خلفية الشاشة (Android 12+)</string>
 </resources>

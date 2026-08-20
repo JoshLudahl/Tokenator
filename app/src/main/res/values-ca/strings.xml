@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Configuració del token</string>
+    <string name="appearance">Aparença</string>
+    <string name="about">Quant a</string>
+    <string name="about_description">Tokenator és un generador de contrasenyes potent i segur que et dóna el control. Les teves dades es queden al teu dispositiu, sempre.</string>
+    <string name="version_info">Versió %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Mode de tema</string>
+    <string name="dynamic_color">Color dinàmic</string>
+    <string name="system_default">Predeterminat del sistema</string>
+    <string name="light">Clar</string>
+    <string name="dark">Fosc</string>
+    <string name="dynamic_color_description">Utilitzeu colors del vostre fons de pantalla (Android 12+)</string>
 </resources>

@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">ٹوکن کی ترتیبات</string>
+    <string name="appearance">ظاہری شکل</string>
+    <string name="about">کے بارے میں</string>
+    <string name="about_description">ٹوکینیٹر ایک طاقتور اور محفوظ پاس ورڈ جنریٹر ہے جو آپ کو کنٹرول میں رکھتا ہے۔ آپ کا ڈیٹا ہمیشہ آپ کے آلے پر رہتا ہے۔</string>
+    <string name="version_info">ورژن %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">تھیم موڈ</string>
+    <string name="dynamic_color">متحرک رنگ</string>
+    <string name="system_default">سسٹم ڈیفالٹ</string>
+    <string name="light">لائٹ</string>
+    <string name="dark">ڈارک</string>
+    <string name="dynamic_color_description">اپنے وال پیپر سے رنگ استعمال کریں (Android 12+)</string>
 </resources>

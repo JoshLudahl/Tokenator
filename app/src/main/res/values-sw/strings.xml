@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Mipangilio ya Tokeni</string>
+    <string name="appearance">Muonekano</string>
+    <string name="about">Kuhusu</string>
+    <string name="about_description">Tokenator ni kitengeneza nenosiri chenye nguvu na salama kinachokupa udhibiti. Data yako husalia kwenye kifaa chako kila wakati.</string>
+    <string name="version_info">Toleo %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Hali ya Mandhari</string>
+    <string name="dynamic_color">Rangi Inayobadilika</string>
+    <string name="system_default">Chaguomsingi la Mfumo</string>
+    <string name="light">Mwangaza</string>
+    <string name="dark">Giza</string>
+    <string name="dynamic_color_description">Tumia rangi kutoka kwa mandhari yako (Android 12+)</string>
 </resources>

@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Setări token</string>
+    <string name="appearance">Aspect</string>
+    <string name="about">Despre</string>
+    <string name="about_description">Tokenator este un generator de parole puternic și sigur care vă oferă controlul. Datele dvs. rămân întotdeauna pe dispozitiv.</string>
+    <string name="version_info">Versiunea %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Mod temă</string>
+    <string name="dynamic_color">Culoare dinamică</string>
+    <string name="system_default">Implicit de sistem</string>
+    <string name="light">Luminos</string>
+    <string name="dark">Întunecat</string>
+    <string name="dynamic_color_description">Utilizați culori din tapet (Android 12+)</string>
 </resources>

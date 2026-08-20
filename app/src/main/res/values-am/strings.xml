@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">የቶከን ቅንብሮች</string>
+    <string name="appearance">ገጽታ</string>
+    <string name="about">ስለ</string>
+    <string name="about_description">ቶከነተር እርስዎን ተቆጣጣሪ የሚያደርግ ኃይለኛ እና ደህንነቱ የተጠበቀ የይለፍ ቃል አመንጭ ነው። የእርስዎ ውሂብ ሁልጊዜ በመሳሪያዎ ላይ ይቆያል።</string>
+    <string name="version_info">ስሪት %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">የገጽታ ሁነታ</string>
+    <string name="dynamic_color">ተለዋዋጭ ቀለም</string>
+    <string name="system_default">የስርዓት ነባሪ</string>
+    <string name="light">ብርሃን</string>
+    <string name="dark">ጨለማ</string>
+    <string name="dynamic_color_description">ከግድግዳ ወረቀትዎ ላይ ቀለሞችን ይጠቀሙ (አንድሮይድ 12+)</string>
 </resources>

@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Token-asetukset</string>
+    <string name="appearance">Ulkoasu</string>
+    <string name="about">Tietoja</string>
+    <string name="about_description">Tokenator on tehokas ja turvallinen salasanojen luontiohjelma, joka antaa sinulle hallinnan. Tietosi pysyvät aina laitteellasi.</string>
+    <string name="version_info">Versio %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Teematila</string>
+    <string name="dynamic_color">Dynaaminen väri</string>
+    <string name="system_default">Järjestelmän oletus</string>
+    <string name="light">Vaalea</string>
+    <string name="dark">Tumma</string>
+    <string name="dynamic_color_description">Käytä taustakuvan värejä (Android 12+)</string>
 </resources>

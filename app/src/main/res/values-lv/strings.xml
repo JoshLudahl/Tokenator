@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Žetona iestatījumi</string>
+    <string name="appearance">Izskats</string>
+    <string name="about">Par lietotni</string>
+    <string name="about_description">Tokenator ir jaudīgs un drošs paroļu ģenerators, kas sniedz jums kontroli. Jūsu dati vienmēr paliek jūsu ierīcē.</string>
+    <string name="version_info">Versija %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Motīva režīms</string>
+    <string name="dynamic_color">Dinamiskā krāsa</string>
+    <string name="system_default">Sistēmas noklusējums</string>
+    <string name="light">Gaišs</string>
+    <string name="dark">Tumšs</string>
+    <string name="dynamic_color_description">Izmantot krāsas no fona attēla (Android 12+)</string>
 </resources>

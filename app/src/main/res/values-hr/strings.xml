@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Postavke tokena</string>
+    <string name="appearance">Izgled</string>
+    <string name="about">O aplikaciji</string>
+    <string name="about_description">Tokenator je moćan i siguran generator lozinki koji vam daje kontrolu. Vaši podaci uvijek ostaju na vašem uređaju.</string>
+    <string name="version_info">Verzija %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Način teme</string>
+    <string name="dynamic_color">Dinamična boja</string>
+    <string name="system_default">Zadano sustavom</string>
+    <string name="light">Svijetlo</string>
+    <string name="dark">Tamno</string>
+    <string name="dynamic_color_description">Koristi boje sa svoje pozadine (Android 12+)</string>
 </resources>

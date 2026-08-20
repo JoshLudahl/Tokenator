@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">டோக்கன் அமைப்புகள்</string>
+    <string name="appearance">தோற்றம்</string>
+    <string name="about">பற்றி</string>
+    <string name="about_description">டோக்கனேட்டர் என்பது ஒரு சக்திவாய்ந்த மற்றும் பாதுகாப்பான கடவுச்சொல் உருவாக்கும் கருவியாகும், இது உங்களை கட்டுப்பாட்டில் வைத்திருக்கும். உங்கள் தரவு எப்போதும் உங்கள் சாதனத்திலேயே இருக்கும்.</string>
+    <string name="version_info">பதிப்பு %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">தீம் பயன்முறை</string>
+    <string name="dynamic_color">டைனமிக் நிறம்</string>
+    <string name="system_default">சிஸ்டம் டீஃபால்ட்</string>
+    <string name="light">லைட்</string>
+    <string name="dark">டார்க்</string>
+    <string name="dynamic_color_description">உங்கள் வால்பேப்பரில் இருந்து வண்ணங்களைப் பயன்படுத்தவும் (Android 12+)</string>
 </resources>

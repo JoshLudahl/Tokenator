@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">トークンの設定</string>
+    <string name="appearance">外観</string>
+    <string name="about">このアプリについて</string>
+    <string name="about_description">Tokenator は、あなた自身で管理できる、強力で安全なパスワード生成ツールです。データは常にデバイス内に保持されます。</string>
+    <string name="version_info">バージョン %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">テーマモード</string>
+    <string name="dynamic_color">ダイナミックカラー</string>
+    <string name="system_default">システムデフォルト</string>
+    <string name="light">ライト</string>
+    <string name="dark">ダーク</string>
+    <string name="dynamic_color_description">壁紙の色を使用する (Android 12+)</string>
 </resources>

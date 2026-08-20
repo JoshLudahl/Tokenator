@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Tokeni seaded</string>
+    <string name="appearance">Välimus</string>
+    <string name="about">Teave</string>
+    <string name="about_description">Tokenator on võimas ja turvaline parooligeneraator, siin annab teile kontrolli. Teie andmed jäävad alati teie seadmesse.</string>
+    <string name="version_info">Versioon %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Teema režiim</string>
+    <string name="dynamic_color">Dünaamiline värv</string>
+    <string name="system_default">Süsteemi vaikeseade</string>
+    <string name="light">Hele</string>
+    <string name="dark">Tume</string>
+    <string name="dynamic_color_description">Kasutage oma taustapildi värve (Android 12+)</string>
 </resources>

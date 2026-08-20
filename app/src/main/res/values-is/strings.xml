@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Stillingar tákna</string>
+    <string name="appearance">Útlit</string>
+    <string name="about">Um appið</string>
+    <string name="about_description">Tokenator er öflugur og öruggur lykilorðaframleiðandi sem veitir þér stjórnina. Gögnin þín verða alltaf eftir á tækinu þínu.</string>
+    <string name="version_info">Útgáfa %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Þemastilling</string>
+    <string name="dynamic_color">Breytilegir litir</string>
+    <string name="system_default">Sjálfgefið kerfi</string>
+    <string name="light">Ljóst</string>
+    <string name="dark">Dökkt</string>
+    <string name="dynamic_color_description">Nota litina úr veggfóðrinu þínu (Android 12+)</string>
 </resources>

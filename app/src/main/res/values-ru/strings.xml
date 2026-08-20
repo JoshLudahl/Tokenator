@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Настройки токена</string>
+    <string name="appearance">Внешний вид</string>
+    <string name="about">О приложении</string>
+    <string name="about_description">Tokenator — это мощный и безопасный генератор паролей, который дает вам контроль. Ваши данные всегда остаются на вашем устройстве.</string>
+    <string name="version_info">Версия %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Тема</string>
+    <string name="dynamic_color">Динамические цвета</string>
+    <string name="system_default">Системная по умолчанию</string>
+    <string name="light">Светлая</string>
+    <string name="dark">Темная</string>
+    <string name="dynamic_color_description">Использовать цвета из ваших обоев (Android 12+)</string>
 </resources>

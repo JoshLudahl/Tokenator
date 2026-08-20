@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">הגדרות אסימון</string>
+    <string name="appearance">מראה</string>
+    <string name="about">אודות</string>
+    <string name="about_description">Tokenator הוא מחולל סיסמאות חזק ומאובטח שמעניק לך שליטה. הנתונים שלך נשארים תמיד במכשיר שלך.</string>
+    <string name="version_info">גרסה %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">מצב ערכת נושא</string>
+    <string name="dynamic_color">צבע דינמי</string>
+    <string name="system_default">ברירת מחדל של המערכת</string>
+    <string name="light">בהיר</string>
+    <string name="dark">כהה</string>
+    <string name="dynamic_color_description">שימוש בצבעים מהטפט שלך (Android 12+)</string>
 </resources>

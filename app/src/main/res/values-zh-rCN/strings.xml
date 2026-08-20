@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">令牌设置</string>
+    <string name="appearance">外观</string>
+    <string name="about">关于</string>
+    <string name="about_description">Tokenator 是一款强大且安全的密码生成器，让您尽在掌控。您的数据始终保存在您的设备上。</string>
+    <string name="version_info">版本 %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">主题模式</string>
+    <string name="dynamic_color">动态色彩</string>
+    <string name="system_default">系统默认</string>
+    <string name="light">浅色</string>
+    <string name="dark">深色</string>
+    <string name="dynamic_color_description">使用壁纸的颜色 (Android 12+)</string>
 </resources>

@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">ടോക്കൺ ക്രമീകരണങ്ങൾ</string>
+    <string name="appearance">രൂപഭാവം</string>
+    <string name="about">വിവരങ്ങൾ</string>
+    <string name="about_description">നിങ്ങളെ നിയന്ത്രണത്തിലാക്കുന്ന ശക്തവും സുരക്ഷിതവുമായ പാസ്‌വേഡ് ജനറേറ്ററാണ് ടോക്കണേറ്റർ. നിങ്ങളുടെ ഡാറ്റ എല്ലായ്‌പ്പോഴും നിങ്ങളുടെ ഉപകരണത്തിൽ തന്നെ നിലനിൽക്കും.</string>
+    <string name="version_info">പതിപ്പ് %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">തീം മോഡ്</string>
+    <string name="dynamic_color">ഡൈനാമിക് കളർ</string>
+    <string name="system_default">സിസ്റ്റം ഡിഫോൾട്ട്</string>
+    <string name="light">ലൈറ്റ്</string>
+    <string name="dark">ഡാർക്ക്</string>
+    <string name="dynamic_color_description">നിങ്ങളുടെ വാൾപേപ്പറിൽ നിന്നുള്ള നിറങ്ങൾ ഉപയോഗിക്കുക (Android 12+)</string>
 </resources>

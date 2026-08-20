@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">ટોકન સેટિંગ્સ</string>
+    <string name="appearance">દેખાવ</string>
+    <string name="about">વિશે</string>
+    <string name="about_description">ટોકેનેટર એક શક્તિશાળી અને સુરક્ષિત પાસવર્ડ જનરેટર છે જે તમને નિયંત્રણમાં રાખે છે. તમારો ડેટા હંમેશા તમારા ઉપકરણ પર જ રહે છે.</string>
+    <string name="version_info">સંસ્કરણ %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">થીમ મોડ</string>
+    <string name="dynamic_color">ડાયનેમિક કલર</string>
+    <string name="system_default">સિસ્ટમ ડિફોલ્ટ</string>
+    <string name="light">લાઇટ</string>
+    <string name="dark">ડાર્ક</string>
+    <string name="dynamic_color_description">તમારા વૉલપેપરમાંથી રંગોનો ઉપયોગ કરો (Android 12+)</string>
 </resources>

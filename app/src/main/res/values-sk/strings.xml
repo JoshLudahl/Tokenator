@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Nastavenia tokenu</string>
+    <string name="appearance">Vzhľad</string>
+    <string name="about">O aplikácii</string>
+    <string name="about_description">Tokenator je výkonný a bezpečný generátor hesiel, ktorý vám dáva kontrolu. Vaše údaje zostávajú vždy vo vašom zariadení.</string>
+    <string name="version_info">Verzia %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Režim motívu</string>
+    <string name="dynamic_color">Dynamické farby</string>
+    <string name="system_default">Predvolené systémom</string>
+    <string name="light">Svetlý</string>
+    <string name="dark">Tmavý</string>
+    <string name="dynamic_color_description">Použiť farby z tapety (Android 12+)</string>
 </resources>

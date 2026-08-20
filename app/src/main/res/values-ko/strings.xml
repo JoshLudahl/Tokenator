@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">토큰 설정</string>
+    <string name="appearance">디스플레이</string>
+    <string name="about">정보</string>
+    <string name="about_description">Tokenator는 사용자가 직접 제어할 수 있는 강력하고 안전한 비밀번호 생성기입니다. 모든 데이터는 항상 기기에 저장됩니다.</string>
+    <string name="version_info">버전 %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">테마 모드</string>
+    <string name="dynamic_color">다이내믹 컬러</string>
+    <string name="system_default">시스템 기본값</string>
+    <string name="light">라이트 모드</string>
+    <string name="dark">다크 모드</string>
+    <string name="dynamic_color_description">배경화면의 색상 사용 (Android 12+)</string>
 </resources>

@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">टोकन सेटिंग्स</string>
+    <string name="appearance">दिखावट</string>
+    <string name="about">के बारे में</string>
+    <string name="about_description">Tokenator एक शक्तिशाली और सुरक्षित पासवर्ड जनरेटर है जो आपको नियंत्रण में रखता है। आपका डेटा हमेशा आपके डिवाइस पर रहता है।</string>
+    <string name="version_info">संस्करण %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">थीम मोड</string>
+    <string name="dynamic_color">डायनामिक कलर</string>
+    <string name="system_default">सिस्टम डिफॉल्ट</string>
+    <string name="light">लाइट</string>
+    <string name="dark">डार्क</string>
+    <string name="dynamic_color_description">अपने वॉलपेपर से रंगों का उपयोग करें (Android 12+)</string>
 </resources>

@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">አᏕᎳ ᏗᎦᏓለᏗ</string>
+    <string name="appearance">ᎢᏳᏍᏗᏉ ᏗᎧᏃᏗ</string>
+    <string name="about">ᎬᏩᏚᏫᏛ</string>
+    <string name="about_description">Tokenator ᎠᎵᏂᎩᏗᏳ ᎠᎴ ᎠσᎦᏘ ᎥᏓᏅᏍᏗ ᏗᏓᏁᎳᏅᎯ ᎾᏍᎩ ᏂᎯ ᏗᏣᎦᏘᏗᏍᎩ ᏂᎬᏁᎭ. ᏗᏣᏤᎵ ᎠᎴᏂᏙᎲ ᏂᎪᎯᎸ ᏣᏤᎵ ᎪᏢᏅᏗᏱ ᎠᏯᎠ.</string>
+    <string name="version_info">ᎢᏳᏍᏗ %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">ᏗᎧᏃᏗ ᎢᏳᏍᏗ</string>
+    <string name="dynamic_color">ᎠᏍᏆᎵᏛ ᎤᏤᏓᎵ</string>
+    <string name="system_default">ᎧᏃᎮᏍᎩ ᎢᏳᏍᏗ</string>
+    <string name="light">ᎢᎦ</string>
+    <string name="dark">ᎤᎵᏏᎩ</string>
+    <string name="dynamic_color_description">ᏗᎦᏟᏌᏅ ᏗᎧᏃᏗ ᏗᏓᏁᎶᏗ (Android 12+)</string>
 </resources>

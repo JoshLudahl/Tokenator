@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Tetapan Token</string>
+    <string name="appearance">Penampilan</string>
+    <string name="about">Perihal</string>
+    <string name="about_description">Tokenator ialah penjana kata laluan yang berkuasa dan selamat yang membolehkan anda mengawal. Data anda sentiasa kekal pada peranti anda.</string>
+    <string name="version_info">Versi %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Mod Tema</string>
+    <string name="dynamic_color">Warna Dinamik</string>
+    <string name="system_default">Lalai Sistem</string>
+    <string name="light">Cerah</string>
+    <string name="dark">Gelap</string>
+    <string name="dynamic_color_description">Gunakan warna daripada kertas dinding anda (Android 12+)</string>
 </resources>

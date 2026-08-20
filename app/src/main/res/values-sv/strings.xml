@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Token-inställningar</string>
+    <string name="appearance">Utseende</string>
+    <string name="about">Om</string>
+    <string name="about_description">Tokenator är en kraftfull och säker lösenordsgenerator som ger dig kontroll. Din data stannar alltid på din enhet.</string>
+    <string name="version_info">Version %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Temaläge</string>
+    <string name="dynamic_color">Dynamisk färg</string>
+    <string name="system_default">Systemstandard</string>
+    <string name="light">Ljus</string>
+    <string name="dark">Mörk</string>
+    <string name="dynamic_color_description">Använd färger från din bakgrundsbild (Android 12+)</string>
 </resources>

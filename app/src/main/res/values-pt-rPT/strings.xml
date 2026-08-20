@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Definições de token</string>
+    <string name="appearance">Aspeto</string>
+    <string name="about">Sobre</string>
+    <string name="about_description">O Tokenator é um gerador de palavras-passe poderoso e seguro que lhe dá o controlo. Os seus dados permanecem sempre no seu dispositivo.</string>
+    <string name="version_info">Versão %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Modo de tema</string>
+    <string name="dynamic_color">Cores dinâmicas</string>
+    <string name="system_default">Predefinição do sistema</string>
+    <string name="light">Claro</string>
+    <string name="dark">Escuro</string>
+    <string name="dynamic_color_description">Usar cores do seu papel de parede (Android 12+)</string>
 </resources>

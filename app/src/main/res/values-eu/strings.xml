@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Token-ezarpenak</string>
+    <string name="appearance">Itxura</string>
+    <string name="about">Honi buruz</string>
+    <string name="about_description">Tokenator pasahitz-sorgailu indartsu eta segurua da, kontrola ematen dizuna. Zure datuak zure gailuan geratzen dira beti.</string>
+    <string name="version_info">Bertsioa %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Gai-modua</string>
+    <string name="dynamic_color">Kolore dinamikoa</string>
+    <string name="system_default">Sistemaren lehenetsia</string>
+    <string name="light">Argia</string>
+    <string name="dark">Iluna</string>
+    <string name="dynamic_color_description">Erabili zure horma-paperaren koloreak (Android 12+)</string>
 </resources>

@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">టోకెన్ సెట్టింగ్‌లు</string>
+    <string name="appearance">రూపం</string>
+    <string name="about">గురించి</string>
+    <string name="about_description">టోకెనేటర్ అనేది ఒక శక్తివంతమైన మరియు సురక్షితమైన పాస్‌వర్డ్ జనరేటర్, ఇది మిమ్మల్ని నియంత్రణలో ఉంచుతుంది. మీ డేటా ఎల్లప్పుడూ మీ పరికరంలోనే ఉంటుంది.</string>
+    <string name="version_info">వెర్షన్ %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">థీమ్ మోడ్</string>
+    <string name="dynamic_color">డైనమిక్ కలర్</string>
+    <string name="system_default">సిస్టమ్ డీఫాల్ట్</string>
+    <string name="light">లైట్</string>
+    <string name="dark">డార్క్</string>
+    <string name="dynamic_color_description">మీ వాల్‌పేపర్ నుండి రంగులను ఉపయోగించండి (Android 12+)</string>
 </resources>

@@ -129,4 +129,18 @@
     <string name="data">Data</string>
     <string name="privacy_policy_data_message">We do not collect any data. The only data involved in this app is what you choose to save in terms of passwords. The passwords do not save to any other database other than the local device database. The passwords are encrypted before saving to the database and requires the application to unlock the encrypted passwords. No data of any kind is collected or shared.</string>
     <string name="string_value_placeholder">placeholder</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Token-Einstellungen</string>
+    <string name="appearance">Aussehen</string>
+    <string name="about">Über</string>
+    <string name="about_description">Tokenator ist ein leistungsstarker und sicherer Passwortgenerator, mit dem Sie die Kontrolle behalten. Ihre Daten bleiben immer auf Ihrem Gerät.</string>
+    <string name="version_info">Version %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Design-Modus</string>
+    <string name="dynamic_color">Dynamische Farben</string>
+    <string name="system_default">Systemstandard</string>
+    <string name="light">Hell</string>
+    <string name="dark">Dunkel</string>
+    <string name="dynamic_color_description">Farben vom Hintergrundbild verwenden (Android 12+)</string>
 </resources>

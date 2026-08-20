@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Ustawienia tokena</string>
+    <string name="appearance">Wygląd</string>
+    <string name="about">O aplikacji</string>
+    <string name="about_description">Tokenator to potężny i bezpieczny generator haseł, który daje Ci kontrolę. Twoje dane zawsze pozostają na Twoim urządzeniu.</string>
+    <string name="version_info">Wersja %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Tryb motywu</string>
+    <string name="dynamic_color">Kolor dynamiczny</string>
+    <string name="system_default">Domyślny systemu</string>
+    <string name="light">Jasny</string>
+    <string name="dark">Ciemny</string>
+    <string name="dynamic_color_description">Używaj kolorów z tapety (Android 12+)</string>
 </resources>

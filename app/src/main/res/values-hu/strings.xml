@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Token beállítások</string>
+    <string name="appearance">Megjelenés</string>
+    <string name="about">Névjegy</string>
+    <string name="about_description">A Tokenator egy hatékony és biztonságos jelszógenerátor, amely az Ön kezébe adja az irányítást. Adatai mindig az eszközén maradnak.</string>
+    <string name="version_info">Verzió: %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Téma mód</string>
+    <string name="dynamic_color">Dinamikus színek</string>
+    <string name="system_default">Rendszer alapértelmezett</string>
+    <string name="light">Világos</string>
+    <string name="dark">Sötét</string>
+    <string name="dynamic_color_description">Használja a háttérkép színeit (Android 12+)</string>
 </resources>

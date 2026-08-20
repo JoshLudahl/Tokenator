@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">ಟೋಕನ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
+    <string name="appearance">ಗೋಚರತೆ</string>
+    <string name="about">ಬಗ್ಗೆ</string>
+    <string name="about_description">ಟೋಕನೇಟರ್ ಒಂದು ಪ್ರಬಲ ಮತ್ತು ಸುರಕ್ಷಿತ ಪಾಸ್‌ವರ್ಡ್ ಜನರೇಟರ್ ಆಗಿದ್ದು ಅದು ನಿಮ್ಮನ್ನು ನಿಯಂತ್ರಣದಲ್ಲಿರಿಸುತ್ತದೆ. ನಿಮ್ಮ ಡೇಟಾ ಯಾವಾಗಲೂ ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿಯೇ ಇರುತ್ತದೆ.</string>
+    <string name="version_info">ಆವೃತ್ತಿ %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">ಥೀಮ್ ಮೋಡ್</string>
+    <string name="dynamic_color">ಡೈನಾಮಿಕ್ ಕಲರ್</string>
+    <string name="system_default">ಸಿಸ್ಟಮ್ ಡೀಫಾಲ್ಟ್</string>
+    <string name="light">ಲೈಟ್</string>
+    <string name="dark">ಡಾರ್ಕ್</string>
+    <string name="dynamic_color_description">ನಿಮ್ಮ ವಾಲ್‌ಪೇಪರ್‌ನಿಂದ ಬಣ್ಣಗಳನ್ನು ಬಳಸಿ (Android 12+)</string>
 </resources>

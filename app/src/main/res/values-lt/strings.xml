@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Žetono nustatymai</string>
+    <string name="appearance">Išvaizda</string>
+    <string name="about">Apie</string>
+    <string name="about_description">„Tokenator“ yra galingas ir saugus slaptažodžių generatorius, leidžiantis jums viską valdyti. Jūsų duomenys visada lieka jūsų įrenginyje.</string>
+    <string name="version_info">Versija %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Temos režimas</string>
+    <string name="dynamic_color">Dinaminė spalva</string>
+    <string name="system_default">Sistemos numatytasis</string>
+    <string name="light">Šviesus</string>
+    <string name="dark">Tamsus</string>
+    <string name="dynamic_color_description">Naudokite tapetų spalvas („Android 12+“)</string>
 </resources>

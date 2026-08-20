@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Pengaturan Token</string>
+    <string name="appearance">Tampilan</string>
+    <string name="about">Tentang</string>
+    <string name="about_description">Tokenator adalah pembuat kata sandi yang kuat dan aman yang memberi Anda kendali. Data Anda selalu ada di perangkat Anda.</string>
+    <string name="version_info">Versi %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Mode Tema</string>
+    <string name="dynamic_color">Warna Dinamis</string>
+    <string name="system_default">Default Sistem</string>
+    <string name="light">Terang</string>
+    <string name="dark">Gelap</string>
+    <string name="dynamic_color_description">Gunakan warna dari wallpaper Anda (Android 12+)</string>
 </resources>

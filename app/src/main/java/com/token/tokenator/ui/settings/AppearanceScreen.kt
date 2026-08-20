@@ -80,7 +80,7 @@ fun AppearanceScreen(
         ) {
             Spacer(modifier = Modifier.height(16.dp))
 
-            SectionHeader(text = stringResource(id = R.string.theme_mode))
+            SectionDescription(title = stringResource(id = R.string.theme_mode), description = "Choose between light, dark or system theme.")
 
             val themeOptions = listOf(ThemeMode.LIGHT, ThemeMode.DARK, ThemeMode.SYSTEM)
             Row(
@@ -121,7 +121,8 @@ fun AppearanceScreen(
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 Spacer(modifier = Modifier.height(32.dp))
-                SectionHeader(text = stringResource(id = R.string.dynamic_color))
+
+                SectionDescription(title = stringResource(id = R.string.dynamic_color), description = "Use colors from your wallpaper to personalize your app experience.")
 
                 val dynamicOptions = listOf(false, true)
                 Row(
@@ -160,12 +161,23 @@ fun AppearanceScreen(
 }
 
 @Composable
-private fun SectionHeader(text: String) {
-    Text(
-        text = text,
-        style = MaterialTheme.typography.titleMedium,
-        color = MaterialTheme.colorScheme.primary,
-        fontWeight = FontWeight.ExtraBold,
-        modifier = Modifier.padding(bottom = 12.dp),
-    )
+fun SectionDescription(
+    title: String,
+    description: String,
+) {
+    Column {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.primary,
+            fontWeight = FontWeight.ExtraBold,
+            modifier = Modifier.padding(bottom = 12.dp),
+        )
+        Text(
+            text = description,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(bottom = 12.dp),
+        )
+    }
 }

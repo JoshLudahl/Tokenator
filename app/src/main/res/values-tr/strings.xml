@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">Token Ayarları</string>
+    <string name="appearance">Görünüm</string>
+    <string name="about">Hakkında</string>
+    <string name="about_description">Tokenator, kontrolü size veren güçlü ve güvenli bir şifre oluşturucudur. Verileriniz her zaman cihazınızda kalır.</string>
+    <string name="version_info">Sürüm %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">Tema Modu</string>
+    <string name="dynamic_color">Dinamik Renk</string>
+    <string name="system_default">Sistem Varsayılanı</string>
+    <string name="light">Açık</string>
+    <string name="dark">Koyu</string>
+    <string name="dynamic_color_description">Duvar kağıdınızdaki renkleri kullanın (Android 12+)</string>
 </resources>

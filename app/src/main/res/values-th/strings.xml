@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">การตั้งค่าโทเค็น</string>
+    <string name="appearance">รูปลักษณ์</string>
+    <string name="about">เกี่ยวกับ</string>
+    <string name="about_description">Tokenator เป็นเครื่องมือสร้างรหัสผ่านที่ทรงพลังและปลอดภัยที่ช่วยให้คุณควบคุมได้ ข้อมูลของคุณจะถูกเก็บไว้ในอุปกรณ์ของคุณเสมอ</string>
+    <string name="version_info">เวอร์ชัน %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">โหมดธีม</string>
+    <string name="dynamic_color">สีไดนามิก</string>
+    <string name="system_default">เริ่มต้นของระบบ</string>
+    <string name="light">สว่าง</string>
+    <string name="dark">มืด</string>
+    <string name="dynamic_color_description">ใช้สีจากวอลเปเปอร์ของคุณ (Android 12+)</string>
 </resources>

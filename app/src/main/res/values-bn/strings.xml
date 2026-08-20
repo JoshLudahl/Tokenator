@@ -129,4 +129,18 @@
     <string name="save_changes">SAVE CHANGES</string>
     <string name="security_alert">SECURITY ALERT</string>
     <string name="understand">I Understand</string>
+    <!-- New Settings Hub -->
+    <string name="token_settings">টোকেন সেটিংস</string>
+    <string name="appearance">চেহারা</string>
+    <string name="about">সম্পর্কিত</string>
+    <string name="about_description">টোকেনেটর একটি শক্তিশালী এবং সুরক্ষিত পাসওয়ার্ড জেনারেটর যা আপনাকে নিয়ন্ত্রণে রাখে। আপনার ডেটা সর্বদা আপনার ডিভাইসেই থাকে।</string>
+    <string name="version_info">সংস্করণ %1$s</string>
+
+    <!-- Appearance -->
+    <string name="theme_mode">থিম মোড</string>
+    <string name="dynamic_color">ডায়নামিক কালার</string>
+    <string name="system_default">সিস্টেম ডিফল্ট</string>
+    <string name="light">হালকা</string>
+    <string name="dark">গাঢ়</string>
+    <string name="dynamic_color_description">আপনার ওয়ালপেপার থেকে রং ব্যবহার করুন (Android 12+)</string>
 </resources>
