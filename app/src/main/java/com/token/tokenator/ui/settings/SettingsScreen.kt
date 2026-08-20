@@ -13,13 +13,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.rounded.ChevronRight
-import androidx.compose.material.icons.rounded.Info
-import androidx.compose.material.icons.rounded.Palette
-import androidx.compose.material.icons.rounded.Policy
-import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -37,7 +30,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -66,7 +59,7 @@ fun SettingsScreen(
                 navigationIcon = {
                     IconButton(onClick = { navigator.goBack() }) {
                         Icon(
-                            imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                            painter = painterResource(id = R.drawable.arrow_back_24px),
                             contentDescription = null,
                             modifier = Modifier.size(28.dp),
                         )
@@ -89,7 +82,7 @@ fun SettingsScreen(
             // Appearance
             SettingsItem(
                 title = stringResource(id = R.string.appearance),
-                icon = Icons.Rounded.Palette,
+                icon = R.drawable.palette_24px,
                 onClick = { navigator.navigate(Route.Appearance) },
             )
 
@@ -98,7 +91,7 @@ fun SettingsScreen(
             // Token Settings
             SettingsItem(
                 title = stringResource(id = R.string.token_settings),
-                icon = Icons.Rounded.Settings,
+                icon = R.drawable.token_24px,
                 onClick = { navigator.navigate(Route.TokenSettings) },
             )
 
@@ -108,7 +101,7 @@ fun SettingsScreen(
             SectionHeader(text = stringResource(id = R.string.legal))
             SettingsItem(
                 title = stringResource(id = R.string.privacy_policy),
-                icon = Icons.Rounded.Policy,
+                icon = R.drawable.privacy_tip_24px,
                 onClick = { showPrivacyPolicy = true },
             )
 
@@ -124,7 +117,7 @@ fun SettingsScreen(
                 Column(modifier = Modifier.padding(16.dp)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(
-                            imageVector = Icons.Rounded.Info,
+                            painter = painterResource(id = R.drawable.info_24px),
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.size(24.dp),
@@ -174,7 +167,7 @@ fun SettingsScreen(
 @Composable
 private fun SettingsItem(
     title: String,
-    icon: ImageVector,
+    icon: Int,
     onClick: () -> Unit,
 ) {
     Card(
@@ -193,7 +186,7 @@ private fun SettingsItem(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Icon(
-                imageVector = icon,
+                painter = painterResource(id = icon),
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(24.dp),
@@ -214,7 +207,7 @@ private fun SettingsItem(
                     ),
             ) {
                 Icon(
-                    imageVector = Icons.Rounded.ChevronRight,
+                    painter = painterResource(id = R.drawable.chevron_forward_24px),
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.onSurface,
                 )

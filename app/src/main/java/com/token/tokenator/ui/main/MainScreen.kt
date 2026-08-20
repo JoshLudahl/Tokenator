@@ -30,20 +30,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.input.clearText
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.text.input.setTextAndPlaceCursorAtEnd
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.automirrored.rounded.Login
-import androidx.compose.material.icons.rounded.Add
-import androidx.compose.material.icons.rounded.Close
-import androidx.compose.material.icons.rounded.ContentCopy
-import androidx.compose.material.icons.rounded.Delete
-import androidx.compose.material.icons.rounded.FilterList
-import androidx.compose.material.icons.rounded.MoreVert
-import androidx.compose.material.icons.rounded.Search
-import androidx.compose.material.icons.rounded.Settings
-import androidx.compose.material.icons.rounded.Share
-import androidx.compose.material.icons.rounded.SortByAlpha
-import androidx.compose.material.icons.rounded.Update
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -98,7 +84,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
 import androidx.compose.ui.zIndex
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.token.tokenator.R
 import com.token.tokenator.model.Token
@@ -113,7 +98,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun MainScreen(
     navigator: Navigator,
-    viewModel: MainViewModel = hiltViewModel(),
+    viewModel: MainViewModel,
 ) {
     val context = LocalContext.current
     val focusManager = LocalFocusManager.current
@@ -186,7 +171,7 @@ fun MainScreen(
                     placeholder = { Text(stringResource(id = R.string.search_passwords)) },
                     leadingIcon = {
                         Icon(
-                            imageVector = Icons.Rounded.Search,
+                            painter = painterResource(id = R.drawable.search_24px),
                             contentDescription = stringResource(id = R.string.search_passwords),
                             modifier = Modifier.size(20.dp),
                         )
@@ -195,7 +180,7 @@ fun MainScreen(
                         if (searchTextFieldState.text.isNotEmpty()) {
                             IconButton(onClick = { searchTextFieldState.clearText() }) {
                                 Icon(
-                                    imageVector = Icons.Rounded.Close,
+                                    painter = painterResource(id = R.drawable.settings_24px),
                                     contentDescription = stringResource(id = R.string.search_clear),
                                     modifier = Modifier.size(18.dp),
                                 )
@@ -385,7 +370,7 @@ fun MainScreen(
                             },
                     ) {
                         Icon(
-                            imageVector = Icons.Rounded.FilterList,
+                            painter = painterResource(id = R.drawable.filter_list_24px),
                             contentDescription = stringResource(id = R.string.sort),
                         )
                     }
@@ -402,7 +387,7 @@ fun MainScreen(
                                 },
                     ) {
                         Icon(
-                            imageVector = Icons.Rounded.Settings,
+                            painter = painterResource(id = R.drawable.settings_24px),
                             contentDescription = stringResource(id = R.string.settings),
                             modifier = Modifier.size(28.dp),
                         )
@@ -414,7 +399,7 @@ fun MainScreen(
                         onClick = { navigator.navigate(Route.AddPassword) },
                     ) {
                         Icon(
-                            imageVector = Icons.Rounded.Add,
+                            painter = painterResource(id = R.drawable.add_24px),
                             contentDescription = stringResource(id = R.string.new_password),
                         )
                     }
@@ -430,8 +415,7 @@ fun MainScreen(
                 modifier =
                     Modifier
                         .offset {
-                            androidx.compose.ui.unit
-                                .IntOffset(sortButtonX.toInt(), 0)
+                            IntOffset(sortButtonX.toInt(), 0)
                         }.align(Alignment.BottomStart)
                         .padding(bottom = 100.dp + paddingValues.calculateBottomPadding())
                         .zIndex(2f),
@@ -446,7 +430,7 @@ fun MainScreen(
                             },
                         ) {
                             Icon(
-                                imageVector = Icons.Rounded.Update,
+                                painter = painterResource(id = R.drawable.history_2_24px),
                                 contentDescription = stringResource(id = R.string.sort_by_updated),
                                 tint = if (currentSortOrder == TokenSortOrder.DATE) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
                             )
@@ -458,7 +442,7 @@ fun MainScreen(
                             },
                         ) {
                             Icon(
-                                imageVector = Icons.Rounded.SortByAlpha,
+                                painter = painterResource(id = R.drawable.sort_by_alpha_24px),
                                 contentDescription = stringResource(id = R.string.sort_a_z),
                                 tint = if (currentSortOrder == TokenSortOrder.NAME) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface,
                             )
@@ -479,7 +463,7 @@ fun MainScreen(
                         leadingIcon = {
                             IconButton(onClick = { scope.launch { searchBarState.animateToCollapsed() } }) {
                                 Icon(
-                                    imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                                    painter = painterResource(id = R.drawable.arrow_back_24px),
                                     contentDescription = stringResource(id = R.string.search_back),
                                 )
                             }
@@ -488,7 +472,7 @@ fun MainScreen(
                             if (searchTextFieldState.text.isNotEmpty()) {
                                 IconButton(onClick = { searchTextFieldState.clearText() }) {
                                     Icon(
-                                        imageVector = Icons.Rounded.Close,
+                                        painter = painterResource(id = R.drawable.settings_24px),
                                         contentDescription = stringResource(id = R.string.search_clear),
                                         modifier = Modifier.size(18.dp),
                                     )
@@ -585,7 +569,7 @@ fun MainScreen(
 
 @Composable
 private fun VaultMenuItem(
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    icon: Int,
     text: String,
     onClick: () -> Unit,
     enabled: Boolean = true,
@@ -600,7 +584,7 @@ private fun VaultMenuItem(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(
-            imageVector = icon,
+            painter = painterResource(id = icon),
             contentDescription = null,
             modifier = Modifier.size(20.dp),
             tint = if (enabled) tint else tint.copy(alpha = 0.38f),
@@ -686,7 +670,7 @@ fun VaultTokenItem(
                 Box(contentAlignment = Alignment.CenterEnd) {
                     IconButton(onClick = { showMenu = !showMenu }) {
                         Icon(
-                            imageVector = if (showMenu) Icons.Rounded.Close else Icons.Rounded.MoreVert,
+                            painter = painterResource(id = if (showMenu) R.drawable.settings_24px else R.drawable.more_vert_24px),
                             contentDescription = stringResource(id = R.string.more_options),
                             tint = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.size(24.dp),
@@ -717,7 +701,7 @@ fun VaultTokenItem(
                                             .padding(vertical = 8.dp),
                                 ) {
                                     VaultMenuItem(
-                                        icon = Icons.Rounded.ContentCopy,
+                                        icon = R.drawable.content_copy_24px,
                                         text = stringResource(id = R.string.copy_password),
                                         onClick = {
                                             showMenu = false
@@ -725,7 +709,7 @@ fun VaultTokenItem(
                                         },
                                     )
                                     VaultMenuItem(
-                                        icon = Icons.AutoMirrored.Rounded.Login,
+                                        icon = R.drawable.login_24px,
                                         text = stringResource(id = R.string.copy_username),
                                         enabled = decryptedLogin.isNotEmpty(),
                                         onClick = {
@@ -734,7 +718,7 @@ fun VaultTokenItem(
                                         },
                                     )
                                     VaultMenuItem(
-                                        icon = Icons.Rounded.Share,
+                                        icon = R.drawable.share_24px,
                                         text = stringResource(id = R.string.feature_view_share_password_title),
                                         onClick = {
                                             showMenu = false
@@ -742,7 +726,7 @@ fun VaultTokenItem(
                                         },
                                     )
                                     VaultMenuItem(
-                                        icon = Icons.Rounded.Delete,
+                                        icon = R.drawable.delete_24px,
                                         text = stringResource(id = R.string.delete),
                                         tint = MaterialTheme.colorScheme.error,
                                         onClick = {

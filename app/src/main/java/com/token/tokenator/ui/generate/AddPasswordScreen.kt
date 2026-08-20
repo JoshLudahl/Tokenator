@@ -17,14 +17,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.automirrored.rounded.Label
-import androidx.compose.material.icons.automirrored.rounded.Login
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.rounded.ContentCopy
-import androidx.compose.material.icons.rounded.GeneratingTokens
-import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -60,6 +52,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -171,7 +164,7 @@ fun AddPasswordScreen(
                 navigationIcon = {
                     IconButton(onClick = { navigator.goBack() }) {
                         Icon(
-                            imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                            painter = painterResource(id = R.drawable.arrow_back_24px),
                             contentDescription = "Back",
                             modifier = Modifier.size(28.dp),
                         )
@@ -180,7 +173,7 @@ fun AddPasswordScreen(
                 actions = {
                     IconButton(onClick = { navigator.navigate(Route.TokenSettings) }) {
                         Icon(
-                            imageVector = Icons.Rounded.GeneratingTokens,
+                            painter = painterResource(id = R.drawable.token_24px),
                             contentDescription = "Settings",
                             modifier = Modifier.size(28.dp),
                         )
@@ -295,7 +288,7 @@ fun AddPasswordScreen(
                                     ),
                         ) {
                             Icon(
-                                imageVector = Icons.Rounded.Refresh,
+                                painter = painterResource(id = R.drawable.refresh_24px),
                                 contentDescription = "Refresh",
                                 tint = MaterialTheme.colorScheme.onPrimaryContainer,
                                 modifier = Modifier.size(18.dp),
@@ -322,7 +315,7 @@ fun AddPasswordScreen(
                                     ),
                         ) {
                             Icon(
-                                imageVector = Icons.Rounded.ContentCopy,
+                                painter = painterResource(id = R.drawable.content_copy_24px),
                                 contentDescription = "Copy",
                                 tint = MaterialTheme.colorScheme.onPrimaryContainer,
                                 modifier = Modifier.size(18.dp),
@@ -358,7 +351,7 @@ fun AddPasswordScreen(
                         shape = MaterialTheme.shapes.large,
                         leadingIcon = {
                             Icon(
-                                imageVector = Icons.AutoMirrored.Rounded.Label,
+                                painter = painterResource(id = R.drawable.label_24px),
                                 contentDescription = null,
                                 modifier = Modifier.size(20.dp),
                             )
@@ -394,7 +387,7 @@ fun AddPasswordScreen(
                         shape = MaterialTheme.shapes.large,
                         leadingIcon = {
                             Icon(
-                                imageVector = Icons.AutoMirrored.Rounded.Login,
+                                painter = painterResource(id = R.drawable.login_24px),
                                 contentDescription = null,
                                 modifier = Modifier.size(20.dp),
                             )
@@ -666,7 +659,7 @@ private fun QuickToggleItem(
                 if (checked) {
                     {
                         Icon(
-                            imageVector = Icons.Filled.Check,
+                            painter = painterResource(id = R.drawable.check_small_24px),
                             contentDescription = null,
                             modifier = Modifier.size(SwitchDefaults.IconSize),
                             tint = MaterialTheme.colorScheme.surface,

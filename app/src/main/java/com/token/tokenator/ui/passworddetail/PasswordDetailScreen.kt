@@ -17,17 +17,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.ArrowBack
-import androidx.compose.material.icons.automirrored.rounded.Label
-import androidx.compose.material.icons.automirrored.rounded.Login
-import androidx.compose.material.icons.rounded.ContentCopy
-import androidx.compose.material.icons.rounded.Delete
-import androidx.compose.material.icons.rounded.Password
-import androidx.compose.material.icons.rounded.Share
-import androidx.compose.material.icons.rounded.Visibility
-import androidx.compose.material.icons.rounded.VisibilityOff
-import androidx.compose.material.icons.rounded.Warning
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -51,8 +40,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -112,7 +101,7 @@ fun TokenDetailScreen(
                 navigationIcon = {
                     IconButton(onClick = { navigator.goBack() }) {
                         Icon(
-                            imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
+                            painter = painterResource(id = R.drawable.arrow_back_24px),
                             contentDescription = null,
                             tint = MaterialTheme.colorScheme.onSurface,
                             modifier = Modifier.size(32.dp),
@@ -122,7 +111,7 @@ fun TokenDetailScreen(
                 actions = {
                     IconButton(onClick = { showDeleteDialog = true }) {
                         Icon(
-                            imageVector = Icons.Rounded.Delete,
+                            painter = painterResource(id = R.drawable.delete_24px),
                             contentDescription = "Delete",
                             tint = MaterialTheme.colorScheme.onSurface,
                             modifier = Modifier.size(32.dp),
@@ -138,7 +127,7 @@ fun TokenDetailScreen(
                                 .background(MaterialTheme.colorScheme.surface),
                     ) {
                         Icon(
-                            imageVector = Icons.Rounded.Share,
+                            painter = painterResource(id = R.drawable.share_24px),
                             contentDescription = null,
                             modifier = Modifier.size(28.dp),
                             tint = MaterialTheme.colorScheme.onSurface,
@@ -199,7 +188,7 @@ fun TokenDetailScreen(
                 label = stringResource(id = R.string.name),
                 value = tokenName,
                 onValueChange = { tokenName = it },
-                leadingIcon = Icons.AutoMirrored.Rounded.Label,
+                leadingIcon = R.drawable.label_24px,
                 onCopy = {
                     Clipuous.copyToClipboard(tokenName, context)
                     if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
@@ -219,7 +208,7 @@ fun TokenDetailScreen(
                 label = stringResource(R.string.login_input_field),
                 value = loginName,
                 onValueChange = { loginName = it },
-                leadingIcon = Icons.AutoMirrored.Rounded.Login,
+                leadingIcon = R.drawable.login_24px,
                 onCopy = {
                     Clipuous.copyToClipboard(loginName, context)
                     if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
@@ -239,7 +228,7 @@ fun TokenDetailScreen(
                 label = stringResource(R.string.token),
                 value = passwordValue,
                 onValueChange = { passwordValue = it },
-                leadingIcon = Icons.Rounded.Password,
+                leadingIcon = R.drawable.password_24px,
                 onCopy = {
                     Clipuous.copyToClipboard(passwordValue, context, isSensitive = true)
                     if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2) {
@@ -295,7 +284,7 @@ fun TokenDetailScreen(
                         modifier = Modifier.padding(16.dp),
                     ) {
                         Icon(
-                            imageVector = Icons.Rounded.Warning,
+                            painter = painterResource(id = R.drawable.settings_24px),
                             contentDescription = null,
                             modifier = Modifier.size(32.dp),
                             tint = MaterialTheme.colorScheme.tertiary,
@@ -365,7 +354,7 @@ fun ModernDetailField(
     label: String,
     value: String,
     onValueChange: (String) -> Unit,
-    leadingIcon: ImageVector,
+    leadingIcon: Int,
     onCopy: (() -> Unit)? = null,
     isPassword: Boolean = false,
 ) {
@@ -389,7 +378,7 @@ fun ModernDetailField(
             shape = MaterialTheme.shapes.large,
             leadingIcon = {
                 Icon(
-                    imageVector = leadingIcon,
+                    painter = painterResource(id = leadingIcon),
                     contentDescription = null,
                     modifier = Modifier.size(20.dp),
                 )
@@ -405,7 +394,7 @@ fun ModernDetailField(
                             modifier = Modifier.size(36.dp),
                         ) {
                             Icon(
-                                imageVector = if (passwordVisible) Icons.Rounded.Visibility else Icons.Rounded.VisibilityOff,
+                                painter = painterResource(id = if (passwordVisible) R.drawable.visibility_24px else R.drawable.visibility_off_24px),
                                 contentDescription = null,
                                 modifier = Modifier.size(20.dp),
                             )
@@ -417,7 +406,7 @@ fun ModernDetailField(
                             modifier = Modifier.size(36.dp),
                         ) {
                             Icon(
-                                imageVector = Icons.Rounded.ContentCopy,
+                                painter = painterResource(id = R.drawable.content_copy_24px),
                                 contentDescription = null,
                                 modifier = Modifier.size(20.dp),
                             )

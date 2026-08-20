@@ -71,8 +71,8 @@
     <string name="string_value_placeholder">placeholder</string>
     <string name="feature_view_share_password_title">Share Password</string>
     <string name="feature_view_share_password_description">Now you can share your password with an app or person.</string>
-    <string name="data_loss">Loss of Data</string>
-    <string name="data_loss_message">We are not responsible for lost or missing data in the event a password can no longer be decrypted. This can occur when 3rd party library changes their encryption and we can no longer decrypt older tokens. It is recommended that you back up all of your data.</string>
+    <string name="data_loss">Data Safety</string>
+    <string name="data_loss_message">We are not responsible for lost or missing data in the event a password can no longer be decrypted. This can occur when a 3rd party library changes their encryption, and/or we can no longer decrypt older tokens. It is recommended that you back up all of your data. Use at your own risk.</string>
     <string name="onboarding_title_1">Secure Generation</string>
     <string name="onboarding_description_1">Generate strong, secure passwords with customizable options including length and character types.</string>
     <string name="onboarding_title_2">Local Storage</string>
