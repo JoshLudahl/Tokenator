@@ -22,7 +22,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.material.icons.rounded.Save
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -343,57 +342,8 @@ fun TokenSettingsScreen(
                 }
             }
 
-            Spacer(modifier = Modifier.height(32.dp))
-
-            // Legal Section
-            SectionHeader(text = stringResource(id = R.string.legal))
-            Card(
-                onClick = { showPrivacyPolicy = true },
-                modifier = Modifier.fillMaxWidth(),
-                shape = MaterialTheme.shapes.large,
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer),
-            ) {
-                Row(modifier = Modifier.fillMaxWidth()) {
-                    TextButton(
-                        onClick = { showPrivacyPolicy = true },
-                    ) {
-                        Text(
-                            text = stringResource(id = R.string.privacy_policy),
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSecondaryContainer,
-                        )
-                    }
-                    Spacer(modifier = Modifier.weight(1f))
-
-                    IconButton(onClick = { showPrivacyPolicy = true }) {
-                        Icon(imageVector = Icons.Rounded.ChevronRight, contentDescription = null)
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(32.dp))
-
-            // Version Info
-            Box(
-                modifier = Modifier.fillMaxWidth(),
-                contentAlignment = Alignment.Center,
-            ) {
-                Text(
-                    text = viewModel.version,
-                    style = MaterialTheme.typography.labelMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(bottom = 32.dp),
-                )
-            }
-
             Spacer(modifier = Modifier.height(48.dp))
         }
-    }
-
-    if (showPrivacyPolicy) {
-        com.token.tokenator.ui.components.PrivacyPolicyDialog(
-            onDismiss = { showPrivacyPolicy = false },
-        )
     }
 }
 

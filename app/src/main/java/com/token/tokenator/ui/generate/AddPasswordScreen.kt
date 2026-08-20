@@ -23,8 +23,8 @@ import androidx.compose.material.icons.automirrored.rounded.Label
 import androidx.compose.material.icons.automirrored.rounded.Login
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.rounded.ContentCopy
+import androidx.compose.material.icons.rounded.GeneratingTokens
 import androidx.compose.material.icons.rounded.Refresh
-import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -178,9 +178,9 @@ fun AddPasswordScreen(
                     }
                 },
                 actions = {
-                    IconButton(onClick = { navigator.navigate(Route.Settings) }) {
+                    IconButton(onClick = { navigator.navigate(Route.TokenSettings) }) {
                         Icon(
-                            imageVector = Icons.Rounded.Settings,
+                            imageVector = Icons.Rounded.GeneratingTokens,
                             contentDescription = "Settings",
                             modifier = Modifier.size(28.dp),
                         )
@@ -589,7 +589,7 @@ fun AddPasswordScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
             Box(modifier = Modifier.fillMaxWidth().align(Alignment.CenterHorizontally)) {
-                TextButton(onClick = { navigator.navigate(Route.Settings) }, modifier = Modifier.fillMaxWidth()) {
+                TextButton(onClick = { navigator.navigate(Route.TokenSettings) }, modifier = Modifier.fillMaxWidth()) {
                     Text(text = "Advanced Settings")
                 }
             }
