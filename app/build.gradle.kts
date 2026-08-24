@@ -1,3 +1,4 @@
+import com.android.build.api.dsl.ApplicationExtension
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 plugins {
@@ -12,18 +13,17 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
-android {
+configure<ApplicationExtension> {
     val target = 37
-    buildToolsVersion = "37.0"
-    namespace = "com.token.tokenator"
     compileSdk = target
+    namespace = "com.token.tokenator"
 
     defaultConfig {
         applicationId = "com.token.tokenator"
         minSdk = 24
         targetSdk = target
-        versionCode = 71
-        versionName = "2026.08.18"
+        versionCode = 72
+        versionName = "2026.08.24"
 
         testInstrumentationRunner = "com.token.tokenator.HiltAndroidJUnitRunner"
         testInstrumentationRunnerArguments.putAll(mutableMapOf("clearPackageData" to "true"))
