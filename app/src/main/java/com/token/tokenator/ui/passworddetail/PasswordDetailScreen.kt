@@ -48,7 +48,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.token.tokenator.R
 import com.token.tokenator.navigation.Navigator
@@ -60,7 +60,7 @@ import com.token.tokenator.utilities.IntentHelper
 fun TokenDetailScreen(
     passwordId: Int,
     navigator: Navigator,
-    viewModel: PasswordDetailViewModel = hiltViewModel(),
+    viewModel: PasswordDetailViewModel = hiltViewModel<PasswordDetailViewModel>(),
 ) {
     val token by viewModel.token.collectAsStateWithLifecycle()
     val shouldShowWarning by viewModel.shouldShowWarning.collectAsStateWithLifecycle()

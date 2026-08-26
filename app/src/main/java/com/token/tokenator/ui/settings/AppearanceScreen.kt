@@ -30,7 +30,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.token.tokenator.R
 import com.token.tokenator.model.ThemeMode
@@ -40,7 +40,7 @@ import com.token.tokenator.navigation.Navigator
 @Composable
 fun AppearanceScreen(
     navigator: Navigator,
-    viewModel: AppearanceViewModel = hiltViewModel(),
+    viewModel: AppearanceViewModel = hiltViewModel<AppearanceViewModel>(),
 ) {
     val themeMode by viewModel.themeMode.collectAsStateWithLifecycle()
     val dynamicColor by viewModel.dynamicColor.collectAsStateWithLifecycle()

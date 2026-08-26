@@ -30,7 +30,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.token.tokenator.R
 import com.token.tokenator.navigation.Navigator
 import com.token.tokenator.navigation.Route
@@ -39,7 +39,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun OnboardingScreen(
     navigator: Navigator,
-    viewModel: OnboardingViewModel = hiltViewModel(),
+    viewModel: OnboardingViewModel = hiltViewModel<OnboardingViewModel>(),
 ) {
     val pagerState = rememberPagerState { 3 }
     val coroutineScope = rememberCoroutineScope()
