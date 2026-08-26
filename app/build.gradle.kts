@@ -35,6 +35,10 @@ configure<ApplicationExtension> {
             optimization {
                 enable = true
             }
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
 
         debug {
