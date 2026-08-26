@@ -359,7 +359,7 @@ fun MainScreen(
                 modifier =
                     Modifier
                         .align(Alignment.BottomCenter)
-                        .padding(bottom = paddingValues.calculateBottomPadding() + FloatingToolbarDefaults.ScreenOffset)
+                        .padding(bottom = paddingValues.calculateBottomPadding() + 24.dp)
                         .zIndex(1f),
                 expanded = true,
                 leadingContent = {
@@ -418,7 +418,7 @@ fun MainScreen(
                         .offset {
                             IntOffset(sortButtonX.toInt(), 0)
                         }.align(Alignment.BottomStart)
-                        .padding(bottom = 100.dp + paddingValues.calculateBottomPadding())
+                        .padding(bottom = paddingValues.calculateBottomPadding() + 100.dp)
                         .zIndex(2f),
             ) {
                 VerticalFloatingToolbar(

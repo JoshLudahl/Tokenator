@@ -1,5 +1,6 @@
 package com.token.tokenator
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -82,6 +83,9 @@ class MainActivity : FragmentActivity() {
         }
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            window.isNavigationBarContrastEnforced = false
+        }
         appUpdateManager = AppUpdateManagerFactory.create(applicationContext)
         aut = appUpdateManager.appUpdateInfo
         checkIsUpdateAvailable()
