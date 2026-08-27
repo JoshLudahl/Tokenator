@@ -20,7 +20,7 @@ configure<ApplicationExtension> {
 
     defaultConfig {
         applicationId = "com.token.tokenator"
-        minSdk = 30
+        minSdk = 32
         targetSdk = target
         versionCode = 74
         versionName = "2026.08.27"
