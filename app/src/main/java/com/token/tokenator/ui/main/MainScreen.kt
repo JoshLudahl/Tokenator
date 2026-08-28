@@ -227,7 +227,7 @@ fun MainScreen(
                 modifier =
                     Modifier
                         .fillMaxSize()
-                        .padding(paddingValues)
+                        .padding(top = paddingValues.calculateTopPadding())
                         .clickable(
                             interactionSource = remember { MutableInteractionSource() },
                             indication = null,
@@ -315,7 +315,7 @@ fun MainScreen(
                                 .fillMaxWidth()
                                 .weight(1f),
                         verticalArrangement = Arrangement.spacedBy(14.dp),
-                        contentPadding = PaddingValues(bottom = 90.dp),
+                        contentPadding = PaddingValues(bottom = paddingValues.calculateBottomPadding() + 90.dp),
                     ) {
                         items(tokens, key = { it.id }) { token ->
                             Box(modifier = Modifier.animateItem()) {
