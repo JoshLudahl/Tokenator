@@ -22,8 +22,8 @@ configure<ApplicationExtension> {
         applicationId = "com.token.tokenator"
         minSdk = 32
         targetSdk = target
-        versionCode = 74
-        versionName = "2026.08.27"
+        versionCode = 75
+        versionName = "2026.08.28"
 
         testInstrumentationRunner = "com.token.tokenator.HiltAndroidJUnitRunner"
         testInstrumentationRunnerArguments.putAll(mutableMapOf("clearPackageData" to "true"))
@@ -127,8 +127,6 @@ dependencies {
 
     // To use Kotlin Symbol Processing (KSP)
     ksp(libs.androidx.room.compiler)
-
-    // optional - Test helpers
 
     // Navigation
     implementation(libs.androidx.navigation3.runtime)
