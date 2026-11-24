@@ -16,6 +16,7 @@ plugins {
 configure<ApplicationExtension> {
     val target = 37
     compileSdk = target
+    compileSdkMinor = 2
     namespace = "com.token.tokenator"
 
     defaultConfig {
